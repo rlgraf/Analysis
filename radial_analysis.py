@@ -31,7 +31,7 @@ def Fe_H_agedependent(x1,x2,x3,x4,x5,x6,x7,x8,a1,a2):
 
 
 for s, r in zip(sim, R90[0,:]):
-    simulation_directory = sim
+    simulation_directory = s
     part = gizmo.io.Read.read_snapshots(['star'], 'redshift', 0, simulation_directory, assign_hosts_rotation=True, assign_formation_coordinates = True)
     Fe_H = part['star'].prop('metallicity.iron')
     age = part['star'].prop('age')
