@@ -15,6 +15,8 @@ R90_m12b = np.array([11.6, 11.7, 10.5, 10.5, 8.2, 9.3, 6.2, 3.6, 2.4, 3.2, 3.6, 
 
 R90 = np.vstack([R90_m12i, R90_m12f, R90_m12b])
 
+# z = 0
+
 def Fe_H_agedependent(x1,x2,x3,x4,x5,x6,x7,x8,a1,a2):
     index = ut.array.get_indices(r[:,0], [x1,x2])
     index2 = ut.array.get_indices(abs(r[:,2]), [x3,x4], prior_indices = index)
@@ -27,8 +29,6 @@ def Fe_H_agedependent(x1,x2,x3,x4,x5,x6,x7,x8,a1,a2):
         return(np.nan)
     weight_avg = sum((Fe_H_cut)*part['star']['mass'][index5])/sum(part['star']['mass'][index5])
     return(weight_avg)
-
-print(R90[:,0])
 
 Fe_H_rad_total = []
 for s, r90 in zip(sim, R90):
@@ -48,3 +48,35 @@ for s, r90 in zip(sim, R90):
     Fe_H_rad_total.append(Fe_H_rad)
 Fe_H_rad_total = np.array([Fe_H_rad_total])
 
+# formation
+
+def Fe_H_agedependent_form(x1,x2,x3,x4,x5,x6,x7,x8,a1,a2):
+    index = ut.array.get_indices(r_form[:,0], [x1,x2])
+    index2 = ut.array.get_indices(abs(r_form[:,2]), [x3,x4], prior_indices = index)
+    index3 = ut.array.get_indices(r[:,0],[x5,x6], prior_indices = index2)
+    index4 = ut.array.get_indices(abs(r[:,2]), [x7,x8], prior_indices = index3)
+    index5 = ut.array.get_indices(age, [a1,a2], prior_indices = index4)
+    Fe_H = part['star'].prop('metallicity.iron')
+    Fe_H_cut = Fe_H[index5]
+    if len(Fe_H_cut) == 0:
+        return(np.nan)
+    weight_avg = sum((Fe_H_cut)*part['star']['mass'][index5])/sum(part['star']['mass'][index5])
+    return(weight_avg)
+
+Fe_H_rad_form_total = []
+for s, r90 in zip(sim, R90):
+    simulation_directory = s
+    part = gizmo.io.Read.read_snapshots(['star'], 'redshift', 0, simulation_directory, assign_hosts_rotation=True, assign_formation_coordinates = True)
+    r = part['star'].prop('host.distance.principal.cylindrical')
+    r_form = part['star'].prop('form.host.distance.principal.cylindrical')
+    Fe_H = part['star'].prop('metallicity.iron')
+    age = part['star'].prop('age')
+    
+    Fe_H_rad_form = []
+    for a_f, b_f in zip(np.arange(0,14), r90):
+        x_f = []
+        for i_f in np.arange(0,b_f,b_f/10):
+                x_f.append(Fe_H_agedependent_form(i_f,i_f+b_f/10,-3,3,0,b_f,-3,3,a_f,a_f+1))
+        Fe_H_rad_form.append(x_f)
+    Fe_H_rad_form_total.append(Fe_H_rad_form)
+Fe_H_rad_form_total = np.array([Fe_H_rad_form_total])
