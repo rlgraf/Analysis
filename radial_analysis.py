@@ -28,18 +28,23 @@ def Fe_H_agedependent(x1,x2,x3,x4,x5,x6,x7,x8,a1,a2):
     weight_avg = sum((Fe_H_cut)*part['star']['mass'][index5])/sum(part['star']['mass'][index5])
     return(weight_avg)
 
+print(R90[:,0])
 
-
-for s, r in zip(sim, R90[0,:]):
+Fe_H_rad_total = []
+for s, r90 in zip(sim, R90):
     simulation_directory = s
     part = gizmo.io.Read.read_snapshots(['star'], 'redshift', 0, simulation_directory, assign_hosts_rotation=True, assign_formation_coordinates = True)
+    r = part['star'].prop('host.distance.principal.cylindrical')
+    r_form = part['star'].prop('form.host.distance.principal.cylindrical')
     Fe_H = part['star'].prop('metallicity.iron')
     age = part['star'].prop('age')
     
     Fe_H_rad = []
-    for a, b in zip(np.arange(0,14), r):
+    for a, b in zip(np.arange(0,14), r90):
         x = []
         for i in np.arange(0,b,b/10):
                 x.append(Fe_H_agedependent(i,i+b/10,-3,3,0,b,-3,3,a,a+1))
         Fe_H_rad.append(x)
-    Fe_H_rad = np.array(Fe_H_rad)
+    Fe_H_rad_total.append(Fe_H_rad)
+Fe_H_rad_total = np.array([Fe_H_rad_total])
+
