@@ -165,7 +165,7 @@ for s in sim:
         x_f = []
         for i_f in np.arange(0,1,0.1):
                 x_f.append(Fe_H_agedependent_form(0,15,i_f,i_f+0.1,4,5,0,1,a_f,a_f+1))
-        Fe_H_ver_r_1_2_form.append(x_f)
+        Fe_H_ver_r_4_5_form.append(x_f)
         l_f = np.arange(0,1,0.1)
         x_f = np.array(x_f)
         j_f, k_f = np.polyfit(l_f[np.isfinite(x_f)],x_f[np.isfinite(x_f)],1)
@@ -191,7 +191,7 @@ for s in sim:
         x_f = []
         for i_f in np.arange(0,1,0.1):
                 x_f.append(Fe_H_agedependent_form(0,15,i_f,i_f+0.1,7,8,0,1,a_f,a_f+1))
-        Fe_H_ver_r_1_2_form.append(x_f)
+        Fe_H_ver_r_7_8_form.append(x_f)
         l_f = np.arange(0,1,0.1)
         x_f = np.array(x_f)
         j_f, k_f = np.polyfit(l_f[np.isfinite(x_f)],x_f[np.isfinite(x_f)],1)
