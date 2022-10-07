@@ -52,7 +52,61 @@ for s in sim:
 Fe_H_ver_r_1_2_total = np.array([Fe_H_ver_r_1_2_total])
 slope_ver_r_1_2_total = np.array([slope_ver_r_1_2_total])
 
-#ut_io.file_hdf5('Final Figures/VER_profile_z_0', Fe_H_ver_r_1_2_total)
+Fe_H_ver_r_4_5_total = []
+slope_ver_r_4_5_total = []
+for s in sim:
+    simulation_directory = s
+    part = gizmo.io.Read.read_snapshots(['star'], 'redshift', 0, simulation_directory, assign_hosts_rotation=True, assign_formation_coordinates = True)
+    r = part['star'].prop('host.distance.principal.cylindrical')
+    r_form = part['star'].prop('form.host.distance.principal.cylindrical')
+    Fe_H = part['star'].prop('metallicity.iron')
+    age = part['star'].prop('age')
+    
+    Fe_H_ver_r_4_5 = []
+    slope_ver_r_4_5 = []
+    for a in np.arange(0,13):
+        x = []
+        for i in np.arange(0,1,0.1):
+                x.append(Fe_H_agedependent(4,5,i,i+0.1,0,15,0,1,a,a+1))
+        Fe_H_ver_r_4_5.append(x)
+        l = np.arange(0,1,0.1)
+        x = np.array(x)
+        j, k = np.polyfit(l[np.isfinite(x)],x[np.isfinite(x)],1)
+        slope_ver_r_4_5.append(j)
+    Fe_H_ver_r_4_5_total.append(Fe_H_ver_r_4_5)
+    slope_ver_r_4_5_total.append(slope_ver_r_4_5)
+Fe_H_ver_r_4_5_total = np.array([Fe_H_ver_r_4_5_total])
+slope_ver_r_4_5_total = np.array([slope_ver_r_4_5_total])
+
+Fe_H_ver_r_7_8_total = []
+slope_ver_r_7_8_total = []
+for s in sim:
+    simulation_directory = s
+    part = gizmo.io.Read.read_snapshots(['star'], 'redshift', 0, simulation_directory, assign_hosts_rotation=True, assign_formation_coordinates = True)
+    r = part['star'].prop('host.distance.principal.cylindrical')
+    r_form = part['star'].prop('form.host.distance.principal.cylindrical')
+    Fe_H = part['star'].prop('metallicity.iron')
+    age = part['star'].prop('age')
+    
+    Fe_H_ver_r_7_8 = []
+    slope_ver_r_7_8 = []
+    for a in np.arange(0,13):
+        x = []
+        for i in np.arange(0,1,0.1):
+                x.append(Fe_H_agedependent(7,8,i,i+0.1,0,15,0,1,a,a+1))
+        Fe_H_ver_r_7_8.append(x)
+        l = np.arange(0,1,0.1)
+        x = np.array(x)
+        j, k = np.polyfit(l[np.isfinite(x)],x[np.isfinite(x)],1)
+        slope_ver_r_7_8.append(j)
+    Fe_H_ver_r_7_8_total.append(Fe_H_ver_r_7_8)
+    slope_ver_r_7_8_total.append(slope_ver_r_7_8)
+Fe_H_ver_r_7_8_total = np.array([Fe_H_ver_r_7_8_total])
+slope_ver_r_7_8_total = np.array([slope_ver_r_7_8_total])
+
+#ut_io.file_hdf5('Final Figures/VER_profile_r_1_z_0', Fe_H_ver_r_1_2_total)
+#ut_io.file_hdf5('Final Figures/VER_profile_r_4_5_z_0', Fe_H_ver_r_4_5_total)
+#ut_io.file_hdf5('Final Figures/VER_profile_r_7_8_z_0', Fe_H_ver_r_7_8_total)
 
 # formation
 
@@ -88,8 +142,6 @@ for s in sim:
         Fe_H_ver_r_1_2_form.append(x_f)
         l_f = np.arange(0,1,0.1)
         x_f = np.array(x_f)
-        print(l_f)
-        print(x_f)
         j_f, k_f = np.polyfit(l_f[np.isfinite(x_f)],x_f[np.isfinite(x_f)],1)
         slope_ver_r_1_2_form.append(j_f)
     Fe_H_ver_r_1_2_form_total.append(Fe_H_ver_r_1_2_form)
@@ -97,4 +149,62 @@ for s in sim:
 Fe_H_ver_r_1_2_form_total = np.array([Fe_H_ver_r_1_2_form_total])
 slope_ver_r_1_2_form_total = np.array([slope_ver_r_1_2_form_total])
 
-#ut_io.file_hdf5('Final Figures/VER_profile_form', Fe_H_ver_r_1_2_form_total)
+Fe_H_ver_r_4_5_form_total = []
+slope_ver_r_4_5_form_total = []
+for s in sim:
+    simulation_directory = s
+    part = gizmo.io.Read.read_snapshots(['star'], 'redshift', 0, simulation_directory, assign_hosts_rotation=True, assign_formation_coordinates = True)
+    r = part['star'].prop('host.distance.principal.cylindrical')
+    r_form = part['star'].prop('form.host.distance.principal.cylindrical')
+    Fe_H = part['star'].prop('metallicity.iron')
+    age = part['star'].prop('age')
+    
+    Fe_H_ver_r_4_5_form = []
+    slope_ver_r_4_5_form = []
+    for a_f in np.arange(0,13):
+        x_f = []
+        for i_f in np.arange(0,1,0.1):
+                x_f.append(Fe_H_agedependent_form(0,15,i_f,i_f+0.1,4,5,0,1,a_f,a_f+1))
+        Fe_H_ver_r_1_2_form.append(x_f)
+        l_f = np.arange(0,1,0.1)
+        x_f = np.array(x_f)
+        print(l_f)
+        print(x_f)
+        j_f, k_f = np.polyfit(l_f[np.isfinite(x_f)],x_f[np.isfinite(x_f)],1)
+        slope_ver_r_4_5_form.append(j_f)
+    Fe_H_ver_r_4_5_form_total.append(Fe_H_ver_r_4_5_form)
+    slope_ver_r_4_5_form_total.append(slope_ver_r_4_5_form)
+Fe_H_ver_r_4_5_form_total = np.array([Fe_H_ver_r_4_5_form_total])
+slope_ver_r_4_5_form_total = np.array([slope_ver_r_4_5_form_total])
+
+Fe_H_ver_r_7_8_form_total = []
+slope_ver_r_7_8_form_total = []
+for s in sim:
+    simulation_directory = s
+    part = gizmo.io.Read.read_snapshots(['star'], 'redshift', 0, simulation_directory, assign_hosts_rotation=True, assign_formation_coordinates = True)
+    r = part['star'].prop('host.distance.principal.cylindrical')
+    r_form = part['star'].prop('form.host.distance.principal.cylindrical')
+    Fe_H = part['star'].prop('metallicity.iron')
+    age = part['star'].prop('age')
+    
+    Fe_H_ver_r_7_8_form = []
+    slope_ver_r_7_8_form = []
+    for a_f in np.arange(0,13):
+        x_f = []
+        for i_f in np.arange(0,1,0.1):
+                x_f.append(Fe_H_agedependent_form(0,15,i_f,i_f+0.1,7,8,0,1,a_f,a_f+1))
+        Fe_H_ver_r_1_2_form.append(x_f)
+        l_f = np.arange(0,1,0.1)
+        x_f = np.array(x_f)
+        print(l_f)
+        print(x_f)
+        j_f, k_f = np.polyfit(l_f[np.isfinite(x_f)],x_f[np.isfinite(x_f)],1)
+        slope_ver_r_7_8_form.append(j_f)
+    Fe_H_ver_r_7_8_form_total.append(Fe_H_ver_r_7_8_form)
+    slope_ver_r_7_8_form_total.append(slope_ver_r_7_8_form)
+Fe_H_ver_r_7_8_form_total = np.array([Fe_H_ver_r_7_8_form_total])
+slope_ver_r_7_8_form_total = np.array([slope_ver_r_7_8_form_total])
+
+#ut_io.file_hdf5('Final Figures/VER_profile_r_1_2_form', Fe_H_ver_r_1_2_form_total)
+#ut_io.file_hdf5('Final Figures/VER_profile_r_4_5_form', Fe_H_ver_r_4_5_form_total)
+#ut_io.file_hdf5('Final Figures/VER_profile_r_7_8_form', Fe_H_ver_r_7_8_form_total)
