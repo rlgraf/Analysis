@@ -7,10 +7,10 @@ import utilities.io as ut_io
 
 #sim = ['m12i_res7100/', 'm12f_res7100/', 'm12b_res7100/', 'm11i_res7100/', 'm11h_res7100/', 'm11d_res7100/', 'm12m_res7100/', 'm12r_res7100/', 'm11e_res7100/', ',m12w_res7100/', 'm12c_res7100']
 
-#sim = ['share/Wetzellab/m12i/m12i_res7100/', 'm12f_res7100/', 'm12b_res7100/']
+#sim = ['share/Wetzellab/m12i/m12i_res7100_uvb-late/', 'm12f_res7100/', 'm12b_res7100/']
 
 def sim_func():
-    sim = ['m12i_res7100/', 'm12f_res7100/', 'm12b_res7100/']
+    sim = ['/Users/Russell/Downloads/m12i_res7100/', '/Users/Russell/Downloads/m12f_res7100/', '/Users/Russell/Downloads/m12b_res7100/']
     return(sim)
 
 def R90_func():
@@ -23,7 +23,7 @@ def R90_func():
 
 # z = 0
 
-def Fe_H_agedependent(x1,x2,x3,x4,x5,x6,x7,x8,a1,a2):
+def Fe_H_agedependent(x1,x2,x3,x4,x5,x6,x7,x8,a1,a2,r,r_form,age,part):
     index = ut.array.get_indices(r[:,0], [x1,x2])
     index2 = ut.array.get_indices(abs(r[:,2]), [x3,x4], prior_indices = index)
     index3 = ut.array.get_indices(r_form[:,0], [x5,x6], prior_indices = index2)
@@ -56,7 +56,7 @@ def radial_analysis_z_0():
         for a, b in zip(np.arange(0,14), r90):
             x = []
             for i in np.arange(0,b,b/10):
-                x.append(Fe_H_agedependent(i,i+b/10,-3,3,0,b,-3,3,a,a+1))
+                x.append(Fe_H_agedependent(i,i+b/10,-3,3,0,b,-3,3,a,a+1,r,r_form,age,part))
             Fe_H_rad.append(x)
             l = np.arange(0,b,b/10)
             x = np.array(x)
@@ -66,12 +66,13 @@ def radial_analysis_z_0():
         slope_total.append(slope)
     Fe_H_rad_total = np.array([Fe_H_rad_total])
     slope_total = np.array([slope_total])
-
-    ut_io.file_hdf5('Final Figures/RAD_profile_z_0', Fe_H_rad_total)
+    print(Fe_H_rad_total)
+    print(slope_total)
+    ut_io.file_hdf5('/Users/Russell/Downloads/Final Figures/RAD_profile_z_0', Fe_H_rad_total)
 
 # formation
 
-def Fe_H_agedependent_form(x1,x2,x3,x4,x5,x6,x7,x8,a1,a2):
+def Fe_H_agedependent_form(x1,x2,x3,x4,x5,x6,x7,x8,a1,a2,r_form,r,age,part):
     index = ut.array.get_indices(r_form[:,0], [x1,x2])
     index2 = ut.array.get_indices(abs(r_form[:,2]), [x3,x4], prior_indices = index)
     index3 = ut.array.get_indices(r[:,0],[x5,x6], prior_indices = index2)
@@ -104,7 +105,7 @@ def radial_analysis_form():
         for a_f, b_f in zip(np.arange(0,14), r90):
             x_f = []
             for i_f in np.arange(0,b_f,b_f/10):
-                x_f.append(Fe_H_agedependent_form(i_f,i_f+b_f/10,-3,3,0,b_f,-3,3,a_f,a_f+1))
+                x_f.append(Fe_H_agedependent_form(i_f,i_f+b_f/10,-3,3,0,b_f,-3,3,a_f,a_f+1,r_form,r,age,part))
             Fe_H_rad_form.append(x_f)
             l_f = np.arange(0,b_f,b_f/10)
             x_f = np.array(x_f)
@@ -114,5 +115,7 @@ def radial_analysis_form():
         slope_form_total.append(slope_form)
     Fe_H_rad_form_total = np.array([Fe_H_rad_form_total])
     slope_form_total = np.array([slope_form_total])
+    print(Fe_H_rad_form_total)
+    print(slope_form_total)
 
-    ut_io.file_hdf5('Final Figures/RAD_profile_form', Fe_H_rad__form_total)
+    ut_io.file_hdf5('/Users/Russell/Downloads/Final Figures/RAD_profile_form', Fe_H_rad_form_total)
