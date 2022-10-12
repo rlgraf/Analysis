@@ -37,7 +37,7 @@ def Fe_H_agedependent(x1,x2,x3,x4,x5,x6,x7,x8,a1,a2):
     return(weight_avg)
 
 
-def radial_analyis_z_0():
+def radial_analysis_z_0():
     
     Fe_H_rad_total = []
     slope_total = []
@@ -67,7 +67,7 @@ def radial_analyis_z_0():
     Fe_H_rad_total = np.array([Fe_H_rad_total])
     slope_total = np.array([slope_total])
 
-    #ut_io.file_hdf5('Final Figures/RAD_profile_z_0', Fe_H_rad_total)
+    ut_io.file_hdf5('Final Figures/RAD_profile_z_0', Fe_H_rad_total)
 
 # formation
 
@@ -115,4 +115,4 @@ def radial_analysis_form():
     Fe_H_rad_form_total = np.array([Fe_H_rad_form_total])
     slope_form_total = np.array([slope_form_total])
 
-    #ut_io.file_hdf5('Final Figures/RAD_profile_form', Fe_H_rad__form_total)
+    ut_io.file_hdf5('Final Figures/RAD_profile_form', Fe_H_rad__form_total)
