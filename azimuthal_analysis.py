@@ -10,6 +10,7 @@ import utilities.io as ut_io
 #sim = ['share/Wetzellab/m12i/m12i_res7100/', 'm12f_res7100/', 'm12b_res7100/']
 sim = ['m12i_res7100/', 'm12f_res7100/', 'm12b_res7100/']
 
+
 # z = 0
 
 def Fe_H_agedependent_sd(x1,x2,x3,x4,x5,x6,x7,x8,a1,a2,x9,x10):
@@ -43,13 +44,13 @@ for s in sim:
         for a_pre in np.arange(0,1,0.05):
             std_vs_rad = []
             for i in np.arange(0,15,1):
-                std_vs_rad.append(Fe_H_agedependent_sd(i,i+1,0,1,0,15,0,3,a,a+a_pre+0.05,0,360))
+                std_vs_rad.append(Fe_H_agedependent_sd(i,i+1,0,1,0,15,0,3,a+a_pre,a+a_pre+0.05,0,360))
             Fe_H_azim_pre.append(std_vs_rad)
         Fe_H_azim_pre = np.array(Fe_H_azim_pre)
         Fe_H_azim_pre_mean = np.nanmean(Fe_H_azim_pre,0)
         Fe_H_azim.append(Fe_H_azim_pre_mean)
         l = np.arange(0,15)
-        Fe_H_azim_pre_mean = np.array(Fe_H_azim_pre_mean)
+        #Fe_H_azim_pre_mean = np.array(Fe_H_azim_pre_mean)
         j, k = np.polyfit(l[np.isfinite(Fe_H_azim_pre_mean)],Fe_H_azim_pre_mean[np.isfinite(Fe_H_azim_pre_mean)],1)
         slope_azim.append(j)
     Fe_H_azim_total.append(Fe_H_azim)
@@ -90,7 +91,7 @@ for s in sim:
         for a_f_pre in np.arange(0,1,0.05):
             std_vs_rad_f = []
             for i_f in np.arange(0,15,1):
-                std_vs_rad_f.append(Fe_H_agedependent_sd_form(i_f,i_f+1,0,1,0,15,0,3,a_f,a_f+a_f_pre+0.05,0,360))
+                std_vs_rad_f.append(Fe_H_agedependent_sd_form(i_f,i_f+1,0,1,0,15,0,3,a_f+a_f_pre,a_f+a_f_pre+0.05,0,360))
             Fe_H_azim_pre_f.append(std_vs_rad_f)
         Fe_H_azim_pre_f = np.array(Fe_H_azim_pre_f)
         Fe_H_azim_pre_mean_f = np.nanmean(Fe_H_azim_pre_f,0)
