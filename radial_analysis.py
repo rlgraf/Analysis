@@ -66,8 +66,7 @@ def radial_analysis_z_0():
         slope_total.append(slope)
     Fe_H_rad_total = np.array([Fe_H_rad_total])
     slope_total = np.array([slope_total])
-    print(Fe_H_rad_total)
-    print(slope_total)
+    
     ut_io.file_hdf5('/Users/Russell/Downloads/Final Figures/RAD_profile_z_0', Fe_H_rad_total)
 
 # formation
@@ -115,7 +114,5 @@ def radial_analysis_form():
         slope_form_total.append(slope_form)
     Fe_H_rad_form_total = np.array([Fe_H_rad_form_total])
     slope_form_total = np.array([slope_form_total])
-    print(Fe_H_rad_form_total)
-    print(slope_form_total)
-
+    
     ut_io.file_hdf5('/Users/Russell/Downloads/Final Figures/RAD_profile_form', Fe_H_rad_form_total)
