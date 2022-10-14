@@ -29,7 +29,7 @@ import utilities.io as ut_io
 
 
 def sim_func():
-    sim = ['share/Wetzellab/m12i/m12i_r7100_uvb-late/', 'share/Wetzellab/m12c/m12c_r7100', 'share/Wetzellab/m12f/m12f_r7100', 'share/Wetzellab/m12m/m12m_r7100', 'share/Wetzellab/m12b/m12b_r7100']
+    sim = ['share/wetzellab/m12i/m12i_r7100_uvb-late/', 'share/wetzellab/m12c/m12c_r7100', 'share/wetzellab/m12f/m12f_r7100', 'share/wetzellab/m12m/m12m_r7100', 'share/wetzellab/m12b/m12b_r7100']
     return(sim)
 
 # z = 0
