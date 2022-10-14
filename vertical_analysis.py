@@ -243,3 +243,6 @@ def vertical_analysis_form():
     ut_io.file_hdf5('~/Final_Figures/VER_slope_r_1_form', slope_ver_r_1_2_form_total)
     ut_io.file_hdf5('~/Final_Figures/VER_slope_r_4_5_form', slope_ver_r_4_5_form_total)
     ut_io.file_hdf5('~/Final_Figures/VER_slope_r_7_8_form', slope_ver_r_7_8_form_total)
+    
+vertical_analysis_z_0()
+vertical_analysis_form()
