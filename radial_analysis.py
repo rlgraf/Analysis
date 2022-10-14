@@ -5,12 +5,15 @@ import utilities as ut
 import scipy
 import utilities.io as ut_io
 
-#sim = ['m12i_res7100/', 'm12f_res7100/', 'm12b_res7100/', 'm11i_res7100/', 'm11h_res7100/', 'm11d_res7100/', 'm12m_res7100/', 'm12r_res7100/', 'm11e_res7100/', ',m12w_res7100/', 'm12c_res7100']
 
-#sim = ['share/Wetzellab/m12i/m12i_res7100_uvb-late/', 'm12f_res7100/', 'm12b_res7100/']
+#def sim_func():
+    #sim = ['/Users/Russell/Downloads/m12i_res7100/', '/Users/Russell/Downloads/m12f_res7100/', '/Users/Russell/Downloads/m12b_res7100/']
+    #return(sim)
+    
+#'share/Wetzellab/m12_elvis/m12_elvis_res7100'
 
 def sim_func():
-    sim = ['/Users/Russell/Downloads/m12i_res7100/', '/Users/Russell/Downloads/m12f_res7100/', '/Users/Russell/Downloads/m12b_res7100/']
+    sim = ['share/Wetzellab/m12i/m12i_res7100_uvb-late/', 'share/Wetzellab/m12c/m12c_res7100', 'share/Wetzellab/m12f/m12f_res7100', 'share/Wetzellab/m12m/m12m_res7100', 'share/Wetzellab/m12b/m12b_res7100']
     return(sim)
 
 def R90_func():
