@@ -14,7 +14,7 @@
 #SBATCH --mail-type=begin
 #SBATCH --mail-type=end
 import os
-from utilities.basic import io as ut_io # if you want to use my print diagnostics
+import utilities.io as ut_io
 # print run-time and CPU information
 ScriptPrint = ut_io.SubmissionScriptClass("slurm")
 # Analysis code
