@@ -11,7 +11,7 @@
 #SBATCH --output=vertical_analysis_%j.txt
 #SBATCH --mail-user=rlgraf@ucdavis.edu
 #SBATCH --mail-type=fail
-#SBATCH --mail-type=start
+#SBATCH --mail-type=begin
 #SBATCH --mail-type=end
 import os
 from utilities.basic import io as ut_io # if you want to use my print diagnostics
