@@ -1,3 +1,25 @@
+#!/usr/bin/env python3
+#SBATCH --job-name=vertical_analysis
+#SBATCH --partition=high2  # peloton node: 32 cores, 7.8 GB per core, 250 GB total
+##SBATCH --partition=high2m  # peloton high-mem node: 32 cores, 15.6 GB per core, 500 GB total
+#SBATCH --mem=32G  # need to specify memory if you set the number of tasks (--ntasks) below
+##SBATCH --nodes=1  # if you specify this, the number of nodes, do not set memory (--mem) above
+##SBATCH --ntasks-per-node=1  # (MPI) tasks per node
+#SBATCH --ntasks=1  # (MPI) tasks total
+#SBATCH --cpus-per-task=1  # (OpenMP) threads per (MPI) task
+#SBATCH --time=10:00:00
+#SBATCH --output=vertical_analysis_%j.txt
+#SBATCH --mail-user=rlgraf@ucdavis.edu
+#SBATCH --mail-type=fail
+#SBATCH --mail-type=start
+#SBATCH --mail-type=end
+import os
+from utilities.basic import io as ut_io # if you want to use my print diagnostics
+# print run-time and CPU information
+ScriptPrint = ut_io.SubmissionScriptClass("slurm")
+# Analysis code
+# Import programs
+
 import numpy as np
 import matplotlib.pyplot as plt
 import gizmo_analysis as gizmo
@@ -108,9 +130,13 @@ def vertical_analysis_z_0():
     Fe_H_ver_r_7_8_total = np.array([Fe_H_ver_r_7_8_total])
     slope_ver_r_7_8_total = np.array([slope_ver_r_7_8_total])
 
-    #ut_io.file_hdf5('Final Figures/VER_profile_r_1_z_0', Fe_H_ver_r_1_2_total)
-    #ut_io.file_hdf5('Final Figures/VER_profile_r_4_5_z_0', Fe_H_ver_r_4_5_total)
-    #ut_io.file_hdf5('Final Figures/VER_profile_r_7_8_z_0', Fe_H_ver_r_7_8_total)
+    ut_io.file_hdf5('~/Final_Figures/VER_profile_r_1_z_0', Fe_H_ver_r_1_2_total)
+    ut_io.file_hdf5('~/Final_Figures/VER_profile_r_4_5_z_0', Fe_H_ver_r_4_5_total)
+    ut_io.file_hdf5('~/Final_Figures/VER_profile_r_7_8_z_0', Fe_H_ver_r_7_8_total)
+    
+    ut_io.file_hdf5('~/Final_Figures/VER_slope_r_1_z_0', slope_ver_r_1_2_total)
+    ut_io.file_hdf5('~/Final_Figures/VER_slope_r_4_5_z_0', slope_ver_r_4_5_total)
+    ut_io.file_hdf5('~/Final_Figures/VER_slope_r_7_8_z_0', slope_ver_r_7_8_total)
 
 # formation
 
@@ -210,6 +236,10 @@ def vertical_analysis_form():
     Fe_H_ver_r_7_8_form_total = np.array([Fe_H_ver_r_7_8_form_total])
     slope_ver_r_7_8_form_total = np.array([slope_ver_r_7_8_form_total])
 
-    #ut_io.file_hdf5('Final Figures/VER_profile_r_1_2_form', Fe_H_ver_r_1_2_form_total)
-    #ut_io.file_hdf5('Final Figures/VER_profile_r_4_5_form', Fe_H_ver_r_4_5_form_total)
-    #ut_io.file_hdf5('Final Figures/VER_profile_r_7_8_form', Fe_H_ver_r_7_8_form_total)
+    ut_io.file_hdf5('~/Final_Figures/VER_profile_r_1_2_form', Fe_H_ver_r_1_2_form_total)
+    ut_io.file_hdf5('~/Final_Figures/VER_profile_r_4_5_form', Fe_H_ver_r_4_5_form_total)
+    ut_io.file_hdf5('~/Final_Figures/VER_profile_r_7_8_form', Fe_H_ver_r_7_8_form_total)
+    
+    ut_io.file_hdf5('~/Final_Figures/VER_slope_r_1_form', slope_ver_r_1_2_form_total)
+    ut_io.file_hdf5('~/Final_Figures/VER_slope_r_4_5_form', slope_ver_r_4_5_form_total)
+    ut_io.file_hdf5('~/Final_Figures/VER_slope_r_7_8_form', slope_ver_r_7_8_form_total)
