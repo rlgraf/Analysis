@@ -7,14 +7,14 @@
 ##SBATCH --ntasks-per-node=1  # (MPI) tasks per node
 #SBATCH --ntasks=1  # (MPI) tasks total
 #SBATCH --cpus-per-task=1  # (OpenMP) threads per (MPI) task
-#SBATCH --time=24:00:00
+#SBATCH --time=12:00:00
 #SBATCH --output=azimuthal_analysis_%j.txt
 #SBATCH --mail-user=rlgraf@ucdavis.edu
 #SBATCH --mail-type=fail
 #SBATCH --mail-type=begin
 #SBATCH --mail-type=end
 import os
-from utilities.basic import io as ut_io # if you want to use my print diagnostics
+import utilities.io as ut_io
 # print run-time and CPU information
 ScriptPrint = ut_io.SubmissionScriptClass("slurm")
 # Analysis code
@@ -36,8 +36,8 @@ import scipy
 import utilities.io as ut_io
 
 def sim_func():
-    sim = ['share/Wetzellab/m12i/m12i_res7100_uvb-late/', 'share/Wetzellab/m12c/m12c_res7100', 'share/Wetzellab/m12f/m12f_res7100', 'share/Wetzellab/m12m/m12m_res7100', 'share/Wetzellab/m12b/m12b_res7100']
-    return(sum)
+    sim = ['/share/etzellab/m12i/m12i_r7100_uvb-late/', '/share/wetzellab/m12c/m12c_r7100', '/share/wetzellab/m12f/m12f_r7100', '/share/wetzellab/m12m/m12m_r7100', '/share/wetzellab/m12b/m12b_r7100']
+    return(sim)
 
 # z = 0
 
@@ -87,7 +87,9 @@ def azimuthal_analysis_z_0():
         slope_azim_total.append(slope_azim)
     Fe_H_azim_total = np.array(Fe_H_azim_total)
     slope_azim_total = np.array(slope_azim_total)
-    print(slope_azim_total)
+    
+    ut_io.file_hdf5('/home/rlgraf/Final_Figures/AZIM_profile_z_0', Fe_H_azim_total) 
+    ut_io.file_hdf5('/home/rlgraf/Final_Figures/AZIM_slope_z_0', slope_azim_total) 
     
 # formation
 
@@ -131,11 +133,16 @@ def azimuthal_analysis_form():
             Fe_H_azim_pre_mean_f = np.nanmean(Fe_H_azim_pre_f,0)
             Fe_H_azim_form.append(Fe_H_azim_pre_mean_f)
             l_f = np.arange(0,15)
-            Fe_H_azim_pre_mean_f = np.array(Fe_H_azim_pre_mean_f)
+            #Fe_H_azim_pre_mean_f = np.array(Fe_H_azim_pre_mean_f)
             j_f, k_f = np.polyfit(l_f[np.isfinite(Fe_H_azim_pre_mean_f)],Fe_H_azim_pre_mean_f[np.isfinite(Fe_H_azim_pre_mean_f)],1)
             slope_azim_form.append(j_f)
         Fe_H_azim_form_total.append(Fe_H_azim_form)
         slope_azim_form_total.append(slope_azim_form)
     Fe_H_azim_form_total = np.array(Fe_H_azim_form_total)
     slope_azim_form_total = np.array(slope_azim_form_total)  
-    print(slope_azim_form_total)
+    
+    ut_io.file_hdf5('/home/rlgraf/Final_Figures/AZIM_profile_form', Fe_H_azim_form_total) 
+    ut_io.file_hdf5('/home/rlgraf/Final_Figures/AZIM_slope_form', slope_azim_form_total) 
+    
+azimuthal_analyisis_z_0()
+azimuthal_analysis_form
