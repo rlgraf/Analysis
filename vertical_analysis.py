@@ -130,11 +130,11 @@ def vertical_analysis_z_0():
     Fe_H_ver_r_7_8_total = np.array([Fe_H_ver_r_7_8_total])
     slope_ver_r_7_8_total = np.array([slope_ver_r_7_8_total])
 
-    ut_io.file_hdf5('/home/rlgraf/Final_Figures/VER_profile_r_1_z_0', Fe_H_ver_r_1_2_total)
+    ut_io.file_hdf5('/home/rlgraf/Final_Figures/VER_profile_r_1_2_z_0', Fe_H_ver_r_1_2_total)
     ut_io.file_hdf5('/home/rlgraf/Final_Figures/VER_profile_r_4_5_z_0', Fe_H_ver_r_4_5_total)
     ut_io.file_hdf5('/home/rlgraf/Final_Figures/VER_profile_r_7_8_z_0', Fe_H_ver_r_7_8_total)
     
-    ut_io.file_hdf5('/home/rlgraf/Final_Figures/VER_slope_r_1_z_0', slope_ver_r_1_2_total)
+    ut_io.file_hdf5('/home/rlgraf/Final_Figures/VER_slope_r_1_2_z_0', slope_ver_r_1_2_total)
     ut_io.file_hdf5('/home/rlgraf/Final_Figures/VER_slope_r_4_5_z_0', slope_ver_r_4_5_total)
     ut_io.file_hdf5('/home/rlgraf/Final_Figures/VER_slope_r_7_8_z_0', slope_ver_r_7_8_total)
 
@@ -240,7 +240,7 @@ def vertical_analysis_form():
     ut_io.file_hdf5('/home/rlgraf/Final_Figures/VER_profile_r_4_5_form', Fe_H_ver_r_4_5_form_total)
     ut_io.file_hdf5('/home/rlgraf/Final_Figures/VER_profile_r_7_8_form', Fe_H_ver_r_7_8_form_total)
     
-    ut_io.file_hdf5('/home/rlgraf/Final_Figures/VER_slope_r_1_form', slope_ver_r_1_2_form_total)
+    ut_io.file_hdf5('/home/rlgraf/Final_Figures/VER_slope_r_1_2_form', slope_ver_r_1_2_form_total)
     ut_io.file_hdf5('/home/rlgraf/Final_Figures/VER_slope_r_4_5_form', slope_ver_r_4_5_form_total)
     ut_io.file_hdf5('/home/rlgraf/Final_Figures/VER_slope_r_7_8_form', slope_ver_r_7_8_form_total)
     
