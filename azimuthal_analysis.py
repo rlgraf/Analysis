@@ -145,4 +145,4 @@ def azimuthal_analysis_form():
     ut_io.file_hdf5('/home/rlgraf/Final_Figures/AZIM_slope_form', slope_azim_form_total) 
     
 azimuthal_analyisis_z_0()
-azimuthal_analysis_form
+azimuthal_analysis_form()
