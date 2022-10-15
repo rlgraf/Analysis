@@ -7,7 +7,7 @@
 ##SBATCH --ntasks-per-node=1  # (MPI) tasks per node
 #SBATCH --ntasks=1  # (MPI) tasks total
 #SBATCH --cpus-per-task=1  # (OpenMP) threads per (MPI) task
-#SBATCH --time=10:00:00
+#SBATCH --time=5:00:00
 #SBATCH --output=vertical_analysis_%j.txt
 #SBATCH --mail-user=rlgraf@ucdavis.edu
 #SBATCH --mail-type=fail
