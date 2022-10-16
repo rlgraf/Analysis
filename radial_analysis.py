@@ -7,7 +7,7 @@
 ##SBATCH --ntasks-per-node=1  # (MPI) tasks per node
 #SBATCH --ntasks=1  # (MPI) tasks total
 #SBATCH --cpus-per-task=1  # (OpenMP) threads per (MPI) task
-#SBATCH --time=08:00:00
+#SBATCH --time=03:00:00
 #SBATCH --output=radial_analysis_%j.txt
 #SBATCH --mail-user=rlgraf@ucdavis.edu
 #SBATCH --mail-type=fail
@@ -34,7 +34,7 @@ import utilities.io as ut_io
 #'share/Wetzellab/m12_elvis/m12_elvis_res7100'
 
 def sim_func():
-    sim = ['/share/wetzellab/m12i/m12i_r7100_uvb-late/', '/share/wetzellab/m12c/m12c_r7100', '/share/wetzellab/m12f/m12f_r7100', '/share/wetzellab/m12m/m12m_r7100', '/share/wetzellab/m12b/m12b_r7100']
+    sim = ['/share/wetzellab/m12i/m12i_r7100_uvb-late/', '/share/wetzellab/m12f/m12f_r7100', '/share/wetzellab/m12b/m12b_r7100', '/share/wetzellab/m12c/m12c_r7100', '/share/wetzellab/m12m/m12m_r7100']
     return(sim)
 
 def R90_func():
@@ -42,8 +42,9 @@ def R90_func():
     R90_m12f = np.array([17.0, 13.8, 15.4, 13.0, 13.1, 12.5, 5.1, 4.0, 4.6, 5.8, 3.1, 6.0, 4.8, 2.2])
     R90_m12b = np.array([11.6, 11.7, 10.5, 10.5, 8.2, 9.3, 6.2, 3.6, 2.4, 3.2, 3.6, 6.2, 2.3, 1.7])
     R90_m12c = np.array([11.8, 11, 10.3, 7.9, 7.4, 6.7, 5.5, 5.7, 7.5, 7, 3.8, 5.9, 4.3, 3.4])
+    R90_m12m = np.array([12.7, 11.9, 11.1, 9.6, 9.8, 9.5, 10.8, 11.6, 10.5, 10, 8.1, 7.7, 3.1, 1.8])
 
-    R90 = np.vstack([R90_m12i, R90_m12f, R90_m12b])
+    R90 = np.vstack([R90_m12i, R90_m12f, R90_m12b, R90_m12c, R90_m12m])
     return(R90)
 
 # z = 0
@@ -92,8 +93,8 @@ def radial_analysis_z_0():
     Fe_H_rad_total = np.array([Fe_H_rad_total])
     slope_total = np.array([slope_total])
     
-    ut_io.file_hdf5('~/Final Figures/RAD_profile_z_0', Fe_H_rad_total)
-    ut_io.file_hdf5('~/Final Figures/RAD_slope_z_0', slope_total)
+    ut_io.file_hdf5('/home/rlgraf/Final_Figures/RAD_profile_z_0', Fe_H_rad_total)
+    ut_io.file_hdf5('/home/rlgraf/Final_Figures/RAD_slope_z_0', slope_total)
     
 
 # formation
@@ -142,5 +143,8 @@ def radial_analysis_form():
     Fe_H_rad_form_total = np.array([Fe_H_rad_form_total])
     slope_form_total = np.array([slope_form_total])
     
-    ut_io.file_hdf5('~/Final Figures/RAD_profile_form', Fe_H_rad_form_total)
-    ut_io.file_hdf5('~/Final Figures/RAD_slope_form', slope_form_total)
+    ut_io.file_hdf5('/home/rlgraf/Final_Figures/RAD_profile_form', Fe_H_rad_form_total)
+    ut_io.file_hdf5('/home/rlgraf/Final_Figures/RAD_slope_form', slope_form_total)
+    
+radial_analysis_z_0()
+radial_analysis_form()
