@@ -139,7 +139,7 @@ def radial_analysis_form():
             r_array = [part['star'].prop('host.distance.principal.cylindrical')]
             r_form_array = [part['star'].prop('form.host.distance.principal.cylindrical')]
             
-        for r, r_form in zip(r_array,r_form_array)    
+        for r, r_form in zip(r_array,r_form_array):    
             Fe_H_rad_form = []
             slope_form = []
             for a_f, b_f in zip(np.arange(0,14), r90):
