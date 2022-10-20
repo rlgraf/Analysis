@@ -79,7 +79,7 @@ def radial_analysis_z_0():
         Fe_H = part['star'].prop('metallicity.iron')
         age = part['star'].prop('age')
     
-        if s in ['share/Wetzellab/m12_elvis/m12_elvis_RomeoJuliet_r3500', 'share/Wetzellab/m12_elvis/m12_elvis_RomulusRemus_r4000', 'share/Wetzellab/m12_elvis/m12_elvis_ThelmaLouise_r4000']:
+        if s in ['/share/wetzellab/m12_elvis/m12_elvis_RomeoJuliet_r3500', '/share/wetzellab/m12_elvis/m12_elvis_RomulusRemus_r4000', '/share/wetzellab/m12_elvis/m12_elvis_ThelmaLouise_r4000']:
             r_array = [part['star'].prop('host1.distance.principal.cylindrical'), part['star'].prop('host2.distance.principal.cylindrical')]
             r_form_array = [part['star'].prop('form.host1.distance.principal.cylindrical'), part['star'].prop('form.host2.distance.principal.cylindrical')]
         else:           
@@ -135,7 +135,7 @@ def radial_analysis_form():
         Fe_H = part['star'].prop('metallicity.iron')
         age = part['star'].prop('age')
         
-        if s in ['share/Wetzellab/m12_elvis/m12_elvis_RomeoJuliet_r3500', 'share/Wetzellab/m12_elvis/m12_elvis_RomulusRemus_r4000', 'share/Wetzellab/m12_elvis/m12_elvis_ThelmaLouise_r4000']:
+        if s in ['/share/wetzellab/m12_elvis/m12_elvis_RomeoJuliet_r3500', '/share/wetzellab/m12_elvis/m12_elvis_RomulusRemus_r4000', '/share/wetzellab/m12_elvis/m12_elvis_ThelmaLouise_r4000']:
             r_array = [part['star'].prop('host1.distance.principal.cylindrical'), part['star'].prop('host2.distance.principal.cylindrical')]
             r_form_array = [part['star'].prop('form.host1.distance.principal.cylindrical'), part['star'].prop('form.host2.distance.principal.cylindrical')]
         else:
