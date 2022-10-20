@@ -35,7 +35,7 @@ import utilities.io as ut_io
 #'share/Wetzellab/m12_elvis/m12_elvis_res7100'
 
 def sim_func():
-    sim = ['/share/wetzellab/m12i/m12i_r7100_uvb-late/', '/share/wetzellab/m12c/m12c_r7100', '/share/wetzellab/m12f/m12f_r7100',  '/share/wetzellab/m12m/m12m_r7100','/share/wetzellab/m12b/m12b_r7100']
+    sim = ['/share/wetzellab/m12i/m12i_r7100_uvb-late/', '/share/wetzellab/m12c/m12c_r7100', '/share/wetzellab/m12f/m12f_r7100',  '/share/wetzellab/m12m/m12m_r7100','/share/wetzellab/m12b/m12b_r7100', 'share/Wetzellab/m12_elvis/m12_elvis_RomeoJuliet_r3500', 'share/Wetzellab/m12_elvis/m12_elvis_RomulusRemus_r4000', 'share/Wetzellab/m12_elvis/m12_elvis_ThelmaLouise_r4000']
     return(sim)
 
 def R90_func():
@@ -73,24 +73,30 @@ def radial_analysis_z_0():
     for s, r90 in zip(sim, R90):
         simulation_directory = s
         part = gizmo.io.Read.read_snapshots(['star'], 'redshift', 0, simulation_directory, assign_hosts_rotation=True, assign_formation_coordinates = True)
-        r = part['star'].prop('host.distance.principal.cylindrical')
-        r_form = part['star'].prop('form.host.distance.principal.cylindrical')
-        Fe_H = part['star'].prop('metallicity.iron')
+       `Fe_H = part['star'].prop('metallicity.iron')
         age = part['star'].prop('age')
     
-        Fe_H_rad = []
-        slope = []
-        for a, b in zip(np.arange(0,14), r90):
-            x = []
-            for i in np.arange(0,b,b/10):
-                x.append(Fe_H_agedependent(i,i+b/10,-3,3,0,b,-3,3,a,a+1,r,r_form,age,part))
-            Fe_H_rad.append(x)
-            l = np.arange(0,b,b/10)
-            x = np.array(x)
-            j, k = np.polyfit(l[np.isfinite(x)],x[np.isfinite(x)],1)
-            slope.append(j)
-        Fe_H_rad_total.append(Fe_H_rad)
-        slope_total.append(slope)
+        if s in ['share/Wetzellab/m12_elvis/m12_elvis_RomeoJuliet_r3500', 'share/Wetzellab/m12_elvis/m12_elvis_RomulusRemus_r4000', 'share/Wetzellab/m12_elvis/m12_elvis_ThelmaLouise_r4000']:
+            r_array = [part['star'].prop('host1.distance.principal.cylindrical'), part['star'].prop('host2.distance.principal.cylindrical')]
+            r_form_array = [part['star'].prop('form.host1.distance.principal.cylindrical'), part['star'].prop('form.host2.distance.principal.cylindrical')]
+        else:           
+            r_array = [part['star'].prop('host.distance.principal.cylindrical')]
+            r_form_array = [part['star'].prop('form.host.distance.principal.cylindrical')]    
+            
+        for r, r_form in zip(r_array,r_form_array):
+            Fe_H_rad = []
+            slope = []
+            for a, b in zip(np.arange(0,14), r90):
+                x = []
+                for i in np.arange(0,b,b/10):
+                    x.append(Fe_H_agedependent(i,i+b/10,-3,3,0,b,-3,3,a,a+1,r,r_form,age,part))
+                Fe_H_rad.append(x)
+                l = np.arange(0,b,b/10)
+                x = np.array(x)
+                j, k = np.polyfit(l[np.isfinite(x)],x[np.isfinite(x)],1)
+                slope.append(j)
+            Fe_H_rad_total.append(Fe_H_rad)
+            slope_total.append(slope)
     Fe_H_rad_total = np.array([Fe_H_rad_total])
     slope_total = np.array([slope_total])
     
@@ -123,24 +129,30 @@ def radial_analysis_form():
     for s, r90 in zip(sim, R90):
         simulation_directory = s
         part = gizmo.io.Read.read_snapshots(['star'], 'redshift', 0, simulation_directory, assign_hosts_rotation=True, assign_formation_coordinates = True)
-        r = part['star'].prop('host.distance.principal.cylindrical')
-        r_form = part['star'].prop('form.host.distance.principal.cylindrical')
         Fe_H = part['star'].prop('metallicity.iron')
         age = part['star'].prop('age')
-    
-        Fe_H_rad_form = []
-        slope_form = []
-        for a_f, b_f in zip(np.arange(0,14), r90):
-            x_f = []
-            for i_f in np.arange(0,b_f,b_f/10):
-                x_f.append(Fe_H_agedependent_form(i_f,i_f+b_f/10,-3,3,0,b_f,-3,3,a_f,a_f+1,r_form,r,age,part))
-            Fe_H_rad_form.append(x_f)
-            l_f = np.arange(0,b_f,b_f/10)
-            x_f = np.array(x_f)
-            j_f, k_f = np.polyfit(l_f[np.isfinite(x_f)], x_f[np.isfinite(x_f)], 1)
-            slope_form.append(j_f)
-        Fe_H_rad_form_total.append(Fe_H_rad_form)
-        slope_form_total.append(slope_form)
+        
+        if s in ['share/Wetzellab/m12_elvis/m12_elvis_RomeoJuliet_r3500', 'share/Wetzellab/m12_elvis/m12_elvis_RomulusRemus_r4000', 'share/Wetzellab/m12_elvis/m12_elvis_ThelmaLouise_r4000']:
+            r_array = [part['star'].prop('host1.distance.principal.cylindrical'), part['star'].prop('host2.distance.principal.cylindrical')]
+            r_form_array = [part['star'].prop('form.host1.distance.principal.cylindrical'), part['star'].prop('form.host2.distance.principal.cylindrical')]
+        else:
+            r_array = [part['star'].prop('host.distance.principal.cylindrical')]
+            r_form_array = [part['star'].prop('form.host.distance.principal.cylindrical')]
+            
+        for r, r_form in zip(r_array,r_form_array)    
+            Fe_H_rad_form = []
+            slope_form = []
+            for a_f, b_f in zip(np.arange(0,14), r90):
+                x_f = []
+                for i_f in np.arange(0,b_f,b_f/10):
+                    x_f.append(Fe_H_agedependent_form(i_f,i_f+b_f/10,-3,3,0,b_f,-3,3,a_f,a_f+1,r_form,r,age,part))
+                Fe_H_rad_form.append(x_f)
+                l_f = np.arange(0,b_f,b_f/10)
+                x_f = np.array(x_f)
+                j_f, k_f = np.polyfit(l_f[np.isfinite(x_f)], x_f[np.isfinite(x_f)], 1)
+                slope_form.append(j_f)
+            Fe_H_rad_form_total.append(Fe_H_rad_form)
+            slope_form_total.append(slope_form)
     Fe_H_rad_form_total = np.array([Fe_H_rad_form_total])
     slope_form_total = np.array([slope_form_total])
     
