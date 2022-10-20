@@ -73,7 +73,7 @@ def radial_analysis_z_0():
     for s, r90 in zip(sim, R90):
         simulation_directory = s
         part = gizmo.io.Read.read_snapshots(['star'], 'redshift', 0, simulation_directory, assign_hosts_rotation=True, assign_formation_coordinates = True)
-       `Fe_H = part['star'].prop('metallicity.iron')
+        Fe_H = part['star'].prop('metallicity.iron')
         age = part['star'].prop('age')
     
         if s in ['share/Wetzellab/m12_elvis/m12_elvis_RomeoJuliet_r3500', 'share/Wetzellab/m12_elvis/m12_elvis_RomulusRemus_r4000', 'share/Wetzellab/m12_elvis/m12_elvis_ThelmaLouise_r4000']:
