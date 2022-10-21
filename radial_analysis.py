@@ -44,11 +44,14 @@ def R90_func():
     R90_m12f = np.array([17.0, 13.8, 15.4, 13.0, 13.1, 12.5, 5.1, 4.0, 4.6, 5.8, 3.1, 6.0, 4.8, 2.2])
     R90_m12m = np.array([12.7, 11.9, 11.1, 9.6, 9.8, 9.5, 10.8, 11.6, 10.5, 10, 8.1, 7.7, 3.1, 1.8])
     R90_m12b = np.array([11.6, 11.7, 10.5, 10.5, 8.2, 9.3, 6.2, 3.6, 2.4, 3.2, 3.6, 6.2, 2.3, 1.7])
-    R90_RomeoJuliet = np.array([16.4, 16.6, 14.75, 12.15, 10.15, 8.8, 7.45, 6.9, 6.65, 4.8, 7.65, 5.65, 3.45, 2.35])
-    R90_RomulusRemus = np.array([16.55, 17.15,16.5,14.9, 14, 9.8, 7.65, 8.9, 6.15, 6.35, 5.05, 4.95, 4.65, 2.2])
-    R90_ThelmaLouise = np.array([16.2, 14.7, 12.2, 10.45, 10.05, 9.5, 8.4, 7.05, 6.95, 8.6, 5.95, 5.15, 4.35, 0.85])                           
+    R90_Romeo = np.array([16.8, 17.2, 16, 15.7, 13.8, 13.3, 11.1, 9.7, 10.2, 6.1, 6.7, 6.3, 2.8, 2.8])
+    R90_Juliet = np.array([16, 16, 13.5, 8.6, 6.5, 4.3, 3.8, 4.1, 3.1, 3.5, 8.6, 5, 4.1, 1.9])
+    R90_Romulus = np.array([16.9, 18.8, 17.6, 15.3, 14.6, 9.4, 6.4, 9.4, 5.5, 8.4, 6.1, 4.3, 3.6, 2.7])
+    R90_Remus = np.array([16.2, 15.5, 15.4, 14.5, 13.4, 10.2, 8.9, 8.4, 6.8, 4.3, 4, 5.6, 5.7, 1.7])
+    R90_Thelma = np.array([15.1, 13, 9.9, 8.2, 7.7, 7.8, 7.6, 9, 8.8, 9.6, 6.5, 5.6, 3.1, 0.6])
+    R90_Louise = np.array([17.3, 16.4, 14.5, 12.7, 12.4, 11.2, 9.2, 5.1, 5.1, 7.6, 5.4, 4.7, 5.6, 1.1])
     
-    R90 = np.vstack([R90_m12i, R90_m12c, R90_m12f,  R90_m12m, R90_m12b, R90_RomeoJuliet, R90_RomulusRemus, R90_ThelmaLouise])
+    R90 = np.vstack([R90_m12i, R90_m12c, R90_m12f,  R90_m12m, R90_m12b, R90_Romeo, R90_Juliet, R90_Romulus, R90_Remus, R90_Thelma, R90_Louise])
     return(R90)
 
 # z = 0
@@ -73,7 +76,8 @@ def radial_analysis_z_0():
     slope_total = []
     sim = sim_func()
     R90 = R90_func()
-    for s, r90 in zip(sim, R90):
+    LG_counter = 0
+    for q, s in enumerate(sim):
         simulation_directory = s
         part = gizmo.io.Read.read_snapshots(['star'], 'redshift', 0, simulation_directory, assign_hosts_rotation=True, assign_formation_coordinates = True)
         Fe_H = part['star'].prop('metallicity.iron')
@@ -86,9 +90,11 @@ def radial_analysis_z_0():
             r_array = [part['star'].prop('host.distance.principal.cylindrical')]
             r_form_array = [part['star'].prop('form.host.distance.principal.cylindrical')]    
             
-        for r, r_form in zip(r_array,r_form_array):
+        for j, (r, r_form) in enumerate(zip(r_array,r_form_array)):
             Fe_H_rad = []
             slope = []
+            LG_counter += j
+            r90 = R90[q+LG_counter]
             for a, b in zip(np.arange(0,14), r90):
                 x = []
                 for i in np.arange(0,b,b/10):
@@ -105,7 +111,6 @@ def radial_analysis_z_0():
     
     ut_io.file_hdf5('/home/rlgraf/Final_Figures/RAD_profile_z_0', Fe_H_rad_total)
     ut_io.file_hdf5('/home/rlgraf/Final_Figures/RAD_slope_z_0', slope_total)
-    
 
 # formation
 
@@ -129,7 +134,8 @@ def radial_analysis_form():
     slope_form_total = []
     sim = sim_func()
     R90 = R90_func()
-    for s, r90 in zip(sim, R90):
+    LG_counter = 0
+    for q, s in enumerate(sim):
         simulation_directory = s
         part = gizmo.io.Read.read_snapshots(['star'], 'redshift', 0, simulation_directory, assign_hosts_rotation=True, assign_formation_coordinates = True)
         Fe_H = part['star'].prop('metallicity.iron')
@@ -142,9 +148,11 @@ def radial_analysis_form():
             r_array = [part['star'].prop('host.distance.principal.cylindrical')]
             r_form_array = [part['star'].prop('form.host.distance.principal.cylindrical')]
             
-        for r, r_form in zip(r_array,r_form_array):    
+        for j, (r, r_form) in enumerate(zip(r_array,r_form_array)):    
             Fe_H_rad_form = []
             slope_form = []
+            LG_counter += j
+            r90 = R90[q+LG_counter]
             for a_f, b_f in zip(np.arange(0,14), r90):
                 x_f = []
                 for i_f in np.arange(0,b_f,b_f/10):
