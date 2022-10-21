@@ -97,9 +97,9 @@ def vertical_analysis_z_0():
             r_form_array = [part['star'].prop('form.host1.distance.principal.cylindrical'), part['star'].prop('form.host2.distance.principal.cylindrical')]
         else:           
             r_array = [part['star'].prop('host.distance.principal.cylindrical')]
-            r_form_array = [part['star'].prop('form.host.distance.principal.cylindrical')]    
-    
-        r, r_form in zip(r_array, r_form_array):
+            r_form_array = [part['star'].prop('form.host.distance.principal.cylindrical')]
+            
+        for r, r_form in zip(r_array, r_form_array):
             Fe_H_ver_r_4_5 = []
             slope_ver_r_4_5 = []
             for a in np.arange(0,13):
