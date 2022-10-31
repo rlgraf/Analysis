@@ -2,12 +2,12 @@
 #SBATCH --job-name=vertical_analysis
 #SBATCH --partition=high2  # peloton node: 32 cores, 7.8 GB per core, 250 GB total
 ##SBATCH --partition=high2m  # peloton high-mem node: 32 cores, 15.6 GB per core, 500 GB total
-#SBATCH --mem=32G  # need to specify memory if you set the number of tasks (--ntasks) below
+#SBATCH --mem=64G  # need to specify memory if you set the number of tasks (--ntasks) below
 ##SBATCH --nodes=1  # if you specify this, the number of nodes, do not set memory (--mem) above
 ##SBATCH --ntasks-per-node=1  # (MPI) tasks per node
 #SBATCH --ntasks=1  # (MPI) tasks total
 #SBATCH --cpus-per-task=1  # (OpenMP) threads per (MPI) task
-#SBATCH --time=5:00:00
+#SBATCH --time=48:00:00
 #SBATCH --output=vertical_analysis_%j.txt
 #SBATCH --mail-user=rlgraf@ucdavis.edu
 #SBATCH --mail-type=fail
