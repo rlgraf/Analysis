@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-#SBATCH --job-name=vertical_analysis_edit1
+#SBATCH --job-name=vertical_analysis_edit2
 #SBATCH --partition=high2  # peloton node: 32 cores, 7.8 GB per core, 250 GB total
 ##SBATCH --partition=high2m  # peloton high-mem node: 32 cores, 15.6 GB per core, 500 GB total
 #SBATCH --mem=64G  # need to specify memory if you set the number of tasks (--ntasks) below
@@ -8,7 +8,7 @@
 #SBATCH --ntasks=1  # (MPI) tasks total
 #SBATCH --cpus-per-task=1  # (OpenMP) threads per (MPI) task
 #SBATCH --time=48:00:00
-#SBATCH --output=vertical_analysis_edit1_%j.txt
+#SBATCH --output=vertical_analysis_edit2_%j.txt
 #SBATCH --mail-user=rlgraf@ucdavis.edu
 #SBATCH --mail-type=fail
 #SBATCH --mail-type=begin
@@ -29,7 +29,7 @@ import utilities.io as ut_io
 
 
 def sim_func():
-    sim = ['/share/wetzellab/m12i/m12i_r7100_uvb-late/', '/share/wetzellab/m12c/m12c_r7100', '/share/wetzellab/m12f/m12f_r7100',  '/share/wetzellab/m12m/m12m_r7100','/share/wetzellab/m12b/m12b_r7100']
+    sim = ['/share/wetzellab/m12i/m12i_r7100_uvb-late/', '/share/wetzellab/m12c/m12c_r7100', '/share/wetzellab/m12f/m12f_r7100',  '/share/wetzellab/m12m/m12m_r7100','/share/wetzellab/m12b/m12b_r7100','/share/wetzellab/m12_elvis/m12_elvis_RomeoJuliet_r3500', '/share/wetzellab/m12_elvis/m12_elvis_RomulusRemus_r4000', '/share/wetzellab/m12_elvis/m12_elvis_ThelmaLouise_r4000']
     return(sim)
 
 
@@ -154,7 +154,7 @@ def vertical_analysis_z_0():
                     Fe_H_ver_pre.append(x)
                 Fe_H_ver_pre = np.array(Fe_H_ver_pre)
                 Fe_H_ver_pre_mean = np.nanmean(Fe_H_ver_pre,0)
-                Fe_H_ver_r_4_5.append(Fe_H_ver_pre_mean)
+                Fe_H_ver_r_7_8.append(Fe_H_ver_pre_mean)
                 l = np.arange(0,1,0.1)
                 #x = np.array(x)
                 j, k = np.polyfit(l[np.isfinite(Fe_H_ver_pre_mean)],Fe_H_ver_pre_mean[np.isfinite(Fe_H_ver_pre_mean)],1)
@@ -164,13 +164,13 @@ def vertical_analysis_z_0():
     Fe_H_ver_r_7_8_total = np.array([Fe_H_ver_r_7_8_total])
     slope_ver_r_7_8_total = np.array([slope_ver_r_7_8_total])
 
-    ut_io.file_hdf5('/home/rlgraf/Final_Figures/VER_profile_r_1_2_z_0_edit1!', Fe_H_ver_r_1_2_total)
-    ut_io.file_hdf5('/home/rlgraf/Final_Figures/VER_profile_r_4_5_z_0_edit1!', Fe_H_ver_r_4_5_total)
-    ut_io.file_hdf5('/home/rlgraf/Final_Figures/VER_profile_r_7_8_z_0_edit1!', Fe_H_ver_r_7_8_total)
+    ut_io.file_hdf5('/home/rlgraf/Final_Figures/VER_profile_r_1_2_z_0_edit2', Fe_H_ver_r_1_2_total)
+    ut_io.file_hdf5('/home/rlgraf/Final_Figures/VER_profile_r_4_5_z_0_edit2', Fe_H_ver_r_4_5_total)
+    ut_io.file_hdf5('/home/rlgraf/Final_Figures/VER_profile_r_7_8_z_0_edit2', Fe_H_ver_r_7_8_total)
     
-    ut_io.file_hdf5('/home/rlgraf/Final_Figures/VER_slope_r_1_2_z_0_edit1!', slope_ver_r_1_2_total)
-    ut_io.file_hdf5('/home/rlgraf/Final_Figures/VER_slope_r_4_5_z_0_edit1!', slope_ver_r_4_5_total)
-    ut_io.file_hdf5('/home/rlgraf/Final_Figures/VER_slope_r_7_8_z_0_edit1!', slope_ver_r_7_8_total)
+    ut_io.file_hdf5('/home/rlgraf/Final_Figures/VER_slope_r_1_2_z_0_edit2', slope_ver_r_1_2_total)
+    ut_io.file_hdf5('/home/rlgraf/Final_Figures/VER_slope_r_4_5_z_0_edit2', slope_ver_r_4_5_total)
+    ut_io.file_hdf5('/home/rlgraf/Final_Figures/VER_slope_r_7_8_z_0_edit2', slope_ver_r_7_8_total)
 
 # formation
 
@@ -303,13 +303,13 @@ def vertical_analysis_form():
     Fe_H_ver_r_7_8_form_total = np.array([Fe_H_ver_r_7_8_form_total])
     slope_ver_r_7_8_form_total = np.array([slope_ver_r_7_8_form_total])
 
-    ut_io.file_hdf5('/home/rlgraf/Final_Figures/VER_profile_r_1_2_form_edit1!', Fe_H_ver_r_1_2_form_total)
-    ut_io.file_hdf5('/home/rlgraf/Final_Figures/VER_profile_r_4_5_form_edit1!', Fe_H_ver_r_4_5_form_total)
-    ut_io.file_hdf5('/home/rlgraf/Final_Figures/VER_profile_r_7_8_form_edit1!', Fe_H_ver_r_7_8_form_total)
+    ut_io.file_hdf5('/home/rlgraf/Final_Figures/VER_profile_r_1_2_form_edit2', Fe_H_ver_r_1_2_form_total)
+    ut_io.file_hdf5('/home/rlgraf/Final_Figures/VER_profile_r_4_5_form_edit2', Fe_H_ver_r_4_5_form_total)
+    ut_io.file_hdf5('/home/rlgraf/Final_Figures/VER_profile_r_7_8_form_edit2', Fe_H_ver_r_7_8_form_total)
     
-    ut_io.file_hdf5('/home/rlgraf/Final_Figures/VER_slope_r_1_2_form_edit1!', slope_ver_r_1_2_form_total)
-    ut_io.file_hdf5('/home/rlgraf/Final_Figures/VER_slope_r_4_5_form_edit1!', slope_ver_r_4_5_form_total)
-    ut_io.file_hdf5('/home/rlgraf/Final_Figures/VER_slope_r_7_8_form_edit1!', slope_ver_r_7_8_form_total)
+    ut_io.file_hdf5('/home/rlgraf/Final_Figures/VER_slope_r_1_2_form_edit2', slope_ver_r_1_2_form_total)
+    ut_io.file_hdf5('/home/rlgraf/Final_Figures/VER_slope_r_4_5_form_edit2', slope_ver_r_4_5_form_total)
+    ut_io.file_hdf5('/home/rlgraf/Final_Figures/VER_slope_r_7_8_form_edit2', slope_ver_r_7_8_form_total)
     
 vertical_analysis_z_0()
 vertical_analysis_form()
