@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-#SBATCH --job-name=vertical_analysis
+#SBATCH --job-name=vertical_analysis_edit1
 #SBATCH --partition=high2  # peloton node: 32 cores, 7.8 GB per core, 250 GB total
 ##SBATCH --partition=high2m  # peloton high-mem node: 32 cores, 15.6 GB per core, 500 GB total
 #SBATCH --mem=64G  # need to specify memory if you set the number of tasks (--ntasks) below
@@ -8,7 +8,7 @@
 #SBATCH --ntasks=1  # (MPI) tasks total
 #SBATCH --cpus-per-task=1  # (OpenMP) threads per (MPI) task
 #SBATCH --time=48:00:00
-#SBATCH --output=vertical_analysis_%j.txt
+#SBATCH --output=vertical_analysis_edit1_%j.txt
 #SBATCH --mail-user=rlgraf@ucdavis.edu
 #SBATCH --mail-type=fail
 #SBATCH --mail-type=begin
@@ -222,11 +222,6 @@ def vertical_analysis_form():
                 #x = np.array(x)
                 j_f, k_f = np.polyfit(l_f[np.isfinite(Fe_H_ver_pre_f_mean)],Fe_H_ver_pre_f_mean[np.isfinite(Fe_H_ver_pre_f_mean)],1)
                 slope_ver_r_1_2_form.append(j_f)
-                Fe_H_ver_r_1_2_form.append(x_f)
-                l_f = np.arange(0,1,0.1)
-                x_f = np.array(x_f)
-                j_f, k_f = np.polyfit(l_f[np.isfinite(x_f)],x_f[np.isfinite(x_f)],1)
-                slope_ver_r_1_2_form.append(j_f)
             Fe_H_ver_r_1_2_form_total.append(Fe_H_ver_r_1_2_form)
             slope_ver_r_1_2_form_total.append(slope_ver_r_1_2_form)
     Fe_H_ver_r_1_2_form_total = np.array([Fe_H_ver_r_1_2_form_total])
@@ -265,11 +260,6 @@ def vertical_analysis_form():
                 #x = np.array(x)
                 j_f, k_f = np.polyfit(l_f[np.isfinite(Fe_H_ver_pre_f_mean)],Fe_H_ver_pre_f_mean[np.isfinite(Fe_H_ver_pre_f_mean)],1)
                 slope_ver_r_4_5_form.append(j_f)
-                Fe_H_ver_r_4_5_form.append(x_f)
-                l_f = np.arange(0,1,0.1)
-                x_f = np.array(x_f)
-                j_f, k_f = np.polyfit(l_f[np.isfinite(x_f)],x_f[np.isfinite(x_f)],1)
-                slope_ver_r_4_5_form.append(j_f)
             Fe_H_ver_r_4_5_form_total.append(Fe_H_ver_r_4_5_form)
             slope_ver_r_4_5_form_total.append(slope_ver_r_4_5_form)
     Fe_H_ver_r_4_5_form_total = np.array([Fe_H_ver_r_4_5_form_total])
@@ -307,11 +297,6 @@ def vertical_analysis_form():
                 l_f = np.arange(0,1,0.1)
                 #x = np.array(x)
                 j_f, k_f = np.polyfit(l_f[np.isfinite(Fe_H_ver_pre_f_mean)],Fe_H_ver_pre_f_mean[np.isfinite(Fe_H_ver_pre_f_mean)],1)
-                slope_ver_r_7_8_form.append(j_f)
-                Fe_H_ver_r_7_8_form.append(x_f)
-                l_f = np.arange(0,1,0.1)
-                x_f = np.array(x_f)
-                j_f, k_f = np.polyfit(l_f[np.isfinite(x_f)],x_f[np.isfinite(x_f)],1)
                 slope_ver_r_7_8_form.append(j_f)
             Fe_H_ver_r_7_8_form_total.append(Fe_H_ver_r_7_8_form)
             slope_ver_r_7_8_form_total.append(slope_ver_r_7_8_form)
