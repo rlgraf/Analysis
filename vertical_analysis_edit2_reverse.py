@@ -158,7 +158,7 @@ def vertical_analysis_z_0():
                 l = np.arange(0,1,0.1)
                 #x = np.array(x)
                 j, k = np.polyfit(l[np.isfinite(Fe_H_ver_pre_mean)],Fe_H_ver_pre_mean[np.isfinite(Fe_H_ver_pre_mean)],1)
-                slope_ver_r_4_5.append(j)
+                slope_ver_r_7_8.append(j)
             Fe_H_ver_r_7_8_total.append(Fe_H_ver_r_7_8)
             slope_ver_r_7_8_total.append(slope_ver_r_7_8)
     Fe_H_ver_r_7_8_total = np.array([Fe_H_ver_r_7_8_total])
