@@ -102,7 +102,7 @@ def radial_analysis_z_0():
                 Fe_H_rad.append(x)
                 l = np.arange(0,b,b/10)
                 x = np.array(x)
-                if x = np.array([np.nan, np.nan, np.nan, np.nan, np.nan, np.nan, np.nan, np.nan, np.nan, np.nan]):
+                if x == np.array([np.nan, np.nan, np.nan, np.nan, np.nan, np.nan, np.nan, np.nan, np.nan, np.nan]):
                     nan_array = np.array([np.nan, np.nan, np.nan, np.nan, np.nan, np.nan, np.nan, np.nan, np.nan, np.nan])
                     slope.append(nan_array)
                 else:
@@ -164,7 +164,7 @@ def radial_analysis_form():
                 Fe_H_rad_form.append(x_f)
                 l_f = np.arange(0,b_f,b_f/10)
                 x_f = np.array(x_f)
-                if x = np.array([np.nan, np.nan, np.nan, np.nan, np.nan, np.nan, np.nan, np.nan, np.nan, np.nan]):
+                if x == np.array([np.nan, np.nan, np.nan, np.nan, np.nan, np.nan, np.nan, np.nan, np.nan, np.nan]):
                     nan_array = np.array([np.nan, np.nan, np.nan, np.nan, np.nan, np.nan, np.nan, np.nan, np.nan, np.nan])
                     slope.append(nan_array)
                 else:
