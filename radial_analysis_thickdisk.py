@@ -102,7 +102,7 @@ def radial_analysis_z_0():
                 Fe_H_rad.append(x)
                 l = np.arange(0,b,b/10)
                 x = np.array(x)
-                if len(x) == 0:
+                if x = np.array([np.nan, np.nan, np.nan, np.nan, np.nan, np.nan, np.nan, np.nan, np.nan, np.nan])
                     nan_array = np.array([np.nan, np.nan, np.nan, np.nan, np.nan, np.nan, np.nan, np.nan, np.nan, np.nan])
                     slope.append(nan_array)
                 else:
