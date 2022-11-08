@@ -98,7 +98,7 @@ def radial_analysis_z_0():
             for a, b in zip(np.arange(0,14), r90):
                 x = []
                 for i in np.arange(0,b,b/10):
-                    x.append(Fe_H_agedependent(i,i+b/10,2,3,0,b,2,3,a,a+1,r,r_form,age,part))
+                    x.append(Fe_H_agedependent(i,i+b/10,1.5,3,0,b,1.5,3,a,a+1,r,r_form,age,part))
                 Fe_H_rad.append(x)
                 l = np.arange(0,b,b/10)
                 x = np.array(x)
@@ -156,7 +156,7 @@ def radial_analysis_form():
             for a_f, b_f in zip(np.arange(0,14), r90):
                 x_f = []
                 for i_f in np.arange(0,b_f,b_f/10):
-                    x_f.append(Fe_H_agedependent_form(i_f,i_f+b_f/10,2,3,0,b_f,2,3,a_f,a_f+1,r_form,r,age,part))
+                    x_f.append(Fe_H_agedependent_form(i_f,i_f+b_f/10,1.5,3,0,b_f,1.5,3,a_f,a_f+1,r_form,r,age,part))
                 Fe_H_rad_form.append(x_f)
                 l_f = np.arange(0,b_f,b_f/10)
                 x_f = np.array(x_f)
