@@ -164,7 +164,7 @@ def radial_analysis_form():
                 l_f = np.arange(0,b_f,b_f/10)
                 x_f = np.array(x_f)
                 if np.isnan(x_f).all():
-                    slope.append(np.nan)
+                    slope_form.append(np.nan)
                 else:
                     j_f, k_f = np.polyfit(l_f[np.isfinite(x_f)], x_f[np.isfinite(x_f)], 1)
                     slope_form.append(j_f)
