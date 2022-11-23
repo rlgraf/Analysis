@@ -55,7 +55,7 @@ def R90_func():
     R90 = np.vstack([R90_m12i, R90_m12c, R90_m12f,  R90_m12m, R90_m12b, R90_Romeo, R90_Juliet, R90_Romulus, R90_Remus, R90_Thelma, R90_Louise])
     return(R90)
 
-def R90_z_0_func:
+def R90_z_0_func():
     R90_z_0 = np.array(12.7,16.9,11.6,17.0,15.1,16.8,12.7,11.8,16.2,16.0,17.3)
     return(R90_z_0)
 
