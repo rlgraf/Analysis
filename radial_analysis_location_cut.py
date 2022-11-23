@@ -108,8 +108,11 @@ def radial_analysis_z_0():
                 Fe_H_rad.append(x)
                 l = np.arange(0,R90_z_0[q+LG_counter],R90_z_0[q+LG_counter]/10)
                 x = np.array(x)
-                j, k = np.polyfit(l[np.isfinite(x)],x[np.isfinite(x)],1)
-                slope.append(j)
+                if np.isnan(x).all():
+                    slope.append(np.nan)
+                else:
+                    j, k = np.polyfit(l[np.isfinite(x)],x[np.isfinite(x)],1)
+                    slope.append(j)
             Fe_H_rad_total.append(Fe_H_rad)
             slope_total.append(slope)
     Fe_H_rad_total = np.array([Fe_H_rad_total])
@@ -166,8 +169,11 @@ def radial_analysis_form():
                 Fe_H_rad_form.append(x_f)
                 l_f = np.arange(0,b_f,b_f/10)
                 x_f = np.array(x_f)
-                j_f, k_f = np.polyfit(l_f[np.isfinite(x_f)], x_f[np.isfinite(x_f)], 1)
-                slope_form.append(j_f)
+                if np.isnan(x_f).all():
+                    slope_form.append(np.nan)
+                else:
+                    j_f, k_f = np.polyfit(l_f[np.isfinite(x_f)],x_f[np.isfinite(x_f)],1)
+                    slope.append(j_f)
             Fe_H_rad_form_total.append(Fe_H_rad_form)
             slope_form_total.append(slope_form)
     Fe_H_rad_form_total = np.array([Fe_H_rad_form_total])
