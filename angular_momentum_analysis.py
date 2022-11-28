@@ -120,9 +120,9 @@ def radial_analysis_z_0():
 # formation
 
 def Fe_H_agedependent_form(x1,x2,x3,x4,x5,x6,x7,x8,a1,a2,r_form,r,age,part, particle_thresh = 100):
-    index = ut.array.get_indices(angmomtotvalues_form, [x1,x2])
+    index = ut.array.get_indices(angmom_totvalues_form, [x1,x2])
     index2 = ut.array.get_indices(abs(r_form[:,2]), [x3,x4], prior_indices = index)
-    index3 = ut.array.get_indices(angmomtotvalues_form,[x5,x6], prior_indices = index2)
+    index3 = ut.array.get_indices(angmom_totvalues_form,[x5,x6], prior_indices = index2)
     index4 = ut.array.get_indices(abs(r[:,2]), [x7,x8], prior_indices = index3)
     index5 = ut.array.get_indices(age, [a1,a2], prior_indices = index4)
     Fe_H = part['star'].prop('metallicity.iron')
