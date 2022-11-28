@@ -177,7 +177,7 @@ def radial_analysis_form():
             for i_f in np.arange(0,angmom_max_form,angmom_max_form/10):
                 x_f.append(Fe_H_agedependent_form(i_f,i_f+angmom_max_form/10,0,3,0,angmom_max_form,-3,3,0,1,r_form,r,age,part,angmom_totvalues_form))
             Fe_H_rad_form.append(x_f)
-            l_f = np.arange(0,angmom_max,angmom_max/10)
+            l_f = np.arange(0,angmom_max_form,angmom_max_form/10)
             x_f = np.array(x_f)
             if np.isnan(x_f).all():
                 slope_form.append(np.nan)
