@@ -175,7 +175,7 @@ def radial_analysis_form():
             angmom_totvalues_form = part['star'].prop('form.host.velocity.principal.cylindrical')[:,1]*r_form[:,0]
             angmom_max_form = angmom_form_func(0,r90,0,3,0,r90,0,3,0,1,r_form,r,age,part,particle_thresh = 100)
             for i_f in np.arange(0,angmom_max_form,angmom_max_form/10):
-                x_f.append(Fe_H_agedependent_form(i_f,i_f+angmom_max_form/10,0,3,0,angmom_max_form,-3,3,0,1,r_form,r,age,part,angmom_totalvalues_form))
+                x_f.append(Fe_H_agedependent_form(i_f,i_f+angmom_max_form/10,0,3,0,angmom_max_form,-3,3,0,1,r_form,r,age,part,angmom_totvalues_form))
             Fe_H_rad_form.append(x_f)
             l_f = np.arange(0,angmom_max,angmom_max/10)
             x_f = np.array(x_f)
