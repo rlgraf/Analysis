@@ -96,20 +96,19 @@ def radial_analysis_z_0():
             slope = []
             LG_counter += j
             r90 = R90[q+LG_counter]
-            for b in r90:
-                x = []
-                angmom_totvalues = part['star'].prop('host.velocity.principal.cylindrical')[:,1]*r[:,0]
-                angmom_max = angmom_func(0,b,0,3,0,b,0,3,0,1,r,r_form,age,part,particle_thresh = 100)
-                for i in np.arange(0,angmom_max,angmom_max/10):
-                    x.append(Fe_H_agedependent(i,i+angmom_max/10,0,3,0,angmom_max,-3,3,0,1,r,r_form,age,part,angmom_totvalues))
-                Fe_H_rad.append(x)
-                l = np.arange(0,angmom_max,angmom_max/10)
-                x = np.array(x)
-                if np.isnan(x).all():
-                    slope.append(np.nan)
-                else:
-                    j, k = np.polyfit(l[np.isfinite(x)],x[np.isfinite(x)],1)
-                    slope.append(j)
+            x = []
+            angmom_totvalues = part['star'].prop('host.velocity.principal.cylindrical')[:,1]*r[:,0]
+            angmom_max = angmom_func(0,r90,0,3,0,r90,0,3,0,1,r,r_form,age,part,particle_thresh = 100)
+            for i in np.arange(0,angmom_max,angmom_max/10):
+                x.append(Fe_H_agedependent(i,i+angmom_max/10,0,3,0,angmom_max,-3,3,0,1,r,r_form,age,part,angmom_totvalues))
+            Fe_H_rad.append(x)
+            l = np.arange(0,angmom_max,angmom_max/10)
+            x = np.array(x)
+            if np.isnan(x).all():
+                slope.append(np.nan)
+            else:
+                j, k = np.polyfit(l[np.isfinite(x)],x[np.isfinite(x)],1)
+                slope.append(j)
             Fe_H_rad_total.append(Fe_H_rad)
             slope_total.append(slope)
     Fe_H_rad_total = np.array([Fe_H_rad_total])
@@ -172,20 +171,19 @@ def radial_analysis_form():
             slope_form = []
             LG_counter += j
             r90 = R90[q+LG_counter]
-            for b_f in r90:
-                x_f = []
-                angmom_totvalues_form = part['star'].prop('form.host.velocity.principal.cylindrical')[:,1]*r_form[:,0]
-                angmom_max_form = angmom_form_func(0,b_f,0,3,0,b,0,3,0,1,r_form,r,age,part,particle_thresh = 100)
-                for i_f in np.arange(0,angmom_max_form,angmom_max_form/10):
-                    x_f.append(Fe_H_agedependent_form(i_f,i_f+angmom_max_form/10,0,3,0,angmom_max_form,-3,3,0,1,r_form,r,age,part,angmom_totalvalues_form))
-                Fe_H_rad_form.append(x_f)
-                l_f = np.arange(0,angmom_max,angmom_max/10)
-                x_f = np.array(x_f)
-                if np.isnan(x_f).all():
-                    slope_form.append(np.nan)
-                else:
-                    j_f, k_f = np.polyfit(l_f[np.isfinite(x_f)],x_f[np.isfinite(x_f)],1)
-                    slope_form.append(j_f)
+            x_f = []
+            angmom_totvalues_form = part['star'].prop('form.host.velocity.principal.cylindrical')[:,1]*r_form[:,0]
+            angmom_max_form = angmom_form_func(0,r90,0,3,0,r90,0,3,0,1,r_form,r,age,part,particle_thresh = 100)
+            for i_f in np.arange(0,angmom_max_form,angmom_max_form/10):
+                x_f.append(Fe_H_agedependent_form(i_f,i_f+angmom_max_form/10,0,3,0,angmom_max_form,-3,3,0,1,r_form,r,age,part,angmom_totalvalues_form))
+            Fe_H_rad_form.append(x_f)
+            l_f = np.arange(0,angmom_max,angmom_max/10)
+            x_f = np.array(x_f)
+            if np.isnan(x_f).all():
+                slope_form.append(np.nan)
+            else:
+                j_f, k_f = np.polyfit(l_f[np.isfinite(x_f)],x_f[np.isfinite(x_f)],1)
+                slope_form.append(j_f)
             Fe_H_rad_form_total.append(Fe_H_rad_form)
             slope_form_total.append(slope_form)
     Fe_H_rad_form_total = np.array([Fe_H_rad_form_total])
