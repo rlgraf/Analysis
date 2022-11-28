@@ -43,20 +43,6 @@ def R90_func():
     return(R90)
 
 
-def angmom_func(x1,x2,x3,x4,x5,x6,x7,x8,a1,a2,r,r_form,age,part,particle_thresh = 100):
-    index = ut.array.get_indices(r[:,0], [x1,x2])
-    index2 = ut.array.get_indices(abs(r[:,2]), [x3,x4], prior_indices = index)
-    index3 = ut.array.get_indices(r_form[:,0], [x5,x6], prior_indices = index2)
-    index4 = ut.array.get_indices(abs(r_form[:,2]), [x7,x8], prior_indices = index3)
-    index5 = ut.array.get_indices(age, [a1,a2], prior_indices = index4)
-    angmom = part['star'].prop('host.velocity.principal.cylindrical')[:,1]*r[:,0]
-    angmom_cut = angmom[index5]
-    if len(angmom_cut) < particle_thresh:
-        return(np.nan)
-    weight_avg = sum((angmom_cut)*part['star']['mass'][index5]/sum(part['star']['mass'][index5])
-    return(weight_avg)                                          
-    
-
 # z = 0
 
 def Fe_H_agedependent(x1,x2,x3,x4,x5,x6,x7,x8,a1,a2,r,r_form,age,part,angmom_totvalues,particle_thresh = 100):
