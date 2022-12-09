@@ -64,7 +64,7 @@ def angmom_func(x1,x2,x3,x4,x5,x6,x7,x8,a1,a2,x9,x10,r,r_form,age,part, particle
     angmom = part['star'].prop('host.velocity.principal.cylindrical')[:,1]*r[:,0]
     index6 = ut.array.get_indices(angmom, [0,np.inf], prior_indices = index5)
     angmom_cut = angmom[index6]
-    if len(angmom_cut < particle_thresh:
+    if len(angmom_cut) < particle_thresh:
            return(np.nan)
     max_angmom_pre = np.percentile(angmom_cut, [0,90])
     max_angmom = max_angmom_pre[1]
@@ -129,7 +129,7 @@ def angmom_form_func(x1,x2,x3,x4,x5,x6,x7,x8,a1,a2,x9,x10,r,r_form,age,part, par
     angmom = part['star'].prop('host.velocity.principal.cylindrical')[:,1]*r[:,0]
     index6 = ut.array.get_indices(angmom, [0,np.inf], prior_indices = index5)
     angmom_cut = angmom[index6]
-    if len(angmom_cut < particle_thresh:
+    if len(angmom_cut) < particle_thresh:
            return(np.nan)
     max_angmom_pre = np.percentile(angmom_cut, [0,90])
     max_angmom = max_angmom_pre[1]
