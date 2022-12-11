@@ -106,7 +106,7 @@ def azimuthal_analysis_z_0():
     
 # formation
 
-def Fe_H_agedependent_sd_form(x1,x2,x3,x4,x5,x6,x7,x8,a1,a2,x9,x10,r,r_form,age,part,angmom_totvalues,particle_thresh = 100):
+def Fe_H_agedependent_sd_form(x1,x2,x3,x4,x5,x6,x7,x8,a1,a2,x9,x10,r,r_form,age,part,angmom_totvalues_form,particle_thresh = 100):
     index = ut.array.get_indices(angmom_totvalues_form, [x1,x2])
     index2 = ut.array.get_indices(abs(r_form[:,2]), [x3,x4], prior_indices = index)
     index3 = ut.array.get_indices(angmom_totvalues_form, [x5,x6], prior_indices = index2)
@@ -159,7 +159,7 @@ def azimuthal_analysis_form():
             for a_f in np.arange(0,1,0.05):
                 std_vs_rad_f = []
                 for i_f in np.arange(0,angmom_max_form,angmom_max_form/10):
-                    std_vs_rad_f.append(Fe_H_agedependent_sd_form(i_f,i_f+angmom_max_form/10,0,3,0,angmom_max_form,0,3,0,1,0,360,r,r_form,age,part,angmom_totvalues,particle_thresh = 100))
+                    std_vs_rad_f.append(Fe_H_agedependent_sd_form(i_f,i_f+angmom_max_form/10,0,3,0,angmom_max_form,0,3,0,1,0,360,r,r_form,age,part,angmom_totvalues_form,particle_thresh = 100))
                 std_vs_rad_f = np.array(std_vs_rad_f)
                 std_vs_rad_f_mean = np.nanmean(std_vs_rad_f,0)
                 Fe_H_azim_form.append(std_vs_rad_f_mean)                                     
