@@ -88,20 +88,23 @@ def azimuthal_analysis_z_0():
             r_form_array = [part['star'].prop('form.host.distance.principal.cylindrical')] 
     
         for r, r_form in zip(r_array, r_form_array):
-            Fe_H_azim = []
             angmom_totvalues = part['star'].prop('host.velocity.principal.cylindrical')[:,1]*r[:,0]
             angmom_max = angmom_func(7,8,0,3,7,8,0,3,0,1,r,r_form,age,part,particle_thresh = 100)
-            for i in np.arange(0,angmom_max,angmom_max/15):
+            Fe_H_azim = []
+            for a in np.arange(0,1,0.05):
                 std_vs_rad = []
-                for a in np.arange(0,1,0.05):
-                    std_vs_rad.append(Fe_H_agedependent_sd(i,i+angmom_max/15,0,3,0,angmom_max,0,3,a,a+0.05,0,360,r,r_form,age,part,angmom_totvalues,particle_thresh = 100))
+                for i in np.arange(0,angmom_max,angmom_max/15):
+                    std_vs_rad.append(Fe_H_agedependent_sd(i,i+angmom_max/15,0,3,0,angmom_max,0,3,a,a+0.05,0,360,r,r_form,age,part,angmom_totvalues,particle_thresh = 100))     
                 std_vs_rad = np.array(std_vs_rad)
-                std_vs_rad_mean = np.nanmean(std_vs_rad,0)
-                Fe_H_azim.append(std_vs_rad_mean)                                     
-            Fe_H_azim_total.append(Fe_H_azim)
+                Fe_H_azim.append(std_vs_rad)
+            Fe_H_azim = np.array(Fe_H_azim)
+            Fe_H_azim_mean = np.nanmean(Fe_H_azim,0)
+            Fe_H_azim_total.append(Fe_H_azim_mean)
     Fe_H_azim_total = np.array(Fe_H_azim_total)
             
     ut_io.file_hdf5('/home/rlgraf/Final_Figures/AZIM_profile_z_0_angmom', Fe_H_azim_total) 
+    
+  
 
     
 # formation
@@ -153,17 +156,18 @@ def azimuthal_analysis_form():
             r_form_array = [part['star'].prop('form.host.distance.principal.cylindrical')] 
     
         for r, r_form in zip(r_array, r_form_array):
-            Fe_H_azim_form = []
             angmom_totvalues_form = part['star'].prop('host.velocity.principal.cylindrical')[:,1]*r_form[:,0]
             angmom_max_form = angmom_form_func(7,8,0,3,7,8,0,3,0,1,r,r_form,age,part,particle_thresh = 100)
-            for i_f in np.arange(0,angmom_max_form,angmom_max_form/15):
+            Fe_H_azim_form = []
+            for a_f in np.arange(0,1,0.05):
                 std_vs_rad_f = []
-                for a_f in np.arange(0,1,0.05):
+                for i_f in np.arange(0,angmom_max_form,angmom_max_form/15):
                     std_vs_rad_f.append(Fe_H_agedependent_sd_form(i_f,i_f+angmom_max_form/15,0,3,0,angmom_max_form,0,3,a,a+0.05,0,360,r,r_form,age,part,angmom_totvalues_form,particle_thresh = 100))
                 std_vs_rad_f = np.array(std_vs_rad_f)
-                std_vs_rad_f_mean = np.nanmean(std_vs_rad_f,0)
-                Fe_H_azim_form.append(std_vs_rad_f_mean)                                     
-            Fe_H_azim_form_total.append(Fe_H_azim_form)
+                Fe_H_azim_form.append(std_vs_rad_f)   
+            Fe_H_azim_form = np.array(Fe_H_azim_form)
+            Fe_H_azim_form_mean = np.nanmean(Fe_H_azim_form,0)
+            Fe_H_azim_form_total.append(Fe_H_azim_form_mean)
     Fe_H_azim_form_total = np.array(Fe_H_azim_form_total)
             
     ut_io.file_hdf5('/home/rlgraf/Final_Figures/AZIM_profile_form_angmom', Fe_H_azim_form_total) 
