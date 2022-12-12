@@ -162,7 +162,7 @@ def azimuthal_analysis_form():
             for a_f in np.arange(0,1,0.05):
                 std_vs_rad_f = []
                 for i_f in np.arange(0,angmom_max_form,angmom_max_form/15):
-                    std_vs_rad_f.append(Fe_H_agedependent_sd_form(i_f,i_f+angmom_max_form/15,0,3,0,angmom_max_form,0,3,a,a+0.05,0,360,r,r_form,age,part,angmom_totvalues_form,particle_thresh = 100))
+                    std_vs_rad_f.append(Fe_H_agedependent_sd_form(i_f,i_f+angmom_max_form/15,0,3,0,angmom_max_form,0,3,a_f,a_f+0.05,0,360,r,r_form,age,part,angmom_totvalues_form,particle_thresh = 100))
                 std_vs_rad_f = np.array(std_vs_rad_f)
                 Fe_H_azim_form.append(std_vs_rad_f)   
             Fe_H_azim_form = np.array(Fe_H_azim_form)
