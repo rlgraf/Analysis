@@ -61,7 +61,7 @@ def R90_z_0_func():
 
 # z = 0
 
-def Fe_H_agedependent(x1,x2,x3,x4,x5,x6,x7,x8,a1,a2,r,r_form,age,part, particle_thresh = 100):
+def Fe_H_agedependent(x1,x2,x3,x4,x5,x6,x7,x8,a1,a2,r,r_form,age,part, particle_thresh = 32):
     index = ut.array.get_indices(r[:,0], [x1,x2])
     index2 = ut.array.get_indices(abs(r[:,2]), [x3,x4], prior_indices = index)
     index3 = ut.array.get_indices(r_form[:,0], [x5,x6], prior_indices = index2)
@@ -108,7 +108,7 @@ def radial_analysis_z_0():
                 Fe_H_rad.append(x)
                 l = np.arange(0,R90_z_0[q+LG_counter],R90_z_0[q+LG_counter]/10)
                 x = np.array(x)
-                if np.isnan(x).all():
+                if np.isnan(x).all() or len(x[np.isfinite(x)]) <= 1:
                     slope.append(np.nan)
                 else:
                     j, k = np.polyfit(l[np.isfinite(x)],x[np.isfinite(x)],1)
@@ -123,7 +123,7 @@ def radial_analysis_z_0():
 
 # formation
 
-def Fe_H_agedependent_form(x1,x2,x3,x4,x5,x6,x7,x8,a1,a2,r_form,r,age,part, particle_thresh = 100):
+def Fe_H_agedependent_form(x1,x2,x3,x4,x5,x6,x7,x8,a1,a2,r_form,r,age,part, particle_thresh = 32):
     index = ut.array.get_indices(r_form[:,0], [x1,x2])
     index2 = ut.array.get_indices(abs(r_form[:,2]), [x3,x4], prior_indices = index)
     index3 = ut.array.get_indices(r[:,0],[x5,x6], prior_indices = index2)
@@ -169,7 +169,7 @@ def radial_analysis_form():
                 Fe_H_rad_form.append(x_f)
                 l_f = np.arange(0,b_f,b_f/10)
                 x_f = np.array(x_f)
-                if np.isnan(x_f).all():
+                if np.isnan(x_f).all() or len(x_f[np.isfinite(x_f)]) <= 1:
                     slope_form.append(np.nan)
                 else:
                     j_f, k_f = np.polyfit(l_f[np.isfinite(x_f)],x_f[np.isfinite(x_f)],1)
