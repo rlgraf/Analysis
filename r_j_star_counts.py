@@ -66,7 +66,7 @@ def angmom_func(x1,x2,x3,x4,x5,x6,x7,x8,a1,a2,r,r_form,age,part, particle_thresh
     index6 = ut.array.get_indices(angmom, [0,np.inf], prior_indices = index5)
     angmom_cut = angmom[index6]
     if len(angmom_cut) < particle_thresh:
-           return(np.nan)
+       return(np.nan)
     mean_angmom = np.mean(angmom_cut)
     index7 = ut.array.get_indices(angmom_cut, [mean_angmom - 0.1*mean_angmom, mean_angmom + 0.1*mean_angmom], prior_indices = index6)
     angmom_range = angmom_cut[index7]
@@ -167,5 +167,4 @@ def azimuthal_analysis_form():
     range_r_f = np.array(range_r_f)
             
     ut_io.file_hdf5('/home/rlgraf/Final_Figures/AZIM_angmom_form_starcount_0.1', range_j_f)  
-    ut_io.file_hdf5('/home/rlgraf/Final_Figures/AZIM_radius_form_starcount_0.1', range_r_f) 
-
+    ut_io.file_hdf5('/home/rlgraf/Final_Figures/AZIM_radius_form_starcount_0.1', range_r_f)
