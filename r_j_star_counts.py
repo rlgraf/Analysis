@@ -168,3 +168,6 @@ def azimuthal_analysis_form():
             
     ut_io.file_hdf5('/home/rlgraf/Final_Figures/AZIM_angmom_form_starcount_0.1', range_j_f)  
     ut_io.file_hdf5('/home/rlgraf/Final_Figures/AZIM_radius_form_starcount_0.1', range_r_f)
+    
+azimuthal_analysis_z_0()
+azimuthal_analysis_form()
