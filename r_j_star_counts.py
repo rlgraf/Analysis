@@ -57,18 +57,21 @@ def Fe_H_agedependent_sd(x1,x2,x3,x4,x5,x6,x7,x8,a1,a2,r,r_form,age,part):
 
 
 def angmom_func(x1,x2,x3,x4,x5,x6,x7,x8,a1,a2,r,r_form,age,part, particle_thresh = 100):
-    index = ut.array.get_indices(r[:,0], [x1,x2])
-    index2 = ut.array.get_indices(abs(r[:,2]), [x3,x4], prior_indices = index)
-    index3 = ut.array.get_indices(r_form[:,0], [x5,x6], prior_indices = index2)
-    index4 = ut.array.get_indices(abs(r_form[:,2]), [x7,x8], prior_indices = index3)
-    index5 = ut.array.get_indices(age, [a1,a2], prior_indices = index4)
+    
+    index = ut.array.get_indices(abs(r[:,2]), [x3,x4])
+    index2 = ut.array.get_indices(abs(r_form[:,2]), [x7,x8], prior_indices = index)
+    index3 = ut.array.get_indices(age, [a1,a2], prior_indices = index2)
+    
+    index4 = ut.array.get_indices(r[:,0], [x1,x2], prior_indices = index3)
+    index5 = ut.array.get_indices(r_form[:,0], [x5,x6], prior_indices = index4)
+    
     angmom = part['star'].prop('host.velocity.principal.cylindrical')[:,1]*r[:,0]
     index6 = ut.array.get_indices(angmom, [0,np.inf], prior_indices = index5)
     angmom_cut = angmom[index6]
     if len(angmom_cut) < particle_thresh:
         return(np.nan)
     mean_angmom = np.mean(angmom_cut)
-    index7 = ut.array.get_indices(angmom_cut, [mean_angmom - 0.1*mean_angmom, mean_angmom + 0.1*mean_angmom], prior_indices = index6)
+    index7 = ut.array.get_indices(angmom_cut, [mean_angmom - 0.1*mean_angmom, mean_angmom + 0.1*mean_angmom], prior_indices = index3)
     angmom_range = angmom_cut[index7]
     return(len(angmom_range))
 
@@ -122,18 +125,21 @@ def Fe_H_agedependent_form_sd(x1,x2,x3,x4,x5,x6,x7,x8,a1,a2,r,r_form,age,part):
     return(len(Fe_H_cut_form))
 
 def angmom_func_form(x1,x2,x3,x4,x5,x6,x7,x8,a1,a2,r,r_form,age,part, particle_thresh = 100):
-    index = ut.array.get_indices(r_form[:,0], [x1,x2])
-    index2 = ut.array.get_indices(abs(r_form[:,2]), [x3,x4], prior_indices = index)
-    index3 = ut.array.get_indices(r[:,0], [x5,x6], prior_indices = index2)
-    index4 = ut.array.get_indices(abs(r[:,2]), [x7,x8], prior_indices = index3)
-    index5 = ut.array.get_indices(age, [a1,a2], prior_indices = index4)
+    
+    index = ut.array.get_indices(abs(r_form[:,2]), [x3,x4])
+    index2 = ut.array.get_indices(abs(r[:,2]), [x7,x8], prior_indices = index2)
+    index3 = ut.array.get_indices(age, [a1,a2], prior_indices = index3)
+    
+    index4 = ut.array.get_indices(r_form[:,0], [x1,x2], prior_indices = index3)
+    index5 = ut.array.get_indices(r[:,0], [x5,x6], prior_indices = index4)
+    
     angmom_form = part['star'].prop('form.host.velocity.principal.cylindrical')[:,1]*r[:,0]
     index6 = ut.array.get_indices(angmom_form, [0,np.inf], prior_indices = index5)
     angmom_cut_form = angmom_form[index6]
     if len(angmom_cut_form) < particle_thresh:
            return(np.nan)
     mean_angmom_form = np.mean(angmom_cut_form)
-    index7 = ut.array.get_indices(angmom_cut_form, [mean_angmom_form - 0.1*mean_angmom_form, mean_angmom_form + 0.1*mean_angmom_form], prior_indices = index6)
+    index7 = ut.array.get_indices(angmom_cut_form, [mean_angmom_form - 0.1*mean_angmom_form, mean_angmom_form + 0.1*mean_angmom_form], prior_indices = index3)
     angmom_range_f = angmom_cut_form[index7]
     return(len(angmom_range_f))
 
