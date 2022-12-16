@@ -71,7 +71,7 @@ def angmom_func(x1,x2,x3,x4,x5,x6,x7,x8,a1,a2,r,r_form,age,part, particle_thresh
     if len(angmom_cut) < particle_thresh:
         return(np.nan)
     mean_angmom = np.mean(angmom_cut)
-    index7 = ut.array.get_indices(angmom_cut, [mean_angmom - 0.1*mean_angmom, mean_angmom + 0.1*mean_angmom], prior_indices = index3)
+    index7 = ut.array.get_indices(angmom, [mean_angmom - 0.1*mean_angmom, mean_angmom + 0.1*mean_angmom], prior_indices = index3)
     angmom_range = angmom_cut[index7]
     return(len(angmom_range))
 
@@ -139,7 +139,7 @@ def angmom_func_form(x1,x2,x3,x4,x5,x6,x7,x8,a1,a2,r,r_form,age,part, particle_t
     if len(angmom_cut_form) < particle_thresh:
            return(np.nan)
     mean_angmom_form = np.mean(angmom_cut_form)
-    index7 = ut.array.get_indices(angmom_cut_form, [mean_angmom_form - 0.1*mean_angmom_form, mean_angmom_form + 0.1*mean_angmom_form], prior_indices = index3)
+    index7 = ut.array.get_indices(angmom_form, [mean_angmom_form - 0.1*mean_angmom_form, mean_angmom_form + 0.1*mean_angmom_form], prior_indices = index3)
     angmom_range_f = angmom_cut_form[index7]
     return(len(angmom_range_f))
 
