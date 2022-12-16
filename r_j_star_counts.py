@@ -127,8 +127,8 @@ def Fe_H_agedependent_form_sd(x1,x2,x3,x4,x5,x6,x7,x8,a1,a2,r,r_form,age,part):
 def angmom_func_form(x1,x2,x3,x4,x5,x6,x7,x8,a1,a2,r,r_form,age,part, particle_thresh = 100):
     
     index = ut.array.get_indices(abs(r_form[:,2]), [x3,x4])
-    index2 = ut.array.get_indices(abs(r[:,2]), [x7,x8], prior_indices = index2)
-    index3 = ut.array.get_indices(age, [a1,a2], prior_indices = index3)
+    index2 = ut.array.get_indices(abs(r[:,2]), [x7,x8], prior_indices = index1)
+    index3 = ut.array.get_indices(age, [a1,a2], prior_indices = index2)
     
     index4 = ut.array.get_indices(r_form[:,0], [x1,x2], prior_indices = index3)
     index5 = ut.array.get_indices(r[:,0], [x5,x6], prior_indices = index4)
