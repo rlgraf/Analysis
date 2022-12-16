@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-#SBATCH --job-name=r_j_star_amount_comparison_0.1
+#SBATCH --job-name=r_j_star_counts.py
 #SBATCH --partition=high2  # peloton node: 32 cores, 7.8 GB per core, 250 GB total
 ##SBATCH --partition=high2m  # peloton high-mem node: 32 cores, 15.6 GB per core, 500 GB total
 #SBATCH --mem=64G  # need to specify memory if you set the number of tasks (--ntasks) below
@@ -8,7 +8,7 @@
 #SBATCH --ntasks=1  # (MPI) tasks total
 #SBATCH --cpus-per-task=1  # (OpenMP) threads per (MPI) task
 #SBATCH --time=48:00:00
-#SBATCH --output=r_j_star_amount_comparison_0.1_%j.txt
+#SBATCH --output=r_j_star_counts_%j.txt
 #SBATCH --mail-user=rlgraf@ucdavis.edu
 #SBATCH --mail-type=fail
 #SBATCH --mail-type=begin
@@ -53,7 +53,7 @@ def Fe_H_agedependent_sd(x1,x2,x3,x4,x5,x6,x7,x8,a1,a2,r,r_form,age,part):
     if len(Fe_H_cut) == 0:
         return(np.nan)
     sd = np.std(Fe_H_cut)
-    return(len(Fe_H_cut)
+    return(len(Fe_H_cut))
 
 
 def angmom_func(x1,x2,x3,x4,x5,x6,x7,x8,a1,a2,r,r_form,age,part, particle_thresh = 100):
@@ -66,7 +66,7 @@ def angmom_func(x1,x2,x3,x4,x5,x6,x7,x8,a1,a2,r,r_form,age,part, particle_thresh
     index6 = ut.array.get_indices(angmom, [0,np.inf], prior_indices = index5)
     angmom_cut = angmom[index6]
     if len(angmom_cut) < particle_thresh:
-       return(np.nan)
+        return(np.nan)
     mean_angmom = np.mean(angmom_cut)
     index7 = ut.array.get_indices(angmom_cut, [mean_angmom - 0.1*mean_angmom, mean_angmom + 0.1*mean_angmom], prior_indices = index6)
     angmom_range = angmom_cut[index7]
@@ -119,7 +119,7 @@ def Fe_H_agedependent_form_sd(x1,x2,x3,x4,x5,x6,x7,x8,a1,a2,r,r_form,age,part):
     if len(Fe_H_cut_form) == 0:
         return(np.nan)
     sd_f = np.std(Fe_H_cut_form)
-    return(len(Fe_H_cut_form)
+    return(len(Fe_H_cut_form))
 
 def angmom_func_form(x1,x2,x3,x4,x5,x6,x7,x8,a1,a2,r,r_form,age,part, particle_thresh = 100):
     index = ut.array.get_indices(r_form[:,0], [x1,x2])
