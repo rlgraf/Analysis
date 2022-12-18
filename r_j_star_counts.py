@@ -95,17 +95,17 @@ def azimuthal_analysis_z_0():
     
         for r, r_form in zip(r_array, r_form_array):
             angmom_totvalues = part['star'].prop('host.velocity.principal.cylindrical')[:,1]*r[:,0]
-            angmom_len = angmom_func(7,8,0,3,7,8,0,3,0,1,r,r_form,age,part,particle_thresh = 100)
+            angmom_len = angmom_func(7,8,0,3,0,15,0,3,0,1,r,r_form,age,part,particle_thresh = 100)
             range_j.append(angmom_len)
            
-            r_len = Fe_H_agedependent_sd(7,8,0,3,7,8,0,3,0,1,r,r_form,age,part)
+            r_len = Fe_H_agedependent_sd(7,8,0,3,0,15,0,3,0,1,r,r_form,age,part)
             range_r.append(r_len)
             
     range_j = np.array(range_j)
     range_r = np.array(range_r)
             
-    ut_io.file_hdf5('/home/rlgraf/Final_Figures/AZIM_angmom_z_0_starcount_0.016', range_j)  
-    ut_io.file_hdf5('/home/rlgraf/Final_Figures/AZIM_radius_z_0_starcount_0.016', range_r) 
+    ut_io.file_hdf5('/home/rlgraf/Final_Figures/AZIM_angmom_z_0_starcount_0.016!', range_j)  
+    ut_io.file_hdf5('/home/rlgraf/Final_Figures/AZIM_radius_z_0_starcount_0.016!', range_r) 
  
            
 # formation
@@ -113,7 +113,9 @@ def azimuthal_analysis_z_0():
 def Fe_H_agedependent_form_sd(x1,x2,x3,x4,x5,x6,x7,x8,a1,a2,r,r_form,age,part):
     index = ut.array.get_indices(r_form[:,0], [x1,x2])
     index2 = ut.array.get_indices(abs(r_form[:,2]), [x3,x4], prior_indices = index)
-    index3 = ut.array.get_indices(r[:,0], [x5,x6], prior_indices = index2)
+    a_form = part['star'].prop('form.scalefactor')
+    scaled_radius = r_form[:,0]/a_form
+    index3 = ut.array.get_indices(scaled_radius,[x5,x6], prior_indices = index2)
     index4 = ut.array.get_indices(abs(r[:,2]), [x7,x8], prior_indices = index3)
     index5 = ut.array.get_indices(age, [a1,a2], prior_indices = index4)
     
@@ -130,8 +132,11 @@ def angmom_func_form(x1,x2,x3,x4,x5,x6,x7,x8,a1,a2,r,r_form,age,part, particle_t
     index2 = ut.array.get_indices(abs(r[:,2]), [x7,x8], prior_indices = index)
     index3 = ut.array.get_indices(age, [a1,a2], prior_indices = index2)
     
+    
     index4 = ut.array.get_indices(r_form[:,0], [x1,x2], prior_indices = index3)
-    index5 = ut.array.get_indices(r[:,0], [x5,x6], prior_indices = index4)
+    a_form = part['star'].prop('form.scalefactor')
+    scaled_radius = r_form[:,0]/a_form
+    index5 = ut.array.get_indices(scaled_radius, [x5,x6], prior_indices = index4)
     
     angmom_form = part['star'].prop('form.host.velocity.principal.cylindrical')[:,1]*r[:,0]
     index6 = ut.array.get_indices(angmom_form, [0,np.inf], prior_indices = index5)
@@ -163,17 +168,17 @@ def azimuthal_analysis_form():
     
         for r, r_form in zip(r_array, r_form_array):
             angmom_totvalues_form = part['star'].prop('form.host.velocity.principal.cylindrical')[:,1]*r[:,0]
-            angmom_len_form = angmom_func_form(7,8,0,3,7,8,0,3,0,1,r,r_form,age,part,particle_thresh = 100)
+            angmom_len_form = angmom_func_form(7,8,0,3,0,30,0,3,0,1,r,r_form,age,part,particle_thresh = 100)
             range_j_f.append(angmom_len_form)
            
-            r_len_form = Fe_H_agedependent_form_sd(7,8,0,3,7,8,0,3,0,1,r,r_form,age,part)
+            r_len_form = Fe_H_agedependent_form_sd(7,8,0,3,0,30,0,3,0,1,r,r_form,age,part)
             range_r_f.append(r_len_form)
            
     range_j_f = np.array(range_j_f)
     range_r_f = np.array(range_r_f)
             
-    ut_io.file_hdf5('/home/rlgraf/Final_Figures/AZIM_angmom_form_starcount_0.016', range_j_f)  
-    ut_io.file_hdf5('/home/rlgraf/Final_Figures/AZIM_radius_form_starcount_0.016', range_r_f)
+    ut_io.file_hdf5('/home/rlgraf/Final_Figures/AZIM_angmom_form_starcount_0.016!', range_j_f)  
+    ut_io.file_hdf5('/home/rlgraf/Final_Figures/AZIM_radius_form_starcount_0.016!', range_r_f)
     
 azimuthal_analysis_z_0()
 azimuthal_analysis_form()
