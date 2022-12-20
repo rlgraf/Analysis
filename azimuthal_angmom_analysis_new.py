@@ -156,13 +156,13 @@ def azimuthal_analysis_form():
             angmom_mean_form = angmom_form_func(7,8,0,3,0,15,0,3,0,1,r,r_form,age,part,particle_thresh = 100)
             Fe_H_azim_form = []
             for a_f in np.arange(0,1,0.05):
-                Fe_H_angmom_form = Fe_H_agedependent_sd_form(angmom_mean_form - 0.07,angmom_mean_form + 0.07,0,3,0,15,0,3,a_f,a_f+0.05,0,360,r,r_form,age,part,angmom_totvalues,particle_thresh = 100)
+                Fe_H_angmom_form = Fe_H_agedependent_sd_form(angmom_mean_form - 0.07,angmom_mean_form + 0.07,0,3,0,15,0,3,a_f,a_f+0.05,0,360,r,r_form,age,part,angmom_totvalues_form,particle_thresh = 100)
                 Fe_H_azim_form.append(Fe_H_angmom_form)    
             Fe_H_azim_mean_form = np.nanmean(Fe_H_azim_form,0)
             Fe_H_azim_form_total.append(Fe_H_azim_mean_form)
     Fe_H_azim_form_total = np.array(Fe_H_azim_form_total)
             
-    ut_io.file_hdf5('/home/rlgraf/Final_Figures/AZIM_profile_z_0_angmom_new', Fe_H_azim_total) 
+    ut_io.file_hdf5('/home/rlgraf/Final_Figures/AZIM_profile_form_angmom_new', Fe_H_azim_total) 
     
     
 azimuthal_analysis_z_0()
