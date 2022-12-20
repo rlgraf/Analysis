@@ -162,7 +162,7 @@ def azimuthal_analysis_form():
             Fe_H_azim_form_total.append(Fe_H_azim_mean_form)
     Fe_H_azim_form_total = np.array(Fe_H_azim_form_total)
             
-    ut_io.file_hdf5('/home/rlgraf/Final_Figures/AZIM_profile_form_angmom_new', Fe_H_azim_total) 
+    ut_io.file_hdf5('/home/rlgraf/Final_Figures/AZIM_profile_form_angmom_new', Fe_H_azim_form_total) 
     
     
 azimuthal_analysis_z_0()
