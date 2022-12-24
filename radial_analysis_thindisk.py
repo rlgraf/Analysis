@@ -126,7 +126,9 @@ def radial_analysis_z_0():
 def Fe_H_agedependent_form(x1,x2,x3,x4,x5,x6,x7,x8,a1,a2,r_form,r,age,part, particle_thresh = 32):
     index = ut.array.get_indices(r_form[:,0], [x1,x2])
     index2 = ut.array.get_indices(abs(r_form[:,2]), [x3,x4], prior_indices = index)
-    index3 = ut.array.get_indices(r[:,0],[x5,x6], prior_indices = index2)
+    a_form = part['star'].prop('form.scalefactor')
+    scaled_radius = r_form[:,0]/a_form
+    index3 = ut.array.get_indices(scaled_radius,[x5,x6], prior_indices = index2)
     index4 = ut.array.get_indices(abs(r[:,2]), [x7,x8], prior_indices = index3)
     index5 = ut.array.get_indices(age, [a1,a2], prior_indices = index4)
     Fe_H = part['star'].prop('metallicity.iron')
@@ -165,7 +167,7 @@ def radial_analysis_form():
             for a_f, b_f in zip(np.arange(0,14), r90):
                 x_f = []
                 for i_f in np.arange(0,b_f,b_f/10):
-                    x_f.append(Fe_H_agedependent_form(i_f,i_f+b_f/10,0,0.3,0,20,0,0.3,a_f,a_f+1,r_form,r,age,part))
+                    x_f.append(Fe_H_agedependent_form(i_f,i_f+b_f/10,0,0.3,0,30,0,0.3,a_f,a_f+1,r_form,r,age,part))
                 Fe_H_rad_form.append(x_f)
                 l_f = np.arange(0,b_f,b_f/10)
                 x_f = np.array(x_f)
