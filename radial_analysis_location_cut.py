@@ -59,7 +59,7 @@ def R90_z_0_func():
     R90_z_0 = np.array([12.7,11.8,17.0,12.7,11.6,16.8,16,16.9,16.2,15.1,17.3])
     return(R90_z_0)
 
-# z = 0
+# z = 0.
 
 def Fe_H_agedependent(x1,x2,x3,x4,x5,x6,x7,x8,a1,a2,r,r_form,age,part, particle_thresh = 100):
     index = ut.array.get_indices(r[:,0], [x1,x2])
