@@ -100,7 +100,7 @@ def azimuthal_analysis_z_0():
         for c, (r, r_form) in enumerate(zip(r_array, r_form_array)):
             Fe_H_azim = []
             slope_azim = []
-            LG counter += c
+            LG_counter += c
             r90 = R90[q+LG_counter]
             for a,b in zip(np.arange(0,14),r90):
                 Fe_H_azim_pre = []
