@@ -83,7 +83,7 @@ def azimuthal_analysis_z_0():
     sim = sim_func()
     R90 = R90_func()
     R90_z_0 = R90_z_0_func()
-    LG counter = 0
+    LG_counter = 0
     for q, s in enumerate(sim):
         simulation_directory = s
         part = gizmo.io.Read.read_snapshots(['star'], 'redshift', 0, simulation_directory, assign_hosts_rotation=True, assign_formation_coordinates = True)
