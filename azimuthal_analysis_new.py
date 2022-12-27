@@ -162,7 +162,7 @@ def azimuthal_analysis_form():
             r_array = [part['star'].prop('host.distance.principal.cylindrical')]
             r_form_array = [part['star'].prop('form.host.distance.principal.cylindrical')] 
     
-        for j, (r, r_form) in enumerate(zip(r_array, r_form_array)):
+        for c, (r, r_form) in enumerate(zip(r_array, r_form_array)):
             Fe_H_azim_form = []
             slope_azim_form = []
             LG_counter += c
