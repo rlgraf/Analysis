@@ -67,12 +67,14 @@ def angmom_func(x1,x2,x3,x4,x5,x6,x7,x8,a1,a2,r,r_form,age,part, particle_thresh
     
     angmom = part['star'].prop('host.velocity.principal.cylindrical')[:,1]*r[:,0]
     index6 = ut.array.get_indices(angmom, [0,np.inf], prior_indices = index5)
-    angmom_cut = angmom[index6]
+    angmom_cut = angmom[index3]
     if len(angmom_cut) < particle_thresh:
         return(np.nan)
     mean_angmom = np.mean(angmom_cut)
     index7 = ut.array.get_indices(angmom, [mean_angmom - 0.07*mean_angmom, mean_angmom + 0.07*mean_angmom], prior_indices = index3)
-    angmom_range = angmom[index7]
+    index8 = ut.array.get_indices(r[:,0], [x9,x10], prior_indices = index7)
+    index9 = ut.array.get_indices(r_form[:,0], [x11,x12], prior_indices = index8)
+    angmom_range = angmom[index9]
     return(len(angmom_range))
 
 def azimuthal_analysis_z_0():
@@ -95,7 +97,7 @@ def azimuthal_analysis_z_0():
     
         for r, r_form in zip(r_array, r_form_array):
             angmom_totvalues = part['star'].prop('host.velocity.principal.cylindrical')[:,1]*r[:,0]
-            angmom_len = angmom_func(7,8,0,3,0,15,0,3,0,1,r,r_form,age,part,particle_thresh = 100)
+            angmom_len = angmom_func(7,8,0,3,0,15,0,3,0,1,0,15,0,15,r,r_form,age,part,particle_thresh = 100)
             range_j.append(angmom_len)
            
             r_len = Fe_H_agedependent_sd(7,8,0,3,0,15,0,3,0,1,r,r_form,age,part)
@@ -145,7 +147,11 @@ def angmom_func_form(x1,x2,x3,x4,x5,x6,x7,x8,a1,a2,r,r_form,age,part, particle_t
            return(np.nan)
     mean_angmom_form = np.mean(angmom_cut_form)
     index7 = ut.array.get_indices(angmom_form, [mean_angmom_form - 0.07*mean_angmom_form, mean_angmom_form + 0.07*mean_angmom_form], prior_indices = index3)
-    angmom_range_f = angmom_form[index7]
+    index8 = ut.array.get_indices(r[:,0], [x9,x10], prior_indices = index7)
+    a_form = part['star'].prop('form.scalefactor')
+    scaled_radius = r_form[:,0]/a_form
+    index9 = ut.array.get_indices(scaled_radius, [x11,x12], prior_indices = index8)
+    angmom_range_f = angmom_form[index9]
     return(len(angmom_range_f))
 
 def azimuthal_analysis_form():
@@ -168,7 +174,7 @@ def azimuthal_analysis_form():
     
         for r, r_form in zip(r_array, r_form_array):
             angmom_totvalues_form = part['star'].prop('form.host.velocity.principal.cylindrical')[:,1]*r[:,0]
-            angmom_len_form = angmom_func_form(7,8,0,3,0,30,0,3,0,1,r,r_form,age,part,particle_thresh = 100)
+            angmom_len_form = angmom_func_form(7,8,0,3,0,30,0,3,0,1,0,15,0,30,r,r_form,age,part,particle_thresh = 100)
             range_j_f.append(angmom_len_form)
            
             r_len_form = Fe_H_agedependent_form_sd(7,8,0,3,0,30,0,3,0,1,r,r_form,age,part)
