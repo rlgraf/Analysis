@@ -56,7 +56,7 @@ def Fe_H_agedependent_sd(x1,x2,x3,x4,x5,x6,x7,x8,a1,a2,r,r_form,age,part):
     return(len(Fe_H_cut))
 
 
-def angmom_func(x1,x2,x3,x4,x5,x6,x7,x8,a1,a2,r,r_form,age,part, particle_thresh = 100):
+def angmom_func(x1,x2,x3,x4,x5,x6,x7,x8,x9,x10,x11,x12,a1,a2,r,r_form,age,part, particle_thresh = 100):
     
     index = ut.array.get_indices(abs(r[:,2]), [x3,x4])
     index2 = ut.array.get_indices(abs(r_form[:,2]), [x7,x8], prior_indices = index)
@@ -128,7 +128,7 @@ def Fe_H_agedependent_form_sd(x1,x2,x3,x4,x5,x6,x7,x8,a1,a2,r,r_form,age,part):
     sd_f = np.std(Fe_H_cut_form)
     return(len(Fe_H_cut_form))
 
-def angmom_func_form(x1,x2,x3,x4,x5,x6,x7,x8,a1,a2,r,r_form,age,part, particle_thresh = 100):
+def angmom_func_form(x1,x2,x3,x4,x5,x6,x7,x8,x9,x10,x11,x12,a1,a2,r,r_form,age,part, particle_thresh = 100):
     
     index = ut.array.get_indices(abs(r_form[:,2]), [x3,x4])
     index2 = ut.array.get_indices(abs(r[:,2]), [x7,x8], prior_indices = index)
