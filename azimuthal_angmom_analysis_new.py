@@ -41,15 +41,16 @@ def sim_func():
 
 # z = 0
 
-def Fe_H_agedependent_sd(x1,x2,x3,x4,x5,x6,x7,x8,a1,a2,x9,x10,r,r_form,age,part,angmom_totvalues,particle_thresh = 100):
+def Fe_H_agedependent_sd(x1,x2,x3,x4,x5,x6,x7,x8,a1,a2,x9,x10,x11,x12,r,r_form,age,part,angmom_totvalues,particle_thresh = 100):
     index = ut.array.get_indices(angmom_totvalues, [x1,x2])
     index2 = ut.array.get_indices(abs(r[:,2]), [x3,x4], prior_indices = index)
     index3 = ut.array.get_indices(r_form[:,0], [x5,x6], prior_indices = index2)
     index4 = ut.array.get_indices(abs(r_form[:,2]), [x7,x8], prior_indices = index3)
     index5 = ut.array.get_indices(age, [a1,a2], prior_indices = index4)
     index6 = ut.array.get_indices(r[:,1]*180/np.pi, [x9,x10], prior_indices = index5)
+    index7 = ut.array.get_indices(r[:,0], [x11,x12], prior_indices = index6)
     Fe_H = part['star'].prop('metallicity.iron')
-    Fe_H_cut = Fe_H[index6]
+    Fe_H_cut = Fe_H[index7]
     if len(Fe_H_cut) == 0:
         return(np.nan)
     sd = np.std(Fe_H_cut)
@@ -92,7 +93,7 @@ def azimuthal_analysis_z_0():
             angmom_mean = angmom_func(7,8,0,3,0,15,0,3,0,1,r,r_form,age,part,particle_thresh = 100)
             Fe_H_azim = []
             for a in np.arange(0,1,0.05):
-                Fe_H_angmom = Fe_H_agedependent_sd(angmom_mean - 0.07,angmom_mean + 0.07,0,3,0,15,0,3,a,a+0.05,0,360,r,r_form,age,part,angmom_totvalues,particle_thresh = 100)
+                Fe_H_angmom = Fe_H_agedependent_sd(angmom_mean - 0.07,angmom_mean + 0.07,0,3,0,15,0,3,a,a+0.05,0,360,0,15,r,r_form,age,part,angmom_totvalues,particle_thresh = 100)
                 Fe_H_azim.append(Fe_H_angmom)    
             Fe_H_azim_mean = np.nanmean(Fe_H_azim,0)
             Fe_H_azim_total.append(Fe_H_azim_mean)
@@ -105,15 +106,16 @@ def azimuthal_analysis_z_0():
     
 # formation
 
-def Fe_H_agedependent_sd_form(x1,x2,x3,x4,x5,x6,x7,x8,a1,a2,x9,x10,r,r_form,age,part,angmom_totvalues_form,particle_thresh = 100):
+def Fe_H_agedependent_sd_form(x1,x2,x3,x4,x5,x6,x7,x8,a1,a2,x9,x10,x11,x12,r,r_form,age,part,angmom_totvalues_form,particle_thresh = 100):
     index = ut.array.get_indices(angmom_totvalues_form, [x1,x2])
     index2 = ut.array.get_indices(abs(r_form[:,2]), [x3,x4], prior_indices = index)
     index3 = ut.array.get_indices(r[:,0], [x5,x6], prior_indices = index2)
     index4 = ut.array.get_indices(abs(r[:,2]), [x7,x8], prior_indices = index3)
     index5 = ut.array.get_indices(age, [a1,a2], prior_indices = index4)
     index6 = ut.array.get_indices(r[:,1]*180/np.pi, [x9,x10], prior_indices = index5)
+    index7 = ut.array.get_indices(r[:,0], [x11,x12], prior_indices = index6)
     Fe_H = part['star'].prop('metallicity.iron')
-    Fe_H_cut = Fe_H[index6]
+    Fe_H_cut = Fe_H[index7]
     if len(Fe_H_cut) == 0:
         return(np.nan)
     sd = np.std(Fe_H_cut)
@@ -156,7 +158,7 @@ def azimuthal_analysis_form():
             angmom_mean_form = angmom_form_func(7,8,0,3,0,15,0,3,0,1,r,r_form,age,part,particle_thresh = 100)
             Fe_H_azim_form = []
             for a_f in np.arange(0,1,0.05):
-                Fe_H_angmom_form = Fe_H_agedependent_sd_form(angmom_mean_form - 0.07,angmom_mean_form + 0.07,0,3,0,15,0,3,a_f,a_f+0.05,0,360,r,r_form,age,part,angmom_totvalues_form,particle_thresh = 100)
+                Fe_H_angmom_form = Fe_H_agedependent_sd_form(angmom_mean_form - 0.07,angmom_mean_form + 0.07,0,3,0,15,0,3,a_f,a_f+0.05,0,360,0,15,r,r_form,age,part,angmom_totvalues_form,particle_thresh = 100)
                 Fe_H_azim_form.append(Fe_H_angmom_form)    
             Fe_H_azim_mean_form = np.nanmean(Fe_H_azim_form,0)
             Fe_H_azim_form_total.append(Fe_H_azim_mean_form)
