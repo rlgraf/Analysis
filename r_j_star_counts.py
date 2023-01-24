@@ -71,7 +71,7 @@ def angmom_func(x1,x2,x3,x4,x5,x6,x7,x8,x9,x10,x11,x12,a1,a2,r,r_form,age,part, 
     if len(angmom_cut) < particle_thresh:
         return(np.nan)
     mean_angmom = np.mean(angmom_cut)
-    index7 = ut.array.get_indices(angmom, [mean_angmom - 0.07*mean_angmom, mean_angmom + 0.07*mean_angmom], prior_indices = index3)
+    index7 = ut.array.get_indices(angmom, [mean_angmom - 0.5*mean_angmom, mean_angmom + 0.5*mean_angmom], prior_indices = index3)
     index8 = ut.array.get_indices(r[:,0], [x9,x10], prior_indices = index7)
     index9 = ut.array.get_indices(r_form[:,0], [x11,x12], prior_indices = index8)
     angmom_range = angmom[index9]
@@ -106,8 +106,8 @@ def azimuthal_analysis_z_0():
     range_j = np.array(range_j)
     range_r = np.array(range_r)
             
-    ut_io.file_hdf5('/home/rlgraf/Final_Figures/AZIM_angmom_z_0_starcount_0.07', range_j)  
-    ut_io.file_hdf5('/home/rlgraf/Final_Figures/AZIM_radius_z_0_starcount_0.07', range_r) 
+    ut_io.file_hdf5('/home/rlgraf/Final_Figures/AZIM_angmom_z_0_starcount_0.5', range_j)  
+    ut_io.file_hdf5('/home/rlgraf/Final_Figures/AZIM_radius_z_0_starcount_0.5', range_r) 
  
            
 # formation
@@ -146,7 +146,7 @@ def angmom_func_form(x1,x2,x3,x4,x5,x6,x7,x8,x9,x10,x11,x12,a1,a2,r,r_form,age,p
     if len(angmom_cut_form) < particle_thresh:
            return(np.nan)
     mean_angmom_form = np.mean(angmom_cut_form)
-    index7 = ut.array.get_indices(angmom_form, [mean_angmom_form - 0.07*mean_angmom_form, mean_angmom_form + 0.07*mean_angmom_form], prior_indices = index3)
+    index7 = ut.array.get_indices(angmom_form, [mean_angmom_form - 0.5*mean_angmom_form, mean_angmom_form + 0.5*mean_angmom_form], prior_indices = index3)
     index8 = ut.array.get_indices(r[:,0], [x9,x10], prior_indices = index7)
     a_form = part['star'].prop('form.scalefactor')
     scaled_radius = r_form[:,0]/a_form
@@ -183,8 +183,8 @@ def azimuthal_analysis_form():
     range_j_f = np.array(range_j_f)
     range_r_f = np.array(range_r_f)
             
-    ut_io.file_hdf5('/home/rlgraf/Final_Figures/AZIM_angmom_form_starcount_0.07', range_j_f)  
-    ut_io.file_hdf5('/home/rlgraf/Final_Figures/AZIM_radius_form_starcount_0.07', range_r_f)
+    ut_io.file_hdf5('/home/rlgraf/Final_Figures/AZIM_angmom_form_starcount_0.5', range_j_f)  
+    ut_io.file_hdf5('/home/rlgraf/Final_Figures/AZIM_radius_form_starcount_0.5', range_r_f)
     
 azimuthal_analysis_z_0()
 azimuthal_analysis_form()
