@@ -20,7 +20,7 @@ ScriptPrint = ut_io.SubmissionScriptClass("slurm")
 # Analysis code
 # Import programs
 
-$ pip install weightedstats
+pip install weightedstats
 import numpy as np
 import matplotlib.pyplot as plt
 import gizmo_analysis as gizmo
