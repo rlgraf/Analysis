@@ -19,8 +19,8 @@ import utilities.io as ut_io
 ScriptPrint = ut_io.SubmissionScriptClass("slurm")
 # Analysis code
 # Import programs
-pip install weightedstats==0.4.1
-conda install -c conda-forge weightedstats
+#pip install weightedstats==0.4.1
+#conda install -c conda-forge weightedstats
 import numpy as np
 import matplotlib.pyplot as plt
 import gizmo_analysis as gizmo
