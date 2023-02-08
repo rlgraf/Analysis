@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-#SBATCH --job-name=radial_analysis_location_cut_median
+#SBATCH --job-name=radial_analysis_location_cut_median_weighted
 #SBATCH --partition=high2  # peloton node: 32 cores, 7.8 GB per core, 250 GB total
 ##SBATCH --partition=high2m  # peloton high-mem node: 32 cores, 15.6 GB per core, 500 GB total
 #SBATCH --mem=32G  # need to specify memory if you set the number of tasks (--ntasks) below
@@ -8,7 +8,7 @@
 #SBATCH --ntasks=1  # (MPI) tasks total
 #SBATCH --cpus-per-task=1  # (OpenMP) threads per (MPI) task
 #SBATCH --time=03:00:00
-#SBATCH --output=radial_analysis_location_cut_median%j.txt
+#SBATCH --output=radial_analysis_location_cut_median_weighted%j.txt
 #SBATCH --mail-user=rlgraf@ucdavis.edu
 #SBATCH --mail-type=fail
 #SBATCH --mail-type=begin
@@ -20,6 +20,7 @@ ScriptPrint = ut_io.SubmissionScriptClass("slurm")
 # Analysis code
 # Import programs
 
+$ pip install weightedstats
 import numpy as np
 import matplotlib.pyplot as plt
 import gizmo_analysis as gizmo
