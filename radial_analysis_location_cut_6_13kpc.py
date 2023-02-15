@@ -104,7 +104,7 @@ def radial_analysis_z_0():
             for a, b in zip(np.arange(0,14), r90):
                 x = []
                 for i in np.arange(R90_z_0[q+LG_counter]/2,R90_z_0[q+LG_counter],(R90_z_0[q+LG_counter]-R90_z_0[q+LG_counter]/2)/10):
-                    x.append(Fe_H_agedependent(i,i+(R90_z_0[q+LG_counter]-R90_z_0[q+LG_counter]/2)/10,-3,3,0,b,-3,3,a,a+1,r,r_form,age,part)
+                    x.append(Fe_H_agedependent(i,i+(R90_z_0[q+LG_counter]-R90_z_0[q+LG_counter]/2)/10,-3,3,0,b,-3,3,a,a+1,r,r_form,age,part))
                 Fe_H_rad.append(x)
                 l = np.arange(R90_z_0[q+LG_counter]/2,R90_z_0[q+LG_counter],(R90_z_0[q+LG_counter]-R90_z_0[q+LG_counter]/2)/10)
                 x = np.array(x)
