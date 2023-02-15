@@ -63,7 +63,7 @@ def R90_z_0_func():
 
 # z = 0.
 
-def Fe_H_agedependent(x1,x2,x3,x4,x5,x6,x7,x8,a1,a2,r,r_form,age,part, particle_thresh = 100):
+def Fe_H_agedependent(x1,x2,x3,x4,x5,x6,x7,x8,a1,a2,r,r_form,age,part, particle_thresh = 10):
     index = ut.array.get_indices(r[:,0], [x1,x2])
     index2 = ut.array.get_indices(abs(r[:,2]), [x3,x4], prior_indices = index)
     index3 = ut.array.get_indices(r_form[:,0], [x5,x6], prior_indices = index2)
@@ -106,9 +106,6 @@ def radial_analysis_z_0():
             for a, b in zip(np.arange(0,14), r90):
                 x = []
                 for i in np.arange(0,R90_z_0[q+LG_counter],R90_z_0[q+LG_counter]/15):
-                    if (len(Fe_H_agedependent(i,i+R90_z_0[q+LG_counter]/15,-3,3,0,b,-3,3,a,a+1,r,r_form,age,part))== 0):
-                        x.append(np.nan)
-                    else:
                         x.append(Fe_H_agedependent(i,i+R90_z_0[q+LG_counter]/15,-3,3,0,b,-3,3,a,a+1,r,r_form,age,part))
                 Fe_H_rad.append(x)
                 l = np.arange(0,R90_z_0[q+LG_counter],R90_z_0[q+LG_counter]/15)
