@@ -80,7 +80,6 @@ def radial_analysis_z_0():
     slope_total = []
     sim = sim_func()
     R90 = R90_func()
-    R90_z_0 = R90_z_0_func()
     LG_counter = 0
     for q, s in enumerate(sim):
         simulation_directory = s
