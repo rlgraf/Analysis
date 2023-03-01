@@ -100,7 +100,7 @@ def radial_analysis_z_0():
             LG_counter += j
             r90 = R90
             for i in np.arange(0,20,20/10):
-                Fe_H_rad.append(Fe_H_agedependent(i,i+20/10,-1,1,0,r90,-1,1,0,14,r,r_form,age,part))
+                Fe_H_rad.append(Fe_H_agedependent(i,i+20/10,-1,1,0,20,-1,1,0,14,r,r_form,age,part))
             l = np.arange(0,20,20/10)
             x = np.array(x)
             if np.isnan(x).all():
