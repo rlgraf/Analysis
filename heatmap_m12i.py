@@ -40,8 +40,9 @@ def heatmap():
 
     x_coord = coordinates[:,0][is_in_galaxy]
     y_coord = coordinates[:,1][is_in_galaxy]
+    Fe_H_cut = Fe_H[is_in_galaxy]
 
-    heatmap_data = np.vstack([x_coord, y_coord, Fe_H])
+    heatmap_data = np.vstack([x_coord, y_coord, Fe_H_cut])
 
     ut_io.file_hdf5('/home/rlgraf/Final_Figures/heatmap_data_m12i', heatmap_data)
 
