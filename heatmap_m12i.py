@@ -32,6 +32,7 @@ import weightedstats as ws
 
 def heatmap():
     sim = '/share/wetzellab/m12i/m12i_r7100_uvb-late/'
+    part = gizmo.io.Read.read_snapshots(['star'], 'redshift', 0, simulation_directory, assign_hosts_rotation=True, assign_formation_coordinates = True)
     coordinates = part['star'].prop( 'host.distance' )
     distance_to_center = part['gas'].prop( 'host.distance.total' )
     is_in_galaxy = distance_to_center < 15
