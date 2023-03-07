@@ -30,7 +30,7 @@ import utilities.io as ut_io
 import weightedstats as ws
 
 
-def heatmap:
+def heatmap():
     sim = '/share/wetzellab/m12i/m12i_r7100_uvb-late/'
     coordinates = part['star'].prop( 'host.distance' )
     distance_to_center = part['gas'].prop( 'host.distance.total' )
