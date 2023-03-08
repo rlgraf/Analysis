@@ -33,17 +33,20 @@ import weightedstats as ws
 def heatmap():
     sim = '/share/wetzellab/m12i/m12i_r7100_uvb-late/'
     part = gizmo.io.Read.read_snapshots(['star'], 'redshift', 0, sim, assign_hosts_rotation=True, assign_formation_coordinates = True)
-    coordinates = part['star'].prop( 'host.distance' )
+    coordinates = part['star'].prop( 'host.distance.principal' )
     distance_to_center = part['star'].prop( 'host.distance.total' )
+    height = part['star'].prop('host.distance.principal.cylindrical')[:,2]
     is_in_galaxy = distance_to_center < 15
+    z_cut = ut.array.get_indices(abs(height, -3,3))
     Fe_H = part['star'].prop('metallicity.iron')
 
-    x_coord = coordinates[:,0][is_in_galaxy]
-    y_coord = coordinates[:,1][is_in_galaxy]
-    Fe_H_cut = Fe_H[is_in_galaxy]
+    x_coord = coordinates[:,0][is_in_galaxy][z_cut]
+    y_coord = coordinates[:,1][is_in_galaxy][z_cut]
+    Fe_H_cut = Fe_H[is_in_galaxy][z_cut]
+    Fe_H_weighted = sum((Fe_H_cut)*part['star']['mass'][is_in_galaxy][z_cut]/sum(part['star']['mass'][is_in_galaxy][z_cut])
 
-    heatmap_data = np.vstack([x_coord, y_coord, Fe_H_cut])
+    heatmap_data = np.vstack([x_coord, y_coord, Fe_H_weighted])
 
-    ut_io.file_hdf5('/home/rlgraf/Final_Figures/heatmap_data_m12i', heatmap_data)
+    ut_io.file_hdf5('/home/rlgraf/Final_Figures/heatmap_data_m12i_weighted', heatmap_data)
 
 heatmap()
