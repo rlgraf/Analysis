@@ -43,7 +43,7 @@ def heatmap():
     x_coord = coordinates[:,0][is_in_galaxy][z_cut]
     y_coord = coordinates[:,1][is_in_galaxy][z_cut]
     Fe_H_cut = Fe_H[is_in_galaxy][z_cut]
-    Fe_H_weighted = sum((Fe_H_cut)*part['star']['mass'][is_in_galaxy][z_cut]/sum(part['star']['mass'][is_in_galaxy][z_cut])
+    Fe_H_weighted = sum((Fe_H_cut)*part['star']['mass'][is_in_galaxy][z_cut])/sum(part['star']['mass'][is_in_galaxy][z_cut])
 
     heatmap_data = np.vstack([x_coord, y_coord, Fe_H_weighted])
 
