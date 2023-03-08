@@ -46,7 +46,7 @@ def heatmap():
     Fe_H_cut = Fe_H[index2]
     Fe_H_weighted = sum((Fe_H_cut)*part['star']['mass'][index2])/sum(part['star']['mass'][index2])
 
-    heatmap_data = np.vstack([x_coord, y_coord, Fe_H_weighted])
+    heatmap_data = np.vstack([x_coord, y_coord, Fe_H_cut])
 
     ut_io.file_hdf5('/home/rlgraf/Final_Figures/heatmap_data_m12i_weighted', heatmap_data)
 
