@@ -37,7 +37,7 @@ def heatmap():
     distance_to_center = part['star'].prop( 'host.distance.total' )
     height = part['star'].prop('host.distance.principal.cylindrical')[:,2]
     is_in_galaxy = distance_to_center < 15
-    z_cut = ut.array.get_indices(abs(height, -3,3))
+    z_cut = ut.array.get_indices(abs(height), [-3,3])
     Fe_H = part['star'].prop('metallicity.iron')
 
     x_coord = coordinates[:,0][is_in_galaxy][z_cut]
