@@ -43,7 +43,7 @@ def heatmap():
 
     x_coord = coordinates[:,0][index2]
     y_coord = coordinates[:,1][index2]
-    Fe_H_cut = Fe_H[z_cut]
+    Fe_H_cut = Fe_H[index2]
     Fe_H_weighted = sum((Fe_H_cut)*part['star']['mass'][index2])/sum(part['star']['mass'][index2])
 
     heatmap_data = np.vstack([x_coord, y_coord, Fe_H_weighted])
