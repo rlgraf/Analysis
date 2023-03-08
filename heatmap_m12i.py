@@ -36,8 +36,9 @@ def heatmap():
     coordinates = part['star'].prop( 'host.distance.principal' )
     distance_to_center = part['star'].prop( 'host.distance.total' )
     height = part['star'].prop('host.distance.principal.cylindrical')
-    index1 = distance_to_center < 15
-    index2 = ut.array.get_indices(height[:,2], [-3,3], prior_indices = index1)
+    index1 = ut.array.get_indices(height[:,2], [-3,3])
+    index2 = ut.array.get_indices(distance_to_center, [0,15], prior_indices = index1)
+    
     Fe_H = part['star'].prop('metallicity.iron')
 
     x_coord = coordinates[:,0][index2]
