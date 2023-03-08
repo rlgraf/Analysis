@@ -35,15 +35,15 @@ def heatmap():
     part = gizmo.io.Read.read_snapshots(['star'], 'redshift', 0, sim, assign_hosts_rotation=True, assign_formation_coordinates = True)
     coordinates = part['star'].prop( 'host.distance.principal' )
     distance_to_center = part['star'].prop( 'host.distance.total' )
-    height = part['star'].prop('host.distance.principal.cylindrical')[:,2]
-    is_in_galaxy = distance_to_center < 15
-    z_cut = ut.array.get_indices(abs(height), [-3,3], prior_indices = is_in_galaxy)
+    height = part['star'].prop('host.distance.principal.cylindrical')
+    index1 = distance_to_center < 15
+    index2 = ut.array.get_indices(height[:,2], [-3,3], prior_indices = index1)
     Fe_H = part['star'].prop('metallicity.iron')
 
-    x_coord = coordinates[:,0][z_cut]
-    y_coord = coordinates[:,1][z_cut]
+    x_coord = coordinates[:,0][index2]
+    y_coord = coordinates[:,1][index2]
     Fe_H_cut = Fe_H[z_cut]
-    Fe_H_weighted = sum((Fe_H_cut)*part['star']['mass'][z_cut])/sum(part['star']['mass'][z_cut])
+    Fe_H_weighted = sum((Fe_H_cut)*part['star']['mass'][index2])/sum(part['star']['mass'][index2])
 
     heatmap_data = np.vstack([x_coord, y_coord, Fe_H_weighted])
 
