@@ -48,6 +48,6 @@ def heatmap():
 
     heatmap_data = np.vstack([x_coord, y_coord, Fe_H_cut])
 
-    ut_io.file_hdf5('/home/rlgraf/Final_Figures/heatmap_data_m12m_allstars_trial5', heatmap_data)
+    ut_io.file_hdf5('/home/rlgraf/Final_Figures/heatmap_data_m12m_allstars_trial6', heatmap_data)
 
 heatmap()
