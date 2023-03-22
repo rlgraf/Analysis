@@ -75,7 +75,7 @@ def vertical_analysis_z_0():
                 for a_pre in np.arange(0,1,0.1):
                     x = []
                     for i in np.arange(0,1,0.1):
-                        x.append(Fe_H_agedependent(7,8,i,i+0.1,0,15,0,1,a+a_pre,a+a_pre+0.1,r,r_form,age,part))
+                        x.append(Fe_H_agedependent(7,8,i,i+0.1,0,15,0,1,a+a_pre,a+a_pre+0.1,r,r_form,age_obs,part))
                     Fe_H_ver_pre.append(x)
                 Fe_H_ver_pre = np.array(Fe_H_ver_pre)
                 Fe_H_ver_pre_mean = np.nanmean(Fe_H_ver_pre,0)
