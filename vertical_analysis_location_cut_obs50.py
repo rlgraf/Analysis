@@ -70,9 +70,9 @@ def vertical_analysis_z_0():
         for r, r_form in zip(r_array, r_form_array):
             Fe_H_ver_r_7_8 = []
             slope_ver_r_7_8 = []
-            for a in np.arange(0,13):
+            for a in np.arange(1,11,2):
                 Fe_H_ver_pre = []
-                for a_pre in np.arange(0,1,0.1):
+                for a_pre in np.arange(0,2,0.2):
                     x = []
                     for i in np.arange(0,1,0.1):
                         x.append(Fe_H_agedependent(7,8,i,i+0.1,0,15,0,1,a+a_pre,a+a_pre+0.1,r,r_form,age_obs,part))
@@ -90,9 +90,9 @@ def vertical_analysis_z_0():
     slope_ver_r_7_8_total = np.array([slope_ver_r_7_8_total])
 
     
-    ut_io.file_hdf5('/home/rlgraf/Final_Figures/VER_profile_r_7_8_z_0_location_cut_obs50', Fe_H_ver_r_7_8_total)
+    ut_io.file_hdf5('/home/rlgraf/Final_Figures/VER_profile_r_7_8_z_0_location_cut_obs50_bigbin', Fe_H_ver_r_7_8_total)
     
-    ut_io.file_hdf5('/home/rlgraf/Final_Figures/VER_slope_r_7_8_z_0_location_cut_obs50', slope_ver_r_7_8_total)
+    ut_io.file_hdf5('/home/rlgraf/Final_Figures/VER_slope_r_7_8_z_0_location_cut_obs50_bigbin', slope_ver_r_7_8_total)
 
 
 vertical_analysis_z_0()
