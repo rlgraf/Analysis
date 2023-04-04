@@ -106,8 +106,8 @@ def azimuthal_analysis_z_0():
                 Fe_H_azim_pre = []
                 for a_pre in np.arange(0,1,0.05):
                     std_vs_rad = []
-                    for i in np.arange(0,R90_z_0[q+LG_counter],R90_z_0[q+LG_counter]/10):
-                        std_vs_rad.append(Fe_H_agedependent_sd(i,i+R90_z_0[q+LG_counter]/10,0,3,0,b,0,3,a+a_pre,a+a_pre+0.05,0,360,r,r_form,age,part))
+                    for i in np.arange(0,15,15/10):
+                        std_vs_rad.append(Fe_H_agedependent_sd(i,i+15/10,0,3,0,b,0,3,a+a_pre,a+a_pre+0.05,0,360,r,r_form,age,part))
                     Fe_H_azim_pre.append(std_vs_rad)
                 Fe_H_azim_pre = np.array(Fe_H_azim_pre)
                 Fe_H_azim_pre_mean = np.nanmean(Fe_H_azim_pre,0)
@@ -121,8 +121,8 @@ def azimuthal_analysis_z_0():
     Fe_H_azim_total = np.array(Fe_H_azim_total)
     slope_azim_total = np.array(slope_azim_total)
     
-    ut_io.file_hdf5('/home/rlgraf/Final_Figures/AZIM_profile_z_0_new', Fe_H_azim_total) 
-    ut_io.file_hdf5('/home/rlgraf/Final_Figures/AZIM_slope_z_0_new', slope_azim_total) 
+    ut_io.file_hdf5('/home/rlgraf/Final_Figures/AZIM_profile_z_0_newer', Fe_H_azim_total) 
+    ut_io.file_hdf5('/home/rlgraf/Final_Figures/AZIM_slope_z_0_newer', slope_azim_total) 
     
 # formation
 
@@ -186,8 +186,8 @@ def azimuthal_analysis_form():
     Fe_H_azim_form_total = np.array(Fe_H_azim_form_total)
     slope_azim_form_total = np.array(slope_azim_form_total)  
     
-    ut_io.file_hdf5('/home/rlgraf/Final_Figures/AZIM_profile_form_new', Fe_H_azim_form_total) 
-    ut_io.file_hdf5('/home/rlgraf/Final_Figures/AZIM_slope_form_new', slope_azim_form_total) 
+    ut_io.file_hdf5('/home/rlgraf/Final_Figures/AZIM_profile_form_newer', Fe_H_azim_form_total) 
+    ut_io.file_hdf5('/home/rlgraf/Final_Figures/AZIM_slope_form_newer', slope_azim_form_total) 
     
 azimuthal_analysis_z_0()
 azimuthal_analysis_form()
