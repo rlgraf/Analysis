@@ -26,6 +26,7 @@ import gizmo_analysis as gizmo
 import utilities as ut
 import scipy
 import utilities.io as ut_io
+import weightedstats as ws
 
 
 def sim_func():
