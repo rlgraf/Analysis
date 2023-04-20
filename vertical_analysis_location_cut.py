@@ -45,7 +45,7 @@ def Fe_H_agedependent(x1,x2,x3,x4,x5,x6,x7,x8,a1,a2,r,r_form,age,part, particle_
     Fe_H_cut = Fe_H[index5]
     if len(Fe_H_cut) < particle_thresh:
         return(np.nan)
-    weight_avg = ws.weighted_median(Fe_H_cut, part['star']['mass'][index5]
+    weight_avg = ws.weighted_median(Fe_H_cut, part['star']['mass'][index5])
     return(weight_avg)
 
 def vertical_analysis_z_0():
@@ -184,7 +184,7 @@ def Fe_H_agedependent_form(x1,x2,x3,x4,x5,x6,x7,x8,a1,a2,r_form,r,age,part, part
     Fe_H_cut = Fe_H[index5]
     if len(Fe_H_cut) < particle_thresh:
         return(np.nan)
-    weight_avg = ws.weighted_median(Fe_H_cut, part['star']['mass'][index5]
+    weight_avg = ws.weighted_median(Fe_H_cut, part['star']['mass'][index5])
     return(weight_avg)
 
 def vertical_analysis_form():
