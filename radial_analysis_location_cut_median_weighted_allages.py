@@ -99,7 +99,7 @@ def radial_analysis_z_0():
             slope = []
             LG_counter += j
             for i in np.arange(0,15,15/10):
-                Fe_H_rad.append(Fe_H_agedependent(i,i+15/10,-3,3,0,b,-3,3,0,14,r,r_form,age,part))
+                Fe_H_rad.append(Fe_H_agedependent(i,i+15/10,-3,3,0,15,-3,3,0,14,r,r_form,age,part))
             l = np.arange(0,15,15/10)
             x = np.array(x)
             if np.isnan(x).all():
@@ -159,7 +159,7 @@ def radial_analysis_form():
             LG_counter += j
             for i_f in np.arange(0,15,15/10):
                 Fe_H_rad_form.append(Fe_H_agedependent_form(i_f,i_f+b_f/10,-3,3,0,30,-3,3,0,14,r_form,r,age,part))
-            l_f = np.arange(0,b_f,b_f/10)
+            l_f = np.arange(0,15,15/10)
             x_f = np.array(x_f)
             if np.isnan(x_f).all():
                 slope_form.append(np.nan)
