@@ -82,7 +82,7 @@ def vertical_analysis_z_0():
                 Fe_H_ver_r_1_2.append(Fe_H_ver_pre_mean)
                 l = np.arange(0,1,0.1)
                 #x = np.array(x)
-                if len(Fe_H_ver_pre_mean) = 0:
+                if len(Fe_H_ver_pre_mean) == 0:
                     slope_ver_r_1_2.append(np.nan)
                 else:
                     j, k = np.polyfit(l[np.isfinite(Fe_H_ver_pre_mean)],Fe_H_ver_pre_mean[np.isfinite(Fe_H_ver_pre_mean)],1)
@@ -122,7 +122,7 @@ def vertical_analysis_z_0():
                 Fe_H_ver_pre_mean = np.nanmean(Fe_H_ver_pre,0)
                 Fe_H_ver_r_4_5.append(Fe_H_ver_pre_mean)
                 l = np.arange(0,1,0.1)
-                if len(Fe_H_ver_pre_mean) = 0:
+                if len(Fe_H_ver_pre_mean) == 0:
                     slope_ver_r_4_5.append(np.nan)
                 else:
                     j, k = np.polyfit(l[np.isfinite(Fe_H_ver_pre_mean)],Fe_H_ver_pre_mean[np.isfinite(Fe_H_ver_pre_mean)],1)
@@ -162,7 +162,7 @@ def vertical_analysis_z_0():
                 Fe_H_ver_pre_mean = np.nanmean(Fe_H_ver_pre,0)
                 Fe_H_ver_r_7_8.append(Fe_H_ver_pre_mean)
                 l = np.arange(0,1,0.1)
-                if len(Fe_H_ver_pre_mean) = 0:
+                if len(Fe_H_ver_pre_mean) == 0:
                     slope_ver_r_7_8.append(np.nan)
                 else:
                     j, k = np.polyfit(l[np.isfinite(Fe_H_ver_pre_mean)],Fe_H_ver_pre_mean[np.isfinite(Fe_H_ver_pre_mean)],1)
@@ -227,7 +227,7 @@ def vertical_analysis_form():
                 Fe_H_ver_pre_f_mean = np.nanmean(Fe_H_ver_pre_f,0)
                 Fe_H_ver_r_1_2_form.append(Fe_H_ver_pre_f_mean)
                 l_f = np.arange(0,1,0.1)
-                if len(Fe_H_ver_pre_f_mean) = 0:
+                if len(Fe_H_ver_pre_f_mean) == 0:
                     slope_ver_r_1_2_form.append(np.nan)
                 else:
                     j_f, k_f = np.polyfit(l_f[np.isfinite(Fe_H_ver_pre_f_mean)],Fe_H_ver_pre_f_mean[np.isfinite(Fe_H_ver_pre_f_mean)],1)
@@ -267,7 +267,7 @@ def vertical_analysis_form():
                 Fe_H_ver_pre_f_mean = np.nanmean(Fe_H_ver_pre_f,0)
                 Fe_H_ver_r_4_5_form.append(Fe_H_ver_pre_f_mean)
                 l_f = np.arange(0,1,0.1)
-                if len(Fe_H_ver_pre_f_mean) = 0:
+                if len(Fe_H_ver_pre_f_mean) == 0:
                     slope_ver_r_4_5_form.append(np.nan)
                 else:
                     j_f, k_f = np.polyfit(l_f[np.isfinite(Fe_H_ver_pre_f_mean)],Fe_H_ver_pre_f_mean[np.isfinite(Fe_H_ver_pre_f_mean)],1)
@@ -307,7 +307,7 @@ def vertical_analysis_form():
                 Fe_H_ver_pre_f_mean = np.nanmean(Fe_H_ver_pre_f,0)
                 Fe_H_ver_r_7_8_form.append(Fe_H_ver_pre_f_mean)
                 l_f = np.arange(0,1,0.1)
-                if len(Fe_H_ver_pre_f_mean) = 0:
+                if len(Fe_H_ver_pre_f_mean) == 0:
                     slope_ver_r_7_8_form.append(np.nan)
                 else:
                     j_f, k_f = np.polyfit(l_f[np.isfinite(Fe_H_ver_pre_f_mean)],Fe_H_ver_pre_f_mean[np.isfinite(Fe_H_ver_pre_f_mean)],1)
