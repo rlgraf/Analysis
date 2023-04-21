@@ -82,7 +82,7 @@ def vertical_analysis_z_0():
                 Fe_H_ver_r_1_2.append(Fe_H_ver_pre_mean)
                 l = np.arange(0,1,0.1)
                 #x = np.array(x)
-                if Fe_H_ver_pre_mean == 0:
+                if len(Fe_H_ver_pre_mean) = 0:
                     slope_ver_r_1_2.append(np.nan)
                 else:
                     j, k = np.polyfit(l[np.isfinite(Fe_H_ver_pre_mean)],Fe_H_ver_pre_mean[np.isfinite(Fe_H_ver_pre_mean)],1)
@@ -122,7 +122,7 @@ def vertical_analysis_z_0():
                 Fe_H_ver_pre_mean = np.nanmean(Fe_H_ver_pre,0)
                 Fe_H_ver_r_4_5.append(Fe_H_ver_pre_mean)
                 l = np.arange(0,1,0.1)
-                if Fe_H_ver_pre_mean == 0:
+                if len(Fe_H_ver_pre_mean) = 0:
                     slope_ver_r_4_5.append(np.nan)
                 else:
                     j, k = np.polyfit(l[np.isfinite(Fe_H_ver_pre_mean)],Fe_H_ver_pre_mean[np.isfinite(Fe_H_ver_pre_mean)],1)
@@ -162,7 +162,7 @@ def vertical_analysis_z_0():
                 Fe_H_ver_pre_mean = np.nanmean(Fe_H_ver_pre,0)
                 Fe_H_ver_r_7_8.append(Fe_H_ver_pre_mean)
                 l = np.arange(0,1,0.1)
-                if Fe_H_ver_pre_mean == 0:
+                if len(Fe_H_ver_pre_mean) = 0:
                     slope_ver_r_7_8.append(np.nan)
                 else:
                     j, k = np.polyfit(l[np.isfinite(Fe_H_ver_pre_mean)],Fe_H_ver_pre_mean[np.isfinite(Fe_H_ver_pre_mean)],1)
@@ -172,13 +172,13 @@ def vertical_analysis_z_0():
     Fe_H_ver_r_7_8_total = np.array([Fe_H_ver_r_7_8_total])
     slope_ver_r_7_8_total = np.array([slope_ver_r_7_8_total])
 
-    ut_io.file_hdf5('/home/rlgraf/Final_Figures/VER_profile_r_1_2_z_0_location_cut_median', Fe_H_ver_r_1_2_total)
-    ut_io.file_hdf5('/home/rlgraf/Final_Figures/VER_profile_r_4_5_z_0_location_cut_median', Fe_H_ver_r_4_5_total)
-    ut_io.file_hdf5('/home/rlgraf/Final_Figures/VER_profile_r_7_8_z_0_location_cut_median', Fe_H_ver_r_7_8_total)
+    ut_io.file_hdf5('/home/rlgraf/Final_Figures/VER_profile_r_1_2_z_0_location_cut_median_weighted', Fe_H_ver_r_1_2_total)
+    ut_io.file_hdf5('/home/rlgraf/Final_Figures/VER_profile_r_4_5_z_0_location_cut_median_weighted', Fe_H_ver_r_4_5_total)
+    ut_io.file_hdf5('/home/rlgraf/Final_Figures/VER_profile_r_7_8_z_0_location_cut_median_weighted', Fe_H_ver_r_7_8_total)
     
-    ut_io.file_hdf5('/home/rlgraf/Final_Figures/VER_slope_r_1_2_z_0_location_cut_median', slope_ver_r_1_2_total)
-    ut_io.file_hdf5('/home/rlgraf/Final_Figures/VER_slope_r_4_5_z_0_location_cut_median', slope_ver_r_4_5_total)
-    ut_io.file_hdf5('/home/rlgraf/Final_Figures/VER_slope_r_7_8_z_0_location_cut_median', slope_ver_r_7_8_total)
+    ut_io.file_hdf5('/home/rlgraf/Final_Figures/VER_slope_r_1_2_z_0_location_cut_median_weighted', slope_ver_r_1_2_total)
+    ut_io.file_hdf5('/home/rlgraf/Final_Figures/VER_slope_r_4_5_z_0_location_cut_median_weighted', slope_ver_r_4_5_total)
+    ut_io.file_hdf5('/home/rlgraf/Final_Figures/VER_slope_r_7_8_z_0_location_cut_median_weighted', slope_ver_r_7_8_total)
 
 # formation
 
@@ -227,7 +227,7 @@ def vertical_analysis_form():
                 Fe_H_ver_pre_f_mean = np.nanmean(Fe_H_ver_pre_f,0)
                 Fe_H_ver_r_1_2_form.append(Fe_H_ver_pre_f_mean)
                 l_f = np.arange(0,1,0.1)
-                if Fe_H_ver_pre_f_mean == 0:
+                if len(Fe_H_ver_pre_f_mean) = 0:
                     slope_ver_r_1_2_form.append(np.nan)
                 else:
                     j_f, k_f = np.polyfit(l_f[np.isfinite(Fe_H_ver_pre_f_mean)],Fe_H_ver_pre_f_mean[np.isfinite(Fe_H_ver_pre_f_mean)],1)
@@ -267,7 +267,7 @@ def vertical_analysis_form():
                 Fe_H_ver_pre_f_mean = np.nanmean(Fe_H_ver_pre_f,0)
                 Fe_H_ver_r_4_5_form.append(Fe_H_ver_pre_f_mean)
                 l_f = np.arange(0,1,0.1)
-                if Fe_H_ver_pre_f_mean == 0:
+                if len(Fe_H_ver_pre_f_mean) = 0:
                     slope_ver_r_4_5_form.append(np.nan)
                 else:
                     j_f, k_f = np.polyfit(l_f[np.isfinite(Fe_H_ver_pre_f_mean)],Fe_H_ver_pre_f_mean[np.isfinite(Fe_H_ver_pre_f_mean)],1)
@@ -307,7 +307,7 @@ def vertical_analysis_form():
                 Fe_H_ver_pre_f_mean = np.nanmean(Fe_H_ver_pre_f,0)
                 Fe_H_ver_r_7_8_form.append(Fe_H_ver_pre_f_mean)
                 l_f = np.arange(0,1,0.1)
-                if Fe_H_ver_pre_f_mean == 0:
+                if len(Fe_H_ver_pre_f_mean) = 0:
                     slope_ver_r_7_8_form.append(np.nan)
                 else:
                     j_f, k_f = np.polyfit(l_f[np.isfinite(Fe_H_ver_pre_f_mean)],Fe_H_ver_pre_f_mean[np.isfinite(Fe_H_ver_pre_f_mean)],1)
@@ -317,13 +317,13 @@ def vertical_analysis_form():
     Fe_H_ver_r_7_8_form_total = np.array([Fe_H_ver_r_7_8_form_total])
     slope_ver_r_7_8_form_total = np.array([slope_ver_r_7_8_form_total])
 
-    ut_io.file_hdf5('/home/rlgraf/Final_Figures/VER_profile_r_1_2_form_location_cut_median', Fe_H_ver_r_1_2_form_total)
-    ut_io.file_hdf5('/home/rlgraf/Final_Figures/VER_profile_r_4_5_form_location_cut_median', Fe_H_ver_r_4_5_form_total)
-    ut_io.file_hdf5('/home/rlgraf/Final_Figures/VER_profile_r_7_8_form_location_cut_median', Fe_H_ver_r_7_8_form_total)
+    ut_io.file_hdf5('/home/rlgraf/Final_Figures/VER_profile_r_1_2_form_location_cut_median_weighted', Fe_H_ver_r_1_2_form_total)
+    ut_io.file_hdf5('/home/rlgraf/Final_Figures/VER_profile_r_4_5_form_location_cut_median_weighted', Fe_H_ver_r_4_5_form_total)
+    ut_io.file_hdf5('/home/rlgraf/Final_Figures/VER_profile_r_7_8_form_location_cut_median_weighted', Fe_H_ver_r_7_8_form_total)
     
-    ut_io.file_hdf5('/home/rlgraf/Final_Figures/VER_slope_r_1_2_form_location_cut_median', slope_ver_r_1_2_form_total)
-    ut_io.file_hdf5('/home/rlgraf/Final_Figures/VER_slope_r_4_5_form_location_cut_median', slope_ver_r_4_5_form_total)
-    ut_io.file_hdf5('/home/rlgraf/Final_Figures/VER_slope_r_7_8_form_location_cut_median', slope_ver_r_7_8_form_total)
+    ut_io.file_hdf5('/home/rlgraf/Final_Figures/VER_slope_r_1_2_form_location_cut_median_weighted', slope_ver_r_1_2_form_total)
+    ut_io.file_hdf5('/home/rlgraf/Final_Figures/VER_slope_r_4_5_form_location_cut_median_weighted', slope_ver_r_4_5_form_total)
+    ut_io.file_hdf5('/home/rlgraf/Final_Figures/VER_slope_r_7_8_form_location_cut_median_weighted', slope_ver_r_7_8_form_total)
     
 vertical_analysis_z_0()
 vertical_analysis_form()
