@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-#SBATCH --job-name=vertical_analysis_location_cut_new
+#SBATCH --job-name=vertical_analysis_location_cut_median
 #SBATCH --partition=high2  # peloton node: 32 cores, 7.8 GB per core, 250 GB total
 ##SBATCH --partition=high2m  # peloton high-mem node: 32 cores, 15.6 GB per core, 500 GB total
 #SBATCH --mem=64G  # need to specify memory if you set the number of tasks (--ntasks) below
@@ -8,7 +8,7 @@
 #SBATCH --ntasks=1  # (MPI) tasks total
 #SBATCH --cpus-per-task=1  # (OpenMP) threads per (MPI) task
 #SBATCH --time=48:00:00
-#SBATCH --output=vertical_analysis_location_cut_new%j.txt
+#SBATCH --output=vertical_analysis_location_cut_median%j.txt
 #SBATCH --mail-user=rlgraf@ucdavis.edu
 #SBATCH --mail-type=fail
 #SBATCH --mail-type=begin
@@ -46,7 +46,7 @@ def Fe_H_agedependent(x1,x2,x3,x4,x5,x6,x7,x8,a1,a2,r,r_form,age,part, particle_
     Fe_H_cut = Fe_H[index5]
     if len(Fe_H_cut) < particle_thresh:
         return(np.nan)
-    weight_avg = sum((Fe_H_cut)*part['star']['mass'][index5])/sum(part['star']['mass'][index5])
+    weight_avg = ws.numpy_weighted_median(Fe_H_cut, part['star']['mass'][index5])
     return(weight_avg)
 
 def vertical_analysis_z_0():
@@ -185,7 +185,7 @@ def Fe_H_agedependent_form(x1,x2,x3,x4,x5,x6,x7,x8,a1,a2,r_form,r,age,part, part
     Fe_H_cut = Fe_H[index5]
     if len(Fe_H_cut) < particle_thresh:
         return(np.nan)
-    weight_avg = sum((Fe_H_cut)*part['star']['mass'][index5])/sum(part['star']['mass'][index5])
+    weight_avg = ws.numpy_weighted_median(Fe_H_cut, part['star']['mass'][index5])
     return(weight_avg)
 
 def vertical_analysis_form():
