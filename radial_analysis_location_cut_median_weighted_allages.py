@@ -60,7 +60,7 @@ def R90_func():
 
 # z = 0.
 
-def Fe_H_agedependent(x1,x2,x3,x4,x5,x6,x7,x8,a1,a2,r,r_form,age,part, particle_thresh = 16):
+def Fe_H_agedependent(x1,x2,x3,x4,x5,x6,x7,x8,a1,a2,r,r_form,age,part, particle_thresh = 4):
     index = ut.array.get_indices(r[:,0], [x1,x2])
     index2 = ut.array.get_indices(abs(r[:,2]), [x3,x4], prior_indices = index)
     index3 = ut.array.get_indices(r_form[:,0], [x5,x6], prior_indices = index2)
@@ -98,9 +98,9 @@ def radial_analysis_z_0():
             Fe_H_rad = []
             slope = []
             LG_counter += j
-            for i in np.arange(0,15,15/10):
-                Fe_H_rad.append(Fe_H_agedependent(i,i+15/10,-3,3,0,15,-3,3,0,14,r,r_form,age,part))
-            l = np.arange(0,15,15/10)
+            for i in np.arange(0,15,15/50):
+                Fe_H_rad.append(Fe_H_agedependent(i,i+15/10,-3,3,0,50,-3,3,0,14,r,r_form,age,part))
+            l = np.arange(0,15,15/50)
             Fe_H_rad = np.array(Fe_H_rad)
             if np.isnan(Fe_H_rad).all():
                 slope.append(np.nan)
@@ -112,12 +112,12 @@ def radial_analysis_z_0():
     Fe_H_rad_total = np.array([Fe_H_rad_total])
     slope_total = np.array([slope_total])
     
-    ut_io.file_hdf5('/home/rlgraf/Final_Figures/RAD_profile_z_0_location_cut_median_weighted_all_ages', Fe_H_rad_total)
-    ut_io.file_hdf5('/home/rlgraf/Final_Figures/RAD_slope_z_0_location_cut_median_weighted_all_ages', slope_total)
+    ut_io.file_hdf5('/home/rlgraf/Final_Figures/RAD_profile_z_0_location_cut_median_weighted_all_ages_50', Fe_H_rad_total)
+    ut_io.file_hdf5('/home/rlgraf/Final_Figures/RAD_slope_z_0_location_cut_median_weighted_all_ages_50', slope_total)
 
 # formation
 
-def Fe_H_agedependent_form(x1,x2,x3,x4,x5,x6,x7,x8,a1,a2,r_form,r,age,part, particle_thresh = 16):
+def Fe_H_agedependent_form(x1,x2,x3,x4,x5,x6,x7,x8,a1,a2,r_form,r,age,part, particle_thresh = 4):
     index = ut.array.get_indices(r_form[:,0], [x1,x2])
     index2 = ut.array.get_indices(abs(r_form[:,2]), [x3,x4], prior_indices = index)
     a_form = part['star'].prop('form.scalefactor')
@@ -157,9 +157,9 @@ def radial_analysis_form():
             Fe_H_rad_form = []
             slope_form = []
             LG_counter += j
-            for i_f in np.arange(0,15,15/10):
-                Fe_H_rad_form.append(Fe_H_agedependent_form(i_f,i_f+15/10,-3,3,0,30,-3,3,0,14,r_form,r,age,part))
-            l_f = np.arange(0,15,15/10)
+            for i_f in np.arange(0,15,15/50):
+                Fe_H_rad_form.append(Fe_H_agedependent_form(i_f,i_f+15/50,-3,3,0,30,-3,3,0,14,r_form,r,age,part))
+            l_f = np.arange(0,15,15/50)
             Fe_H_rad_form = np.array(Fe_H_rad_form)
             if np.isnan(Fe_H_rad_form).all():
                 slope_form.append(np.nan)
@@ -171,8 +171,8 @@ def radial_analysis_form():
     Fe_H_rad_form_total = np.array([Fe_H_rad_form_total])
     slope_form_total = np.array([slope_form_total])
     
-    ut_io.file_hdf5('/home/rlgraf/Final_Figures/RAD_profile_form_location_cut_median_weighted_all_ages', Fe_H_rad_form_total)
-    ut_io.file_hdf5('/home/rlgraf/Final_Figures/RAD_slope_form_location_cut_median_weighted_all_ages', slope_form_total)
+    ut_io.file_hdf5('/home/rlgraf/Final_Figures/RAD_profile_form_location_cut_median_weighted_all_ages_50', Fe_H_rad_form_total)
+    ut_io.file_hdf5('/home/rlgraf/Final_Figures/RAD_slope_form_location_cut_median_weighted_all_ages_50', slope_form_total)
     
 radial_analysis_z_0()
 radial_analysis_form()
