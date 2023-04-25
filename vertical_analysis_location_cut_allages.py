@@ -52,7 +52,7 @@ def Fe_H_agedependent(x1,x2,x3,x4,x5,x6,x7,x8,a1,a2,r,r_form,age,part, particle_
 def vertical_analysis_z_0():
     
     Fe_H_ver_r_1_2_total = []
-    slope_ver_r_1_2_total = []
+    
     sim = sim_func()
     for s in sim:
         simulation_directory = s
@@ -69,19 +69,17 @@ def vertical_analysis_z_0():
             
         for r, r_form in zip(r_array, r_form_array):    
             Fe_H_ver_r_1_2 = []
-            slope_ver_r_1_2 = []
+           
             for i in np.arange(0,1,0.1):
                 Fe_H_ver_r_1_2.append(Fe_H_agedependent(1,2,i,i+0.1,0,15,0,1,0,14,r,r_form,age,part))
-            l = np.arange(0,1,0.1)
-            j, k = np.polyfit(l[np.isfinite(Fe_H_ver_r_1_2)],Fe_H_ver_r_1_2[np.isfinite(Fe_H_ver_r_1_2)],1)
-            slope_ver_r_1_2.append(j)
+            
             Fe_H_ver_r_1_2_total.append(Fe_H_ver_r_1_2)
-            slope_ver_r_1_2_total.append(slope_ver_r_1_2)
+            
     Fe_H_ver_r_1_2_total = np.array([Fe_H_ver_r_1_2_total])
-    slope_ver_r_1_2_total = np.array([slope_ver_r_1_2_total])
+    
 
     Fe_H_ver_r_4_5_total = []
-    slope_ver_r_4_5_total = []
+    
     sim = sim_func()
     for s in sim:
         simulation_directory = s
@@ -98,19 +96,17 @@ def vertical_analysis_z_0():
             
         for r, r_form in zip(r_array, r_form_array):
             Fe_H_ver_r_4_5 = []
-            slope_ver_r_4_5 = []
+            
             for i in np.arange(0,1,0.1):
                 Fe_H_ver_r_4_5.append(Fe_H_agedependent(4,5,i,i+0.1,0,15,0,1,0,14,r,r_form,age,part))
-            l = np.arange(0,1,0.1)
-            j, k = np.polyfit(l[np.isfinite(Fe_H_ver_r_4_5)],Fe_H_ver_pre_mean[np.isfinite(Fe_H_ver_r_4_5)],1)
-            slope_ver_r_4_5.append(j)
+            
             Fe_H_ver_r_4_5_total.append(Fe_H_ver_r_4_5)
-            slope_ver_r_4_5_total.append(slope_ver_r_4_5)
+            
     Fe_H_ver_r_4_5_total = np.array([Fe_H_ver_r_4_5_total])
-    slope_ver_r_4_5_total = np.array([slope_ver_r_4_5_total])
+    
 
     Fe_H_ver_r_7_8_total = []
-    slope_ver_r_7_8_total = []
+    
     sim = sim_func()
     for s in sim:
         simulation_directory = s
@@ -127,25 +123,20 @@ def vertical_analysis_z_0():
             
         for r, r_form in zip(r_array, r_form_array):
             Fe_H_ver_r_7_8 = []
-            slope_ver_r_7_8 = []
+            
             for i in np.arange(0,1,0.1):
                 Fe_H_ver_r_7_8.append(Fe_H_agedependent(7,8,i,i+0.1,0,15,0,1,0,14,r,r_form,age,part))
-            l = np.arange(0,1,0.1)
-            j, k = np.polyfit(l[np.isfinite(Fe_H_ver_r_7_8)],Fe_H_ver_r_7_8[np.isfinite(Fe_H_ver_r_7_8)],1)
-            slope_ver_r_7_8.append(j)
+            
             Fe_H_ver_r_7_8_total.append(Fe_H_ver_r_7_8)
-            slope_ver_r_7_8_total.append(slope_ver_r_7_8)
+            
     Fe_H_ver_r_7_8_total = np.array([Fe_H_ver_r_7_8_total])
-    slope_ver_r_7_8_total = np.array([slope_ver_r_7_8_total])
+    
 
     ut_io.file_hdf5('/home/rlgraf/Final_Figures/VER_profile_r_1_2_z_0_location_cut_median_allages', Fe_H_ver_r_1_2_total)
     ut_io.file_hdf5('/home/rlgraf/Final_Figures/VER_profile_r_4_5_z_0_location_cut_median_allages', Fe_H_ver_r_4_5_total)
     ut_io.file_hdf5('/home/rlgraf/Final_Figures/VER_profile_r_7_8_z_0_location_cut_median_allages', Fe_H_ver_r_7_8_total)
     
-    ut_io.file_hdf5('/home/rlgraf/Final_Figures/VER_slope_r_1_2_z_0_location_cut_median_allages', slope_ver_r_1_2_total)
-    ut_io.file_hdf5('/home/rlgraf/Final_Figures/VER_slope_r_4_5_z_0_location_cut_median_allages', slope_ver_r_4_5_total)
-    ut_io.file_hdf5('/home/rlgraf/Final_Figures/VER_slope_r_7_8_z_0_location_cut_median_allages', slope_ver_r_7_8_total)
-
+    
 # formation
 
 def Fe_H_agedependent_form(x1,x2,x3,x4,x5,x6,x7,x8,a1,a2,r_form,r,age,part, particle_thresh = 4):
@@ -164,7 +155,7 @@ def Fe_H_agedependent_form(x1,x2,x3,x4,x5,x6,x7,x8,a1,a2,r_form,r,age,part, part
 def vertical_analysis_form():
     
     Fe_H_ver_r_1_2_form_total = []
-    slope_ver_r_1_2_form_total = []
+    
     sim = sim_func()
     for s in sim:
         simulation_directory = s
@@ -181,19 +172,17 @@ def vertical_analysis_form():
         
         for r, r_form in zip(r_array, r_form_array):
             Fe_H_ver_r_1_2_form = []
-            slope_ver_r_1_2_form = []
+            
             for i_f in np.arange(0,1,0.1):
                 Fe_H_ver_r_1_2_form.append(Fe_H_agedependent_form(1,2,i_f,i_f+0.1,0,15,0,1,0,14,r_form,r,age,part))
-            l_f = np.arange(0,1,0.1)
-            j_f, k_f = np.polyfit(l_f[np.isfinite(Fe_H_ver_r_1_2_form)],Fe_H_ver_r_1_2_form[np.isfinite(Fe_H_ver_r_1_2_form)],1)
-            slope_ver_r_1_2_form.append(j_f)
+
             Fe_H_ver_r_1_2_form_total.append(Fe_H_ver_r_1_2_form)
-            slope_ver_r_1_2_form_total.append(slope_ver_r_1_2_form)
+            
     Fe_H_ver_r_1_2_form_total = np.array([Fe_H_ver_r_1_2_form_total])
-    slope_ver_r_1_2_form_total = np.array([slope_ver_r_1_2_form_total])
+    
 
     Fe_H_ver_r_4_5_form_total = []
-    slope_ver_r_4_5_form_total = []
+    
     sim = sim_func()
     for s in sim:
         simulation_directory = s
@@ -210,19 +199,16 @@ def vertical_analysis_form():
         
         for r, r_form in zip(r_array, r_form_array):
             Fe_H_ver_r_4_5_form = []
-            slope_ver_r_4_5_form = []
+            
             for i_f in np.arange(0,1,0.1):
                 Fe_H_ver_r_4_5_form.append(Fe_H_agedependent_form(4,5,i_f,i_f+0.1,0,15,0,1,0,14,r_form,r,age,part))
-            l_f = np.arange(0,1,0.1)
-            j_f, k_f = np.polyfit(l_f[np.isfinite(Fe_H_ver_r_4_5_form)],Fe_H_ver_r_4_5_form[np.isfinite(Fe_H_ver_r_4_5_form)],1)
-            slope_ver_r_4_5_form.append(j_f)
+            
             Fe_H_ver_r_4_5_form_total.append(Fe_H_ver_r_4_5_form)
-            slope_ver_r_4_5_form_total.append(slope_ver_r_4_5_form)
+            
     Fe_H_ver_r_4_5_form_total = np.array([Fe_H_ver_r_4_5_form_total])
-    slope_ver_r_4_5_form_total = np.array([slope_ver_r_4_5_form_total])
-
+    
     Fe_H_ver_r_7_8_form_total = []
-    slope_ver_r_7_8_form_total = []
+    
     sim = sim_func()
     for s in sim:
         simulation_directory = s
@@ -239,24 +225,18 @@ def vertical_analysis_form():
             
         for r, r_form in zip(r_array, r_form_array):
             Fe_H_ver_r_7_8_form = []
-            slope_ver_r_7_8_form = []
+            
             for i_f in np.arange(0,1,0.1):
                 Fe_H_ver_r_7_8_form.append(Fe_H_agedependent_form(7,8,i_f,i_f+0.1,0,15,0,1,0,14,r_form,r,age,part))
-            l_f = np.arange(0,1,0.1)
-            j_f, k_f = np.polyfit(l_f[np.isfinite(Fe_H_ver_r_7_8_form)],Fe_H_ver_r_7_8_form[np.isfinite(Fe_H_ver_r_7_8_form)],1)
-            slope_ver_r_7_8_form.append(j_f)
+           
             Fe_H_ver_r_7_8_form_total.append(Fe_H_ver_r_7_8_form)
-            slope_ver_r_7_8_form_total.append(slope_ver_r_7_8_form)
+            
     Fe_H_ver_r_7_8_form_total = np.array([Fe_H_ver_r_7_8_form_total])
-    slope_ver_r_7_8_form_total = np.array([slope_ver_r_7_8_form_total])
+    
 
     ut_io.file_hdf5('/home/rlgraf/Final_Figures/VER_profile_r_1_2_form_location_cut_median_allages', Fe_H_ver_r_1_2_form_total)
     ut_io.file_hdf5('/home/rlgraf/Final_Figures/VER_profile_r_4_5_form_location_cut_median_allages', Fe_H_ver_r_4_5_form_total)
     ut_io.file_hdf5('/home/rlgraf/Final_Figures/VER_profile_r_7_8_form_location_cut_median_allages', Fe_H_ver_r_7_8_form_total)
-    
-    ut_io.file_hdf5('/home/rlgraf/Final_Figures/VER_slope_r_1_2_form_location_cut_median_allages', slope_ver_r_1_2_form_total)
-    ut_io.file_hdf5('/home/rlgraf/Final_Figures/VER_slope_r_4_5_form_location_cut_median_allages', slope_ver_r_4_5_form_total)
-    ut_io.file_hdf5('/home/rlgraf/Final_Figures/VER_slope_r_7_8_form_location_cut_median_allages', slope_ver_r_7_8_form_total)
     
 vertical_analysis_z_0()
 vertical_analysis_form()
