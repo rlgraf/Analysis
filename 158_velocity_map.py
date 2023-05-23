@@ -40,7 +40,7 @@ def heatmap():
     velocity_azim = velocity[:,1]
     index1 = ut.array.get_indices(height[:,2], [-3,3])
     index2 = ut.array.get_indices(distance_to_center, [0,25], prior_indices = index1)
-    index3 = ut.array.gat_indices(velocity_azim, [0,10000], prior_indices = index2
+    index3 = ut.array.gat_indices(velocity_azim, [0,10000], prior_indices = index2)
    
     
 
