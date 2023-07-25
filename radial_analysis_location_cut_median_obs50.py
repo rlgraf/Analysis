@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-#SBATCH --job-name=radial_analysis_location_cut_obs50
+#SBATCH --job-name=radial_analysis_location_cut_median_obs50
 #SBATCH --partition=high2  # peloton node: 32 cores, 7.8 GB per core, 250 GB total
 ##SBATCH --partition=high2m  # peloton high-mem node: 32 cores, 15.6 GB per core, 500 GB total
 #SBATCH --mem=32G  # need to specify memory if you set the number of tasks (--ntasks) below
@@ -8,7 +8,7 @@
 #SBATCH --ntasks=1  # (MPI) tasks total
 #SBATCH --cpus-per-task=1  # (OpenMP) threads per (MPI) task
 #SBATCH --time=03:00:00
-#SBATCH --output=radial_analysis_location_cut_obs50%j.txt
+#SBATCH --output=radial_analysis_location_cut_median_obs50%j.txt
 #SBATCH --mail-user=rlgraf@ucdavis.edu
 #SBATCH --mail-type=fail
 #SBATCH --mail-type=begin
@@ -35,7 +35,7 @@ import utilities.io as ut_io
 #'share/Wetzellab/m12_elvis/m12_elvis_res7100'
 
 def sim_func():
-    sim = ['/share/wetzellab/m12i/m12i_r7100_uvb-late/', '/share/wetzellab/m12c/m12c_r7100', '/share/wetzellab/m12f/m12f_r7100',  '/share/wetzellab/m12m/m12m_r7100','/share/wetzellab/m12b/m12b_r7100', '/share/wetzellab/m12_elvis/m12_elvis_RomeoJuliet_r3500', '/share/wetzellab/m12_elvis/m12_elvis_RomulusRemus_r4000', '/share/wetzellab/m12_elvis/m12_elvis_ThelmaLouise_r4000']
+    sim = ['/group/awetzelgrp/m12i/m12i_r7100_uvb-late/', '/group/awetzelgrp/m12c/m12c_r7100', '/group/awetzelgrp/m12f/m12f_r7100',  '/group/awetzelgrp/m12m/m12m_r7100','/group/awetzelgrp/m12b/m12b_r7100', '/group/awetzelgrp/m12_elvis/m12_elvis_RomeoJuliet_r3500', '/group/awetzelgrp/m12_elvis/m12_elvis_RomulusRemus_r4000', '/group/awetzelgrp/m12_elvis/m12_elvis_ThelmaLouise_r4000']
     return(sim)
 
 def R90_func():
@@ -61,7 +61,7 @@ def R90_z_0_func():
 
 # z = 0.
 
-def Fe_H_agedependent(x1,x2,x3,x4,x5,x6,x7,x8,a1,a2,r,r_form,age_obs,part, particle_thresh = 100):
+def Fe_H_agedependent(x1,x2,x3,x4,x5,x6,x7,x8,a1,a2,r,r_form,age_obs,part, particle_thresh = 16):
     index = ut.array.get_indices(r[:,0], [x1,x2])
     index2 = ut.array.get_indices(abs(r[:,2]), [x3,x4], prior_indices = index)
     index3 = ut.array.get_indices(r_form[:,0], [x5,x6], prior_indices = index2)
@@ -90,7 +90,7 @@ def radial_analysis_z_0():
         age = part['star'].prop('age')
         age_obs = age*10**(np.random.normal(0, np.log10(1.5), age.size))
     
-        if s in ['/share/wetzellab/m12_elvis/m12_elvis_RomeoJuliet_r3500', '/share/wetzellab/m12_elvis/m12_elvis_RomulusRemus_r4000', '/share/wetzellab/m12_elvis/m12_elvis_ThelmaLouise_r4000']:
+        if s in ['/group/awetzelgrp/m12_elvis/m12_elvis_RomeoJuliet_r3500', '/group/awetzelgrp/m12_elvis/m12_elvis_RomulusRemus_r4000', '/group/awetzelgrp/m12_elvis/m12_elvis_ThelmaLouise_r4000']:
             r_array = [part['star'].prop('host1.distance.principal.cylindrical'), part['star'].prop('host2.distance.principal.cylindrical')]
             r_form_array = [part['star'].prop('form.host1.distance.principal.cylindrical'), part['star'].prop('form.host2.distance.principal.cylindrical')]
         else:           
@@ -101,13 +101,13 @@ def radial_analysis_z_0():
             Fe_H_rad = []
             slope = []
             LG_counter += j
-            r90 = R90[q+LG_counter]
+            r90 = R90
             for a, b in zip(np.arange(0,14), r90):
                 x = []
-                for i in np.arange(0,R90_z_0[q+LG_counter],R90_z_0[q+LG_counter]/10):
-                    x.append(Fe_H_agedependent(i,i+R90_z_0[q+LG_counter]/10,-3,3,0,b,-3,3,a,a+1,r,r_form,age_obs,part))
+                for i in np.arange(0,15,15/10):
+                    x.append(Fe_H_agedependent(i,i+15/10,-3,3,0,b,-3,3,a,a+1,r,r_form,age_obs,part))
                 Fe_H_rad.append(x)
-                l = np.arange(0,R90_z_0[q+LG_counter],R90_z_0[q+LG_counter]/10)
+                l = np.arange(0,15,15/10)
                 x = np.array(x)
                 if np.isnan(x).all():
                     slope.append(np.nan)
