@@ -37,7 +37,7 @@ import weightedstats as ws
 #'share/Wetzellab/m12_elvis/m12_elvis_res7100'
 
 def sim_func():
-    sim = ['/share/wetzellab/m12i/m12i_r7100_uvb-late/', '/share/wetzellab/m12c/m12c_r7100', '/share/wetzellab/m12f/m12f_r7100',  '/share/wetzellab/m12m/m12m_r7100','/share/wetzellab/m12b/m12b_r7100', '/share/wetzellab/m12_elvis/m12_elvis_RomeoJuliet_r3500', '/share/wetzellab/m12_elvis/m12_elvis_RomulusRemus_r4000', '/share/wetzellab/m12_elvis/m12_elvis_ThelmaLouise_r4000']
+    sim = ['/group/awetzelgrp/m12i/m12i_r7100_uvb-late/', '/group/awetzelgrp/m12c/m12c_r7100', '/group/awetzelgrp/m12f/m12f_r7100',  '/group/awetzelgrp/m12m/m12m_r7100','/group/awetzelgrp/m12b/m12b_r7100', '/group/awetzelgrp/m12_elvis/m12_elvis_RomeoJuliet_r3500', '/group/awetzelgrp/m12_elvis/m12_elvis_RomulusRemus_r4000', '/group/awetzelgrp/m12_elvis/m12_elvis_ThelmaLouise_r4000']
     return(sim)
 
 def R90_func():
@@ -87,7 +87,7 @@ def radial_analysis_z_0():
         Fe_H = part['star'].prop('metallicity.iron')
         age = part['star'].prop('age')
     
-        if s in ['/share/wetzellab/m12_elvis/m12_elvis_RomeoJuliet_r3500', '/share/wetzellab/m12_elvis/m12_elvis_RomulusRemus_r4000', '/share/wetzellab/m12_elvis/m12_elvis_ThelmaLouise_r4000']:
+        if s in ['/group/awetzelgrp/m12_elvis/m12_elvis_RomeoJuliet_r3500', '/group/awetzelgrp/m12_elvis/m12_elvis_RomulusRemus_r4000', '/group/awetzelgrp/m12_elvis/m12_elvis_ThelmaLouise_r4000']:
             r_array = [part['star'].prop('host1.distance.principal.cylindrical'), part['star'].prop('host2.distance.principal.cylindrical')]
             r_form_array = [part['star'].prop('form.host1.distance.principal.cylindrical'), part['star'].prop('form.host2.distance.principal.cylindrical')]
         else:           
@@ -99,7 +99,7 @@ def radial_analysis_z_0():
             slope = []
             LG_counter += j
             for i in np.arange(0,15,15/50):
-                Fe_H_rad.append(Fe_H_agedependent(i,i+15/10,-3,3,0,50,-3,3,0,14,r,r_form,age,part))
+                Fe_H_rad.append(Fe_H_agedependent(i,i+15/50,-3,3,0,15,-3,3,0,14,r,r_form,age,part))
             l = np.arange(0,15,15/50)
             Fe_H_rad = np.array(Fe_H_rad)
             if np.isnan(Fe_H_rad).all():
@@ -112,8 +112,8 @@ def radial_analysis_z_0():
     Fe_H_rad_total = np.array([Fe_H_rad_total])
     slope_total = np.array([slope_total])
     
-    ut_io.file_hdf5('/home/rlgraf/Final_Figures/RAD_profile_z_0_location_cut_median_weighted_all_ages_50', Fe_H_rad_total)
-    ut_io.file_hdf5('/home/rlgraf/Final_Figures/RAD_slope_z_0_location_cut_median_weighted_all_ages_50', slope_total)
+    ut_io.file_hdf5('/home/rlgraf/Final_Figures/RAD_profile_z_0_location_cut_median_weighted_all_ages_50_pub', Fe_H_rad_total)
+    ut_io.file_hdf5('/home/rlgraf/Final_Figures/RAD_slope_z_0_location_cut_median_weighted_all_ages_50_pub', slope_total)
 
 # formation
 
@@ -146,7 +146,7 @@ def radial_analysis_form():
         Fe_H = part['star'].prop('metallicity.iron')
         age = part['star'].prop('age')
         
-        if s in ['/share/wetzellab/m12_elvis/m12_elvis_RomeoJuliet_r3500', '/share/wetzellab/m12_elvis/m12_elvis_RomulusRemus_r4000', '/share/wetzellab/m12_elvis/m12_elvis_ThelmaLouise_r4000']:
+        if s in ['/group/awetzelgrp/m12_elvis/m12_elvis_RomeoJuliet_r3500', '/group/awetzelgrp/m12_elvis/m12_elvis_RomulusRemus_r4000', '/group/awetzelgrp/m12_elvis/m12_elvis_ThelmaLouise_r4000']:
             r_array = [part['star'].prop('host1.distance.principal.cylindrical'), part['star'].prop('host2.distance.principal.cylindrical')]
             r_form_array = [part['star'].prop('form.host1.distance.principal.cylindrical'), part['star'].prop('form.host2.distance.principal.cylindrical')]
         else:
@@ -171,8 +171,8 @@ def radial_analysis_form():
     Fe_H_rad_form_total = np.array([Fe_H_rad_form_total])
     slope_form_total = np.array([slope_form_total])
     
-    ut_io.file_hdf5('/home/rlgraf/Final_Figures/RAD_profile_form_location_cut_median_weighted_all_ages_50', Fe_H_rad_form_total)
-    ut_io.file_hdf5('/home/rlgraf/Final_Figures/RAD_slope_form_location_cut_median_weighted_all_ages_50', slope_form_total)
+    ut_io.file_hdf5('/home/rlgraf/Final_Figures/RAD_profile_form_location_cut_median_weighted_all_ages_50_pub', Fe_H_rad_form_total)
+    ut_io.file_hdf5('/home/rlgraf/Final_Figures/RAD_slope_form_location_cut_median_weighted_all_ages_50_pub', slope_form_total)
     
 radial_analysis_z_0()
 radial_analysis_form()
