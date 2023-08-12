@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-#SBATCH --job-name=azimuthal_analysis_obs50
+#SBATCH --job-name=azimuthal_analysis_obs20
 #SBATCH --partition=high2  # peloton node: 32 cores, 7.8 GB per core, 250 GB total
 ##SBATCH --partition=high2m  # peloton high-mem node: 32 cores, 15.6 GB per core, 500 GB total
 #SBATCH --mem=64G  # need to specify memory if you set the number of tasks (--ntasks) below
@@ -8,7 +8,7 @@
 #SBATCH --ntasks=1  # (MPI) tasks total
 #SBATCH --cpus-per-task=1  # (OpenMP) threads per (MPI) task
 #SBATCH --time=48:00:00
-#SBATCH --output=azimuthal_analysis_obs50_%j.txt
+#SBATCH --output=azimuthal_analysis_obs20_%j.txt
 #SBATCH --mail-user=rlgraf@ucdavis.edu
 #SBATCH --mail-type=fail
 #SBATCH --mail-type=begin
@@ -122,8 +122,8 @@ def azimuthal_analysis_z_0():
     Fe_H_azim_total = np.array(Fe_H_azim_total)
     slope_azim_total = np.array(slope_azim_total)
     
-    ut_io.file_hdf5('/home/rlgraf/Final_Figures/AZIM_profile_z_0_obs50', Fe_H_azim_total) 
-    ut_io.file_hdf5('/home/rlgraf/Final_Figures/AZIM_slope_z_0_obs50', slope_azim_total) 
+    ut_io.file_hdf5('/home/rlgraf/Final_Figures/AZIM_profile_z_0_obs20', Fe_H_azim_total) 
+    ut_io.file_hdf5('/home/rlgraf/Final_Figures/AZIM_slope_z_0_obs20', slope_azim_total) 
     
     
 azimuthal_analysis_z_0()
