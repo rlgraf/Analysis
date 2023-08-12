@@ -89,7 +89,7 @@ def azimuthal_analysis_z_0():
         part = gizmo.io.Read.read_snapshots(['star'], 'redshift', 0, simulation_directory, assign_hosts_rotation=True, assign_formation_coordinates = True)
         Fe_H = part['star'].prop('metallicity.iron')
         age = part['star'].prop('age')
-        age_obs = age*10**(np.random.normal(0, np.log10(1.5), age.size))
+        age_obs = age*10**(np.random.normal(0, np.log10(1.2), age.size))
         
         if s in ['/group/awetzelgrp/m12_elvis/m12_elvis_RomeoJuliet_r3500', '/group/awetzelgrp/m12_elvis/m12_elvis_RomulusRemus_r4000', '/group/awetzelgrp/m12_elvis/m12_elvis_ThelmaLouise_r4000']:
             r_array = [part['star'].prop('host1.distance.principal.cylindrical'), part['star'].prop('host2.distance.principal.cylindrical')]
