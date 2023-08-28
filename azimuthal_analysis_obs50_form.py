@@ -63,7 +63,7 @@ def R90_z_0_func():
     
 # formation
 
-def Fe_H_dependent_sd_form(x1,x2,x3,x4,x5,x6,x7,x8,a1,a2,x9,x10,r_form,r,age_obs,part):
+def Fe_H_agedependent_sd_form(x1,x2,x3,x4,x5,x6,x7,x8,a1,a2,x9,x10,r_form,r,age_obs,part):
     index = ut.array.get_indices(r_form[:,0], [x1,x2])
     index2 = ut.array.get_indices(abs(r_form[:,2]), [x3,x4], prior_indices = index)
     a_form = part['star'].prop('form.scalefactor')
