@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-#SBATCH --job-name=age_analysis_0_15
+#SBATCH --job-name=age_analysis_7_8
 #SBATCH --partition=high2  # peloton node: 32 cores, 7.8 GB per core, 250 GB total
 ##SBATCH --partition=high2m  # peloton high-mem node: 32 cores, 15.6 GB per core, 500 GB total
 #SBATCH --mem=32G  # need to specify memory if you set the number of tasks (--ntasks) below
@@ -8,7 +8,7 @@
 #SBATCH --ntasks=1  # (MPI) tasks total
 #SBATCH --cpus-per-task=1  # (OpenMP) threads per (MPI) task
 #SBATCH --time=03:00:00
-#SBATCH --output=age_analysis_0_15%j.txt
+#SBATCH --output=age_analysis_7_8%j.txt
 #SBATCH --mail-user=rlgraf@ucdavis.edu
 #SBATCH --mail-type=fail
 #SBATCH --mail-type=begin
@@ -80,7 +80,7 @@ def age_analysis_z_0():
         Fe_H = part['star'].prop('metallicity.iron')
         age = part['star'].prop('age')
     
-        if s in ['/group/awetzelgrp/m12_elvis/m12_elvis_RomeoJuliet_r3500', '/group/awetzelgrp/m12_elvis/m12_elvis_RomulusRemus_r4000', '/group/awetzelgrp/m12_elvis/m12_elvis_ThelmaLouise_r4000']:
+        if if s in ['/group/awetzelgrp/m12_elvis/m12_elvis_RomeoJuliet_r3500', '/group/awetzelgrp/m12_elvis/m12_elvis_RomulusRemus_r4000', '/group/awetzelgrp/m12_elvis/m12_elvis_ThelmaLouise_r4000']:
             r_array = [part['star'].prop('host1.distance.principal.cylindrical'), part['star'].prop('host2.distance.principal.cylindrical')]
             r_form_array = [part['star'].prop('form.host1.distance.principal.cylindrical'), part['star'].prop('form.host2.distance.principal.cylindrical')]
         else:           
@@ -92,12 +92,12 @@ def age_analysis_z_0():
             LG_counter += j
             r90 = R90
             for a, b in zip(np.arange(0,14), r90):
-                Fe_H_age.append(Fe_H_agedependent(0,15,-3,3,0,b,-3,3,a,a+1,r,r_form,age,part))
+                Fe_H_age.append(Fe_H_agedependent(7,8,-3,3,0,b,-3,3,a,a+1,r,r_form,age,part))
             
         Fe_H_age_total.append(Fe_H_age)
     Fe_H_age_total = np.array([Fe_H_age_total])
     
-    ut_io.file_hdf5('/home/rlgraf/Final_Figures/AGE_z_0_location_cut_median_weighted', Fe_H_age_total)
+    ut_io.file_hdf5('/home/rlgraf/Final_Figures/AGE_z_0_location_cut_median_weighted_7_8', Fe_H_age_total)
 
 
 # formation
@@ -142,12 +142,12 @@ def age_analysis_form():
             LG_counter += j
             r90 = R90
             for a_f, b_f in zip(np.arange(0,14), r90):
-                Fe_H_age_form.append(Fe_H_agedependent_form(0,15,-3,3,0,30,-3,3,a_f,a_f+1,r_form,r,age,part))
+                Fe_H_age_form.append(Fe_H_agedependent_form(7,8,-3,3,0,30,-3,3,a_f,a_f+1,r_form,r,age,part))
           
         Fe_H_age_form_total.append(Fe_H_age_form)           
     Fe_H_age_form_total = np.array([Fe_H_age_form_total])
     
-    ut_io.file_hdf5('/home/rlgraf/Final_Figures/AGE_form_location_cut_median_weighted', Fe_H_age_form_total)
+    ut_io.file_hdf5('/home/rlgraf/Final_Figures/AGE_form_location_cut_median_weighted_7_8', Fe_H_age_form_total)
     
 age_analysis_z_0()
 age_analysis_form()
