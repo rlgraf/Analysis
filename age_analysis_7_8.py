@@ -138,7 +138,7 @@ def age_analysis_form():
         for j, (r, r_form) in enumerate(zip(r_array,r_form_array)):    
             Fe_H_age_form = []
             LG_counter += j
-            r90 = R90
+            r90 = R90[q+LG_counter]
             for a_f, b_f in zip(np.arange(0,14), r90):
                 Fe_H_age_form.append(Fe_H_agedependent_form(7,8,-3,3,0,30,-3,3,a_f,a_f+1,r_form,r,age,part))
           
