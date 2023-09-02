@@ -46,8 +46,8 @@ def R90_func():
     R90_Thelma = np.array([15.1, 13, 9.9, 8.2, 7.7, 7.8, 7.6, 9, 8.8, 9.6, 6.5, 5.6, 3.1, 0.6])
     R90_Louise = np.array([17.3, 16.4, 14.5, 12.7, 12.4, 11.2, 9.2, 5.1, 5.1, 7.6, 5.4, 4.7, 5.6, 1.1])
     
-    R90_stack = np.vstack([R90_m12i, R90_m12c, R90_m12f,  R90_m12m, R90_m12b, R90_Romeo, R90_Juliet, R90_Romulus, R90_Remus, R90_Thelma, R90_Louise])
-    R90 = np.mean(R90_stack,0)
+    R90 = np.vstack([R90_m12i, R90_m12c, R90_m12f,  R90_m12m, R90_m12b, R90_Romeo, R90_Juliet, R90_Romulus, R90_Remus, R90_Thelma, R90_Louise])
+    #R90 = np.mean(R90_stack,0)
     return(R90)
 
 # z = 0
@@ -88,14 +88,14 @@ def age_analysis_z_0():
         for j, (r, r_form) in enumerate(zip(r_array,r_form_array)):
             Fe_H_age = []
             LG_counter += j
-            r90 = R90
+            r90 = R90[q+LG_counter]
             for a, b in zip(np.arange(0,14), r90):
                 Fe_H_age.append(Fe_H_agedependent(0,15,-3,3,0,b,-3,3,a,a+1,r,r_form,age,part))
             
         Fe_H_age_total.append(Fe_H_age)
     Fe_H_age_total = np.array([Fe_H_age_total])
     
-    ut_io.file_hdf5('/home/rlgraf/Final_Figures/AGE_z_0_location_cut_median_weighted', Fe_H_age_total)
+    ut_io.file_hdf5('/home/rlgraf/Final_Figures/AGE_z_0_location_cut_median_weighted_new', Fe_H_age_total)
 
 
 # formation
@@ -138,14 +138,14 @@ def age_analysis_form():
         for j, (r, r_form) in enumerate(zip(r_array,r_form_array)):    
             Fe_H_age_form = []
             LG_counter += j
-            r90 = R90
+            r90 = R90[q+LG_counter]
             for a_f, b_f in zip(np.arange(0,14), r90):
                 Fe_H_age_form.append(Fe_H_agedependent_form(0,15,-3,3,0,30,-3,3,a_f,a_f+1,r_form,r,age,part))
           
         Fe_H_age_form_total.append(Fe_H_age_form)           
     Fe_H_age_form_total = np.array([Fe_H_age_form_total])
     
-    ut_io.file_hdf5('/home/rlgraf/Final_Figures/AGE_form_location_cut_median_weighted', Fe_H_age_form_total)
+    ut_io.file_hdf5('/home/rlgraf/Final_Figures/AGE_form_location_cut_median_weighted_new', Fe_H_age_form_total)
     
 age_analysis_z_0()
 age_analysis_form()
