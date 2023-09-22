@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-#SBATCH --job-name=azimuthal_analysis_obs25
+#SBATCH --job-name=azimuthal_analysis_obs0
 #SBATCH --partition=high2  # peloton node: 32 cores, 7.8 GB per core, 250 GB total
 ##SBATCH --partition=high2m  # peloton high-mem node: 32 cores, 15.6 GB per core, 500 GB total
 #SBATCH --mem=64G  # need to specify memory if you set the number of tasks (--ntasks) below
@@ -8,7 +8,7 @@
 #SBATCH --ntasks=1  # (MPI) tasks total
 #SBATCH --cpus-per-task=1  # (OpenMP) threads per (MPI) task
 #SBATCH --time=48:00:00
-#SBATCH --output=azimuthal_analysis_obs25_%j.txt
+#SBATCH --output=azimuthal_analysis_obs0_%j.txt
 #SBATCH --mail-user=rlgraf@ucdavis.edu
 #SBATCH --mail-type=fail
 #SBATCH --mail-type=begin
@@ -89,7 +89,7 @@ def azimuthal_analysis_z_0():
         part = gizmo.io.Read.read_snapshots(['star'], 'redshift', 0, simulation_directory, assign_hosts_rotation=True, assign_formation_coordinates = True)
         Fe_H = part['star'].prop('metallicity.iron')
         age = part['star'].prop('age')
-        age_obs = age*10**(np.random.normal(0, np.log10(1.25), age.size))
+        age_obs = age*10**(np.random.normal(0, np.log10(1.0), age.size))
         
         if s in ['/group/awetzelgrp/m12_elvis/m12_elvis_RomeoJuliet_r3500', '/group/awetzelgrp/m12_elvis/m12_elvis_RomulusRemus_r4000', '/group/awetzelgrp/m12_elvis/m12_elvis_ThelmaLouise_r4000']:
             r_array = [part['star'].prop('host1.distance.principal.cylindrical'), part['star'].prop('host2.distance.principal.cylindrical')]
@@ -107,13 +107,13 @@ def azimuthal_analysis_z_0():
                 Fe_H_azim_pre = []
                 for a_pre in np.arange(0,1,0.05):
                     std_vs_rad = []
-                    for i in np.arange(0,15,15/10):
-                        std_vs_rad.append(Fe_H_agedependent_sd(i,i+15/10,0,3,0,b,0,3,a+a_pre,a+a_pre+0.05,0,360,r,r_form,age_obs,part))
+                    for i in np.arange(0,15,1):
+                        std_vs_rad.append(Fe_H_agedependent_sd(i,i+1,0,3,0,b,0,3,a+a_pre,a+a_pre+0.05,0,360,r,r_form,age_obs,part))
                     Fe_H_azim_pre.append(std_vs_rad)
                 Fe_H_azim_pre = np.array(Fe_H_azim_pre)
                 Fe_H_azim_pre_mean = np.nanmean(Fe_H_azim_pre,0)
                 Fe_H_azim.append(Fe_H_azim_pre_mean)
-                l = np.arange(0,10)
+                l = np.arange(0,15,1)
                 #Fe_H_azim_pre_mean = np.array(Fe_H_azim_pre_mean)
                 j, k = np.polyfit(l[np.isfinite(Fe_H_azim_pre_mean)],Fe_H_azim_pre_mean[np.isfinite(Fe_H_azim_pre_mean)],1)
                 slope_azim.append(j)
@@ -122,8 +122,8 @@ def azimuthal_analysis_z_0():
     Fe_H_azim_total = np.array(Fe_H_azim_total)
     slope_azim_total = np.array(slope_azim_total)
     
-    ut_io.file_hdf5('/home/rlgraf/Final_Figures/AZIM_profile_z_0_obs25', Fe_H_azim_total) 
-    ut_io.file_hdf5('/home/rlgraf/Final_Figures/AZIM_slope_z_0_obs25', slope_azim_total) 
+    ut_io.file_hdf5('/home/rlgraf/Final_Figures/AZIM_profile_z_0_obs0_publish', Fe_H_azim_total) 
+    ut_io.file_hdf5('/home/rlgraf/Final_Figures/AZIM_slope_z_0_obs0_publish', slope_azim_total) 
     
     
 azimuthal_analysis_z_0()
