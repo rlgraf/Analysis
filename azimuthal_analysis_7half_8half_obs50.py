@@ -63,7 +63,7 @@ def R90_z_0_func():
 
 # z = 0
 
-def Fe_H_agedependent_sd(x1,x2,x3,x4,x5,x6,x7,x8,a1,a2,x9,x10,r,r_form,age,part):
+def Fe_H_agedependent_sd(x1,x2,x3,x4,x5,x6,x7,x8,a1,a2,x9,x10,r,r_form,age_obs,part):
     index = ut.array.get_indices(r[:,0], [x1,x2])
     index2 = ut.array.get_indices(abs(r[:,2]), [x3,x4], prior_indices = index)
     index3 = ut.array.get_indices(r_form[:,0], [x5,x6], prior_indices = index2)
