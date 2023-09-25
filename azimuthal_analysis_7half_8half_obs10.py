@@ -107,7 +107,7 @@ def azimuthal_analysis_z_0():
             for a,b in zip(np.arange(0,14),r90):
                 Fe_H_azim_pre = []
                 for a_pre in np.arange(0,1,0.05):
-                    Fe_H_azim_pre.append(Fe_H_agedependent_sd(7.5,8.5,0,3,0,15,0,3,a+a_pre,a+a_pre+0.05,0,360,r,r_form,age,part))  
+                    Fe_H_azim_pre.append(Fe_H_agedependent_sd(7.5,8.5,0,3,0,15,0,3,a+a_pre,a+a_pre+0.05,0,360,r,r_form,age_obs,part))  
                 Fe_H_azim_pre = np.array(Fe_H_azim_pre)
                 Fe_H_azim_pre_mean = np.nanmean(Fe_H_azim_pre,0)
                 Fe_H_azim.append(Fe_H_azim_pre_mean)
@@ -116,6 +116,6 @@ def azimuthal_analysis_z_0():
     Fe_H_azim_total = np.array(Fe_H_azim_total)
     
     
-    ut_io.file_hdf5('/home/rlgraf/Final_Figures/AZIM_profile_z_0_7half_8half_obs10_publish', Fe_H_azim_total) 
+    ut_io.file_hdf5('/home/rlgraf/Final_Figures/AZIM_profile_z_0_7half_8half_obs10_publish2', Fe_H_azim_total) 
     
 azimuthal_analysis_z_0()
