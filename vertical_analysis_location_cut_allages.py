@@ -71,7 +71,7 @@ def vertical_analysis_z_0():
             Fe_H_ver_r_1_2 = []
            
             for i in np.arange(0,1,0.1):
-                Fe_H_ver_r_1_2.append(Fe_H_agedependent(1,2,i,i+0.1,0,15,0,1,0,14,r,r_form,age,part))
+                Fe_H_ver_r_1_2.append(Fe_H_agedependent(3.5,4.5,i,i+0.1,0,15,0,1,0,14,r,r_form,age,part))
             
             Fe_H_ver_r_1_2_total.append(Fe_H_ver_r_1_2)
             
@@ -98,7 +98,7 @@ def vertical_analysis_z_0():
             Fe_H_ver_r_4_5 = []
             
             for i in np.arange(0,1,0.1):
-                Fe_H_ver_r_4_5.append(Fe_H_agedependent(4,5,i,i+0.1,0,15,0,1,0,14,r,r_form,age,part))
+                Fe_H_ver_r_4_5.append(Fe_H_agedependent(7.5,8.5,i,i+0.1,0,15,0,1,0,14,r,r_form,age,part))
             
             Fe_H_ver_r_4_5_total.append(Fe_H_ver_r_4_5)
             
@@ -125,16 +125,16 @@ def vertical_analysis_z_0():
             Fe_H_ver_r_7_8 = []
             
             for i in np.arange(0,1,0.1):
-                Fe_H_ver_r_7_8.append(Fe_H_agedependent(7,8,i,i+0.1,0,15,0,1,0,14,r,r_form,age,part))
+                Fe_H_ver_r_7_8.append(Fe_H_agedependent(11.5,12.5,i,i+0.1,0,15,0,1,0,14,r,r_form,age,part))
             
             Fe_H_ver_r_7_8_total.append(Fe_H_ver_r_7_8)
             
     Fe_H_ver_r_7_8_total = np.array([Fe_H_ver_r_7_8_total])
     
 
-    ut_io.file_hdf5('/home/rlgraf/Final_Figures/VER_profile_r_1_2_z_0_location_cut_median_allages', Fe_H_ver_r_1_2_total)
-    ut_io.file_hdf5('/home/rlgraf/Final_Figures/VER_profile_r_4_5_z_0_location_cut_median_allages', Fe_H_ver_r_4_5_total)
-    ut_io.file_hdf5('/home/rlgraf/Final_Figures/VER_profile_r_7_8_z_0_location_cut_median_allages', Fe_H_ver_r_7_8_total)
+    ut_io.file_hdf5('/home/rlgraf/Final_Figures/VER_profile_r_4_z_0_location_cut_median_allages', Fe_H_ver_r_1_2_total)
+    ut_io.file_hdf5('/home/rlgraf/Final_Figures/VER_profile_r_8_z_0_location_cut_median_allages', Fe_H_ver_r_4_5_total)
+    ut_io.file_hdf5('/home/rlgraf/Final_Figures/VER_profile_r_12_z_0_location_cut_median_allages', Fe_H_ver_r_7_8_total)
     
     
 # formation
@@ -174,7 +174,7 @@ def vertical_analysis_form():
             Fe_H_ver_r_1_2_form = []
             
             for i_f in np.arange(0,1,0.1):
-                Fe_H_ver_r_1_2_form.append(Fe_H_agedependent_form(1,2,i_f,i_f+0.1,0,15,0,1,0,14,r_form,r,age,part))
+                Fe_H_ver_r_1_2_form.append(Fe_H_agedependent_form(4.5,5.5,i_f,i_f+0.1,0,15,0,1,0,14,r_form,r,age,part))
 
             Fe_H_ver_r_1_2_form_total.append(Fe_H_ver_r_1_2_form)
             
@@ -201,7 +201,7 @@ def vertical_analysis_form():
             Fe_H_ver_r_4_5_form = []
             
             for i_f in np.arange(0,1,0.1):
-                Fe_H_ver_r_4_5_form.append(Fe_H_agedependent_form(4,5,i_f,i_f+0.1,0,15,0,1,0,14,r_form,r,age,part))
+                Fe_H_ver_r_4_5_form.append(Fe_H_agedependent_form(7.5,8.5,i_f,i_f+0.1,0,15,0,1,0,14,r_form,r,age,part))
             
             Fe_H_ver_r_4_5_form_total.append(Fe_H_ver_r_4_5_form)
             
@@ -227,16 +227,16 @@ def vertical_analysis_form():
             Fe_H_ver_r_7_8_form = []
             
             for i_f in np.arange(0,1,0.1):
-                Fe_H_ver_r_7_8_form.append(Fe_H_agedependent_form(7,8,i_f,i_f+0.1,0,15,0,1,0,14,r_form,r,age,part))
+                Fe_H_ver_r_7_8_form.append(Fe_H_agedependent_form(11.5,12.5,i_f,i_f+0.1,0,15,0,1,0,14,r_form,r,age,part))
            
             Fe_H_ver_r_7_8_form_total.append(Fe_H_ver_r_7_8_form)
             
     Fe_H_ver_r_7_8_form_total = np.array([Fe_H_ver_r_7_8_form_total])
     
 
-    ut_io.file_hdf5('/home/rlgraf/Final_Figures/VER_profile_r_1_2_form_location_cut_median_allages', Fe_H_ver_r_1_2_form_total)
-    ut_io.file_hdf5('/home/rlgraf/Final_Figures/VER_profile_r_4_5_form_location_cut_median_allages', Fe_H_ver_r_4_5_form_total)
-    ut_io.file_hdf5('/home/rlgraf/Final_Figures/VER_profile_r_7_8_form_location_cut_median_allages', Fe_H_ver_r_7_8_form_total)
+    ut_io.file_hdf5('/home/rlgraf/Final_Figures/VER_profile_r_4_form_location_cut_median_allages', Fe_H_ver_r_1_2_form_total)
+    ut_io.file_hdf5('/home/rlgraf/Final_Figures/VER_profile_r_8_form_location_cut_median_allages', Fe_H_ver_r_4_5_form_total)
+    ut_io.file_hdf5('/home/rlgraf/Final_Figures/VER_profile_r_12_form_location_cut_median_allages', Fe_H_ver_r_7_8_form_total)
     
 vertical_analysis_z_0()
 vertical_analysis_form()
