@@ -90,6 +90,9 @@ def vertical_analysis_z_0():
     Fe_H_ver_r_4_5_z_0_total = np.array([Fe_H_ver_r_4_5_z_0_total])
     slope_ver_r_4_5_z_0_total = np.array([slope_ver_r_4_5_z_0_total])
     
+    ut_io.file_hdf5('/home/rlgraf/Final_Figures/VER_profile_r_8_z_0_location_cut_median_weighted_publish3', Fe_H_ver_r_4_5_z_0_total)
+    ut_io.file_hdf5('/home/rlgraf/Final_Figures/VER_slope_r_8_z_0_location_cut_median_weighted_publish3', slope_ver_r_4_5_z_0_total)
+    
 # formation
 
 def Fe_H_agedependent_form(x1,x2,x3,x4,x5,x6,x7,x8,a1,a2,r_form,r,age,part, particle_thresh = 1):
@@ -147,11 +150,10 @@ def vertical_analysis_form():
     Fe_H_ver_r_4_5_form_total = np.array([Fe_H_ver_r_4_5_form_total])
     slope_ver_r_4_5_form_total = np.array([slope_ver_r_4_5_form_total])
     
-    ut_io.file_hdf5('/home/rlgraf/Final_Figures/VER_profile_r_8_z_0_location_cut_median_weighted_publish3', Fe_H_ver_r_4_5_z_0_total)
-    ut_io.file_hdf5('/home/rlgraf/Final_Figures/VER_profile_r_8_form_location_cut_median_weighted_publish3', Fe_H_ver_r_4_5_form_total)
     
-    ut_io.file_hdf5('/home/rlgraf/Final_Figures/VER_slope_r_8_z_0_location_cut_median_weighted_publish3', slope_ver_r_4_5_z_0_total)
+    ut_io.file_hdf5('/home/rlgraf/Final_Figures/VER_profile_r_8_form_location_cut_median_weighted_publish3', Fe_H_ver_r_4_5_form_total) 
     ut_io.file_hdf5('/home/rlgraf/Final_Figures/VER_slope_r_8_form_location_cut_median_weighted_publish3', slope_ver_r_4_5_form_total)
+    
     
 vertical_analysis_z_0()
 vertical_analysis_form()
