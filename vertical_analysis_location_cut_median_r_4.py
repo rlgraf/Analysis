@@ -149,11 +149,11 @@ def vertical_analysis_form():
     slope_ver_r_1_2_form_total = np.array([slope_ver_r_1_2_form_total])
 
     
-    ut_io.file_hdf5('/home/rlgraf/Final_Figures/VER_profile_r_4_z_0_location_cut_median_weighted_publish', Fe_H_ver_r_1_2_z_0_total)
-    ut_io.file_hdf5('/home/rlgraf/Final_Figures/VER_profile_r_4_form_location_cut_median_weighted_publish', Fe_H_ver_r_1_2_form_total)
+    ut_io.file_hdf5('/home/rlgraf/Final_Figures/VER_profile_r_4_z_0_location_cut_median_weighted_publish3', Fe_H_ver_r_1_2_z_0_total)
+    ut_io.file_hdf5('/home/rlgraf/Final_Figures/VER_profile_r_4_form_location_cut_median_weighted_publish3', Fe_H_ver_r_1_2_form_total)
     
-    ut_io.file_hdf5('/home/rlgraf/Final_Figures/VER_slope_r_4_z_0_location_cut_median_weighted_publish', slope_ver_r_1_2_z_0_total)
-    ut_io.file_hdf5('/home/rlgraf/Final_Figures/VER_slope_r_4_form_location_cut_median_weighted_publish', slope_ver_r_1_2_form_total)
+    ut_io.file_hdf5('/home/rlgraf/Final_Figures/VER_slope_r_4_z_0_location_cut_median_weighted_publish3', slope_ver_r_1_2_z_0_total)
+    ut_io.file_hdf5('/home/rlgraf/Final_Figures/VER_slope_r_4_form_location_cut_median_weighted_publish3', slope_ver_r_1_2_form_total)
     
-    vertical_analysis_z_0()
-    vertical_analysis_form()
+vertical_analysis_z_0()
+vertical_analysis_form()
