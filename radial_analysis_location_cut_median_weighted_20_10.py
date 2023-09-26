@@ -118,3 +118,5 @@ def radial_analysis_z_0():
     
     ut_io.file_hdf5('/home/rlgraf/Final_Figures/RAD_profile_z_0_location_cut_median_weighted_20_10', Fe_H_rad_total)
     ut_io.file_hdf5('/home/rlgraf/Final_Figures/RAD_slope_z_0_location_cut_median_weighted_20_10', slope_total)
+    
+radial_analysis_z_0()
