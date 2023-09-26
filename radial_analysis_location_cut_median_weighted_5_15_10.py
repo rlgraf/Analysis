@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-#SBATCH --job-name=radial_analysis_location_cut_median_weighted_5_12_10
+#SBATCH --job-name=radial_analysis_location_cut_median_weighted_5_15_10
 #SBATCH --partition=high2  # peloton node: 32 cores, 7.8 GB per core, 250 GB total
 ##SBATCH --partition=high2m  # peloton high-mem node: 32 cores, 15.6 GB per core, 500 GB total
 #SBATCH --mem=32G  # need to specify memory if you set the number of tasks (--ntasks) below
@@ -8,7 +8,7 @@
 #SBATCH --ntasks=1  # (MPI) tasks total
 #SBATCH --cpus-per-task=1  # (OpenMP) threads per (MPI) task
 #SBATCH --time=03:00:00
-#SBATCH --output=radial_analysis_location_cut_median_weighted_5_12_10_%j.txt
+#SBATCH --output=radial_analysis_location_cut_median_weighted_5_15_10_%j.txt
 #SBATCH --mail-user=rlgraf@ucdavis.edu
 #SBATCH --mail-type=fail
 #SBATCH --mail-type=begin
@@ -101,10 +101,10 @@ def radial_analysis_z_0():
             r90 = R90
             for a, b in zip(np.arange(0,14), r90):
                 x = []
-                for i in np.arange(5,12,12/10):
-                    x.append(Fe_H_agedependent(i,i+12/10,-3,3,0,b,-3,3,a,a+1,r,r_form,age,part))
+                for i in np.arange(5,15,15/10):
+                    x.append(Fe_H_agedependent(i,i+15/10,-3,3,0,b,-3,3,a,a+1,r,r_form,age,part))
                 Fe_H_rad.append(x)
-                l = np.arange(5,12,12/10)
+                l = np.arange(5,15,15/10)
                 x = np.array(x)
                 if np.isnan(x).all():
                     slope.append(np.nan)
@@ -116,7 +116,7 @@ def radial_analysis_z_0():
     Fe_H_rad_total = np.array([Fe_H_rad_total])
     slope_total = np.array([slope_total])
     
-    ut_io.file_hdf5('/home/rlgraf/Final_Figures/RAD_profile_z_0_location_cut_median_weighted_5_12_10', Fe_H_rad_total)
-    ut_io.file_hdf5('/home/rlgraf/Final_Figures/RAD_slope_z_0_location_cut_median_weighted_5_12_10', slope_total)
+    ut_io.file_hdf5('/home/rlgraf/Final_Figures/RAD_profile_z_0_location_cut_median_weighted_5_15_10', Fe_H_rad_total)
+    ut_io.file_hdf5('/home/rlgraf/Final_Figures/RAD_slope_z_0_location_cut_median_weighted_5_15_10', slope_total)
     
 radial_analysis_z_0()
