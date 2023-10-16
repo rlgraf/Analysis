@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-#SBATCH --job-name=radial_analysis_location_cut_median_weighted_ages_4_6
+#SBATCH --job-name=radial_analysis_location_cut_median_weighted_ages_6_10
 #SBATCH --partition=high2  # peloton node: 32 cores, 7.8 GB per core, 250 GB total
 ##SBATCH --partition=high2m  # peloton high-mem node: 32 cores, 15.6 GB per core, 500 GB total
 #SBATCH --mem=32G  # need to specify memory if you set the number of tasks (--ntasks) below
@@ -8,7 +8,7 @@
 #SBATCH --ntasks=1  # (MPI) tasks total
 #SBATCH --cpus-per-task=1  # (OpenMP) threads per (MPI) task
 #SBATCH --time=03:00:00
-#SBATCH --output=radial_analysis_location_cut_median_weighted_ages_4_6_%j.txt
+#SBATCH --output=radial_analysis_location_cut_median_weighted_ages_6_10_%j.txt
 #SBATCH --mail-user=rlgraf@ucdavis.edu
 #SBATCH --mail-type=fail
 #SBATCH --mail-type=begin
@@ -99,7 +99,7 @@ def radial_analysis_z_0():
             slope = []
             LG_counter += j
             for i in np.arange(0,15,15/50):
-                Fe_H_rad.append(Fe_H_agedependent(i,i+15/50,-3,3,0,15,-3,3,4,6,r,r_form,age,part))
+                Fe_H_rad.append(Fe_H_agedependent(i,i+15/50,-3,3,0,15,-3,3,6,10,r,r_form,age,part))
             l = np.arange(0,15,15/50)
             Fe_H_rad = np.array(Fe_H_rad)
             if np.isnan(Fe_H_rad).all():
@@ -112,8 +112,8 @@ def radial_analysis_z_0():
     Fe_H_rad_total = np.array([Fe_H_rad_total])
     slope_total = np.array([slope_total])
     
-    ut_io.file_hdf5('/home/rlgraf/Final_Figures/RAD_profile_z_0_location_cut_median_weighted_ages_4_6', Fe_H_rad_total)
-    ut_io.file_hdf5('/home/rlgraf/Final_Figures/RAD_slope_z_0_location_cut_median_weighted_ages_4_6', slope_total)
+    ut_io.file_hdf5('/home/rlgraf/Final_Figures/RAD_profile_z_0_location_cut_median_weighted_ages_6_10', Fe_H_rad_total)
+    ut_io.file_hdf5('/home/rlgraf/Final_Figures/RAD_slope_z_0_location_cut_median_weighted_ages_6_10', slope_total)
 
 
     
