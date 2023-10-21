@@ -98,23 +98,25 @@ def radial_analysis_z_0():
             Fe_H_rad = []
             slope = []
             LG_counter += j
-            for Z in np.arange(0,3,0.1):
+            for Z in np.arange(0,3,0.3):
+                x = []
                 for i in np.arange(0,15,15/50):
-                    np.append(Fe_H_rad,Fe_H_agedependent(i,i+15/50,Z,Z+0.1,0,15,-3,3,0,14,r,r_form,age,part))
+                    np.append(x,Fe_H_agedependent(i,i+15/50,Z,Z+0.3,0,15,-3,3,0,14,r,r_form,age,part))
+                Fe_H_rad.append(x)
                 l = np.arange(0,15,15/50)
-                Fe_H_rad = np.array(Fe_H_rad)
-                if np.isnan(Fe_H_rad).all():
+                x = np.array(x)
+                if np.isnan(x).all():
                     slope.append(np.nan)
                 else:
-                    j, k = np.polyfit(l[np.isfinite(Fe_H_rad)],Fe_H_rad[np.isfinite(Fe_H_rad)],1)
+                    j, k = np.polyfit(l[np.isfinite(x)],x[np.isfinite(x)],1)
                     slope.append(j)
             Fe_H_rad_total.append(Fe_H_rad)
             slope_total.append(slope)
     Fe_H_rad_total = np.array([Fe_H_rad_total])
     slope_total = np.array([slope_total])
     
-    ut_io.file_hdf5('/home/rlgraf/Final_Figures/RAD_profile_z_0_vs_Z', Fe_H_rad_total)
-    ut_io.file_hdf5('/home/rlgraf/Final_Figures/RAD_slope_z_0_vs_Z', slope_total)
+    ut_io.file_hdf5('/home/rlgraf/Final_Figures/RAD_profile_z_0_vs_Z2', Fe_H_rad_total)
+    ut_io.file_hdf5('/home/rlgraf/Final_Figures/RAD_slope_z_0_vs_Z2', slope_total)
 
 # formation
 
@@ -158,23 +160,25 @@ def radial_analysis_form():
             Fe_H_rad_form = []
             slope_form = []
             LG_counter += j
-            for Z_f in np.arange(0,3,0.1):
+            for Z_f in np.arange(0,3,0.3):
+                x_f = []
                 for i_f in np.arange(0,15,15/50):
-                    np.append(Fe_H_rad_form, Fe_H_agedependent_form(i_f,i_f+15/50,Z_f,Z_f+0.1,0,30,-3,3,0,14,r_form,r,age,part))
+                    np.append(x_f, Fe_H_agedependent_form(i_f,i_f+15/50,Z_f,Z_f+0.3,0,30,-3,3,0,14,r_form,r,age,part))
+                Fe_H_rad_form.append(x_f)    
                 l_f = np.arange(0,15,15/50)
                 Fe_H_rad_form = np.array(Fe_H_rad_form)
-                if np.isnan(Fe_H_rad_form).all():
+                if np.isnan(x_f).all():
                     slope_form.append(np.nan)
                 else:
-                    j_f, k_f = np.polyfit(l_f[np.isfinite(Fe_H_rad_form)],Fe_H_rad_form[np.isfinite(Fe_H_rad_form)],1)
+                    j_f, k_f = np.polyfit(l_f[np.isfinite(x_f)],x_f[np.isfinite(x_f)],1)
                     slope_form.append(j_f)
             Fe_H_rad_form_total.append(Fe_H_rad_form)
             slope_form_total.append(slope_form)
     Fe_H_rad_form_total = np.array([Fe_H_rad_form_total])
     slope_form_total = np.array([slope_form_total])
     
-    ut_io.file_hdf5('/home/rlgraf/Final_Figures/RAD_profile_form_vs_Z', Fe_H_rad_form_total)
-    ut_io.file_hdf5('/home/rlgraf/Final_Figures/RAD_slope_form_vs_Z', slope_form_total)
+    ut_io.file_hdf5('/home/rlgraf/Final_Figures/RAD_profile_form_vs_Z2', Fe_H_rad_form_total)
+    ut_io.file_hdf5('/home/rlgraf/Final_Figures/RAD_slope_form_vs_Z2', slope_form_total)
     
 radial_analysis_z_0()
 radial_analysis_form()
