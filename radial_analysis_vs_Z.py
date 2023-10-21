@@ -101,7 +101,7 @@ def radial_analysis_z_0():
             for Z in np.arange(0,3,0.3):
                 x = []
                 for i in np.arange(0,15,15/50):
-                    np.append(x,Fe_H_agedependent(i,i+15/50,Z,Z+0.3,0,15,-3,3,0,14,r,r_form,age,part))
+                    x.append(Fe_H_agedependent(i,i+15/50,Z,Z+0.3,0,15,-3,3,0,14,r,r_form,age,part))
                 Fe_H_rad.append(x)
                 l = np.arange(0,15,15/50)
                 x = np.array(x)
@@ -115,8 +115,8 @@ def radial_analysis_z_0():
     Fe_H_rad_total = np.array([Fe_H_rad_total])
     slope_total = np.array([slope_total])
     
-    ut_io.file_hdf5('/home/rlgraf/Final_Figures/RAD_profile_z_0_vs_Z2', Fe_H_rad_total)
-    ut_io.file_hdf5('/home/rlgraf/Final_Figures/RAD_slope_z_0_vs_Z2', slope_total)
+    ut_io.file_hdf5('/home/rlgraf/Final_Figures/RAD_profile_z_0_vs_Z3', Fe_H_rad_total)
+    ut_io.file_hdf5('/home/rlgraf/Final_Figures/RAD_slope_z_0_vs_Z3', slope_total)
 
 # formation
 
@@ -163,7 +163,7 @@ def radial_analysis_form():
             for Z_f in np.arange(0,3,0.3):
                 x_f = []
                 for i_f in np.arange(0,15,15/50):
-                    np.append(x_f, Fe_H_agedependent_form(i_f,i_f+15/50,Z_f,Z_f+0.3,0,30,-3,3,0,14,r_form,r,age,part))
+                    x_f.append(Fe_H_agedependent_form(i_f,i_f+15/50,Z_f,Z_f+0.3,0,30,-3,3,0,14,r_form,r,age,part))
                 Fe_H_rad_form.append(x_f)    
                 l_f = np.arange(0,15,15/50)
                 Fe_H_rad_form = np.array(Fe_H_rad_form)
@@ -177,8 +177,8 @@ def radial_analysis_form():
     Fe_H_rad_form_total = np.array([Fe_H_rad_form_total])
     slope_form_total = np.array([slope_form_total])
     
-    ut_io.file_hdf5('/home/rlgraf/Final_Figures/RAD_profile_form_vs_Z2', Fe_H_rad_form_total)
-    ut_io.file_hdf5('/home/rlgraf/Final_Figures/RAD_slope_form_vs_Z2', slope_form_total)
+    ut_io.file_hdf5('/home/rlgraf/Final_Figures/RAD_profile_form_vs_Z3', Fe_H_rad_form_total)
+    ut_io.file_hdf5('/home/rlgraf/Final_Figures/RAD_slope_form_vs_Z3', slope_form_total)
     
 radial_analysis_z_0()
 radial_analysis_form()
