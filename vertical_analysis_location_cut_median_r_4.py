@@ -74,7 +74,7 @@ def vertical_analysis_z_0():
                 for a_pre in np.arange(0,1,0.1):
                     x = []
                     for i in np.arange(0,1,0.1):
-                        x.append(Fe_H_agedependent(3.5,4.5,i,i+0.1,0,15,0,1,a+a_pre,a+a_pre+0.1,r,r_form,age,part))
+                        x.append(Fe_H_agedependent(0,15,i,i+0.1,3.5,4.5,0,1,a+a_pre,a+a_pre+0.1,r,r_form,age,part))
                     Fe_H_ver_pre.append(x)
                 Fe_H_ver_pre = np.array(Fe_H_ver_pre)
                 Fe_H_ver_pre_mean = np.nanmean(Fe_H_ver_pre,0)
@@ -90,8 +90,8 @@ def vertical_analysis_z_0():
     Fe_H_ver_r_1_2_z_0_total = np.array([Fe_H_ver_r_1_2_z_0_total])
     slope_ver_r_1_2_z_0_total = np.array([slope_ver_r_1_2_z_0_total])
     
-    ut_io.file_hdf5('/home/rlgraf/Final_Figures/VER_profile_r_4_z_0_location_cut_median_weighted_publish3', Fe_H_ver_r_1_2_z_0_total)
-    ut_io.file_hdf5('/home/rlgraf/Final_Figures/VER_slope_r_4_z_0_location_cut_median_weighted_publish3', slope_ver_r_1_2_z_0_total)
+    ut_io.file_hdf5('/home/rlgraf/Final_Figures/VER_profile_r_4_z_0_location_cut_median_weighted_publish_switch', Fe_H_ver_r_1_2_z_0_total)
+    ut_io.file_hdf5('/home/rlgraf/Final_Figures/VER_slope_r_4_z_0_location_cut_median_weighted_publish_switch', slope_ver_r_1_2_z_0_total)
     
     
 # formation
@@ -135,7 +135,7 @@ def vertical_analysis_form():
                 for a_pre_f in np.arange(0,1,0.1):
                     x_f = []
                     for i_f in np.arange(0,1,0.1):
-                        x_f.append(Fe_H_agedependent_form(3.5,4.5,i_f,i_f+0.1,0,15,0,1,a_f+a_pre_f,a_f+a_pre_f+0.1,r_form,r,age,part))
+                        x_f.append(Fe_H_agedependent_form(0,15,i_f,i_f+0.1,3.5,4.5,0,1,a_f+a_pre_f,a_f+a_pre_f+0.1,r_form,r,age,part))
                     Fe_H_ver_pre_f.append(x_f)
                 Fe_H_ver_pre_f = np.array(Fe_H_ver_pre_f)
                 Fe_H_ver_pre_f_mean = np.nanmean(Fe_H_ver_pre_f,0)
@@ -153,8 +153,8 @@ def vertical_analysis_form():
 
     
     
-    ut_io.file_hdf5('/home/rlgraf/Final_Figures/VER_profile_r_4_form_location_cut_median_weighted_publish3', Fe_H_ver_r_1_2_form_total)
-    ut_io.file_hdf5('/home/rlgraf/Final_Figures/VER_slope_r_4_form_location_cut_median_weighted_publish3', slope_ver_r_1_2_form_total)
+    ut_io.file_hdf5('/home/rlgraf/Final_Figures/VER_profile_r_4_form_location_cut_median_weighted_publish_switch', Fe_H_ver_r_1_2_form_total)
+    ut_io.file_hdf5('/home/rlgraf/Final_Figures/VER_slope_r_4_form_location_cut_median_weighted_publish_switch', slope_ver_r_1_2_form_total)
     
 vertical_analysis_z_0()
 vertical_analysis_form()
