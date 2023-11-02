@@ -124,9 +124,9 @@ def vertical_analysis_form():
             l_f = np.arange(0,1,0.1)
             if sum(np.isfinite(Fe_H_ver_r_1_2_form)) < 2:
                     slope_ver_form_total.append(np.nan)
-                else:
-                    j_f, k_f = np.polyfit(l_f[np.isfinite(Fe_H_ver_r_1_2_form)],Fe_H_ver_r_1_2_form[np.isfinite(Fe_H_ver_r_1_2_form)],1)
-                    slope_ver_form_total.append(j_f)
+            else:
+                j_f, k_f = np.polyfit(l_f[np.isfinite(Fe_H_ver_r_1_2_form)],Fe_H_ver_r_1_2_form[np.isfinite(Fe_H_ver_r_1_2_form)],1)
+                slope_ver_form_total.append(j_f)
         
     slope_ver_form_total = np.array([slope_ver_form_total])
 
