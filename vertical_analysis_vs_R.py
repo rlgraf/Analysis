@@ -100,10 +100,10 @@ def radial_analysis_z_0():
             LG_counter += j
             for R in np.arange(0.5,15.5,1):
                 x = []
-                for i in np.arange(0,2,0.1):
-                    x.append(Fe_H_agedependent(R,R+1,i,i+0.1,0,15,0,2,0,14,r,r_form,age,part))
+                for i in np.arange(0,0.5,0.1):
+                    x.append(Fe_H_agedependent(R,R+1,i,i+0.1,0,15,0,0.5,0,14,r,r_form,age,part))
                 Fe_H_rad.append(x)
-                l = np.arange(0,2,0.1)
+                l = np.arange(0,0.5,0.1)
                 x = np.array(x)
                 if np.isnan(x).all():
                     slope.append(np.nan)
@@ -115,8 +115,8 @@ def radial_analysis_z_0():
     Fe_H_rad_total = np.array([Fe_H_rad_total])
     slope_total = np.array([slope_total])
     
-    ut_io.file_hdf5('/home/rlgraf/Final_Figures/VER_profile_z_0_vs_R_Z2', Fe_H_rad_total)
-    ut_io.file_hdf5('/home/rlgraf/Final_Figures/VER_slope_z_0_vs_R_Z2', slope_total)
+    ut_io.file_hdf5('/home/rlgraf/Final_Figures/VER_profile_z_0_vs_R_Zhalf', Fe_H_rad_total)
+    ut_io.file_hdf5('/home/rlgraf/Final_Figures/VER_slope_z_0_vs_R_Zhalf', slope_total)
 
 # formation
 
@@ -162,10 +162,10 @@ def radial_analysis_form():
             LG_counter += j
             for R_f in np.arange(0.5,15.5,1):
                 x_f = []
-                for i_f in np.arange(0,2,0.1):
-                    x_f.append(Fe_H_agedependent_form(R_f,R_f+1,i_f,i_f+0.1,0,15,0,2,0,14,r_form,r,age,part))
+                for i_f in np.arange(0,0.5,0.1):
+                    x_f.append(Fe_H_agedependent_form(R_f,R_f+1,i_f,i_f+0.1,0,15,0,0.5,0,14,r_form,r,age,part))
                 Fe_H_rad_form.append(x_f)    
-                l_f = np.arange(0,2,0.1)
+                l_f = np.arange(0,0.5,0.1)
                 x_f = np.array(x_f)
                 if np.isnan(x_f).all():
                     slope_form.append(np.nan)
@@ -177,8 +177,8 @@ def radial_analysis_form():
     Fe_H_rad_form_total = np.array([Fe_H_rad_form_total])
     slope_form_total = np.array([slope_form_total])
     
-    ut_io.file_hdf5('/home/rlgraf/Final_Figures/VER_profile_form_vs_R_Z2', Fe_H_rad_form_total)
-    ut_io.file_hdf5('/home/rlgraf/Final_Figures/VER_slope_form_vs_R_Z2', slope_form_total)
+    ut_io.file_hdf5('/home/rlgraf/Final_Figures/VER_profile_form_vs_R_Zhalf', Fe_H_rad_form_total)
+    ut_io.file_hdf5('/home/rlgraf/Final_Figures/VER_slope_form_vs_R_Zhalf', slope_form_total)
     
 radial_analysis_z_0()
 radial_analysis_form()
