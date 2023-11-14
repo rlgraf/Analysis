@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-#SBATCH --job-name=radial_analysis_location_cut_median_weighted_6_10_20
+#SBATCH --job-name=radial_analysis_location_cut_median_weighted_4_12
 #SBATCH --partition=high2  # peloton node: 32 cores, 7.8 GB per core, 250 GB total
 ##SBATCH --partition=high2m  # peloton high-mem node: 32 cores, 15.6 GB per core, 500 GB total
 #SBATCH --mem=32G  # need to specify memory if you set the number of tasks (--ntasks) below
@@ -8,7 +8,7 @@
 #SBATCH --ntasks=1  # (MPI) tasks total
 #SBATCH --cpus-per-task=1  # (OpenMP) threads per (MPI) task
 #SBATCH --time=08:00:00
-#SBATCH --output=radial_analysis_location_cut_median_weighted_6_10_20_%j.txt
+#SBATCH --output=radial_analysis_location_cut_median_weighted_4_12_%j.txt
 #SBATCH --mail-user=rlgraf@ucdavis.edu
 #SBATCH --mail-type=fail
 #SBATCH --mail-type=begin
@@ -101,10 +101,10 @@ def radial_analysis_z_0():
             r90 = R90
             for a, b in zip(np.arange(0,14), r90):
                 x = []
-                for i in np.arange(6,10,4/20):
-                    x.append(Fe_H_agedependent(i,i+4/20,-3,3,0,b,-3,3,a,a+1,r,r_form,age,part))
+                for i in np.arange(4,12,5/20):
+                    x.append(Fe_H_agedependent(i,i+5/20,-3,3,0,b,-3,3,a,a+1,r,r_form,age,part))
                 Fe_H_rad.append(x)
-                l = np.arange(6,10,4/20)
+                l = np.arange(4,12,5/20)
                 x = np.array(x)
                 if np.isnan(x).all():
                     slope.append(np.nan)
@@ -116,8 +116,8 @@ def radial_analysis_z_0():
     Fe_H_rad_total = np.array([Fe_H_rad_total])
     slope_total = np.array([slope_total])
     
-    ut_io.file_hdf5('/home/rlgraf/Final_Figures/RAD_profile_z_0_location_cut_median_weighted_6_10_20', Fe_H_rad_total)
-    ut_io.file_hdf5('/home/rlgraf/Final_Figures/RAD_slope_z_0_location_cut_median_weighted_6_10_20', slope_total)
+    ut_io.file_hdf5('/home/rlgraf/Final_Figures/RAD_profile_z_0_location_cut_median_weighted_4_12', Fe_H_rad_total)
+    ut_io.file_hdf5('/home/rlgraf/Final_Figures/RAD_slope_z_0_location_cut_median_weighted_4_12', slope_total)
 
 # formation
 
@@ -164,10 +164,10 @@ def radial_analysis_form():
             r90 = R90
             for a_f, b_f in zip(np.arange(0,14), r90):
                 x_f = []
-                for i_f in np.arange(6,10,4/20):
-                    x_f.append(Fe_H_agedependent_form(i_f,i_f+4/20,-3,3,0,30,-3,3,a_f,a_f+1,r_form,r,age,part))
+                for i_f in np.arange(4,12,5/20):
+                    x_f.append(Fe_H_agedependent_form(i_f,i_f+5/20,-3,3,0,30,-3,3,a_f,a_f+1,r_form,r,age,part))
                 Fe_H_rad_form.append(x_f)
-                l_f = np.arange(6,10,4/20)
+                l_f = np.arange(4,12,5/20)
                 x_f = np.array(x_f)
                 if np.isnan(x_f).all():
                     slope_form.append(np.nan)
@@ -179,8 +179,8 @@ def radial_analysis_form():
     Fe_H_rad_form_total = np.array([Fe_H_rad_form_total])
     slope_form_total = np.array([slope_form_total])
     
-    ut_io.file_hdf5('/home/rlgraf/Final_Figures/RAD_profile_form_location_cut_median_weighted_6_10_20', Fe_H_rad_form_total)
-    ut_io.file_hdf5('/home/rlgraf/Final_Figures/RAD_slope_form_location_cut_median_weighted_6_10_20', slope_form_total)
+    ut_io.file_hdf5('/home/rlgraf/Final_Figures/RAD_profile_form_location_cut_median_weighted_4_12', Fe_H_rad_form_total)
+    ut_io.file_hdf5('/home/rlgraf/Final_Figures/RAD_slope_form_location_cut_median_weighted_4_12', slope_form_total)
     
 radial_analysis_z_0()
 radial_analysis_form()
