@@ -126,5 +126,5 @@ def radial_analysis_form():
     ut_io.file_hdf5('/home/rlgraf/Final_Figures/RAD_profile_form_location_cut_median_weighted_0_15_50_FINAL', Fe_H_rad_form_total)
     ut_io.file_hdf5('/home/rlgraf/Final_Figures/RAD_slope_form_location_cut_median_weighted_0_15_50_FINAL', slope_form_total)
     
-radial_analysis_z_0()
+
 radial_analysis_form()
