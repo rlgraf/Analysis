@@ -53,67 +53,6 @@ def R90_z_0_func():
     R90_z_0 = np.array([12.7,11.8,17.0,12.7,11.6,16.8,16,16.9,16.2,15.1,17.3])
     return(R90_z_0)
 
-
-# z = 0
-
-def Fe_H_agedependent_sd(x1,x2,x3,x4,x5,x6,a1,a2,x9,x10,r,r_form,age,part):
-    index = ut.array.get_indices(r[:,0], [x1,x2])
-    index2 = ut.array.get_indices(abs(r[:,2]), [x3,x4], prior_indices = index)
-    a_form = part['star'].prop('form.scalefactor')
-    scaled_radius = r_form[:,0]/a_form
-    index3 = ut.array.get_indices(scaled_radius, [x5,x6], prior_indices = index2)
-    #index4 = ut.array.get_indices(abs(r_form[:,2]), [x7,x8], prior_indices = index3)
-    index5 = ut.array.get_indices(age, [a1,a2], prior_indices = index3)
-    index6 = ut.array.get_indices(r[:,1]*180/np.pi, [x9,x10], prior_indices = index5)
-    Fe_H = part['star'].prop('metallicity.iron')
-    Fe_H_cut = Fe_H[index6]
-    if len(Fe_H_cut) == 0:
-        return(np.nan)
-    sd = np.std(Fe_H_cut)
-    return(sd)
-
-def azimuthal_analysis_z_0():
-    Fe_H_azim_total = []
-    slope_azim_total = []
-    sim = sim_func()
-    R90 = R90_func()
-    R90_z_0 = R90_z_0_func()
-    LG_counter = 0
-    for q, s in enumerate(sim):
-        simulation_directory = s
-        part = gizmo.io.Read.read_snapshots(['star'], 'redshift', 0, simulation_directory, assign_hosts_rotation=True, assign_formation_coordinates = True)
-        Fe_H = part['star'].prop('metallicity.iron')
-        age = part['star'].prop('age')
-        
-        if s in ['/group/awetzelgrp/m12_elvis/m12_elvis_RomeoJuliet_r3500', '/group/awetzelgrp/m12_elvis/m12_elvis_RomulusRemus_r4000', '/group/awetzelgrp/m12_elvis/m12_elvis_ThelmaLouise_r4000']:
-            r_array = [part['star'].prop('host1.distance.principal.cylindrical'), part['star'].prop('host2.distance.principal.cylindrical')]
-            r_form_array = [part['star'].prop('form.host1.distance.principal.cylindrical'), part['star'].prop('form.host2.distance.principal.cylindrical')]
-        else:           
-            r_array = [part['star'].prop('host.distance.principal.cylindrical')]
-            r_form_array = [part['star'].prop('form.host.distance.principal.cylindrical')] 
-    
-        for c, (r, r_form) in enumerate(zip(r_array, r_form_array)):
-            Fe_H_azim = []
-            slope_azim = []
-            LG_counter += c
-            r90 = R90[q+LG_counter]
-            for a,b in zip(np.arange(0,14),r90):
-                Fe_H_azim_pre = []
-                for a_pre in np.arange(0,1,0.05):
-                    std_vs_rad = []
-                    for i in np.arange(0.5,15.5,1):
-                        std_vs_rad.append(Fe_H_agedependent_sd(i,i+1,0,3,0,30,a+a_pre,a+a_pre+0.05,0,360,r,r_form,age,part))
-                    Fe_H_azim_pre.append(std_vs_rad)
-                Fe_H_azim_pre = np.array(Fe_H_azim_pre)
-                Fe_H_azim_pre_mean = np.nanmean(Fe_H_azim_pre,0)
-                Fe_H_azim.append(Fe_H_azim_pre_mean)
-                
-            Fe_H_azim_total.append(Fe_H_azim)
-    Fe_H_azim_total = np.array(Fe_H_azim_total)
-    
-    
-    ut_io.file_hdf5('/home/rlgraf/Final_Figures/AZIM_profile_z_0_FINAL', Fe_H_azim_total) 
-    
     
 # formation
 
@@ -122,7 +61,7 @@ def Fe_H_agedependent_sd_form(x1,x2,x3,x4,x5,x6,a1,a2,x9,x10,r_form,r,age,part):
     index2 = ut.array.get_indices(abs(r_form[:,2]), [x3,x4], prior_indices = index)
     a_form = part['star'].prop('form.scalefactor')
     scaled_radius = r_form[:,0]/a_form
-    index3 = ut.array.get_indices(r[:0],[x5,x6], prior_indices = index2)
+    index3 = ut.array.get_indices(r[:,0],[x5,x6], prior_indices = index2)
     #index4 = ut.array.get_indices(abs(r[:,2]), [x7,x8], prior_indices = index3)
     index5 = ut.array.get_indices(age, [a1,a2], prior_indices = index3)
     index6 = ut.array.get_indices(r[:,1]*180/np.pi, [x9,x10], prior_indices = index5)
@@ -180,5 +119,5 @@ def azimuthal_analysis_form():
     
     ut_io.file_hdf5('/home/rlgraf/Final_Figures/AZIM_profile_form_FINAL', Fe_H_azim_form_total) 
     
-azimuthal_analysis_z_0()
+#azimuthal_analysis_z_0()
 azimuthal_analysis_form()
