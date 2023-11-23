@@ -107,17 +107,13 @@ def azimuthal_analysis_z_0():
                 Fe_H_azim_pre = np.array(Fe_H_azim_pre)
                 Fe_H_azim_pre_mean = np.nanmean(Fe_H_azim_pre,0)
                 Fe_H_azim.append(Fe_H_azim_pre_mean)
-                l = np.arange(0,10)
-                #Fe_H_azim_pre_mean = np.array(Fe_H_azim_pre_mean)
-                j, k = np.polyfit(l[np.isfinite(Fe_H_azim_pre_mean)],Fe_H_azim_pre_mean[np.isfinite(Fe_H_azim_pre_mean)],1)
-                slope_azim.append(j)
+                
             Fe_H_azim_total.append(Fe_H_azim)
-            slope_azim_total.append(slope_azim)
     Fe_H_azim_total = np.array(Fe_H_azim_total)
-    slope_azim_total = np.array(slope_azim_total)
+    
     
     ut_io.file_hdf5('/home/rlgraf/Final_Figures/AZIM_profile_z_0_FINAL', Fe_H_azim_total) 
-    ut_io.file_hdf5('/home/rlgraf/Final_Figures/AZIM_slope_z_0_FINAL', slope_azim_total) 
+    
     
 # formation
 
@@ -176,17 +172,13 @@ def azimuthal_analysis_form():
                 Fe_H_azim_pre_f = np.array(Fe_H_azim_pre_f)
                 Fe_H_azim_pre_mean_f = np.nanmean(Fe_H_azim_pre_f,0)
                 Fe_H_azim_form.append(Fe_H_azim_pre_mean_f)
-                l_f = np.arange(0,10)
-                #Fe_H_azim_pre_mean_f = np.array(Fe_H_azim_pre_mean_f)
-                j_f, k_f = np.polyfit(l_f[np.isfinite(Fe_H_azim_pre_mean_f)],Fe_H_azim_pre_mean_f[np.isfinite(Fe_H_azim_pre_mean_f)],1)
-                slope_azim_form.append(j_f)
+                
             Fe_H_azim_form_total.append(Fe_H_azim_form)
-            slope_azim_form_total.append(slope_azim_form)
+            
     Fe_H_azim_form_total = np.array(Fe_H_azim_form_total)
-    slope_azim_form_total = np.array(slope_azim_form_total)  
+    
     
     ut_io.file_hdf5('/home/rlgraf/Final_Figures/AZIM_profile_form_FINAL', Fe_H_azim_form_total) 
-    ut_io.file_hdf5('/home/rlgraf/Final_Figures/AZIM_slope_form_FINAL', slope_azim_form_total) 
     
 azimuthal_analysis_z_0()
 azimuthal_analysis_form()
