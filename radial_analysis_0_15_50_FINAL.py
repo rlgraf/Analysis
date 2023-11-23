@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-#SBATCH --job-name=Mg_vertical_analysis_vs_R
+#SBATCH --job-name=radial_analysis_location_cut_median_weighted_0_15_50
 #SBATCH --partition=high2  # peloton node: 32 cores, 7.8 GB per core, 250 GB total
 ##SBATCH --partition=high2m  # peloton high-mem node: 32 cores, 15.6 GB per core, 500 GB total
 #SBATCH --mem=32G  # need to specify memory if you set the number of tasks (--ntasks) below
@@ -7,8 +7,8 @@
 ##SBATCH --ntasks-per-node=1  # (MPI) tasks per node
 #SBATCH --ntasks=1  # (MPI) tasks total
 #SBATCH --cpus-per-task=1  # (OpenMP) threads per (MPI) task
-#SBATCH --time=012:00:00
-#SBATCH --output=Mg_vertical_analysis_vs_R_%j.txt
+#SBATCH --time=08:00:00
+#SBATCH --output=radial_analysis_location_cut_median_weighted_0_15_50_%j.txt
 #SBATCH --mail-user=rlgraf@ucdavis.edu
 #SBATCH --mail-type=fail
 #SBATCH --mail-type=begin
@@ -60,13 +60,15 @@ def R90_func():
 
 # z = 0.
 
-def Fe_H_agedependent(x1,x2,x3,x4,x5,x6,x7,x8,a1,a2,r,r_form,age,part, particle_thresh = 4):
+def Fe_H_agedependent(x1,x2,x3,x4,x5,x6,x7,x8,a1,a2,r,r_form,age,part, particle_thresh = 16):
     index = ut.array.get_indices(r[:,0], [x1,x2])
     index2 = ut.array.get_indices(abs(r[:,2]), [x3,x4], prior_indices = index)
-    index3 = ut.array.get_indices(r_form[:,0], [x5,x6], prior_indices = index2)
-    index4 = ut.array.get_indices(abs(r_form[:,2]), [x7,x8], prior_indices = index3)
-    index5 = ut.array.get_indices(age, [a1,a2], prior_indices = index4)
-    Fe_H = part['star'].prop('metallicity.magnesium')
+    a_form = part['star'].prop('form.scalefactor')
+    scaled_radius = r_form[:,0]/a_form
+    index3 = ut.array.get_indices(scaled_radius, [x5,x6], prior_indices = index2)
+    #index4 = ut.array.get_indices(abs(r_form[:,2]), [x7,x8], prior_indices = index3)
+    index5 = ut.array.get_indices(age, [a1,a2], prior_indices = index3)
+    Fe_H = part['star'].prop('metallicity.iron')
     Fe_H_cut = Fe_H[index5]
     if len(Fe_H_cut) < particle_thresh:
         return(np.nan)
@@ -84,26 +86,27 @@ def radial_analysis_z_0():
     for q, s in enumerate(sim):
         simulation_directory = s
         part = gizmo.io.Read.read_snapshots(['star'], 'redshift', 0, simulation_directory, assign_hosts_rotation=True, assign_formation_coordinates = True)
-        Fe_H = part['star'].prop('metallicity.magnesium')
+        Fe_H = part['star'].prop('metallicity.iron')
         age = part['star'].prop('age')
     
         if s in ['/group/awetzelgrp/m12_elvis/m12_elvis_RomeoJuliet_r3500', '/group/awetzelgrp/m12_elvis/m12_elvis_RomulusRemus_r4000', '/group/awetzelgrp/m12_elvis/m12_elvis_ThelmaLouise_r4000']:
             r_array = [part['star'].prop('host1.distance.principal.cylindrical'), part['star'].prop('host2.distance.principal.cylindrical')]
             r_form_array = [part['star'].prop('form.host1.distance.principal.cylindrical'), part['star'].prop('form.host2.distance.principal.cylindrical')]
-        else:           
+        else:
             r_array = [part['star'].prop('host.distance.principal.cylindrical')]
-            r_form_array = [part['star'].prop('form.host.distance.principal.cylindrical')]    
+            r_form_array = [part['star'].prop('form.host.distance.principal.cylindrical')]
             
         for j, (r, r_form) in enumerate(zip(r_array,r_form_array)):
             Fe_H_rad = []
             slope = []
             LG_counter += j
-            for R in np.arange(0.5,15.5,1):
+            r90 = R90
+            for a, b in zip(np.arange(0,14), r90):
                 x = []
-                for i in np.arange(0,1,0.1):
-                    x.append(Fe_H_agedependent(R,R+1,i,i+0.1,0,15,0,1,0,14,r,r_form,age,part))
+                for i in np.arange(0,15,15/50):
+                    x.append(Fe_H_agedependent(i,i+15/50,-3,3,0,30,a,a+1,r,r_form,age,part))
                 Fe_H_rad.append(x)
-                l = np.arange(0,1,0.1)
+                l = np.arange(0,15,15/50)
                 x = np.array(x)
                 if np.isnan(x).all():
                     slope.append(np.nan)
@@ -115,20 +118,20 @@ def radial_analysis_z_0():
     Fe_H_rad_total = np.array([Fe_H_rad_total])
     slope_total = np.array([slope_total])
     
-    ut_io.file_hdf5('/home/rlgraf/Final_Figures/Mg_VER_profile_z_0_vs_R3', Fe_H_rad_total)
-    ut_io.file_hdf5('/home/rlgraf/Final_Figures/Mg_VER_slope_z_0_vs_R3', slope_total)
+    ut_io.file_hdf5('/home/rlgraf/Final_Figures/RAD_profile_z_0_location_cut_median_weighted_0_15_50_FINAL', Fe_H_rad_total)
+    ut_io.file_hdf5('/home/rlgraf/Final_Figures/RAD_slope_z_0_location_cut_median_weighted_0_15_50_FINAL', slope_total)
 
 # formation
 
-def Fe_H_agedependent_form(x1,x2,x3,x4,x5,x6,x7,x8,a1,a2,r_form,r,age,part, particle_thresh = 4):
+def Fe_H_agedependent_form(x1,x2,x3,x4,x5,x6,a1,a2,r_form,r,age,part, particle_thresh = 16):
     index = ut.array.get_indices(r_form[:,0], [x1,x2])
     index2 = ut.array.get_indices(abs(r_form[:,2]), [x3,x4], prior_indices = index)
     a_form = part['star'].prop('form.scalefactor')
     scaled_radius = r_form[:,0]/a_form
-    index3 = ut.array.get_indices(scaled_radius,[x5,x6], prior_indices = index2)
-    index4 = ut.array.get_indices(abs(r[:,2]), [x7,x8], prior_indices = index3)
-    index5 = ut.array.get_indices(age, [a1,a2], prior_indices = index4)
-    Fe_H = part['star'].prop('metallicity.magnesium')
+    index3 = ut.array.get_indices(r,[x5,x6], prior_indices = index2)
+    #index4 = ut.array.get_indices(abs(r[:,2]), [x7,x8], prior_indices = index3)
+    index5 = ut.array.get_indices(age, [a1,a2], prior_indices = index3)
+    Fe_H = part['star'].prop('metallicity.iron')
     Fe_H_cut = Fe_H[index5]
     if len(Fe_H_cut) < particle_thresh:
         return(np.nan)
@@ -146,26 +149,31 @@ def radial_analysis_form():
     for q, s in enumerate(sim):
         simulation_directory = s
         part = gizmo.io.Read.read_snapshots(['star'], 'redshift', 0, simulation_directory, assign_hosts_rotation=True, assign_formation_coordinates = True)
-        Fe_H = part['star'].prop('metallicity.magnesium')
+        Fe_H = part['star'].prop('metallicity.iron')
         age = part['star'].prop('age')
         
         if s in ['/group/awetzelgrp/m12_elvis/m12_elvis_RomeoJuliet_r3500', '/group/awetzelgrp/m12_elvis/m12_elvis_RomulusRemus_r4000', '/group/awetzelgrp/m12_elvis/m12_elvis_ThelmaLouise_r4000']:
             r_array = [part['star'].prop('host1.distance.principal.cylindrical'), part['star'].prop('host2.distance.principal.cylindrical')]
+            r_array_spherical = [part['star'].prop('host1.distance.principal.spherical'), part['star'].prop('host2.distance.principal.spherical')]
             r_form_array = [part['star'].prop('form.host1.distance.principal.cylindrical'), part['star'].prop('form.host2.distance.principal.cylindrical')]
+            r_form_array_spherical = [part['star'].prop('form.host1.distance.principal.spherical'), part['star'].prop('form.host2.distance.principal.spherical')]
         else:
             r_array = [part['star'].prop('host.distance.principal.cylindrical')]
             r_form_array = [part['star'].prop('form.host.distance.principal.cylindrical')]
+            r_array_spherical = [part['star'].prop('host.distance.principal.spherical')]
+            r_form_array_spherical = [part['star'].prop('form.host.distance.principal.spherical')]
             
-        for j, (r, r_form) in enumerate(zip(r_array,r_form_array)):    
+        for j, (r, r_form) in enumerate(zip(r_array_spherical,r_form_array)):    
             Fe_H_rad_form = []
             slope_form = []
             LG_counter += j
-            for R_f in np.arange(0.5,15.5,1):
+            r90 = R90
+            for a_f, b_f in zip(np.arange(0,14), r90):
                 x_f = []
-                for i_f in np.arange(0,1,0.1):
-                    x_f.append(Fe_H_agedependent_form(R_f,R_f+1,i_f,i_f+0.1,0,15,0,1,0,14,r_form,r,age,part))
-                Fe_H_rad_form.append(x_f)    
-                l_f = np.arange(0,1,0.1)
+                for i_f in np.arange(0,b_f,b_f/50):
+                    x_f.append(Fe_H_agedependent_form(i_f,i_f+b_f/50,-3,3,0,30,a_f,a_f+1,r_form,r,age,part))
+                Fe_H_rad_form.append(x_f)
+                l_f = np.arange(0,b_f,b_f/50)
                 x_f = np.array(x_f)
                 if np.isnan(x_f).all():
                     slope_form.append(np.nan)
@@ -177,8 +185,8 @@ def radial_analysis_form():
     Fe_H_rad_form_total = np.array([Fe_H_rad_form_total])
     slope_form_total = np.array([slope_form_total])
     
-    ut_io.file_hdf5('/home/rlgraf/Final_Figures/Mg_VER_profile_form_vs_R3', Fe_H_rad_form_total)
-    ut_io.file_hdf5('/home/rlgraf/Final_Figures/Mg_VER_slope_form_vs_R3', slope_form_total)
+    ut_io.file_hdf5('/home/rlgraf/Final_Figures/RAD_profile_form_location_cut_median_weighted_0_15_50_FINAL', Fe_H_rad_form_total)
+    ut_io.file_hdf5('/home/rlgraf/Final_Figures/RAD_slope_form_location_cut_median_weighted_0_15_50_FINAL', slope_form_total)
     
 radial_analysis_z_0()
 radial_analysis_form()
