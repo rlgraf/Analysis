@@ -105,8 +105,8 @@ def azimuthal_analysis_form():
                 Fe_H_azim_pre_f = []
                 for a_f_pre in np.arange(0,1,0.05):
                     std_vs_rad_f = []
-                    for i_f in np.arange(1,b_f,(b_f-1)/15):
-                        std_vs_rad_f.append(Fe_H_agedependent_sd_form(i_f,i_f+(b_f-1)/15,0,3,0,30,a_f+a_f_pre,a_f+a_f_pre+0.05,0,360,r_form,r,age,part))
+                    for i_f in np.arange(b_f/30,b_f,b_f/15):
+                        std_vs_rad_f.append(Fe_H_agedependent_sd_form(i_f,i_f+b_f/15,0,3,0,30,a_f+a_f_pre,a_f+a_f_pre+0.05,0,360,r_form,r,age,part))
                     Fe_H_azim_pre_f.append(std_vs_rad_f)
                 Fe_H_azim_pre_f = np.array(Fe_H_azim_pre_f)
                 Fe_H_azim_pre_mean_f = np.nanmean(Fe_H_azim_pre_f,0)
