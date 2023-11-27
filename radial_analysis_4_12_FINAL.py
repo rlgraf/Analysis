@@ -105,7 +105,7 @@ def radial_analysis_z_0():
                 for i in np.arange(4,12,5/20):
                     x.append(Fe_H_agedependent(i,i+5/20,-3,3,0,30,a,a+1,r,r_form,age,part))
                 Fe_H_rad.append(x)
-                l = np.arange(4,20,5/20)
+                l = np.arange(4,12,5/20)
                 x = np.array(x)
                 if np.isnan(x).all():
                     slope.append(np.nan)
