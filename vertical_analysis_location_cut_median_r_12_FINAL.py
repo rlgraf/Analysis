@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-#SBATCH --job-name=vertical_analysis_location_cut_median_r_8_FINAL
+#SBATCH --job-name=vertical_analysis_location_cut_median_r_12_FINAL
 #SBATCH --partition=high2  # peloton node: 32 cores, 7.8 GB per core, 250 GB total
 ##SBATCH --partition=high2m  # peloton high-mem node: 32 cores, 15.6 GB per core, 500 GB total
 #SBATCH --mem=64G  # need to specify memory if you set the number of tasks (--ntasks) below
@@ -8,7 +8,7 @@
 #SBATCH --ntasks=1  # (MPI) tasks total
 #SBATCH --cpus-per-task=1  # (OpenMP) threads per (MPI) task
 #SBATCH --time=48:00:00
-#SBATCH --output=vertical_analysis_location_cut_median_r_8_FINAL_%j.txt
+#SBATCH --output=vertical_analysis_location_cut_median_r_12_FINAL_%j.txt
 #SBATCH --mail-user=rlgraf@ucdavis.edu
 #SBATCH --mail-type=fail
 #SBATCH --mail-type=begin
@@ -75,7 +75,7 @@ def vertical_analysis_z_0():
                 for a_pre in np.arange(0,1,0.1):
                     x = []
                     for i in np.arange(0,1,0.1):
-                        x.append(Fe_H_agedependent(7.5,8.5,i,i+0.1,0,30,a+a_pre,a+a_pre+0.1,r,r_form,age,part))
+                        x.append(Fe_H_agedependent(11.5,12.5,i,i+0.1,0,30,a+a_pre,a+a_pre+0.1,r,r_form,age,part))
                     Fe_H_ver_pre.append(x)
                 Fe_H_ver_pre = np.array(Fe_H_ver_pre)
                 Fe_H_ver_pre_mean = np.nanmean(Fe_H_ver_pre,0)
@@ -91,8 +91,8 @@ def vertical_analysis_z_0():
     Fe_H_ver_r_1_2_z_0_total = np.array([Fe_H_ver_r_1_2_z_0_total])
     slope_ver_r_1_2_z_0_total = np.array([slope_ver_r_1_2_z_0_total])
     
-    ut_io.file_hdf5('/home/rlgraf/Final_Figures/VER_profile_r_8_z_0_location_cut_median_weighted_FINAL', Fe_H_ver_r_1_2_z_0_total)
-    ut_io.file_hdf5('/home/rlgraf/Final_Figures/VER_slope_r_8_z_0_location_cut_median_weighted_FINAL', slope_ver_r_1_2_z_0_total)
+    ut_io.file_hdf5('/home/rlgraf/Final_Figures/VER_profile_r_12_z_0_location_cut_median_weighted_FINAL', Fe_H_ver_r_1_2_z_0_total)
+    ut_io.file_hdf5('/home/rlgraf/Final_Figures/VER_slope_r_12_z_0_location_cut_median_weighted_FINAL', slope_ver_r_1_2_z_0_total)
     
     
 # formation
@@ -143,7 +143,7 @@ def vertical_analysis_form():
                 for a_pre_f in np.arange(0,1,0.1):
                     x_f = []
                     for i_f in np.arange(0,1,0.1):
-                        x_f.append(Fe_H_agedependent_form(7.5,8.5,i_f,i_f+0.1,0,30,a_f+a_pre_f,a_f+a_pre_f+0.1,r_form,r,age,part))
+                        x_f.append(Fe_H_agedependent_form(11.5,12.5,i_f,i_f+0.1,0,30,a_f+a_pre_f,a_f+a_pre_f+0.1,r_form,r,age,part))
                     Fe_H_ver_pre_f.append(x_f)
                 Fe_H_ver_pre_f = np.array(Fe_H_ver_pre_f)
                 Fe_H_ver_pre_f_mean = np.nanmean(Fe_H_ver_pre_f,0)
@@ -161,8 +161,8 @@ def vertical_analysis_form():
 
     
     
-    ut_io.file_hdf5('/home/rlgraf/Final_Figures/VER_profile_r_8_form_location_cut_median_weighted_FINAL', Fe_H_ver_r_1_2_form_total)
-    ut_io.file_hdf5('/home/rlgraf/Final_Figures/VER_slope_r_8_form_location_cut_median_weighted_FINAL', slope_ver_r_1_2_form_total)
+    ut_io.file_hdf5('/home/rlgraf/Final_Figures/VER_profile_r_12_form_location_cut_median_weighted_FINAL', Fe_H_ver_r_1_2_form_total)
+    ut_io.file_hdf5('/home/rlgraf/Final_Figures/VER_slope_r_12_form_location_cut_median_weighted_FINAL', slope_ver_r_1_2_form_total)
     
-#vertical_analysis_z_0()
+vertical_analysis_z_0()
 vertical_analysis_form()
