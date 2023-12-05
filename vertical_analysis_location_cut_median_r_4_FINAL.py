@@ -109,7 +109,7 @@ def Fe_H_agedependent_form(x1,x2,x3,x4,x5,x6,a1,a2,r_form,r,age,part, particle_t
     Fe_H_cut = Fe_H[index5]
     if len(Fe_H_cut) < particle_thresh:
         return(np.nan)
-    weight_avg = ws.weighted_median(Fe_H_cut, part['star']['mass'][index5])
+    weight_avg = ws.numpy_weighted_median(Fe_H_cut, part['star']['mass'][index5])
     return(weight_avg)
 
 
