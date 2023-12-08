@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-#SBATCH --job-name=Mg_vertical_analysis_vs_R_FINAL
+#SBATCH --job-name=C_vertical_analysis_vs_R_FINAL
 #SBATCH --partition=high2  # peloton node: 32 cores, 7.8 GB per core, 250 GB total
 ##SBATCH --partition=high2m  # peloton high-mem node: 32 cores, 15.6 GB per core, 500 GB total
 #SBATCH --mem=32G  # need to specify memory if you set the number of tasks (--ntasks) below
@@ -8,7 +8,7 @@
 #SBATCH --ntasks=1  # (MPI) tasks total
 #SBATCH --cpus-per-task=1  # (OpenMP) threads per (MPI) task
 #SBATCH --time=012:00:00
-#SBATCH --output=Mg_vertical_analysis_vs_R_FINAL_%j.txt
+#SBATCH --output=C_vertical_analysis_vs_R_FINAL_%j.txt
 #SBATCH --mail-user=rlgraf@ucdavis.edu
 #SBATCH --mail-type=fail
 #SBATCH --mail-type=begin
@@ -67,7 +67,7 @@ def Fe_H_agedependent(x1,x2,x3,x4,x5,x6,a1,a2,r,r_form,age,part, particle_thresh
     scaled_radius = r_form[:,0]/a_form
     index3 = ut.array.get_indices(scaled_radius, [x5,x6], prior_indices = index2)
     index5 = ut.array.get_indices(age, [a1,a2], prior_indices = index3)
-    Fe_H = part['star'].prop('metallicity.magnesium')
+    Fe_H = part['star'].prop('metallicity.carbon')
     Fe_H_cut = Fe_H[index5]
     if len(Fe_H_cut) < particle_thresh:
         return(np.nan)
@@ -85,7 +85,7 @@ def radial_analysis_z_0():
     for q, s in enumerate(sim):
         simulation_directory = s
         part = gizmo.io.Read.read_snapshots(['star'], 'redshift', 0, simulation_directory, assign_hosts_rotation=True, assign_formation_coordinates = True)
-        Fe_H = part['star'].prop('metallicity.magnesium')
+        Fe_H = part['star'].prop('metallicity.carbon')
         age = part['star'].prop('age')
     
         if s in ['/group/awetzelgrp/m12_elvis/m12_elvis_RomeoJuliet_r3500', '/group/awetzelgrp/m12_elvis/m12_elvis_RomulusRemus_r4000', '/group/awetzelgrp/m12_elvis/m12_elvis_ThelmaLouise_r4000']:
@@ -116,8 +116,8 @@ def radial_analysis_z_0():
     Fe_H_rad_total = np.array([Fe_H_rad_total])
     slope_total = np.array([slope_total])
     
-    ut_io.file_hdf5('/home/rlgraf/Final_Figures/Mg_VER_profile_z_0_vs_R_FINAL', Fe_H_rad_total)
-    ut_io.file_hdf5('/home/rlgraf/Final_Figures/Mg_VER_slope_z_0_vs_R_FINAL', slope_total)
+    ut_io.file_hdf5('/home/rlgraf/Final_Figures/C_VER_profile_z_0_vs_R_FINAL', Fe_H_rad_total)
+    ut_io.file_hdf5('/home/rlgraf/Final_Figures/C_VER_slope_z_0_vs_R_FINAL', slope_total)
 
 # formation
 
@@ -129,7 +129,7 @@ def Fe_H_agedependent_form(x1,x2,x3,x4,x5,x6,a1,a2,r_form,r,age,part, particle_t
     index3 = ut.array.get_indices(r[:,0],[x5,x6], prior_indices = index2)
     #index4 = ut.array.get_indices(abs(r[:,2]), [x7,x8], prior_indices = index3)
     index5 = ut.array.get_indices(age, [a1,a2], prior_indices = index3)
-    Fe_H = part['star'].prop('metallicity.magnesium')
+    Fe_H = part['star'].prop('metallicity.carbon')
     Fe_H_cut = Fe_H[index5]
     if len(Fe_H_cut) < particle_thresh:
         return(np.nan)
@@ -147,7 +147,7 @@ def radial_analysis_form():
     for q, s in enumerate(sim):
         simulation_directory = s
         part = gizmo.io.Read.read_snapshots(['star'], 'redshift', 0, simulation_directory, assign_hosts_rotation=True, assign_formation_coordinates = True)
-        Fe_H = part['star'].prop('metallicity.magnesium')
+        Fe_H = part['star'].prop('metallicity.carbon')
         age = part['star'].prop('age')
         
         if s in ['/group/awetzelgrp/m12_elvis/m12_elvis_RomeoJuliet_r3500', '/group/awetzelgrp/m12_elvis/m12_elvis_RomulusRemus_r4000', '/group/awetzelgrp/m12_elvis/m12_elvis_ThelmaLouise_r4000']:
@@ -182,8 +182,8 @@ def radial_analysis_form():
     Fe_H_rad_form_total = np.array([Fe_H_rad_form_total])
     slope_form_total = np.array([slope_form_total])
     
-    ut_io.file_hdf5('/home/rlgraf/Final_Figures/Mg_VER_profile_form_vs_R_FINAL', Fe_H_rad_form_total)
-    ut_io.file_hdf5('/home/rlgraf/Final_Figures/Mg_VER_slope_form_vs_R_FINAL', slope_form_total)
+    ut_io.file_hdf5('/home/rlgraf/Final_Figures/C_VER_profile_form_vs_R_FINAL', Fe_H_rad_form_total)
+    ut_io.file_hdf5('/home/rlgraf/Final_Figures/C_VER_slope_form_vs_R_FINAL', slope_form_total)
     
 radial_analysis_z_0()
 radial_analysis_form()
