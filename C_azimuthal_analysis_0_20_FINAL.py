@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-#SBATCH --job-name=Mg_azimuthal_analysis_0_20_FINAL
+#SBATCH --job-name=C_azimuthal_analysis_0_20_FINAL
 #SBATCH --partition=high2  # peloton node: 32 cores, 7.8 GB per core, 250 GB total
 ##SBATCH --partition=high2m  # peloton high-mem node: 32 cores, 15.6 GB per core, 500 GB total
 #SBATCH --mem=64G  # need to specify memory if you set the number of tasks (--ntasks) below
@@ -8,7 +8,7 @@
 #SBATCH --ntasks=1  # (MPI) tasks total
 #SBATCH --cpus-per-task=1  # (OpenMP) threads per (MPI) task
 #SBATCH --time=48:00:00
-#SBATCH --output=Mg_azimuthal_analysis_0_20_FINAL_%j.txt
+#SBATCH --output=C_azimuthal_analysis_0_20_FINAL_%j.txt
 #SBATCH --mail-user=rlgraf@ucdavis.edu
 #SBATCH --mail-type=fail
 #SBATCH --mail-type=begin
@@ -72,7 +72,7 @@ def Fe_H_agedependent_sd(x1,x2,x3,x4,x5,x6,a1,a2,x9,x10,r,r_form,age,part):
     #index4 = ut.array.get_indices(abs(r_form[:,2]), [x7,x8], prior_indices = index3)
     index5 = ut.array.get_indices(age, [a1,a2], prior_indices = index3)
     index6 = ut.array.get_indices(r[:,1]*180/np.pi, [x9,x10], prior_indices = index5)
-    Fe_H = part['star'].prop('metallicity.magnesium')
+    Fe_H = part['star'].prop('metallicity.carbon')
     Fe_H_cut = Fe_H[index6]
     if len(Fe_H_cut) == 0:
         return(np.nan)
@@ -89,7 +89,7 @@ def azimuthal_analysis_z_0():
     for q, s in enumerate(sim):
         simulation_directory = s
         part = gizmo.io.Read.read_snapshots(['star'], 'redshift', 0, simulation_directory, assign_hosts_rotation=True, assign_formation_coordinates = True)
-        Fe_H = part['star'].prop('metallicity.magnesium')
+        Fe_H = part['star'].prop('metallicity.carbon')
         age = part['star'].prop('age')
         
         if s in ['/group/awetzelgrp/m12_elvis/m12_elvis_RomeoJuliet_r3500', '/group/awetzelgrp/m12_elvis/m12_elvis_RomulusRemus_r4000', '/group/awetzelgrp/m12_elvis/m12_elvis_ThelmaLouise_r4000']:
@@ -117,7 +117,7 @@ def azimuthal_analysis_z_0():
     Fe_H_azim_total = np.array(Fe_H_azim_total)
     
     
-    ut_io.file_hdf5('/home/rlgraf/Final_Figures/Mg_AZIM_profile_z_0_0_20_FINAL', Fe_H_azim_total) 
+    ut_io.file_hdf5('/home/rlgraf/Final_Figures/C_AZIM_profile_z_0_0_20_FINAL', Fe_H_azim_total) 
     
 # formation
 
@@ -130,7 +130,7 @@ def Fe_H_agedependent_sd_form(x1,x2,x3,x4,x5,x6,a1,a2,x9,x10,r_form,r,age,part):
     #index4 = ut.array.get_indices(abs(r[:,2]), [x7,x8], prior_indices = index3)
     index5 = ut.array.get_indices(age, [a1,a2], prior_indices = index3)
     index6 = ut.array.get_indices(r[:,1]*180/np.pi, [x9,x10], prior_indices = index5)
-    Fe_H = part['star'].prop('metallicity.magnesium')
+    Fe_H = part['star'].prop('metallicity.carbon')
     Fe_H_cut = Fe_H[index6]
     if len(Fe_H_cut) == 0:
         return(np.nan)
@@ -147,7 +147,7 @@ def azimuthal_analysis_form():
     for q,s in enumerate(sim):
         simulation_directory = s
         part = gizmo.io.Read.read_snapshots(['star'], 'redshift', 0, simulation_directory, assign_hosts_rotation=True, assign_formation_coordinates = True)
-        Fe_H = part['star'].prop('metallicity.magnesium')
+        Fe_H = part['star'].prop('metallicity.carbon')
         age = part['star'].prop('age')
         
         if s in ['/group/awetzelgrp/m12_elvis/m12_elvis_RomeoJuliet_r3500', '/group/awetzelgrp/m12_elvis/m12_elvis_RomulusRemus_r4000', '/group/awetzelgrp/m12_elvis/m12_elvis_ThelmaLouise_r4000']:
@@ -177,7 +177,7 @@ def azimuthal_analysis_form():
             Fe_H_azim_form_total.append(Fe_H_azim_form)
     Fe_H_azim_form_total = np.array(Fe_H_azim_form_total)
     
-    ut_io.file_hdf5('/home/rlgraf/Final_Figures/Mg_AZIM_profile_form_0_20_FINAL', Fe_H_azim_form_total) 
+    ut_io.file_hdf5('/home/rlgraf/Final_Figures/C_AZIM_profile_form_0_20_FINAL', Fe_H_azim_form_total) 
     
 azimuthal_analysis_z_0()
 azimuthal_analysis_form()
