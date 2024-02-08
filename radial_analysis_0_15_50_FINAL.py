@@ -22,7 +22,7 @@ ScriptPrint = ut_io.SubmissionScriptClass("slurm")
 #pip install weightedstats==0.4.1
 #conda install -c conda-forge weightedstats
 import numpy as np
-import matplotlib.pyplot as plt
+#import matplotlib.pyplot as plt
 import gizmo_analysis as gizmo
 import utilities as ut
 import scipy
@@ -103,7 +103,7 @@ def radial_analysis_z_0():
             for a, b in zip(np.arange(0,14), r90):
                 x = []
                 for i in np.arange(0,15,15/50):
-                    x.append(Fe_H_agedependent(i,i+15/50,-0.3,0.3,0,30,a,a+1,r,r_form,age,part))
+                    x.append(Fe_H_agedependent(i,i+15/50,-5,5,0,30,a,a+1,r,r_form,age,part))
                 Fe_H_rad.append(x)
                 l = np.arange(0,15,15/50)
                 x = np.array(x)
@@ -117,8 +117,8 @@ def radial_analysis_z_0():
     Fe_H_rad_total = np.array([Fe_H_rad_total])
     slope_total = np.array([slope_total])
     
-    ut_io.file_hdf5('/home/rlgraf/Final_Figures/RAD_profile_z_0_location_cut_median_weighted_0_15_50_Zpoint3_FINAL', Fe_H_rad_total)
-    ut_io.file_hdf5('/home/rlgraf/Final_Figures/RAD_slope_z_0_location_cut_median_weighted_0_15_50_Zpoint3_FINAL', slope_total)
+    ut_io.file_hdf5('/home/rlgraf/Final_Figures/RAD_profile_z_0_location_cut_median_weighted_0_15_50_Z5_FINAL', Fe_H_rad_total)
+    ut_io.file_hdf5('/home/rlgraf/Final_Figures/RAD_slope_z_0_location_cut_median_weighted_0_15_50_Z5_FINAL', slope_total)
 
 
 # formation
@@ -171,7 +171,7 @@ def radial_analysis_form():
             for a_f, b_f in zip(np.arange(0,14), r90):
                 x_f = []
                 for i_f in np.arange(0,b_f,b_f/50):
-                    x_f.append(Fe_H_agedependent_form(i_f,i_f+b_f/50,-0.3,0.3,0,30,a_f,a_f+1,r_form,r,age,part))
+                    x_f.append(Fe_H_agedependent_form(i_f,i_f+b_f/50,-5,5,0,30,a_f,a_f+1,r_form,r,age,part))
                 Fe_H_rad_form.append(x_f)
                 l_f = np.arange(0,b_f,b_f/50)
                 x_f = np.array(x_f)
@@ -185,8 +185,8 @@ def radial_analysis_form():
     Fe_H_rad_form_total = np.array([Fe_H_rad_form_total])
     slope_form_total = np.array([slope_form_total])
     
-    ut_io.file_hdf5('/home/rlgraf/Final_Figures/RAD_profile_form_location_cut_median_weighted_0_15_50_Zpoint3_FINAL', Fe_H_rad_form_total)
-    ut_io.file_hdf5('/home/rlgraf/Final_Figures/RAD_slope_form_location_cut_median_weighted_0_15_50_Zpoint3_FINAL', slope_form_total)
+    ut_io.file_hdf5('/home/rlgraf/Final_Figures/RAD_profile_form_location_cut_median_weighted_0_15_50_Z5_FINAL', Fe_H_rad_form_total)
+    ut_io.file_hdf5('/home/rlgraf/Final_Figures/RAD_slope_form_location_cut_median_weighted_0_15_50_Z5_FINAL', slope_form_total)
     
 radial_analysis_z_0()
 radial_analysis_form()
