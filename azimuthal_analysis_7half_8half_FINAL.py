@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-#SBATCH --job-name=azimuthal_analysis_0_20_FINAL
+#SBATCH --job-name=azimuthal_analysis_7half_8half_FINAL
 #SBATCH --partition=high2  # peloton node: 32 cores, 7.8 GB per core, 250 GB total
 ##SBATCH --partition=high2m  # peloton high-mem node: 32 cores, 15.6 GB per core, 500 GB total
 #SBATCH --mem=64G  # need to specify memory if you set the number of tasks (--ntasks) below
@@ -8,7 +8,7 @@
 #SBATCH --ntasks=1  # (MPI) tasks total
 #SBATCH --cpus-per-task=1  # (OpenMP) threads per (MPI) task
 #SBATCH --time=48:00:00
-#SBATCH --output=azimuthal_analysis_0_20_FINAL_%j.txt
+#SBATCH --output=azimuthal_analysis_7half_8half_FINAL_%j.txt
 #SBATCH --mail-user=rlgraf@ucdavis.edu
 #SBATCH --mail-type=fail
 #SBATCH --mail-type=begin
@@ -108,7 +108,7 @@ def azimuthal_analysis_z_0():
             for a,b in zip(np.arange(0,14),r90):
                 Fe_H_azim_pre = []
                 for a_pre in np.arange(0,1,0.05):
-                    Fe_H_azim_pre.append(Fe_H_agedependent_sd(0,20,0,5,0,30,a+a_pre,a+a_pre+0.05,0,360,r,r_form,age,part))  
+                    Fe_H_azim_pre.append(Fe_H_agedependent_sd(7.5,8.5,0,1,0,30,a+a_pre,a+a_pre+0.05,0,360,r,r_form,age,part))  
                 Fe_H_azim_pre = np.array(Fe_H_azim_pre)
                 Fe_H_azim_pre_mean = np.nanmean(Fe_H_azim_pre,0)
                 Fe_H_azim.append(Fe_H_azim_pre_mean)
@@ -117,7 +117,7 @@ def azimuthal_analysis_z_0():
     Fe_H_azim_total = np.array(Fe_H_azim_total)
     
     
-    ut_io.file_hdf5('/home/rlgraf/Final_Figures/AZIM_profile_z_0_0_20_FINAL_Z5', Fe_H_azim_total) 
+    ut_io.file_hdf5('/home/rlgraf/Final_Figures/AZIM_profile_z_0_7half_8half_FINAL_Z1', Fe_H_azim_total) 
     
 # formation
 
@@ -169,7 +169,7 @@ def azimuthal_analysis_form():
             for a_f,b_f in zip(np.arange(0,14), r90):
                 Fe_H_azim_pre_f = []
                 for a_f_pre in np.arange(0,1,0.05):
-                      Fe_H_azim_pre_f.append(Fe_H_agedependent_sd_form(0,20,0,5,0,30,a_f+a_f_pre,a_f+a_f_pre+0.05,0,360,r_form,r,age,part))
+                      Fe_H_azim_pre_f.append(Fe_H_agedependent_sd_form(7.5,8.5,0,1,0,30,a_f+a_f_pre,a_f+a_f_pre+0.05,0,360,r_form,r,age,part))
                 Fe_H_azim_pre_f = np.array(Fe_H_azim_pre_f)
                 Fe_H_azim_pre_mean_f = np.nanmean(Fe_H_azim_pre_f,0)
                 Fe_H_azim_form.append(Fe_H_azim_pre_mean_f)
@@ -177,7 +177,7 @@ def azimuthal_analysis_form():
             Fe_H_azim_form_total.append(Fe_H_azim_form)
     Fe_H_azim_form_total = np.array(Fe_H_azim_form_total)
     
-    ut_io.file_hdf5('/home/rlgraf/Final_Figures/AZIM_profile_form_0_20_FINAL_Z5', Fe_H_azim_form_total) 
+    ut_io.file_hdf5('/home/rlgraf/Final_Figures/AZIM_profile_form_7half_8half_FINAL_Z1', Fe_H_azim_form_total) 
     
 azimuthal_analysis_z_0()
 azimuthal_analysis_form()
