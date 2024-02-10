@@ -108,7 +108,7 @@ def azimuthal_analysis_z_0():
             for a,b in zip(np.arange(0,14),r90):
                 Fe_H_azim_pre = []
                 for a_pre in np.arange(0,1,0.05):
-                    Fe_H_azim_pre.append(Fe_H_agedependent_sd(7.5,8.5,0,1,0,30,a+a_pre,a+a_pre+0.05,0,360,r,r_form,age,part))  
+                    Fe_H_azim_pre.append(Fe_H_agedependent_sd(7.5,8.5,0,5,0,30,a+a_pre,a+a_pre+0.05,0,360,r,r_form,age,part))  
                 Fe_H_azim_pre = np.array(Fe_H_azim_pre)
                 Fe_H_azim_pre_mean = np.nanmean(Fe_H_azim_pre,0)
                 Fe_H_azim.append(Fe_H_azim_pre_mean)
@@ -117,7 +117,7 @@ def azimuthal_analysis_z_0():
     Fe_H_azim_total = np.array(Fe_H_azim_total)
     
     
-    ut_io.file_hdf5('/home/rlgraf/Final_Figures/AZIM_profile_z_0_7half_8half_FINAL_Z1', Fe_H_azim_total) 
+    ut_io.file_hdf5('/home/rlgraf/Final_Figures/AZIM_profile_z_0_7half_8half_FINAL_Z5', Fe_H_azim_total) 
     
 # formation
 
@@ -169,7 +169,7 @@ def azimuthal_analysis_form():
             for a_f,b_f in zip(np.arange(0,14), r90):
                 Fe_H_azim_pre_f = []
                 for a_f_pre in np.arange(0,1,0.05):
-                      Fe_H_azim_pre_f.append(Fe_H_agedependent_sd_form(7.5,8.5,0,1,0,30,a_f+a_f_pre,a_f+a_f_pre+0.05,0,360,r_form,r,age,part))
+                      Fe_H_azim_pre_f.append(Fe_H_agedependent_sd_form(7.5,8.5,0,5,0,30,a_f+a_f_pre,a_f+a_f_pre+0.05,0,360,r_form,r,age,part))
                 Fe_H_azim_pre_f = np.array(Fe_H_azim_pre_f)
                 Fe_H_azim_pre_mean_f = np.nanmean(Fe_H_azim_pre_f,0)
                 Fe_H_azim_form.append(Fe_H_azim_pre_mean_f)
@@ -177,7 +177,7 @@ def azimuthal_analysis_form():
             Fe_H_azim_form_total.append(Fe_H_azim_form)
     Fe_H_azim_form_total = np.array(Fe_H_azim_form_total)
     
-    ut_io.file_hdf5('/home/rlgraf/Final_Figures/AZIM_profile_form_7half_8half_FINAL_Z1', Fe_H_azim_form_total) 
+    ut_io.file_hdf5('/home/rlgraf/Final_Figures/AZIM_profile_form_7half_8half_FINAL_Z5', Fe_H_azim_form_total) 
     
 azimuthal_analysis_z_0()
 azimuthal_analysis_form()
