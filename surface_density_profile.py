@@ -65,7 +65,7 @@ def surf_dens_log_frac_z_0(x1,x2,x3,x4,x5,x6,x7,x8,x9,x10,x11,x12,a1,a2,r,r_form
     a_form = part['star'].prop('form.scalefactor')
     scaled_radius = r_form[:,0]/a_form
     index3 = ut.array.get_indices(scaled_radius, [x5,x6], prior_indices = index2)
-    surf_dens_tot = part['star']['mass'][index3]/(np.pi*(x2**2 - x1**2))
+    surf_dens_tot = np.sum(part['star']['mass'][index3])/(np.pi*(x2**2 - x1**2))
     
     index5 = ut.array.get_indices(r[:,0], [x7,x8])
     index6 = ut.array.get_indices(abs(r[:,2]), [x9,x10], prior_indices = index5)
@@ -73,7 +73,7 @@ def surf_dens_log_frac_z_0(x1,x2,x3,x4,x5,x6,x7,x8,x9,x10,x11,x12,a1,a2,r,r_form
     scaled_radius = r_form[:,0]/a_form
     index7 = ut.array.get_indices(scaled_radius, [x11,x12], prior_indices = index6)
     index8 = ut.array.get_indices(age, [a1,a2], prior_indices = index7)
-    surf_dens_t = part['star']['mass'][index8]/(np.pi*(x7**2 - x8**2))
+    surf_dens_t = np.sum(part['star']['mass'][index8])/(np.pi*(x7**2 - x8**2))
     
     frac_surf_t_surf_tot = surf_dens_t/surf_dens_tot
     return(frac_surf_t_surf_tot)
