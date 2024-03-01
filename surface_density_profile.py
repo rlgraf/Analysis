@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-#SBATCH --job-name= surface_density_profile
+#SBATCH --job-name=surface_density_profile
 #SBATCH --partition=high2  # peloton node: 32 cores, 7.8 GB per core, 250 GB total
 ##SBATCH --partition=high2m  # peloton high-mem node: 32 cores, 15.6 GB per core, 500 GB total
 #SBATCH --mem=32G  # need to specify memory if you set the number of tasks (--ntasks) below
