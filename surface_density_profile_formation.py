@@ -108,7 +108,7 @@ def surf_dens_analysis_form():
             for a in np.arange(0,14):
                 x = []
                 for i in np.arange(0,20):
-                    x.append(surf_dens_log_frac_z_0(i,i+1,-3,3,0,30,i,i+1,-3,3,0,30,a,14,r,r_form,age,part))
+                    x.append(surf_dens_log_frac_form(i,i+1,-3,3,0,30,i,i+1,-3,3,0,30,a,14,r,r_form,age,part))
                 surf_dens_at_age.append(x)
             surf_dens_galaxy.append(surf_dens_at_age)
     surf_dens_galaxy = np.array([surf_dens_galaxy])
