@@ -66,7 +66,7 @@ def half_mass_radius_z_0(x1,x2,x3,x4,x5,x6,a1,a2,x7,x8,x9,x10,x11,x12,a3,a4,r,r_
     scaled_radius = r_form[:,0]/a_form
     index3 = ut.array.get_indices(scaled_radius, [x5,x6], prior_indices = index2)
     index4 = ut.array.get_indices(age, [a1,a2], prior_indices = index3)
-    mass_cut = np.sum(part['star']['mass'][index4]
+    mass_cut = np.sum(part['star']['mass'][index4])
     
     index5 = ut.array.get_indices(r[:,0], [x7,x8])
     index6 = ut.array.get_indices(abs(r[:,2]), [x9,x10], prior_indices = index5)
@@ -74,7 +74,7 @@ def half_mass_radius_z_0(x1,x2,x3,x4,x5,x6,a1,a2,x7,x8,x9,x10,x11,x12,a3,a4,r,r_
     scaled_radius = r_form[:,0]/a_form
     index7 = ut.array.get_indices(scaled_radius, [x11,x12], prior_indices = index6)
     index8 = ut.array.get_indices(age, [a3,a4], prior_indices = index7)
-    mass_tot = np.sum(part['star']['mass'][index8]
+    mass_tot = np.sum(part['star']['mass'][index8])
     
     return(mass_cut/mass_tot)
                                                                                       
