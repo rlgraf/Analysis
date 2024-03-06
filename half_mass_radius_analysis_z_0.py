@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-#SBATCH --job-name=half_mass_radius
+#SBATCH --job-name=half_mass_radius_analysis_z_0
 #SBATCH --partition=high2  # peloton node: 32 cores, 7.8 GB per core, 250 GB total
 ##SBATCH --partition=high2m  # peloton high-mem node: 32 cores, 15.6 GB per core, 500 GB total
 #SBATCH --mem=32G  # need to specify memory if you set the number of tasks (--ntasks) below
@@ -8,7 +8,7 @@
 #SBATCH --ntasks=1  # (MPI) tasks total
 #SBATCH --cpus-per-task=1  # (OpenMP) threads per (MPI) task
 #SBATCH --time=08:00:00
-#SBATCH --output=half_mass_radius_%j.txt
+#SBATCH --output=half_mass_radius_analysis_z_0_%j.txt
 #SBATCH --mail-user=rlgraf@ucdavis.edu
 #SBATCH --mail-type=fail
 #SBATCH --mail-type=begin
@@ -103,12 +103,12 @@ def half_mass_radius_analysis_z_0():
             for a in np.arange(0,14):
                 x = []
                 for i in np.arange(0,10,0.1):
-                    if half_mass_radius_z_0(i,i+1,-3,3,0,30,a,14,i,100,-3,3,0,30,a,14,r,r_form,age,part) < 0.5:
+                    if half_mass_radius_z_0(0,i+1,-3,3,0,30,a,14,0,100,-3,3,0,30,a,14,r,r_form,age,part) < 0.5:
                         x.append(half_mass_radius_z_0(i,i+1,-3,3,0,30,a,14,i,100,-3,3,0,30,a,14,r,r_form,age,part))    
                     else: break
                 half_mass_radius_at_age.append(max(x))
             half_mass_radius_galaxy.append(half_mass_radius_at_age)
     half_mass_radius_galaxy = np.array([half_mass_radius_galaxy])
-    ut_io.file_hdf5('/home/rlgraf/Final_Figures/half_mass_radius', half_mass_radius_galaxy)
+    ut_io.file_hdf5('/home/rlgraf/Final_Figures/half_mass_radius_v2', half_mass_radius_galaxy)
     
 half_mass_radius_analysis_z_0()
