@@ -104,11 +104,11 @@ def half_mass_radius_analysis_z_0():
                 x = []
                 for i in np.arange(0,10,0.1):
                     if half_mass_radius_z_0(0,i+0.1,-3,3,0,30,a,14,0,100,-3,3,0,30,a,14,r,r_form,age,part) < 0.5:
-                        x.append(half_mass_radius_z_0(0,i+0.1,-3,3,0,30,a,14,0,100,-3,3,0,30,a,14,r,r_form,age,part))    
+                        x.append(i)    
                     else: break
                 half_mass_radius_at_age.append(max(x))
             half_mass_radius_galaxy.append(half_mass_radius_at_age)
     half_mass_radius_galaxy = np.array([half_mass_radius_galaxy])
-    ut_io.file_hdf5('/home/rlgraf/Final_Figures/half_mass_radius_v2', half_mass_radius_galaxy)
+    ut_io.file_hdf5('/home/rlgraf/Final_Figures/half_mass_radius_v3', half_mass_radius_galaxy)
     
 half_mass_radius_analysis_z_0()
