@@ -66,7 +66,7 @@ def surf_dens_log_frac_z_0(x1,x2,x3,x4,x5,x6,a1,a2,r,r_form,age,part,particle_th
     scaled_radius = r_form[:,0]/a_form
     index3 = ut.array.get_indices(scaled_radius, [x5,x6], prior_indices = index2)
     index4 = ut.array.get_indices(age, [a1,a2], prior_indices = index3)
-    surf_dens_tot = np.sum(part['star']['mass'][index3])/(np.pi*(x2**2 - x1**2))
+    surf_dens_tot = np.sum(part['star']['mass'][index4])/(np.pi*(x2**2 - x1**2))
     
     return(surf_dens_tot)
                                                                                       
@@ -100,6 +100,6 @@ def surf_dens_analysis_z_0():
                 surf_dens_at_age.append(x)
             surf_dens_galaxy.append(surf_dens_at_age)
     surf_dens_galaxy = np.array([surf_dens_galaxy])
-    ut_io.file_hdf5('/home/rlgraf/Final_Figures/surface_density_profile_abs_z_0', surf_dens_galaxy)
+    ut_io.file_hdf5('/home/rlgraf/Final_Figures/surface_density_profile_abs_z_0_v2', surf_dens_galaxy)
     
 surf_dens_analysis_z_0()
