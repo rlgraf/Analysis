@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-#SBATCH --job-name=half_mass_radius_analysis_z_0
+#SBATCH --job-name=half_mass_radius_analysis_form
 #SBATCH --partition=high2  # peloton node: 32 cores, 7.8 GB per core, 250 GB total
 ##SBATCH --partition=high2m  # peloton high-mem node: 32 cores, 15.6 GB per core, 500 GB total
 #SBATCH --mem=32G  # need to specify memory if you set the number of tasks (--ntasks) below
@@ -8,7 +8,7 @@
 #SBATCH --ntasks=1  # (MPI) tasks total
 #SBATCH --cpus-per-task=1  # (OpenMP) threads per (MPI) task
 #SBATCH --time=08:00:00
-#SBATCH --output=half_mass_radius_analysis_z_0_%j.txt
+#SBATCH --output=half_mass_radius_analysis_form_%j.txt
 #SBATCH --mail-user=rlgraf@ucdavis.edu
 #SBATCH --mail-type=fail
 #SBATCH --mail-type=begin
@@ -58,28 +58,27 @@ def R90_func():
 
 # z = 0.
 
-def half_mass_radius_z_0(x1,x2,x3,x4,x5,x6,a1,a2,x7,x8,x9,x10,x11,x12,a3,a4,r,r_form,age,part):
+def half_mass_radius_form(x1,x2,x3,x4,x5,x6,a1,a2,x7,x8,x9,x10,x11,x12,a3,a4,r,r_form,age,part):
     
-    index = ut.array.get_indices(r[:,0], [x1,x2])
-    index2 = ut.array.get_indices(abs(r[:,2]), [x3,x4], prior_indices = index)
+    index = ut.array.get_indices(r_form[:,0], [x1,x2])
+    index2 = ut.array.get_indices(abs(r_form[:,2]), [x3,x4], prior_indices = index)
     a_form = part['star'].prop('form.scalefactor')
     scaled_radius = r_form[:,0]/a_form
     index3 = ut.array.get_indices(scaled_radius, [x5,x6], prior_indices = index2)
     index4 = ut.array.get_indices(age, [a1,a2], prior_indices = index3)
     mass_cut = np.sum(part['star']['mass'][index4])
     
-    index5 = ut.array.get_indices(r[:,0], [x7,x8])
-    index6 = ut.array.get_indices(abs(r[:,2]), [x9,x10], prior_indices = index5)
+    index5 = ut.array.get_indices(abs(r_form[:,2]), [x7,x8])
     a_form = part['star'].prop('form.scalefactor')
     scaled_radius = r_form[:,0]/a_form
-    index7 = ut.array.get_indices(scaled_radius, [x11,x12], prior_indices = index6)
-    index8 = ut.array.get_indices(age, [a3,a4], prior_indices = index7)
-    mass_tot = np.sum(part['star']['mass'][index8])
+    index6 = ut.array.get_indices(scaled_radius, [x9,x10], prior_indices = index5)
+    index7 = ut.array.get_indices(age, [a3,a4], prior_indices = index6)
+    mass_tot = np.sum(part['star']['mass'][index7])
     
     return(mass_cut/mass_tot)
                                                                                       
 
-def half_mass_radius_analysis_z_0():
+def half_mass_radius_analysis_form():
     
     half_mass_radius_galaxy = []
     sim = sim_func()
@@ -103,12 +102,12 @@ def half_mass_radius_analysis_z_0():
             for a in np.arange(0,14):
                 x = []
                 for i in np.arange(0,10,0.1):
-                    if half_mass_radius_z_0(0,i+0.1,-3,3,0,30,a,14,0,100,-3,3,0,30,a,14,r,r_form,age,part) < 0.5:
+                    if half_mass_radius_z_0(0,i+0.05,-3,3,0,30,a,14,-3,3,0,30,a,14,r,r_form,age,part) < 0.5:
                         x.append(i)    
                     else: break
                 half_mass_radius_at_age.append(max(x))
             half_mass_radius_galaxy.append(half_mass_radius_at_age)
     half_mass_radius_galaxy = np.array([half_mass_radius_galaxy])
-    ut_io.file_hdf5('/home/rlgraf/Final_Figures/half_mass_radius_v3', half_mass_radius_galaxy)
+    ut_io.file_hdf5('/home/rlgraf/Final_Figures/half_mass_radius_form', half_mass_radius_galaxy)
     
-half_mass_radius_analysis_z_0()
+half_mass_radius_analysis_form()
