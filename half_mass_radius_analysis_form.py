@@ -58,7 +58,7 @@ def R90_func():
 
 # z = 0.
 
-def half_mass_radius_form(x1,x2,x3,x4,x5,x6,a1,a2,x7,x8,x9,x10,x11,x12,a3,a4,r,r_form,age,part):
+def half_mass_radius_form(x1,x2,x3,x4,x5,x6,a1,a2,x7,x8,x9,x10,a3,a4,r,r_form,age,part):
     
     index = ut.array.get_indices(r_form[:,0], [x1,x2])
     index2 = ut.array.get_indices(abs(r_form[:,2]), [x3,x4], prior_indices = index)
