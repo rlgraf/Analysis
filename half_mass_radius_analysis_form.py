@@ -102,7 +102,7 @@ def half_mass_radius_analysis_form():
             for a in np.arange(0,14):
                 x = []
                 for i in np.arange(0,10,0.1):
-                    if half_mass_radius_z_0(0,i+0.05,-3,3,0,30,a,14,-3,3,0,30,a,14,r,r_form,age,part) < 0.5:
+                    if half_mass_radius_form(0,i+0.05,-3,3,0,30,a,14,-3,3,0,30,a,14,r,r_form,age,part) < 0.5:
                         x.append(i)    
                     else: break
                 half_mass_radius_at_age.append(max(x))
