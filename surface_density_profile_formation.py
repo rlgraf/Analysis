@@ -108,10 +108,10 @@ def surf_dens_analysis_form():
             LG_counter += j
             for a in np.arange(0,14):
                 x = []
-                for i in np.arange(0,20):
+                for i in np.arange(0,12):
                     x.append(surf_dens_log_frac_form(i,i+1,-3,3,0,30,i,i+1,-3,3,0,30,a,14,r,r_form,age,part))
                 surf_dens_at_age.append(x)
-                l = np.arange(0,20)
+                l = np.arange(0,12)
                 x_log = np.array(np.log10(x))
                 if np.isnan(x_log).all():
                     surf_dens_at_age_slope.append(np.nan)
@@ -122,7 +122,7 @@ def surf_dens_analysis_form():
             surf_dens_galaxy_slope.append(surf_dens_at_age_slope)
     surf_dens_galaxy = np.array([surf_dens_galaxy])
     surf_dens_galaxy_slope = np.array([surf_dens_galaxy_slope])
-    ut_io.file_hdf5('/home/rlgraf/Final_Figures/surface_density_profile_form_v2', surf_dens_galaxy)
-    ut_io.file_hdf5('/home/rlgraf/Final_Figures/surface_density_log_profile_slope_form_v2', surf_dens_galaxy_slope)
+    ut_io.file_hdf5('/home/rlgraf/Final_Figures/surface_density_profile_form_R12_v2', surf_dens_galaxy)
+    ut_io.file_hdf5('/home/rlgraf/Final_Figures/surface_density_log_profile_slope_form_R12_v2', surf_dens_galaxy_slope)
     
 surf_dens_analysis_form()
