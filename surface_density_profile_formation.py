@@ -84,6 +84,7 @@ def surf_dens_analysis_form():
     surf_dens_galaxy = []
     surf_dens_galaxy_slope = []
     sim = sim_func()
+    R90 = R90_func()
     LG_counter = 0
     for q, s in enumerate(sim):
         simulation_directory = s
@@ -106,12 +107,13 @@ def surf_dens_analysis_form():
             surf_dens_at_age = []
             surf_dens_at_age_slope = []
             LG_counter += j
-            for a in np.arange(0,14):
+            r90 = R90
+            for a, b in zip(np.arange(0,14), r90):
                 x = []
-                for i in np.arange(0,12):
-                    x.append(surf_dens_log_frac_form(i,i+1,-3,3,0,30,i,i+1,-3,3,0,30,a,14,r,r_form,age,part))
+                for i in np.arange(0,b,b/50):
+                    x.append(surf_dens_log_frac_form(i,i+b/50,-3,3,0,30,i,i+b/50,-3,3,0,30,a,14,r,r_form,age,part))
                 surf_dens_at_age.append(x)
-                l = np.arange(0,12)
+                l = np.arange(0,b,b/50)
                 x_log = np.array(np.log10(x))
                 if np.isnan(x_log).all():
                     surf_dens_at_age_slope.append(np.nan)
@@ -122,7 +124,7 @@ def surf_dens_analysis_form():
             surf_dens_galaxy_slope.append(surf_dens_at_age_slope)
     surf_dens_galaxy = np.array([surf_dens_galaxy])
     surf_dens_galaxy_slope = np.array([surf_dens_galaxy_slope])
-    ut_io.file_hdf5('/home/rlgraf/Final_Figures/surface_density_profile_form_R12_v2', surf_dens_galaxy)
-    ut_io.file_hdf5('/home/rlgraf/Final_Figures/surface_density_log_profile_slope_form_R12_v2', surf_dens_galaxy_slope)
+    ut_io.file_hdf5('/home/rlgraf/Final_Figures/surface_density_profile_form_R90', surf_dens_galaxy)
+    ut_io.file_hdf5('/home/rlgraf/Final_Figures/surface_density_log_profile_slope_form_R90', surf_dens_galaxy_slope)
     
 surf_dens_analysis_form()
