@@ -111,7 +111,7 @@ def surf_dens_analysis_form():
             l = np.arange(0,b,b/50)
             x_log = np.array(np.log10(x))
             if np.isnan(x_log).all():
-            surf_dens_at_age_slope.append(np.nan)
+                surf_dens_at_age_slope.append(np.nan)
             else:
                 j,k = np.polyfit(l[np.isfinite(x_log)], x_log[np.isfinite(x_log)],1)
                 surf_dens_at_age_slope.append(j)
@@ -147,7 +147,7 @@ def surf_dens_analysis_form():
             l = np.arange(0,b,b/50)
             x_log = np.array(np.log10(x))
             if np.isnan(x_log).all():
-            surf_dens_at_age_slope.append(np.nan)
+                surf_dens_at_age_slope.append(np.nan)
             else:
                 j,k = np.polyfit(l[np.isfinite(x_log)], x_log[np.isfinite(x_log)],1)
                 surf_dens_at_age_slope.append(j)
@@ -183,7 +183,7 @@ def surf_dens_analysis_form():
             l = np.arange(0,b,b/50)
             x_log = np.array(np.log10(x))
             if np.isnan(x_log).all():
-            surf_dens_at_age_slope.append(np.nan)
+                surf_dens_at_age_slope.append(np.nan)
             else:
                 j,k = np.polyfit(l[np.isfinite(x_log)], x_log[np.isfinite(x_log)],1)
                 surf_dens_at_age_slope.append(j)
@@ -219,7 +219,7 @@ def surf_dens_analysis_form():
             l = np.arange(0,b,b/50)
             x_log = np.array(np.log10(x))
             if np.isnan(x_log).all():
-            surf_dens_at_age_slope.append(np.nan)
+                surf_dens_at_age_slope.append(np.nan)
             else:
                 j,k = np.polyfit(l[np.isfinite(x_log)], x_log[np.isfinite(x_log)],1)
                 surf_dens_at_age_slope.append(j)
@@ -255,7 +255,7 @@ def surf_dens_analysis_form():
             l = np.arange(0,b,b/50)
             x_log = np.array(np.log10(x))
             if np.isnan(x_log).all():
-            surf_dens_at_age_slope.append(np.nan)
+                surf_dens_at_age_slope.append(np.nan)
             else:
                 j,k = np.polyfit(l[np.isfinite(x_log)], x_log[np.isfinite(x_log)],1)
                 surf_dens_at_age_slope.append(j)
@@ -291,7 +291,7 @@ def surf_dens_analysis_form():
             l = np.arange(0,b,b/50)
             x_log = np.array(np.log10(x))
             if np.isnan(x_log).all():
-            surf_dens_at_age_slope.append(np.nan)
+                surf_dens_at_age_slope.append(np.nan)
             else:
                 j,k = np.polyfit(l[np.isfinite(x_log)], x_log[np.isfinite(x_log)],1)
                 surf_dens_at_age_slope.append(j)
@@ -327,7 +327,7 @@ def surf_dens_analysis_form():
             l = np.arange(0,b,b/50)
             x_log = np.array(np.log10(x))
             if np.isnan(x_log).all():
-            surf_dens_at_age_slope.append(np.nan)
+                surf_dens_at_age_slope.append(np.nan)
             else:
                 j,k = np.polyfit(l[np.isfinite(x_log)], x_log[np.isfinite(x_log)],1)
                 surf_dens_at_age_slope.append(j)
@@ -363,7 +363,7 @@ def surf_dens_analysis_form():
             l = np.arange(0,b,b/50)
             x_log = np.array(np.log10(x))
             if np.isnan(x_log).all():
-            surf_dens_at_age_slope.append(np.nan)
+                surf_dens_at_age_slope.append(np.nan)
             else:
                 j,k = np.polyfit(l[np.isfinite(x_log)], x_log[np.isfinite(x_log)],1)
                 surf_dens_at_age_slope.append(j)
@@ -399,7 +399,7 @@ def surf_dens_analysis_form():
             l = np.arange(0,b,b/50)
             x_log = np.array(np.log10(x))
             if np.isnan(x_log).all():
-            surf_dens_at_age_slope.append(np.nan)
+                surf_dens_at_age_slope.append(np.nan)
             else:
                 j,k = np.polyfit(l[np.isfinite(x_log)], x_log[np.isfinite(x_log)],1)
                 surf_dens_at_age_slope.append(j)
@@ -435,7 +435,7 @@ def surf_dens_analysis_form():
             l = np.arange(0,b,b/50)
             x_log = np.array(np.log10(x))
             if np.isnan(x_log).all():
-            surf_dens_at_age_slope.append(np.nan)
+                surf_dens_at_age_slope.append(np.nan)
             else:
                 j,k = np.polyfit(l[np.isfinite(x_log)], x_log[np.isfinite(x_log)],1)
                 surf_dens_at_age_slope.append(j)
@@ -471,7 +471,7 @@ def surf_dens_analysis_form():
             l = np.arange(0,b,b/50)
             x_log = np.array(np.log10(x))
             if np.isnan(x_log).all():
-            surf_dens_at_age_slope.append(np.nan)
+                surf_dens_at_age_slope.append(np.nan)
             else:
                 j,k = np.polyfit(l[np.isfinite(x_log)], x_log[np.isfinite(x_log)],1)
                 surf_dens_at_age_slope.append(j)
