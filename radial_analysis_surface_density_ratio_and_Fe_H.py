@@ -42,7 +42,7 @@ def Fe_H_agedependent_form(x1,x2,x3,x4,x5,x6,a1,a2,r_form,r_spherical,age,part, 
     weight_avg = ws.weighted_median(Fe_H_cut, part['star']['mass'][index4])
     return(weight_avg)
 
-def log_surf_dens_ratio(x1,x2,x3,x4,x5,x6,a1,a2,r_form,r_spherical,age,part)
+def log_surf_dens_ratio(x1,x2,x3,x4,x5,x6,a1,a2,r_form,r_spherical,age,part):
     index = ut.array.get_indices(r_form[:,0], [x1,x2])
     index2 = ut.array.get_indices(abs(r_form[:,2]), [x3,x4], prior_indices = index)
     index3 = ut.array.get_indices(r_spherical[:,0],[x5,x6], prior_indices = index2)
