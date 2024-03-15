@@ -70,10 +70,10 @@ def radial_analysis_form():
         Fe_H = part['star'].prop('metallicity.carbon')
         age = part['star'].prop('age')
         
-        r = [part['star'].prop('host.distance.principal.cylindrical')]
-        r_form = [part['star'].prop('form.host.distance.principal.cylindrical')]
-        r_spherical = [part['star'].prop('host.distance.principal.spherical')]
-        r_form_spherical = [part['star'].prop('form.host.distance.principal.spherical')]
+        r = part['star'].prop('host.distance.principal.cylindrical')
+        r_form = part['star'].prop('form.host.distance.principal.cylindrical')
+        r_spherical = part['star'].prop('host.distance.principal.spherical')
+        r_form_spherical = part['star'].prop('form.host.distance.principal.spherical')
         x_f = []
         surf_dens_ratio = []
         for i_f in np.arange(0,15,0.5):
@@ -96,10 +96,10 @@ def radial_analysis_form():
         Fe_H = part['star'].prop('metallicity.carbon')
         age = part['star'].prop('age')
         
-        r = [part['star'].prop('host.distance.principal.cylindrical')]
-        r_form = [part['star'].prop('form.host.distance.principal.cylindrical')]
-        r_spherical = [part['star'].prop('host.distance.principal.spherical')]
-        r_form_spherical = [part['star'].prop('form.host.distance.principal.spherical')]
+        r = part['star'].prop('host.distance.principal.cylindrical')
+        r_form = part['star'].prop('form.host.distance.principal.cylindrical')
+        r_spherical = part['star'].prop('host.distance.principal.spherical')
+        r_form_spherical = part['star'].prop('form.host.distance.principal.spherical')
         x_f = []
         surf_dens_ratio = []
         for i_f in np.arange(0,15,0.5):
@@ -122,10 +122,10 @@ def radial_analysis_form():
         Fe_H = part['star'].prop('metallicity.carbon')
         age = part['star'].prop('age')
         
-        r = [part['star'].prop('host.distance.principal.cylindrical')]
-        r_form = [part['star'].prop('form.host.distance.principal.cylindrical')]
-        r_spherical = [part['star'].prop('host.distance.principal.spherical')]
-        r_form_spherical = [part['star'].prop('form.host.distance.principal.spherical')]
+        r = part['star'].prop('host.distance.principal.cylindrical')
+        r_form = part['star'].prop('form.host.distance.principal.cylindrical')
+        r_spherical = part['star'].prop('host.distance.principal.spherical')
+        r_form_spherical = part['star'].prop('form.host.distance.principal.spherical')
         x_f = []
         surf_dens_ratio = []
         for i_f in np.arange(0,15,0.5):
@@ -148,10 +148,10 @@ def radial_analysis_form():
         Fe_H = part['star'].prop('metallicity.carbon')
         age = part['star'].prop('age')
         
-        r = [part['star'].prop('host.distance.principal.cylindrical')]
-        r_form = [part['star'].prop('form.host.distance.principal.cylindrical')]
-        r_spherical = [part['star'].prop('host.distance.principal.spherical')]
-        r_form_spherical = [part['star'].prop('form.host.distance.principal.spherical')]
+        r = part['star'].prop('host.distance.principal.cylindrical')
+        r_form = part['star'].prop('form.host.distance.principal.cylindrical')
+        r_spherical = part['star'].prop('host.distance.principal.spherical')
+        r_form_spherical = part['star'].prop('form.host.distance.principal.spherical')
         x_f = []
         surf_dens_ratio = []
         for i_f in np.arange(0,15,0.5):
@@ -174,10 +174,10 @@ def radial_analysis_form():
         Fe_H = part['star'].prop('metallicity.carbon')
         age = part['star'].prop('age')
         
-        r = [part['star'].prop('host.distance.principal.cylindrical')]
-        r_form = [part['star'].prop('form.host.distance.principal.cylindrical')]
-        r_spherical = [part['star'].prop('host.distance.principal.spherical')]
-        r_form_spherical = [part['star'].prop('form.host.distance.principal.spherical')]
+        r = part['star'].prop('host.distance.principal.cylindrical')
+        r_form = part['star'].prop('form.host.distance.principal.cylindrical')
+        r_spherical = part['star'].prop('host.distance.principal.spherical')
+        r_form_spherical = part['star'].prop('form.host.distance.principal.spherical')
         x_f = []
         surf_dens_ratio = []
         for i_f in np.arange(0,15,0.5):
@@ -200,10 +200,10 @@ def radial_analysis_form():
         Fe_H = part['star'].prop('metallicity.carbon')
         age = part['star'].prop('age')
         
-        r = [part['star'].prop('host1.distance.principal.cylindrical')]
-        r_form = [part['star'].prop('form.host1.distance.principal.cylindrical')]
-        r_spherical = [part['star'].prop('host1.distance.principal.spherical')]
-        r_form_spherical = [part['star'].prop('form.host1.distance.principal.spherical')]
+        r = part['star'].prop('host1.distance.principal.cylindrical')
+        r_form = part['star'].prop('form.host1.distance.principal.cylindrical')
+        r_spherical = part['star'].prop('host1.distance.principal.spherical')
+        r_form_spherical = part['star'].prop('form.host1.distance.principal.spherical')
         x_f = []
         surf_dens_ratio = []
         for i_f in np.arange(0,15,0.5):
@@ -226,10 +226,10 @@ def radial_analysis_form():
         Fe_H = part['star'].prop('metallicity.carbon')
         age = part['star'].prop('age')
         
-        r = [part['star'].prop('host2.distance.principal.cylindrical')]
-        r_form = [part['star'].prop('form.host2.distance.principal.cylindrical')]
-        r_spherical = [part['star'].prop('host2.distance.principal.spherical')]
-        r_form_spherical = [part['star'].prop('form.host2.distance.principal.spherical')]
+        r = part['star'].prop('host2.distance.principal.cylindrical')
+        r_form = part['star'].prop('form.host2.distance.principal.cylindrical')
+        r_spherical = part['star'].prop('host2.distance.principal.spherical')
+        r_form_spherical = part['star'].prop('form.host2.distance.principal.spherical')
         x_f = []
         surf_dens_ratio = []
         for i_f in np.arange(0,15,0.5):
@@ -252,10 +252,10 @@ def radial_analysis_form():
         Fe_H = part['star'].prop('metallicity.carbon')
         age = part['star'].prop('age')
         
-        r = [part['star'].prop('host1.distance.principal.cylindrical')]
-        r_form = [part['star'].prop('form.host1.distance.principal.cylindrical')]
-        r_spherical = [part['star'].prop('host1.distance.principal.spherical')]
-        r_form_spherical = [part['star'].prop('form.host1.distance.principal.spherical')]
+        r = part['star'].prop('host1.distance.principal.cylindrical')
+        r_form = part['star'].prop('form.host1.distance.principal.cylindrical')
+        r_spherical = part['star'].prop('host1.distance.principal.spherical')
+        r_form_spherical = part['star'].prop('form.host1.distance.principal.spherical')
         x_f = []
         surf_dens_ratio = []
         for i_f in np.arange(0,15,0.5):
@@ -278,10 +278,10 @@ def radial_analysis_form():
         Fe_H = part['star'].prop('metallicity.carbon')
         age = part['star'].prop('age')
         
-        r = [part['star'].prop('host2.distance.principal.cylindrical')]
-        r_form = [part['star'].prop('form.host2.distance.principal.cylindrical')]
-        r_spherical = [part['star'].prop('host2.distance.principal.spherical')]
-        r_form_spherical = [part['star'].prop('form.host2.distance.principal.spherical')]
+        r = part['star'].prop('host2.distance.principal.cylindrical')
+        r_form = part['star'].prop('form.host2.distance.principal.cylindrical')
+        r_spherical = part['star'].prop('host2.distance.principal.spherical')
+        r_form_spherical = part['star'].prop('form.host2.distance.principal.spherical')
         x_f = []
         surf_dens_ratio = []
         for i_f in np.arange(0,15,0.5):
@@ -304,10 +304,10 @@ def radial_analysis_form():
         Fe_H = part['star'].prop('metallicity.carbon')
         age = part['star'].prop('age')
         
-        r = [part['star'].prop('host1.distance.principal.cylindrical')]
-        r_form = [part['star'].prop('form.host1.distance.principal.cylindrical')]
-        r_spherical = [part['star'].prop('host1.distance.principal.spherical')]
-        r_form_spherical = [part['star'].prop('form.host1.distance.principal.spherical')]
+        r = part['star'].prop('host1.distance.principal.cylindrical')
+        r_form = part['star'].prop('form.host1.distance.principal.cylindrical')
+        r_spherical = part['star'].prop('host1.distance.principal.spherical')
+        r_form_spherical = part['star'].prop('form.host1.distance.principal.spherical')
         x_f = []
         surf_dens_ratio = []
         for i_f in np.arange(0,15,0.5):
@@ -330,10 +330,10 @@ def radial_analysis_form():
         Fe_H = part['star'].prop('metallicity.carbon')
         age = part['star'].prop('age')
         
-        r = [part['star'].prop('host2.distance.principal.cylindrical')]
-        r_form = [part['star'].prop('form.host2.distance.principal.cylindrical')]
-        r_spherical = [part['star'].prop('host2.distance.principal.spherical')]
-        r_form_spherical = [part['star'].prop('form.host2.distance.principal.spherical')]
+        r = part['star'].prop('host2.distance.principal.cylindrical')
+        r_form = part['star'].prop('form.host2.distance.principal.cylindrical')
+        r_spherical = part['star'].prop('host2.distance.principal.spherical')
+        r_form_spherical = part['star'].prop('form.host2.distance.principal.spherical')
         x_f = []
         surf_dens_ratio = []
         for i_f in np.arange(0,15,0.5):
