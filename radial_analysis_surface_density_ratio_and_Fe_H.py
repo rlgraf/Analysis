@@ -78,7 +78,7 @@ def radial_analysis_form():
         surf_dens_ratio = []
         for i_f in np.arange(0,15,0.5):
             x_f.append(Fe_H_agedependent_form(i_f,i_f+0.5,-3,3,0,30,0,0.1,r_form,r_spherical,age,part))
-            surf_dens_ratio.append(log_surf_dens_ratio(i_f,i_f+0.5,-3,3,0,30,0,1,r_form,r_spherical,age_part)
+            surf_dens_ratio.append(log_surf_dens_ratio(i_f,i_f+0.5,-3,3,0,30,0,1,r_form,r_spherical,age_part))
         Fe_H_rad_form_at_snapshot.append(x_f)
         surf_dens_ratio_at_snapshot.append(surf_dens_ratio)                           
     Fe_H_rad_form_all_galaxies.append(Fe_H_rad_form_at_snapshot)
