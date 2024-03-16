@@ -42,17 +42,16 @@ def Fe_H_agedependent_form(x1,x2,x3,x4,x5,x6,a1,a2,r_form_star,r_spherical_star,
     weight_avg = ws.weighted_median(Fe_H_cut, part['star']['mass'][index4])
     return(weight_avg)
 
-def log_surf_dens_ratio(x1,x2,x3,x4,x5,x6,a1,a2,r_form_star,r_spherical_star,r_form_gas,r_spherical_gas,age,part):
+def log_surf_dens_ratio(x1,x2,x3,x4,x5,x6,a1,a2,r_form_star,r_spherical_star,r_gas,age,part):
     index = ut.array.get_indices(r_form_star[:,0], [x1,x2])
     index2 = ut.array.get_indices(abs(r_form_star[:,2]), [x3,x4], prior_indices = index1)
     index3 = ut.array.get_indices(r_spherical_star[:,0],[x5,x6], prior_indices = index2)
     index4 = ut.array.get_indices(age, [a1,a2], prior_indices = index3)
     surf_dens_star = np.sum(part['star']['mass'][index4])/(np.pi*(x2**2 - x1**2))
     
-    index5 = ut.array.get_indices(r_form_gas[:,0], [x1,x2])
-    index6 = ut.array.get_indices(abs(r_form_gas[:,2]), [x3,x4], prior_indices = index5)
-    index7 = ut.array.get_indices(r_spherical_gas[:,0],[x5,x6], prior_indices = index6)
-    surf_dens_gas = np.sum(part['gas']['mass'][index7])/(np.pi*(x2**2 - x1**2))
+    index5 = ut.array.get_indices(r_gas[:,0], [x1,x2])
+    index6 = ut.array.get_indices(abs(r_gas[:,2]), [x3,x4], prior_indices = index5)
+    surf_dens_gas = np.sum(part['gas']['mass'][index6])/(np.pi*(x2**2 - x1**2))
     
     log_surf_dens_ratio = np.log10(surf_dens_star/surf_dens_gas)
     return(log_surf_dens_ratio)
@@ -81,15 +80,13 @@ def radial_analysis_form():
         r_form_spherical_star = part['star'].prop('form.host.distance.principal.spherical')
         
         r_gas = part['gas'].prop('host.distance.principal.cylindrical')
-        r_form_gas = part['gas'].prop('form.host.distance.principal.cylindrical')
         r_spherical_gas = part['gas'].prop('host.distance.principal.spherical')
-        r_form_spherical_gas = part['gas'].prop('form.host.distance.principal.spherical')
         
         x_f = []
         surf_dens_ratio = []
         for i_f in np.arange(0,15,0.5):
-            x_f.append(Fe_H_agedependent_form(i_f,i_f+0.5,-3,3,0,30,0,0.1,r_form,r_spherical,age,part))
-            surf_dens_ratio.append(log_surf_dens_ratio(i_f,i_f+0.5,-3,3,0,30,0,1,r_form,r_spherical,age,part))
+            x_f.append(Fe_H_agedependent_form(i_f,i_f+0.5,-3,3,0,30,0,0.1,r_form_star,r_spherical_star,age,part))
+            surf_dens_ratio.append(log_surf_dens_ratio(i_f,i_f+0.5,-3,3,0,30,0,1,r_form_star,r_spherical_star,r_gas,age,part))
         Fe_H_rad_form_at_snapshot.append(x_f)
         surf_dens_ratio_at_snapshot.append(surf_dens_ratio)                           
     Fe_H_rad_form_all_galaxies.append(Fe_H_rad_form_at_snapshot)
@@ -113,15 +110,13 @@ def radial_analysis_form():
         r_form_spherical_star = part['star'].prop('form.host.distance.principal.spherical')
         
         r_gas = part['gas'].prop('host.distance.principal.cylindrical')
-        r_form_gas = part['gas'].prop('form.host.distance.principal.cylindrical')
         r_spherical_gas = part['gas'].prop('host.distance.principal.spherical')
-        r_form_spherical_gas = part['gas'].prop('form.host.distance.principal.spherical')
         
         x_f = []
         surf_dens_ratio = []
         for i_f in np.arange(0,15,0.5):
-            x_f.append(Fe_H_agedependent_form(i_f,i_f+0.5,-3,3,0,30,0,0.1,r_form,r_spherical,age,part))
-            surf_dens_ratio.append(log_surf_dens_ratio(i_f,i_f+0.5,-3,3,0,30,0,1,r_form,r_spherical,age,part))
+            x_f.append(Fe_H_agedependent_form(i_f,i_f+0.5,-3,3,0,30,0,0.1,r_form_star,r_spherical_star,age,part))
+            surf_dens_ratio.append(log_surf_dens_ratio(i_f,i_f+0.5,-3,3,0,30,0,1,r_form_star,r_spherical_star,r_gas,age,part))
         Fe_H_rad_form_at_snapshot.append(x_f)
         surf_dens_ratio_at_snapshot.append(surf_dens_ratio)                           
     Fe_H_rad_form_all_galaxies.append(Fe_H_rad_form_at_snapshot)
@@ -145,15 +140,13 @@ def radial_analysis_form():
         r_form_spherical_star = part['star'].prop('form.host.distance.principal.spherical')
         
         r_gas = part['gas'].prop('host.distance.principal.cylindrical')
-        r_form_gas = part['gas'].prop('form.host.distance.principal.cylindrical')
         r_spherical_gas = part['gas'].prop('host.distance.principal.spherical')
-        r_form_spherical_gas = part['gas'].prop('form.host.distance.principal.spherical')
         
         x_f = []
         surf_dens_ratio = []
         for i_f in np.arange(0,15,0.5):
-            x_f.append(Fe_H_agedependent_form(i_f,i_f+0.5,-3,3,0,30,0,0.1,r_form,r_spherical,age,part))
-            surf_dens_ratio.append(log_surf_dens_ratio(i_f,i_f+0.5,-3,3,0,30,0,1,r_form,r_spherical,age,part))
+            x_f.append(Fe_H_agedependent_form(i_f,i_f+0.5,-3,3,0,30,0,0.1,r_form_star,r_spherical_star,age,part))
+            surf_dens_ratio.append(log_surf_dens_ratio(i_f,i_f+0.5,-3,3,0,30,0,1,r_form_star,r_spherical_star,r_gas,age,part))
         Fe_H_rad_form_at_snapshot.append(x_f)
         surf_dens_ratio_at_snapshot.append(surf_dens_ratio)                           
     Fe_H_rad_form_all_galaxies.append(Fe_H_rad_form_at_snapshot)
@@ -177,15 +170,13 @@ def radial_analysis_form():
         r_form_spherical_star = part['star'].prop('form.host.distance.principal.spherical')
         
         r_gas = part['gas'].prop('host.distance.principal.cylindrical')
-        r_form_gas = part['gas'].prop('form.host.distance.principal.cylindrical')
         r_spherical_gas = part['gas'].prop('host.distance.principal.spherical')
-        r_form_spherical_gas = part['gas'].prop('form.host.distance.principal.spherical')
         
         x_f = []
         surf_dens_ratio = []
         for i_f in np.arange(0,15,0.5):
-            x_f.append(Fe_H_agedependent_form(i_f,i_f+0.5,-3,3,0,30,0,0.1,r_form,r_spherical,age,part))
-            surf_dens_ratio.append(log_surf_dens_ratio(i_f,i_f+0.5,-3,3,0,30,0,1,r_form,r_spherical,age,part))
+            x_f.append(Fe_H_agedependent_form(i_f,i_f+0.5,-3,3,0,30,0,0.1,r_form_star,r_spherical_star,age,part))
+            surf_dens_ratio.append(log_surf_dens_ratio(i_f,i_f+0.5,-3,3,0,30,0,1,r_form_star,r_spherical_star,r_gas,age,part))
         Fe_H_rad_form_at_snapshot.append(x_f)
         surf_dens_ratio_at_snapshot.append(surf_dens_ratio)                           
     Fe_H_rad_form_all_galaxies.append(Fe_H_rad_form_at_snapshot)
@@ -209,15 +200,13 @@ def radial_analysis_form():
         r_form_spherical_star = part['star'].prop('form.host.distance.principal.spherical')
         
         r_gas = part['gas'].prop('host.distance.principal.cylindrical')
-        r_form_gas = part['gas'].prop('form.host.distance.principal.cylindrical')
         r_spherical_gas = part['gas'].prop('host.distance.principal.spherical')
-        r_form_spherical_gas = part['gas'].prop('form.host.distance.principal.spherical')
         
         x_f = []
         surf_dens_ratio = []
         for i_f in np.arange(0,15,0.5):
-            x_f.append(Fe_H_agedependent_form(i_f,i_f+0.5,-3,3,0,30,0,0.1,r_form,r_spherical,age,part))
-            surf_dens_ratio.append(log_surf_dens_ratio(i_f,i_f+0.5,-3,3,0,30,0,1,r_form,r_spherical,age,part))
+            x_f.append(Fe_H_agedependent_form(i_f,i_f+0.5,-3,3,0,30,0,0.1,r_form_star,r_spherical_star,age,part))
+            surf_dens_ratio.append(log_surf_dens_ratio(i_f,i_f+0.5,-3,3,0,30,0,1,r_form_star,r_spherical_star,r_gas,age,part))
         Fe_H_rad_form_at_snapshot.append(x_f)
         surf_dens_ratio_at_snapshot.append(surf_dens_ratio)                           
     Fe_H_rad_form_all_galaxies.append(Fe_H_rad_form_at_snapshot)
@@ -240,16 +229,14 @@ def radial_analysis_form():
         r_spherical_star = part['star'].prop('host1.distance.principal.spherical')
         r_form_spherical_star = part['star'].prop('form.host1.distance.principal.spherical')
         
-        r_gas = part['gas'].prop('host1.distance.principal.cylindrical')
-        r_form_gas = part['gas'].prop('form.host1.distance.principal.cylindrical')
+        r_gas = part['gas'].prop('host1.d1istance.principal.cylindrical')
         r_spherical_gas = part['gas'].prop('host1.distance.principal.spherical')
-        r_form_spherical_gas = part['gas'].prop('form.host1.distance.principal.spherical')
         
         x_f = []
         surf_dens_ratio = []
         for i_f in np.arange(0,15,0.5):
-            x_f.append(Fe_H_agedependent_form(i_f,i_f+0.5,-3,3,0,30,0,0.1,r_form,r_spherical,age,part))
-            surf_dens_ratio.append(log_surf_dens_ratio(i_f,i_f+0.5,-3,3,0,30,0,1,r_form,r_spherical,age,part))
+            x_f.append(Fe_H_agedependent_form(i_f,i_f+0.5,-3,3,0,30,0,0.1,r_form_star,r_spherical_star,age,part))
+            surf_dens_ratio.append(log_surf_dens_ratio(i_f,i_f+0.5,-3,3,0,30,0,1,r_form_star,r_spherical_star,r_gas,age,part))
         Fe_H_rad_form_at_snapshot.append(x_f)
         surf_dens_ratio_at_snapshot.append(surf_dens_ratio)                           
     Fe_H_rad_form_all_galaxies.append(Fe_H_rad_form_at_snapshot)
@@ -273,15 +260,13 @@ def radial_analysis_form():
         r_form_spherical_star = part['star'].prop('form.host2.distance.principal.spherical')
         
         r_gas = part['gas'].prop('host2.distance.principal.cylindrical')
-        r_form_gas = part['gas'].prop('form.host2.distance.principal.cylindrical')
         r_spherical_gas = part['gas'].prop('host2.distance.principal.spherical')
-        r_form_spherical_gas = part['gas'].prop('form.host2.distance.principal.spherical')
         
         x_f = []
         surf_dens_ratio = []
         for i_f in np.arange(0,15,0.5):
-            x_f.append(Fe_H_agedependent_form(i_f,i_f+0.5,-3,3,0,30,0,0.1,r_form,r_spherical,age,part))
-            surf_dens_ratio.append(log_surf_dens_ratio(i_f,i_f+0.5,-3,3,0,30,0,1,r_form,r_spherical,age,part))
+            x_f.append(Fe_H_agedependent_form(i_f,i_f+0.5,-3,3,0,30,0,0.1,r_form_star,r_spherical_star,age,part))
+            surf_dens_ratio.append(log_surf_dens_ratio(i_f,i_f+0.5,-3,3,0,30,0,1,r_form_star,r_spherical_star,r_gas,age,part))
         Fe_H_rad_form_at_snapshot.append(x_f)
         surf_dens_ratio_at_snapshot.append(surf_dens_ratio)                           
     Fe_H_rad_form_all_galaxies.append(Fe_H_rad_form_at_snapshot)
@@ -305,15 +290,13 @@ def radial_analysis_form():
         r_form_spherical_star = part['star'].prop('form.host1.distance.principal.spherical')
         
         r_gas = part['gas'].prop('host1.distance.principal.cylindrical')
-        r_form_gas = part['gas'].prop('form.host1.distance.principal.cylindrical')
         r_spherical_gas = part['gas'].prop('host1.distance.principal.spherical')
-        r_form_spherical_gas = part['gas'].prop('form.host1.distance.principal.spherical')
         
         x_f = []
         surf_dens_ratio = []
         for i_f in np.arange(0,15,0.5):
-            x_f.append(Fe_H_agedependent_form(i_f,i_f+0.5,-3,3,0,30,0,0.1,r_form,r_spherical,age,part))
-            surf_dens_ratio.append(log_surf_dens_ratio(i_f,i_f+0.5,-3,3,0,30,0,1,r_form,r_spherical,age,part))
+            x_f.append(Fe_H_agedependent_form(i_f,i_f+0.5,-3,3,0,30,0,0.1,r_form_star,r_spherical_star,age,part))
+            surf_dens_ratio.append(log_surf_dens_ratio(i_f,i_f+0.5,-3,3,0,30,0,1,r_form_star,r_spherical_star,r_gas,age,part))
         Fe_H_rad_form_at_snapshot.append(x_f)
         surf_dens_ratio_at_snapshot.append(surf_dens_ratio)                           
     Fe_H_rad_form_all_galaxies.append(Fe_H_rad_form_at_snapshot)
@@ -337,15 +320,13 @@ def radial_analysis_form():
         r_form_spherical_star = part['star'].prop('form.host2.distance.principal.spherical')
         
         r_gas = part['gas'].prop('host2.distance.principal.cylindrical')
-        r_form_gas = part['gas'].prop('form.host2.distance.principal.cylindrical')
         r_spherical_gas = part['gas'].prop('host2.distance.principal.spherical')
-        r_form_spherical_gas = part['gas'].prop('form.host2.distance.principal.spherical')
         
         x_f = []
         surf_dens_ratio = []
         for i_f in np.arange(0,15,0.5):
-            x_f.append(Fe_H_agedependent_form(i_f,i_f+0.5,-3,3,0,30,0,0.1,r_form,r_spherical,age,part))
-            surf_dens_ratio.append(log_surf_dens_ratio(i_f,i_f+0.5,-3,3,0,30,0,1,r_form,r_spherical,age,part))
+            x_f.append(Fe_H_agedependent_form(i_f,i_f+0.5,-3,3,0,30,0,0.1,r_form_star,r_spherical_star,age,part))
+            surf_dens_ratio.append(log_surf_dens_ratio(i_f,i_f+0.5,-3,3,0,30,0,1,r_form_star,r_spherical_star,r_gas,age,part))
         Fe_H_rad_form_at_snapshot.append(x_f)
         surf_dens_ratio_at_snapshot.append(surf_dens_ratio)                           
     Fe_H_rad_form_all_galaxies.append(Fe_H_rad_form_at_snapshot)
@@ -369,15 +350,13 @@ def radial_analysis_form():
         r_form_spherical_star = part['star'].prop('form.host1.distance.principal.spherical')
         
         r_gas = part['gas'].prop('host1.distance.principal.cylindrical')
-        r_form_gas = part['gas'].prop('form.host1.distance.principal.cylindrical')
         r_spherical_gas = part['gas'].prop('host1.distance.principal.spherical')
-        r_form_spherical_gas = part['gas'].prop('form.host1.distance.principal.spherical')
         
         x_f = []
         surf_dens_ratio = []
         for i_f in np.arange(0,15,0.5):
-            x_f.append(Fe_H_agedependent_form(i_f,i_f+0.5,-3,3,0,30,0,0.1,r_form,r_spherical,age,part))
-            surf_dens_ratio.append(log_surf_dens_ratio(i_f,i_f+0.5,-3,3,0,30,0,1,r_form,r_spherical,age,part))
+            x_f.append(Fe_H_agedependent_form(i_f,i_f+0.5,-3,3,0,30,0,0.1,r_form_star,r_spherical_star,age,part))
+            surf_dens_ratio.append(log_surf_dens_ratio(i_f,i_f+0.5,-3,3,0,30,0,1,r_form_star,r_spherical_star,r_gas,age,part))
         Fe_H_rad_form_at_snapshot.append(x_f)
         surf_dens_ratio_at_snapshot.append(surf_dens_ratio)                           
     Fe_H_rad_form_all_galaxies.append(Fe_H_rad_form_at_snapshot)
@@ -401,15 +380,13 @@ def radial_analysis_form():
         r_form_spherical_star = part['star'].prop('form.host2.distance.principal.spherical')
         
         r_gas = part['gas'].prop('host2.distance.principal.cylindrical')
-        r_form_gas = part['gas'].prop('form.host2.distance.principal.cylindrical')
         r_spherical_gas = part['gas'].prop('host2.distance.principal.spherical')
-        r_form_spherical_gas = part['gas'].prop('form.host2.distance.principal.spherical')
         
         x_f = []
         surf_dens_ratio = []
         for i_f in np.arange(0,15,0.5):
-            x_f.append(Fe_H_agedependent_form(i_f,i_f+0.5,-3,3,0,30,0,0.1,r_form,r_spherical,age,part))
-            surf_dens_ratio.append(log_surf_dens_ratio(i_f,i_f+0.5,-3,3,0,30,0,1,r_form,r_spherical,age,part))
+            x_f.append(Fe_H_agedependent_form(i_f,i_f+0.5,-3,3,0,30,0,0.1,r_form_star,r_spherical_star,age,part))
+            surf_dens_ratio.append(log_surf_dens_ratio(i_f,i_f+0.5,-3,3,0,30,0,1,r_form_star,r_spherical_star,r_gas,age,part))
         Fe_H_rad_form_at_snapshot.append(x_f)
         surf_dens_ratio_at_snapshot.append(surf_dens_ratio)                           
     Fe_H_rad_form_all_galaxies.append(Fe_H_rad_form_at_snapshot)
