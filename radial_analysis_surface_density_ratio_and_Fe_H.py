@@ -44,7 +44,7 @@ def Fe_H_agedependent_form(x1,x2,x3,x4,x5,x6,a1,a2,r_form_star,r_spherical_star,
 
 def log_surf_dens_ratio(x1,x2,x3,x4,x5,x6,a1,a2,r_form_star,r_spherical_star,r_gas,age,part):
     index = ut.array.get_indices(r_spherical_star[:,0],[x5,x6])
-    index2 = ut.array.get_indices(r_form_star[:,0], [x1,x2], prior_indices = index2)
+    index2 = ut.array.get_indices(r_form_star[:,0], [x1,x2], prior_indices = index)
     index3 = ut.array.get_indices(abs(r_form_star[:,2]), [x3,x4], prior_indices = index2)
     index4 = ut.array.get_indices(age, [a1,a2], prior_indices = index3)
     surf_dens_star = np.sum(part['star']['mass'][index4])/(np.pi*(x2**2 - x1**2))
