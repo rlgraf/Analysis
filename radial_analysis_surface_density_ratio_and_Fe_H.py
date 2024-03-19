@@ -234,7 +234,7 @@ def radial_analysis_form():
         r_spherical_star = part['star'].prop('host1.distance.principal.spherical')
         r_form_spherical_star = part['star'].prop('form.host1.distance.principal.spherical')
         
-        r_gas = part['gas'].prop('host1.d1istance.principal.cylindrical')
+        r_gas = part['gas'].prop('host1.distance.principal.cylindrical')
         r_spherical_gas = part['gas'].prop('host1.distance.principal.spherical')
         
         x_f = []
