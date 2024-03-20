@@ -71,7 +71,7 @@ def radial_analysis_form():
     part_snapshots = np.array([0, 0.07350430, 0.15441179, 0.24850890, 0.35344830, 0.47764710, 0.62273902, 0.79942691, 1.02572345, 1.38636363, 1.73913038, 2.39130425])
     for red in part_snapshots:
         part = gizmo.io.Read.read_snapshots(['star','gas'], 'redshift', red, simulation_directory, assign_hosts_rotation=True, assign_formation_coordinates = True)
-        Fe_H = part['star'].prop('metallicity.carbon')
+        Fe_H = part['star'].prop('metallicity.iron')
         age = part['star'].prop('age')
         
         r_star = part['star'].prop('host.distance.principal.cylindrical')
@@ -96,7 +96,7 @@ def radial_analysis_form():
     Fe_H_rad_form_all_galaxies = np.array(Fe_H_rad_form_all_galaxies)   
     surf_dens_ratio_all_galaxies = np.array(surf_dens_ratio_all_galaxies)       
     
-    ut_io.file_hdf5('/home/rlgraf/Final_Figures/Fe_H_rad_form_all_galaxies_surfdensratiotrack', Fe_H_rad_form_all_galaxies)
-    ut_io.file_hdf5('/home/rlgraf/Final_Figures/surf_dens_ratio_all_galaxies_surfdensratiotrack', surf_dens_ratio_all_galaxies)
+    ut_io.file_hdf5('/home/rlgraf/Final_Figures/Fe_H_rad_form_all_galaxies_surfdensratiotrack_v2', Fe_H_rad_form_all_galaxies)
+    ut_io.file_hdf5('/home/rlgraf/Final_Figures/surf_dens_ratio_all_galaxies_surfdensratiotrack_v2', surf_dens_ratio_all_galaxies)
     
 radial_analysis_form()
