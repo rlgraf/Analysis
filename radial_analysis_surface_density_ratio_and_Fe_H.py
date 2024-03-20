@@ -92,11 +92,135 @@ def radial_analysis_form():
     Fe_H_rad_form_all_galaxies.append(Fe_H_rad_form_at_snapshot)
     surf_dens_ratio_all_galaxies.append(surf_dens_ratio_at_snapshot) 
     del(part)
+    
+     ### m12c
+    
+    simulation_directory = '/group/awetzelgrp/m12c/m12c_r7100'
+ 
+    Fe_H_rad_form_at_snapshot = []
+    surf_dens_ratio_at_snapshot = []
+    part_snapshots = np.array([0, 0.07350430, 0.15441179, 0.24850890, 0.35344830, 0.47764710, 0.62273902, 0.79942691, 1.02572345, 1.38636363, 1.73913038, 2.39130425])
+    for red in part_snapshots:
+        part = gizmo.io.Read.read_snapshots(['star','gas'], 'redshift', red, simulation_directory, assign_hosts_rotation=True, assign_formation_coordinates = True)
+        Fe_H = part['star'].prop('metallicity.carbon')
+        age = part['star'].prop('age')
+        
+        r_star = part['star'].prop('host.distance.principal.cylindrical')
+        r_form_star = part['star'].prop('form.host.distance.principal.cylindrical')
+        r_spherical_star = part['star'].prop('host.distance.principal.spherical')
+        r_form_spherical_star = part['star'].prop('form.host.distance.principal.spherical')
+        
+        r_gas = part['gas'].prop('host.distance.principal.cylindrical')
+        r_spherical_gas = part['gas'].prop('host.distance.principal.spherical')
+        
+        x_f = []
+        surf_dens_ratio = []
+        for i_f in np.arange(0,15,0.5):
+            x_f.append(Fe_H_agedependent_form(i_f,i_f+0.5,-3,3,0,30,0,0.1,r_form_star,r_spherical_star,age,part))
+            surf_dens_ratio.append(log_surf_dens_ratio(i_f,i_f+0.5,-3,3,0,30,0,1,r_form_star,r_spherical_star,r_gas,age,part))
+        Fe_H_rad_form_at_snapshot.append(x_f)
+        surf_dens_ratio_at_snapshot.append(surf_dens_ratio)  
+    Fe_H_rad_form_all_galaxies.append(Fe_H_rad_form_at_snapshot)
+    surf_dens_ratio_all_galaxies.append(surf_dens_ratio_at_snapshot)
+    del(part)
+    
+    ### m12f
+    
+    simulation_directory = '/group/awetzelgrp/m12f/m12f_r7100'
+ 
+    Fe_H_rad_form_at_snapshot = []
+    surf_dens_ratio_at_snapshot = []
+    part_snapshots = np.array([0, 0.07350430, 0.15441179, 0.24850890, 0.35344830, 0.47764710, 0.62273902, 0.79942691, 1.02572345, 1.38636363, 1.73913038, 2.39130425])
+    for red in part_snapshots:
+        part = gizmo.io.Read.read_snapshots(['star','gas'], 'redshift', red, simulation_directory, assign_hosts_rotation=True, assign_formation_coordinates = True)
+        Fe_H = part['star'].prop('metallicity.carbon')
+        age = part['star'].prop('age')
+        
+        r_star = part['star'].prop('host.distance.principal.cylindrical')
+        r_form_star = part['star'].prop('form.host.distance.principal.cylindrical')
+        r_spherical_star = part['star'].prop('host.distance.principal.spherical')
+        r_form_spherical_star = part['star'].prop('form.host.distance.principal.spherical')
+        
+        r_gas = part['gas'].prop('host.distance.principal.cylindrical')
+        r_spherical_gas = part['gas'].prop('host.distance.principal.spherical')
+        
+        x_f = []
+        surf_dens_ratio = []
+        for i_f in np.arange(0,15,0.5):
+            x_f.append(Fe_H_agedependent_form(i_f,i_f+0.5,-3,3,0,30,0,0.1,r_form_star,r_spherical_star,age,part))
+            surf_dens_ratio.append(log_surf_dens_ratio(i_f,i_f+0.5,-3,3,0,30,0,1,r_form_star,r_spherical_star,r_gas,age,part))
+        Fe_H_rad_form_at_snapshot.append(x_f)
+        surf_dens_ratio_at_snapshot.append(surf_dens_ratio)    
+    Fe_H_rad_form_all_galaxies.append(Fe_H_rad_form_at_snapshot)
+    surf_dens_ratio_all_galaxies.append(surf_dens_ratio_at_snapshot)                               
+    del(part)
+    
+    ### m12m
+    
+    simulation_directory = '/group/awetzelgrp/m12m/m12m_r7100'
+ 
+    Fe_H_rad_form_at_snapshot = []
+    surf_dens_ratio_at_snapshot = []
+    part_snapshots = np.array([0, 0.07350430, 0.15441179, 0.24850890, 0.35344830, 0.47764710, 0.62273902, 0.79942691, 1.02572345, 1.38636363, 1.73913038, 2.39130425])
+    for red in part_snapshots:
+        part = gizmo.io.Read.read_snapshots(['star','gas'], 'redshift', red, simulation_directory, assign_hosts_rotation=True, assign_formation_coordinates = True)
+        Fe_H = part['star'].prop('metallicity.carbon')
+        age = part['star'].prop('age')
+        
+        r_star = part['star'].prop('host.distance.principal.cylindrical')
+        r_form_star = part['star'].prop('form.host.distance.principal.cylindrical')
+        r_spherical_star = part['star'].prop('host.distance.principal.spherical')
+        r_form_spherical_star = part['star'].prop('form.host.distance.principal.spherical')
+        
+        r_gas = part['gas'].prop('host.distance.principal.cylindrical')
+        r_spherical_gas = part['gas'].prop('host.distance.principal.spherical')
+        
+        x_f = []
+        surf_dens_ratio = []
+        for i_f in np.arange(0,15,0.5):
+            x_f.append(Fe_H_agedependent_form(i_f,i_f+0.5,-3,3,0,30,0,0.1,r_form_star,r_spherical_star,age,part))
+            surf_dens_ratio.append(log_surf_dens_ratio(i_f,i_f+0.5,-3,3,0,30,0,1,r_form_star,r_spherical_star,r_gas,age,part))
+        Fe_H_rad_form_at_snapshot.append(x_f)
+        surf_dens_ratio_at_snapshot.append(surf_dens_ratio)
+    Fe_H_rad_form_all_galaxies.append(Fe_H_rad_form_at_snapshot)
+    surf_dens_ratio_all_galaxies.append(surf_dens_ratio_at_snapshot)              
+    del(part)
+    
+    ### m12b
+    
+    simulation_directory = '/group/awetzelgrp/m12b/m12b_r7100'
+ 
+    Fe_H_rad_form_at_snapshot = []
+    surf_dens_ratio_at_snapshot = []
+    part_snapshots = np.array([0, 0.07350430, 0.15441179, 0.24850890, 0.35344830, 0.47764710, 0.62273902, 0.79942691, 1.02572345, 1.38636363, 1.73913038, 2.39130425])
+    for red in part_snapshots:
+        part = gizmo.io.Read.read_snapshots(['star','gas'], 'redshift', red, simulation_directory, assign_hosts_rotation=True, assign_formation_coordinates = True)
+        Fe_H = part['star'].prop('metallicity.carbon')
+        age = part['star'].prop('age')
+        
+        r_star = part['star'].prop('host.distance.principal.cylindrical')
+        r_form_star = part['star'].prop('form.host.distance.principal.cylindrical')
+        r_spherical_star = part['star'].prop('host.distance.principal.spherical')
+        r_form_spherical_star = part['star'].prop('form.host.distance.principal.spherical')
+        
+        r_gas = part['gas'].prop('host.distance.principal.cylindrical')
+        r_spherical_gas = part['gas'].prop('host.distance.principal.spherical')
+        
+        x_f = []
+        surf_dens_ratio = []
+        for i_f in np.arange(0,15,0.5):
+            x_f.append(Fe_H_agedependent_form(i_f,i_f+0.5,-3,3,0,30,0,0.1,r_form_star,r_spherical_star,age,part))
+            surf_dens_ratio.append(log_surf_dens_ratio(i_f,i_f+0.5,-3,3,0,30,0,1,r_form_star,r_spherical_star,r_gas,age,part))
+        Fe_H_rad_form_at_snapshot.append(x_f)
+        surf_dens_ratio_at_snapshot.append(surf_dens_ratio)   
+    Fe_H_rad_form_all_galaxies.append(Fe_H_rad_form_at_snapshot)
+    surf_dens_ratio_all_galaxies.append(surf_dens_ratio_at_snapshot) 
+    del(part)                        
                                    
     Fe_H_rad_form_all_galaxies = np.array(Fe_H_rad_form_all_galaxies)   
     surf_dens_ratio_all_galaxies = np.array(surf_dens_ratio_all_galaxies)       
     
-    ut_io.file_hdf5('/home/rlgraf/Final_Figures/Fe_H_rad_form_all_galaxies_surfdensratiotrack_v2', Fe_H_rad_form_all_galaxies)
-    ut_io.file_hdf5('/home/rlgraf/Final_Figures/surf_dens_ratio_all_galaxies_surfdensratiotrack_v2', surf_dens_ratio_all_galaxies)
+    ut_io.file_hdf5('/home/rlgraf/Final_Figures/Fe_H_rad_form_all_galaxies_surfdensratiotrack_v3', Fe_H_rad_form_all_galaxies)
+    ut_io.file_hdf5('/home/rlgraf/Final_Figures/surf_dens_ratio_all_galaxies_surfdensratiotrack_v3', surf_dens_ratio_all_galaxies)
     
 radial_analysis_form()
