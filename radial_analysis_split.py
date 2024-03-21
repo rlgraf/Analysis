@@ -64,10 +64,10 @@ def radial_analysis_form():
     part = gizmo.io.Read.read_snapshots(['star'], 'redshift', 0, simulation_directory, assign_hosts_rotation=True, assign_formation_coordinates = True)
     Fe_H = part['star'].prop('metallicity.iron')
     age = part['star'].prop('age')
-    r = [part['star'].prop('host.distance.principal.cylindrical')]
-    r_form = [part['star'].prop('form.host.distance.principal.cylindrical')]
-    r_spherical = [part['star'].prop('host.distance.principal.spherical')]
-    r_form_spherical = [part['star'].prop('form.host.distance.principal.spherical')]
+    r = part['star'].prop('host.distance.principal.cylindrical')
+    r_form = part['star'].prop('form.host.distance.principal.cylindrical')
+    r_spherical = part['star'].prop('host.distance.principal.spherical')
+    r_form_spherical = part['star'].prop('form.host.distance.principal.spherical')
  
     
     for a_f, b_f in zip(np.arange(0,14), R90):
@@ -96,10 +96,10 @@ def radial_analysis_form():
     part = gizmo.io.Read.read_snapshots(['star'], 'redshift', 0, simulation_directory, assign_hosts_rotation=True, assign_formation_coordinates = True)
     Fe_H = part['star'].prop('metallicity.iron')
     age = part['star'].prop('age')
-    r = [part['star'].prop('host.distance.principal.cylindrical')]
-    r_form = [part['star'].prop('form.host.distance.principal.cylindrical')]
-    r_spherical = [part['star'].prop('host.distance.principal.spherical')]
-    r_form_spherical = [part['star'].prop('form.host.distance.principal.spherical')]
+    r = part['star'].prop('host.distance.principal.cylindrical')
+    r_form = part['star'].prop('form.host.distance.principal.cylindrical')
+    r_spherical = part['star'].prop('host.distance.principal.spherical')
+    r_form_spherical = part['star'].prop('form.host.distance.principal.spherical')
  
     
     for a_f, b_f in zip(np.arange(0,14), R90):
@@ -128,10 +128,10 @@ def radial_analysis_form():
     part = gizmo.io.Read.read_snapshots(['star'], 'redshift', 0, simulation_directory, assign_hosts_rotation=True, assign_formation_coordinates = True)
     Fe_H = part['star'].prop('metallicity.iron')
     age = part['star'].prop('age')
-    r = [part['star'].prop('host.distance.principal.cylindrical')]
-    r_form = [part['star'].prop('form.host.distance.principal.cylindrical')]
-    r_spherical = [part['star'].prop('host.distance.principal.spherical')]
-    r_form_spherical = [part['star'].prop('form.host.distance.principal.spherical')]
+    r = part['star'].prop('host.distance.principal.cylindrical')
+    r_form = part['star'].prop('form.host.distance.principal.cylindrical')
+    r_spherical = part['star'].prop('host.distance.principal.spherical')
+    r_form_spherical = part['star'].prop('form.host.distance.principal.spherical')
  
     
     for a_f, b_f in zip(np.arange(0,14), R90):
@@ -160,10 +160,10 @@ def radial_analysis_form():
     part = gizmo.io.Read.read_snapshots(['star'], 'redshift', 0, simulation_directory, assign_hosts_rotation=True, assign_formation_coordinates = True)
     Fe_H = part['star'].prop('metallicity.iron')
     age = part['star'].prop('age')
-    r = [part['star'].prop('host.distance.principal.cylindrical')]
-    r_form = [part['star'].prop('form.host.distance.principal.cylindrical')]
-    r_spherical = [part['star'].prop('host.distance.principal.spherical')]
-    r_form_spherical = [part['star'].prop('form.host.distance.principal.spherical')]
+    r = part['star'].prop('host.distance.principal.cylindrical')
+    r_form = part['star'].prop('form.host.distance.principal.cylindrical')
+    r_spherical = part['star'].prop('host.distance.principal.spherical')
+    r_form_spherical = part['star'].prop('form.host.distance.principal.spherical')
  
     
     for a_f, b_f in zip(np.arange(0,14), R90):
@@ -192,10 +192,10 @@ def radial_analysis_form():
     part = gizmo.io.Read.read_snapshots(['star'], 'redshift', 0, simulation_directory, assign_hosts_rotation=True, assign_formation_coordinates = True)
     Fe_H = part['star'].prop('metallicity.iron')
     age = part['star'].prop('age')
-    r = [part['star'].prop('host.distance.principal.cylindrical')]
-    r_form = [part['star'].prop('form.host.distance.principal.cylindrical')]
-    r_spherical = [part['star'].prop('host.distance.principal.spherical')]
-    r_form_spherical = [part['star'].prop('form.host.distance.principal.spherical')]
+    r = part['star'].prop('host.distance.principal.cylindrical')
+    r_form = part['star'].prop('form.host.distance.principal.cylindrical')
+    r_spherical = part['star'].prop('host.distance.principal.spherical')
+    r_form_spherical = part['star'].prop('form.host.distance.principal.spherical')
  
     
     for a_f, b_f in zip(np.arange(0,14), R90):
@@ -224,10 +224,10 @@ def radial_analysis_form():
     part = gizmo.io.Read.read_snapshots(['star'], 'redshift', 0, simulation_directory, assign_hosts_rotation=True, assign_formation_coordinates = True)
     Fe_H = part['star'].prop('metallicity.iron')
     age = part['star'].prop('age')
-    r = [part['star'].prop('host1.distance.principal.cylindrical')]
-    r_form = [part['star'].prop('form.host1.distance.principal.cylindrical')]
-    r_spherical = [part['star'].prop('host1.distance.principal.spherical')]
-    r_form_spherical = [part['star'].prop('form.host1.distance.principal.spherical')]
+    r = part['star'].prop('host1.distance.principal.cylindrical')
+    r_form = part['star'].prop('form.host1.distance.principal.cylindrical')
+    r_spherical = part['star'].prop('host1.distance.principal.spherical')
+    r_form_spherical = part['star'].prop('form.host1.distance.principal.spherical')
  
     
     for a_f, b_f in zip(np.arange(0,14), R90):
@@ -256,10 +256,10 @@ def radial_analysis_form():
     part = gizmo.io.Read.read_snapshots(['star'], 'redshift', 0, simulation_directory, assign_hosts_rotation=True, assign_formation_coordinates = True)
     Fe_H = part['star'].prop('metallicity.iron')
     age = part['star'].prop('age')
-    r = [part['star'].prop('host2.distance.principal.cylindrical')]
-    r_form = [part['star'].prop('form.host2.distance.principal.cylindrical')]
-    r_spherical = [part['star'].prop('host2.distance.principal.spherical')]
-    r_form_spherical = [part['star'].prop('form.host2.distance.principal.spherical')]
+    r = part['star'].prop('host2.distance.principal.cylindrical')
+    r_form = part['star'].prop('form.host2.distance.principal.cylindrical')
+    r_spherical = part['star'].prop('host2.distance.principal.spherical')
+    r_form_spherical = part['star'].prop('form.host2.distance.principal.spherical')
  
     
     for a_f, b_f in zip(np.arange(0,14), R90):
@@ -288,10 +288,10 @@ def radial_analysis_form():
     part = gizmo.io.Read.read_snapshots(['star'], 'redshift', 0, simulation_directory, assign_hosts_rotation=True, assign_formation_coordinates = True)
     Fe_H = part['star'].prop('metallicity.iron')
     age = part['star'].prop('age')
-    r = [part['star'].prop('host1.distance.principal.cylindrical')]
-    r_form = [part['star'].prop('form.host1.distance.principal.cylindrical')]
-    r_spherical = [part['star'].prop('host1.distance.principal.spherical')]
-    r_form_spherical = [part['star'].prop('form.host1.distance.principal.spherical')]
+    r = part['star'].prop('host1.distance.principal.cylindrical')
+    r_form = part['star'].prop('form.host1.distance.principal.cylindrical')
+    r_spherical = part['star'].prop('host1.distance.principal.spherical')
+    r_form_spherical = part['star'].prop('form.host1.distance.principal.spherical')
  
     
     for a_f, b_f in zip(np.arange(0,14), R90):
@@ -320,10 +320,10 @@ def radial_analysis_form():
     part = gizmo.io.Read.read_snapshots(['star'], 'redshift', 0, simulation_directory, assign_hosts_rotation=True, assign_formation_coordinates = True)
     Fe_H = part['star'].prop('metallicity.iron')
     age = part['star'].prop('age')
-    r = [part['star'].prop('host2.distance.principal.cylindrical')]
-    r_form = [part['star'].prop('form.host2.distance.principal.cylindrical')]
-    r_spherical = [part['star'].prop('host2.distance.principal.spherical')]
-    r_form_spherical = [part['star'].prop('form.host2.distance.principal.spherical')]
+    r = part['star'].prop('host2.distance.principal.cylindrical')
+    r_form = part['star'].prop('form.host2.distance.principal.cylindrical')
+    r_spherical = part['star'].prop('host2.distance.principal.spherical')
+    r_form_spherical = part['star'].prop('form.host2.distance.principal.spherical')
  
     
     for a_f, b_f in zip(np.arange(0,14), R90):
@@ -352,10 +352,10 @@ def radial_analysis_form():
     part = gizmo.io.Read.read_snapshots(['star'], 'redshift', 0, simulation_directory, assign_hosts_rotation=True, assign_formation_coordinates = True)
     Fe_H = part['star'].prop('metallicity.iron')
     age = part['star'].prop('age')
-    r = [part['star'].prop('host1.distance.principal.cylindrical')]
-    r_form = [part['star'].prop('form.host1.distance.principal.cylindrical')]
-    r_spherical = [part['star'].prop('host1.distance.principal.spherical')]
-    r_form_spherical = [part['star'].prop('form.host1.distance.principal.spherical')]
+    r = part['star'].prop('host1.distance.principal.cylindrical')
+    r_form = part['star'].prop('form.host1.distance.principal.cylindrical')
+    r_spherical = part['star'].prop('host1.distance.principal.spherical')
+    r_form_spherical = part['star'].prop('form.host1.distance.principal.spherical')
  
     
     for a_f, b_f in zip(np.arange(0,14), R90):
@@ -385,10 +385,10 @@ def radial_analysis_form():
     part = gizmo.io.Read.read_snapshots(['star'], 'redshift', 0, simulation_directory, assign_hosts_rotation=True, assign_formation_coordinates = True)
     Fe_H = part['star'].prop('metallicity.iron')
     age = part['star'].prop('age')
-    r = [part['star'].prop('host2.distance.principal.cylindrical')]
-    r_form = [part['star'].prop('form.host2.distance.principal.cylindrical')]
-    r_spherical = [part['star'].prop('host2.distance.principal.spherical')]
-    r_form_spherical = [part['star'].prop('form.host2.distance.principal.spherical')]
+    r = part['star'].prop('host2.distance.principal.cylindrical')
+    r_form = part['star'].prop('form.host2.distance.principal.cylindrical')
+    r_spherical = part['star'].prop('host2.distance.principal.spherical')
+    r_form_spherical = part['star'].prop('form.host2.distance.principal.spherical')
  
     
     for a_f, b_f in zip(np.arange(0,14), R90):
