@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-#SBATCH --job-name=radial_analysis_surface_density_ratio_and_Fe_H_halfGyr
+#SBATCH --job-name=radial_analysis_surface_density_ratio_and_Fe_H_allages
 #SBATCH --partition=high2  # peloton node: 32 cores, 7.8 GB per core, 250 GB total
 ##SBATCH --partition=high2m  # peloton high-mem node: 32 cores, 15.6 GB per core, 500 GB total
 #SBATCH --mem=72G  # need to specify memory if you set the number of tasks (--ntasks) below
@@ -8,7 +8,7 @@
 #SBATCH --ntasks=1  # (MPI) tasks total
 #SBATCH --cpus-per-task=1  # (OpenMP) threads per (MPI) task
 #SBATCH --time=12:00:00
-#SBATCH --output=radial_analysis_surface_density_ratio_and_Fe_H_halfGyr_%j.txt
+#SBATCH --output=radial_analysis_surface_density_ratio_and_Fe_H_allages_%j.txt
 #SBATCH --mail-user=rlgraf@ucdavis.edu
 #SBATCH --mail-type=fail
 #SBATCH --mail-type=begin
@@ -81,7 +81,7 @@ def radial_analysis_form():
         surf_dens_ratio = []
         for i_f in np.arange(0,15,0.5):
             x_f.append(Fe_H_agedependent_form(i_f,i_f+0.5,-3,3,0,0.1,r_star,age,part))
-            surf_dens_ratio.append(log_surf_dens_ratio(i_f,i_f+0.5,-3,3,0,0.5,r_star,r_gas,age,part))
+            surf_dens_ratio.append(log_surf_dens_ratio(i_f,i_f+0.5,-3,3,0,14,r_star,r_gas,age,part))
         Fe_H_rad_form_at_snapshot.append(x_f)
         surf_dens_ratio_at_snapshot.append(surf_dens_ratio) 
     Fe_H_rad_form_all_galaxies.append(Fe_H_rad_form_at_snapshot)
@@ -107,7 +107,7 @@ def radial_analysis_form():
         surf_dens_ratio = []
         for i_f in np.arange(0,15,0.5):
             x_f.append(Fe_H_agedependent_form(i_f,i_f+0.5,-3,3,0,0.1,r_star,age,part))
-            surf_dens_ratio.append(log_surf_dens_ratio(i_f,i_f+0.5,-3,3,0,0.5,r_star,r_gas,age,part))
+            surf_dens_ratio.append(log_surf_dens_ratio(i_f,i_f+0.5,-3,3,0,14,r_star,r_gas,age,part))
         Fe_H_rad_form_at_snapshot.append(x_f)
         surf_dens_ratio_at_snapshot.append(surf_dens_ratio)  
     Fe_H_rad_form_all_galaxies.append(Fe_H_rad_form_at_snapshot)
@@ -133,7 +133,7 @@ def radial_analysis_form():
         surf_dens_ratio = []
         for i_f in np.arange(0,15,0.5):
             x_f.append(Fe_H_agedependent_form(i_f,i_f+0.5,-3,3,0,0.1,r_star,age,part))
-            surf_dens_ratio.append(log_surf_dens_ratio(i_f,i_f+0.5,-3,3,0,0.5,r_star,r_gas,age,part))
+            surf_dens_ratio.append(log_surf_dens_ratio(i_f,i_f+0.5,-3,3,0,14,r_star,r_gas,age,part))
         Fe_H_rad_form_at_snapshot.append(x_f)
         surf_dens_ratio_at_snapshot.append(surf_dens_ratio)    
     Fe_H_rad_form_all_galaxies.append(Fe_H_rad_form_at_snapshot)
@@ -159,7 +159,7 @@ def radial_analysis_form():
         surf_dens_ratio = []
         for i_f in np.arange(0,15,0.5):
             x_f.append(Fe_H_agedependent_form(i_f,i_f+0.5,-3,3,0,0.1,r_star,age,part))
-            surf_dens_ratio.append(log_surf_dens_ratio(i_f,i_f+0.5,-3,3,0,0.5,r_star,r_gas,age,part))
+            surf_dens_ratio.append(log_surf_dens_ratio(i_f,i_f+0.5,-3,3,0,14,r_star,r_gas,age,part))
         Fe_H_rad_form_at_snapshot.append(x_f)
         surf_dens_ratio_at_snapshot.append(surf_dens_ratio)
     Fe_H_rad_form_all_galaxies.append(Fe_H_rad_form_at_snapshot)
@@ -185,7 +185,7 @@ def radial_analysis_form():
         surf_dens_ratio = []
         for i_f in np.arange(0,15,0.5):
             x_f.append(Fe_H_agedependent_form(i_f,i_f+0.5,-3,3,0,0.1,r_star,age,part))
-            surf_dens_ratio.append(log_surf_dens_ratio(i_f,i_f+0.5,-3,3,0,0.5,r_star,r_gas,age,part))
+            surf_dens_ratio.append(log_surf_dens_ratio(i_f,i_f+0.5,-3,3,0,14,r_star,r_gas,age,part))
         Fe_H_rad_form_at_snapshot.append(x_f)
         surf_dens_ratio_at_snapshot.append(surf_dens_ratio)   
     Fe_H_rad_form_all_galaxies.append(Fe_H_rad_form_at_snapshot)
@@ -211,7 +211,7 @@ def radial_analysis_form():
         surf_dens_ratio = []
         for i_f in np.arange(0,15,0.5):
             x_f.append(Fe_H_agedependent_form(i_f,i_f+0.5,-3,3,0,0.1,r_star,age,part))
-            surf_dens_ratio.append(log_surf_dens_ratio(i_f,i_f+0.5,-3,3,0,0.5,r_star,r_gas,age,part))
+            surf_dens_ratio.append(log_surf_dens_ratio(i_f,i_f+0.5,-3,3,0,14,r_star,r_gas,age,part))
         Fe_H_rad_form_at_snapshot.append(x_f)
         surf_dens_ratio_at_snapshot.append(surf_dens_ratio)  
     Fe_H_rad_form_all_galaxies.append(Fe_H_rad_form_at_snapshot)
@@ -237,7 +237,7 @@ def radial_analysis_form():
         surf_dens_ratio = []
         for i_f in np.arange(0,15,0.5):
             x_f.append(Fe_H_agedependent_form(i_f,i_f+0.5,-3,3,0,0.1,r_star,age,part))
-            surf_dens_ratio.append(log_surf_dens_ratio(i_f,i_f+0.5,-3,3,0,0.5,r_star,r_gas,age,part))
+            surf_dens_ratio.append(log_surf_dens_ratio(i_f,i_f+0.5,-3,3,0,14,r_star,r_gas,age,part))
         Fe_H_rad_form_at_snapshot.append(x_f)
         surf_dens_ratio_at_snapshot.append(surf_dens_ratio)   
     Fe_H_rad_form_all_galaxies.append(Fe_H_rad_form_at_snapshot)
@@ -263,7 +263,7 @@ def radial_analysis_form():
         surf_dens_ratio = []
         for i_f in np.arange(0,15,0.5):
             x_f.append(Fe_H_agedependent_form(i_f,i_f+0.5,-3,3,0,0.1,r_star,age,part))
-            surf_dens_ratio.append(log_surf_dens_ratio(i_f,i_f+0.5,-3,3,0,0.5,r_star,r_gas,age,part))
+            surf_dens_ratio.append(log_surf_dens_ratio(i_f,i_f+0.5,-3,3,0,14,r_star,r_gas,age,part))
         Fe_H_rad_form_at_snapshot.append(x_f)
         surf_dens_ratio_at_snapshot.append(surf_dens_ratio)    
     Fe_H_rad_form_all_galaxies.append(Fe_H_rad_form_at_snapshot)
@@ -289,7 +289,7 @@ def radial_analysis_form():
         surf_dens_ratio = []
         for i_f in np.arange(0,15,0.5):
             x_f.append(Fe_H_agedependent_form(i_f,i_f+0.5,-3,3,0,0.1,r_star,age,part))
-            surf_dens_ratio.append(log_surf_dens_ratio(i_f,i_f+0.5,-3,3,0,0.5,r_star,r_gas,age,part))
+            surf_dens_ratio.append(log_surf_dens_ratio(i_f,i_f+0.5,-3,3,0,14,r_star,r_gas,age,part))
         Fe_H_rad_form_at_snapshot.append(x_f)
         surf_dens_ratio_at_snapshot.append(surf_dens_ratio) 
     Fe_H_rad_form_all_galaxies.append(Fe_H_rad_form_at_snapshot)
@@ -315,7 +315,7 @@ def radial_analysis_form():
         surf_dens_ratio = []
         for i_f in np.arange(0,15,0.5):
             x_f.append(Fe_H_agedependent_form(i_f,i_f+0.5,-3,3,0,0.1,r_star,age,part))
-            surf_dens_ratio.append(log_surf_dens_ratio(i_f,i_f+0.5,-3,3,0,0.5,r_star,r_gas,age,part))
+            surf_dens_ratio.append(log_surf_dens_ratio(i_f,i_f+0.5,-3,3,0,14,r_star,r_gas,age,part))
         Fe_H_rad_form_at_snapshot.append(x_f)
         surf_dens_ratio_at_snapshot.append(surf_dens_ratio)  
     Fe_H_rad_form_all_galaxies.append(Fe_H_rad_form_at_snapshot)
@@ -341,7 +341,7 @@ def radial_analysis_form():
         surf_dens_ratio = []
         for i_f in np.arange(0,15,0.5):
             x_f.append(Fe_H_agedependent_form(i_f,i_f+0.5,-3,3,0,0.1,r_star,age,part))
-            surf_dens_ratio.append(log_surf_dens_ratio(i_f,i_f+0.5,-3,3,0,0.5,r_star,r_gas,age,part))
+            surf_dens_ratio.append(log_surf_dens_ratio(i_f,i_f+0.5,-3,3,0,14,r_star,r_gas,age,part))
         Fe_H_rad_form_at_snapshot.append(x_f)
         surf_dens_ratio_at_snapshot.append(surf_dens_ratio)   
     Fe_H_rad_form_all_galaxies.append(Fe_H_rad_form_at_snapshot)
@@ -351,7 +351,7 @@ def radial_analysis_form():
     Fe_H_rad_form_all_galaxies = np.array(Fe_H_rad_form_all_galaxies)   
     surf_dens_ratio_all_galaxies = np.array(surf_dens_ratio_all_galaxies)       
     
-    ut_io.file_hdf5('/home/rlgraf/Final_Figures/Fe_H_rad_form_all_galaxies_surfdensratiotrack_halfGyr', Fe_H_rad_form_all_galaxies)
-    ut_io.file_hdf5('/home/rlgraf/Final_Figures/surf_dens_ratio_all_galaxies_surfdensratiotrack_halfGyr', surf_dens_ratio_all_galaxies)
+    ut_io.file_hdf5('/home/rlgraf/Final_Figures/Fe_H_rad_form_all_galaxies_surfdensratiotrack_allages', Fe_H_rad_form_all_galaxies)
+    ut_io.file_hdf5('/home/rlgraf/Final_Figures/surf_dens_ratio_all_galaxies_surfdensratiotrack_allages', surf_dens_ratio_all_galaxies)
     
 radial_analysis_form()
