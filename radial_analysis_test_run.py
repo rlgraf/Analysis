@@ -66,7 +66,7 @@ def Fe_H_agedependent(x1,x2,x3,x4,x5,x6,a1,a2,r,r_form,age,part, particle_thresh
     index3 = ut.array.get_indices(scaled_radius, [x5,x6], prior_indices = index2)
     #index4 = ut.array.get_indices(abs(r_form[:,2]), [x7,x8], prior_indices = index3)
     index5 = ut.array.get_indices(age, [a1,a2], prior_indices = index3)
-    Fe_H = part['star'].prop('metallicity.iron')
+    #Fe_H = part['star'].prop('metallicity.iron')
     Fe_H_cut = Fe_H[index5]
     if len(Fe_H_cut) < particle_thresh:
         return(np.nan)
@@ -84,15 +84,17 @@ def radial_analysis_z_0():
     for q, s in enumerate(sim):
         simulation_directory = s
         part = gizmo.io.Read.read_snapshots(['star'], 'redshift', 0, simulation_directory, assign_hosts_rotation=True, assign_formation_coordinates = True)
-        Fe_H = part['star'].prop('metallicity.carbon')
-        age = part['star'].prop('age')
     
         if s in ['/group/awetzelgrp/m12_elvis/m12_elvis_RomeoJuliet_r3500', '/group/awetzelgrp/m12_elvis/m12_elvis_RomulusRemus_r4000', '/group/awetzelgrp/m12_elvis/m12_elvis_ThelmaLouise_r4000']:
             r_array = [part['star'].prop('host1.distance.principal.cylindrical'), part['star'].prop('host2.distance.principal.cylindrical')]
             r_form_array = [part['star'].prop('form.host1.distance.principal.cylindrical'), part['star'].prop('form.host2.distance.principal.cylindrical')]
+            Fe_H_array = [part['star'].prop('host1.metallicity.iron'), part['star'].prop('host2.metallicity.iron')]
+            age_array = [part['star'].prop('host1.age'), part['star'].prop('host2.age')]
         else:
             r_array = [part['star'].prop('host.distance.principal.cylindrical')]
             r_form_array = [part['star'].prop('form.host.distance.principal.cylindrical')]
+            Fe_H_array = part['star'].prop('metallicity.iron')
+            age_array = part['star'].prop('age')
             
         for j, (r, r_form) in enumerate(zip(r_array,r_form_array)):
             Fe_H_rad = []
@@ -116,8 +118,8 @@ def radial_analysis_z_0():
     Fe_H_rad_total = np.array([Fe_H_rad_total])
     slope_total = np.array([slope_total])
     
-    ut_io.file_hdf5('/home/rlgraf/Final_Figures/RAD_profile_z_0_host_attributes', Fe_H_rad_total)
-    ut_io.file_hdf5('/home/rlgraf/Final_Figures/RAD_slope_z_0_host_attributes', slope_total)
+    ut_io.file_hdf5('/home/rlgraf/Final_Figures/RAD_profile_z_0_host_attributes_v2', Fe_H_rad_total)
+    ut_io.file_hdf5('/home/rlgraf/Final_Figures/RAD_slope_z_0_host_attributes_v2', slope_total)
 
 
 # formation
@@ -130,7 +132,7 @@ def Fe_H_agedependent_form(x1,x2,x3,x4,x5,x6,a1,a2,r_form,r,age,part, particle_t
     index3 = ut.array.get_indices(r[:,0],[x5,x6], prior_indices = index2)
     #index4 = ut.array.get_indices(abs(r[:,2]), [x7,x8], prior_indices = index3)
     index5 = ut.array.get_indices(age, [a1,a2], prior_indices = index3)
-    Fe_H = part['star'].prop('metallicity.iron')
+    #Fe_H = part['star'].prop('metallicity.iron')
     Fe_H_cut = Fe_H[index5]
     if len(Fe_H_cut) < particle_thresh:
         return(np.nan)
@@ -188,8 +190,8 @@ def radial_analysis_form():
     Fe_H_rad_form_total = np.array([Fe_H_rad_form_total])
     slope_form_total = np.array([slope_form_total])
     
-    ut_io.file_hdf5('/home/rlgraf/Final_Figures/RAD_profile_form_host_attributes', Fe_H_rad_form_total)
-    ut_io.file_hdf5('/home/rlgraf/Final_Figures/RAD_slope_form_host_attributes', slope_form_total)
+    ut_io.file_hdf5('/home/rlgraf/Final_Figures/RAD_profile_form_host_attributes_v2', Fe_H_rad_form_total)
+    ut_io.file_hdf5('/home/rlgraf/Final_Figures/RAD_slope_form_host_attributes_v2', slope_form_total)
     
 radial_analysis_z_0()
 radial_analysis_form()
