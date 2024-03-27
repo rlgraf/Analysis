@@ -58,7 +58,7 @@ def R90_func():
 
 # z = 0.
 
-def Fe_H_agedependent(x1,x2,x3,x4,x5,x6,a1,a2,v1,v2,r,r_form,age,part,v_form, particle_thresh = 16):
+def Fe_H_agedependent(x1,x2,x3,x4,x5,x6,a1,a2,v1,v2,r,r_form,age,part,v, particle_thresh = 16):
     index = ut.array.get_indices(r[:,0], [x1,x2])
     index2 = ut.array.get_indices(abs(r[:,2]), [x3,x4], prior_indices = index)
     a_form = part['star'].prop('form.scalefactor')
@@ -66,7 +66,7 @@ def Fe_H_agedependent(x1,x2,x3,x4,x5,x6,a1,a2,v1,v2,r,r_form,age,part,v_form, pa
     index3 = ut.array.get_indices(scaled_radius, [x5,x6], prior_indices = index2)
     #index4 = ut.array.get_indices(abs(r_form[:,2]), [x7,x8], prior_indices = index3)
     index5 = ut.array.get_indices(age, [a1,a2], prior_indices = index3)
-    index6 = ut.array.get_indices(v_form, [v1,v2], prior_indices = index5)
+    index6 = ut.array.get_indices(v, [v1,v2], prior_indices = index5)
     Fe_H = part['star'].prop('metallicity.iron')
     Fe_H_cut = Fe_H[index6]
     if len(Fe_H_cut) < particle_thresh:
@@ -92,15 +92,15 @@ def radial_analysis_z_0():
             r_array = [part['star'].prop('host1.distance.principal.cylindrical'), part['star'].prop('host2.distance.principal.cylindrical')]
             r_form_array = [part['star'].prop('form.host1.distance.principal.cylindrical'), part['star'].prop('form.host2.distance.principal.cylindrical')]
             v_array = [part['star'].prop('host1.velocity.principal.cylindrical'), part['star'].prop('host2.velocity.principal.cylindrical')]
-            v_form_array = [part['star'].prop('form.host1.velocity.principal.cylindrical'), part['star'].prop('form.host2.velocity.principal.cylindrical')]
+            #v_form_array = [part['star'].prop('form.host1.velocity.principal.cylindrical'), part['star'].prop('form.host2.velocity.principal.cylindrical')]
             
         else:
             r_array = [part['star'].prop('host.distance.principal.cylindrical')]
             r_form_array = [part['star'].prop('form.host.distance.principal.cylindrical')]
             v_array = [part['star'].prop('host.velocity.principal.cylindrical')]
-            v_form_array = [part['star'].prop('form.host.velocity.principal.cylindrical')]
+            #v_form_array = [part['star'].prop('form.host.velocity.principal.cylindrical')]
             
-        for j, (r, r_form, v, v_form) in enumerate(zip(r_array,r_form_array, v_array, v_form_array)):
+        for j, (r, r_form, v) in enumerate(zip(r_array,r_form_array, v_array)):
             Fe_H_rad = []
             slope = []
             LG_counter += j
@@ -108,7 +108,7 @@ def radial_analysis_z_0():
             for a, b in zip(np.arange(0,14), r90):
                 x = []
                 for i in np.arange(0,15,15/50):
-                    x.append(Fe_H_agedependent(i,i+15/50,-5,5,0,30,a,a+1,-200,200,r,r_form,age,part,v_form))
+                    x.append(Fe_H_agedependent(i,i+15/50,-5,5,0,30,a,a+1,-200,200,r,r_form,age,part,v))
                 Fe_H_rad.append(x)
                 l = np.arange(0,15,15/50)
                 x = np.array(x)
@@ -128,7 +128,7 @@ def radial_analysis_z_0():
 
 # formation
 
-def Fe_H_agedependent_form(x1,x2,x3,x4,x5,x6,a1,a2,v1,v2,r_form,r,age,part,v_form,particle_thresh = 16):
+def Fe_H_agedependent_form(x1,x2,x3,x4,x5,x6,a1,a2,v1,v2,r_form,r,age,part,v,particle_thresh = 16):
     index = ut.array.get_indices(r_form[:,0], [x1,x2])
     index2 = ut.array.get_indices(abs(r_form[:,2]), [x3,x4], prior_indices = index)
     a_form = part['star'].prop('form.scalefactor')
@@ -136,7 +136,7 @@ def Fe_H_agedependent_form(x1,x2,x3,x4,x5,x6,a1,a2,v1,v2,r_form,r,age,part,v_for
     index3 = ut.array.get_indices(r[:,0],[x5,x6], prior_indices = index2)
     #index4 = ut.array.get_indices(abs(r[:,2]), [x7,x8], prior_indices = index3)
     index5 = ut.array.get_indices(age, [a1,a2], prior_indices = index3)
-    index6 = ut.array.get_indices(v_form, [v1,v2], prior_indices = index5)
+    index6 = ut.array.get_indices(v, [v1,v2], prior_indices = index5)
     Fe_H = part['star'].prop('metallicity.iron')
     Fe_H_cut = Fe_H[index6]
     if len(Fe_H_cut) < particle_thresh:
@@ -164,16 +164,16 @@ def radial_analysis_form():
             r_form_array = [part['star'].prop('form.host1.distance.principal.cylindrical'), part['star'].prop('form.host2.distance.principal.cylindrical')]
             r_form_array_spherical = [part['star'].prop('form.host1.distance.principal.spherical'), part['star'].prop('form.host2.distance.principal.spherical')]
             v_array = [part['star'].prop('host1.velocity.principal.cylindrical'), part['star'].prop('host2.velocity.principal.cylindrical')]
-            v_form_array = [part['star'].prop('form.host1.velocity.principal.cylindrical'), part['star'].prop('form.host2.velocity.principal.cylindrical')]
+            #v_form_array = [part['star'].prop('form.host1.velocity.principal.cylindrical'), part['star'].prop('form.host2.velocity.principal.cylindrical')]
         else:
             r_array = [part['star'].prop('host.distance.principal.cylindrical')]
             r_form_array = [part['star'].prop('form.host.distance.principal.cylindrical')]
             r_array_spherical = [part['star'].prop('host.distance.principal.spherical')]
             r_form_array_spherical = [part['star'].prop('form.host.distance.principal.spherical')]
             v_array = [part['star'].prop('host.velocity.principal.cylindrical')]
-            v_form_array = [part['star'].prop('form.host.velocity.principal.cylindrical')]
+            #v_form_array = [part['star'].prop('form.host.velocity.principal.cylindrical')]
             
-        for j, (r, r_form,v,v_form) in enumerate(zip(r_array_spherical,r_form_array,v_array,v_form_array)):    
+        for j, (r, r_form,v) in enumerate(zip(r_array_spherical,r_form_array,v_array)):    
             Fe_H_rad_form = []
             slope_form = []
             LG_counter += j
@@ -181,7 +181,7 @@ def radial_analysis_form():
             for a_f, b_f in zip(np.arange(0,14), r90):
                 x_f = []
                 for i_f in np.arange(0,b_f,b_f/50):
-                    x_f.append(Fe_H_agedependent_form(i_f,i_f+b_f/50,-5,5,0,30,a_f,a_f+1,-200,200,r_form,r,age,part,v_form))
+                    x_f.append(Fe_H_agedependent_form(i_f,i_f+b_f/50,-5,5,0,30,a_f,a_f+1,-200,200,r_form,r,age,part,v))
                 Fe_H_rad_form.append(x_f)
                 l_f = np.arange(0,b_f,b_f/50)
                 x_f = np.array(x_f)
