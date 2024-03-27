@@ -128,7 +128,7 @@ def radial_analysis_z_0():
 
 # formation
 
-def Fe_H_agedependent_form(x1,x2,x3,x4,x5,x6,a1,a2,v1,v2,r_form,r,age,part,v,particle_thresh = 8):
+def Fe_H_agedependent_form(x1,x2,x3,x4,x5,x6,a1,a2,v1,v2,r_form,r,age,part,v_form,particle_thresh = 8):
     index = ut.array.get_indices(r_form[:,0], [x1,x2])
     index2 = ut.array.get_indices(abs(r_form[:,2]), [x3,x4], prior_indices = index)
     a_form = part['star'].prop('form.scalefactor')
@@ -136,7 +136,7 @@ def Fe_H_agedependent_form(x1,x2,x3,x4,x5,x6,a1,a2,v1,v2,r_form,r,age,part,v,par
     index3 = ut.array.get_indices(r[:,0],[x5,x6], prior_indices = index2)
     #index4 = ut.array.get_indices(abs(r[:,2]), [x7,x8], prior_indices = index3)
     index5 = ut.array.get_indices(age, [a1,a2], prior_indices = index3)
-    index6 = ut.array.get_indices(v[:,0], [v1,v2], prior_indices = index5)
+    index6 = ut.array.get_indices(v_form[:,0], [v1,v2], prior_indices = index5)
     Fe_H = part['star'].prop('metallicity.iron')
     Fe_H_cut = Fe_H[index6]
     if len(Fe_H_cut) < particle_thresh:
@@ -163,17 +163,17 @@ def radial_analysis_form():
             r_array_spherical = [part['star'].prop('host1.distance.principal.spherical'), part['star'].prop('host2.distance.principal.spherical')]
             r_form_array = [part['star'].prop('form.host1.distance.principal.cylindrical'), part['star'].prop('form.host2.distance.principal.cylindrical')]
             r_form_array_spherical = [part['star'].prop('form.host1.distance.principal.spherical'), part['star'].prop('form.host2.distance.principal.spherical')]
-            v_array = [part['star'].prop('host1.velocity.principal.cylindrical'), part['star'].prop('host2.velocity.principal.cylindrical')]
+            v_form_array = [part['star'].prop('form.host1.velocity.principal.cylindrical'), part['star'].prop('form.host2.velocity.principal.cylindrical')]
             #v_form_array = [part['star'].prop('form.host1.velocity.principal.cylindrical'), part['star'].prop('form.host2.velocity.principal.cylindrical')]
         else:
             r_array = [part['star'].prop('host.distance.principal.cylindrical')]
             r_form_array = [part['star'].prop('form.host.distance.principal.cylindrical')]
             r_array_spherical = [part['star'].prop('host.distance.principal.spherical')]
             r_form_array_spherical = [part['star'].prop('form.host.distance.principal.spherical')]
-            v_array = [part['star'].prop('host.velocity.principal.cylindrical')]
+            v_form_array = [part['star'].prop('form.host.velocity.principal.cylindrical')]
             #v_form_array = [part['star'].prop('form.host.velocity.principal.cylindrical')]
             
-        for j, (r, r_form,v) in enumerate(zip(r_array_spherical,r_form_array,v_array)):    
+        for j, (r, r_form,v_form) in enumerate(zip(r_array_spherical,r_form_array,v_form_array)):    
             Fe_H_rad_form = []
             slope_form = []
             LG_counter += j
@@ -181,7 +181,7 @@ def radial_analysis_form():
             for a_f, b_f in zip(np.arange(0,14), r90):
                 x_f = []
                 for i_f in np.arange(0,b_f,b_f/50):
-                    x_f.append(Fe_H_agedependent_form(i_f,i_f+b_f/50,-5,5,0,30,a_f,a_f+1,-10,10,r_form,r,age,part,v))
+                    x_f.append(Fe_H_agedependent_form(i_f,i_f+b_f/50,-5,5,0,30,a_f,a_f+1,-10,10,r_form,r,age,part,v_form))
                 Fe_H_rad_form.append(x_f)
                 l_f = np.arange(0,b_f,b_f/50)
                 x_f = np.array(x_f)
@@ -195,8 +195,8 @@ def radial_analysis_form():
     Fe_H_rad_form_total = np.array([Fe_H_rad_form_total])
     slope_form_total = np.array([slope_form_total])
     
-    ut_io.file_hdf5('/home/rlgraf/Final_Figures/RAD_profile_form_Vr10', Fe_H_rad_form_total)
-    ut_io.file_hdf5('/home/rlgraf/Final_Figures/RAD_slope_form_Vr10', slope_form_total)
+    ut_io.file_hdf5('/home/rlgraf/Final_Figures/RAD_profile_form_Vr10_v2', Fe_H_rad_form_total)
+    ut_io.file_hdf5('/home/rlgraf/Final_Figures/RAD_slope_form_Vr10_v2', slope_form_total)
     
 radial_analysis_z_0()
 radial_analysis_form()
