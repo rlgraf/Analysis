@@ -56,74 +56,6 @@ def R90_func():
     R90 = np.mean(R90_stack,0)
     return(R90)
 
-# z = 0.
-
-def Fe_H_agedependent(x1,x2,x3,x4,x5,x6,a1,a2,v1,v2,r,r_form,age,part,v, particle_thresh = 8):
-    index = ut.array.get_indices(r[:,0], [x1,x2])
-    index2 = ut.array.get_indices(abs(r[:,2]), [x3,x4], prior_indices = index)
-    a_form = part['star'].prop('form.scalefactor')
-    scaled_radius = r_form[:,0]/a_form
-    index3 = ut.array.get_indices(scaled_radius, [x5,x6], prior_indices = index2)
-    #index4 = ut.array.get_indices(abs(r_form[:,2]), [x7,x8], prior_indices = index3)
-    index5 = ut.array.get_indices(age, [a1,a2], prior_indices = index3)
-    index6 = ut.array.get_indices(v[:,0], [v1,v2], prior_indices = index5)
-    Fe_H = part['star'].prop('metallicity.iron')
-    Fe_H_cut = Fe_H[index6]
-    if len(Fe_H_cut) < particle_thresh:
-        return(np.nan)
-    weight_avg = ws.weighted_median(Fe_H_cut, part['star']['mass'][index6])
-    return(weight_avg)
-
-
-def radial_analysis_z_0():
-    
-    Fe_H_rad_total = []
-    slope_total = []
-    sim = sim_func()
-    R90 = R90_func()
-    LG_counter = 0
-    for q, s in enumerate(sim):
-        simulation_directory = s
-        part = gizmo.io.Read.read_snapshots(['star'], 'redshift', 0, simulation_directory, assign_hosts_rotation=True, assign_formation_coordinates = True)
-        Fe_H = part['star'].prop('metallicity.carbon')
-        age = part['star'].prop('age')
-    
-        if s in ['/group/awetzelgrp/m12_elvis/m12_elvis_RomeoJuliet_r3500', '/group/awetzelgrp/m12_elvis/m12_elvis_RomulusRemus_r4000', '/group/awetzelgrp/m12_elvis/m12_elvis_ThelmaLouise_r4000']:
-            r_array = [part['star'].prop('host1.distance.principal.cylindrical'), part['star'].prop('host2.distance.principal.cylindrical')]
-            r_form_array = [part['star'].prop('form.host1.distance.principal.cylindrical'), part['star'].prop('form.host2.distance.principal.cylindrical')]
-            v_array = [part['star'].prop('host1.velocity.principal.cylindrical'), part['star'].prop('host2.velocity.principal.cylindrical')]
-            #v_form_array = [part['star'].prop('form.host1.velocity.principal.cylindrical'), part['star'].prop('form.host2.velocity.principal.cylindrical')]
-            
-        else:
-            r_array = [part['star'].prop('host.distance.principal.cylindrical')]
-            r_form_array = [part['star'].prop('form.host.distance.principal.cylindrical')]
-            v_array = [part['star'].prop('host.velocity.principal.cylindrical')]
-            #v_form_array = [part['star'].prop('form.host.velocity.principal.cylindrical')]
-            
-        for j, (r, r_form, v) in enumerate(zip(r_array,r_form_array, v_array)):
-            Fe_H_rad = []
-            slope = []
-            LG_counter += j
-            r90 = R90
-            for a, b in zip(np.arange(0,14), r90):
-                x = []
-                for i in np.arange(0,15,15/50):
-                    x.append(Fe_H_agedependent(i,i+15/50,-5,5,0,30,a,a+1,-10,10,r,r_form,age,part,v))
-                Fe_H_rad.append(x)
-                l = np.arange(0,15,15/50)
-                x = np.array(x)
-                if np.isnan(x).all():
-                    slope.append(np.nan)
-                else:
-                    j, k = np.polyfit(l[np.isfinite(x)],x[np.isfinite(x)],1)
-                    slope.append(j)
-            Fe_H_rad_total.append(Fe_H_rad)
-            slope_total.append(slope)
-    Fe_H_rad_total = np.array([Fe_H_rad_total])
-    slope_total = np.array([slope_total])
-    
-    ut_io.file_hdf5('/home/rlgraf/Final_Figures/RAD_profile_z_0_Vr10', Fe_H_rad_total)
-    ut_io.file_hdf5('/home/rlgraf/Final_Figures/RAD_slope_z_0_Vr10', slope_total)
 
 
 # formation
@@ -195,8 +127,8 @@ def radial_analysis_form():
     Fe_H_rad_form_total = np.array([Fe_H_rad_form_total])
     slope_form_total = np.array([slope_form_total])
     
-    ut_io.file_hdf5('/home/rlgraf/Final_Figures/RAD_profile_form_Vr10_v2', Fe_H_rad_form_total)
-    ut_io.file_hdf5('/home/rlgraf/Final_Figures/RAD_slope_form_Vr10_v2', slope_form_total)
+    ut_io.file_hdf5('/home/rlgraf/Final_Figures/RAD_profile_form_Vr10_v3', Fe_H_rad_form_total)
+    ut_io.file_hdf5('/home/rlgraf/Final_Figures/RAD_slope_form_Vr10_v3', slope_form_total)
     
-radial_analysis_z_0()
+#radial_analysis_z_0()
 radial_analysis_form()
