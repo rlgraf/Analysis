@@ -29,7 +29,7 @@ import utilities.io as ut_io
 import weightedstats as ws
 
 
-simulation_directory = '/group/awetzelgrp/m12i/m12i_r7100_uvb-late/'
+simulation_directory = '/group/awetzelgrp/m12_elvis/m12_elvis_RomeoJuliet_r3500'
 part = gizmo.io.Read.read_snapshots(['star'], 'redshift', 0, simulation_directory, assign_hosts_rotation=True, assign_formation_coordinates = True)
 
 age1 = part['star'].prop('host1.age')
