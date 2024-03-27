@@ -95,10 +95,10 @@ def radial_analysis_z_0():
             v_form_array = [part['star'].prop('form.host1.velocity.principal.cylindrical'), part['star'].prop('form.host2.velocity.principal.cylindrical')]
             
         else:
-            r_array = part['star'].prop('host.distance.principal.cylindrical')
-            r_form_array = part['star'].prop('form.host.distance.principal.cylindrical')
-            v_array = part['star'].prop('host.velocity.principal.cylindrical')
-            v_form_array = part['star'].prop('form.host.velocity.principal.cylindrical')
+            r_array = [part['star'].prop('host.distance.principal.cylindrical')]
+            r_form_array = [part['star'].prop('form.host.distance.principal.cylindrical')]
+            v_array = [part['star'].prop('host.velocity.principal.cylindrical')]
+            v_form_array = [part['star'].prop('form.host.velocity.principal.cylindrical')]
             
         for j, (r, r_form, v, v_form) in enumerate(zip(r_array,r_form_array, v_array, v_form_array)):
             Fe_H_rad = []
@@ -170,8 +170,8 @@ def radial_analysis_form():
             r_form_array = [part['star'].prop('form.host.distance.principal.cylindrical')]
             r_array_spherical = [part['star'].prop('host.distance.principal.spherical')]
             r_form_array_spherical = [part['star'].prop('form.host.distance.principal.spherical')]
-            v_array = part['star'].prop('host.velocity.principal.cylindrical')
-            v_form_array = part['star'].prop('form.host.velocity.principal.cylindrical')
+            v_array = [part['star'].prop('host.velocity.principal.cylindrical')]
+            v_form_array = [part['star'].prop('form.host.velocity.principal.cylindrical')]
             
         for j, (r, r_form,v,v_form) in enumerate(zip(r_array_spherical,r_form_array,v_array,v_form_array)):    
             Fe_H_rad_form = []
