@@ -32,10 +32,10 @@ import weightedstats as ws
 simulation_directory = '/group/awetzelgrp/m12_elvis/m12_elvis_RomeoJuliet_r3500'
 part = gizmo.io.Read.read_snapshots(['star'], 'redshift', 0, simulation_directory, assign_hosts_rotation=True, assign_formation_coordinates = True)
 
-age1 = part['star'].prop('host1.age')
+age1 = part['star'].prop('host1.distance.principal.cylindrical')
 print(age1)
 
-age2 = part['star'].prop('host2.age')
+age2 = part['star'].prop('host2.distance.principal.cylindrical')
 print(age2)
 
     
