@@ -96,7 +96,7 @@ def radial_analysis_z_0():
             Fe_H_array = part['star'].prop('metallicity.iron')
             age_array = part['star'].prop('age')
             
-        for j, (r, r_form) in enumerate(zip(r_array,r_form_array)):
+        for j, (r, r_form, Fe_H, age) in enumerate(zip(r_array,r_form_array, Fe_H_array, age_array)):
             Fe_H_rad = []
             slope = []
             LG_counter += j
