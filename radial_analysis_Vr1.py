@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-#SBATCH --job-name=radial_analysis_Vr10
+#SBATCH --job-name=radial_analysis_Vrtenth
 #SBATCH --partition=high2  # peloton node: 32 cores, 7.8 GB per core, 250 GB total
 ##SBATCH --partition=high2m  # peloton high-mem node: 32 cores, 15.6 GB per core, 500 GB total
 #SBATCH --mem=32G  # need to specify memory if you set the number of tasks (--ntasks) below
@@ -8,7 +8,7 @@
 #SBATCH --ntasks=1  # (MPI) tasks total
 #SBATCH --cpus-per-task=1  # (OpenMP) threads per (MPI) task
 #SBATCH --time=08:00:00
-#SBATCH --output=radial_analysis_Vr10_%j.txt
+#SBATCH --output=radial_analysis_Vrtenth_%j.txt
 #SBATCH --mail-user=rlgraf@ucdavis.edu
 #SBATCH --mail-type=fail
 #SBATCH --mail-type=begin
@@ -114,7 +114,7 @@ def radial_analysis_form():
             for a_f, b_f in zip(np.arange(0,14), r90):
                 x_f = []
                 for i_f in np.arange(0,b_f,b_f/50):
-                    x_f.append(Fe_H_agedependent_form(i_f,i_f+b_f/50,-5,5,0,30,a_f,a_f+1,-1,1,r_form,r,age,part,v_form))
+                    x_f.append(Fe_H_agedependent_form(i_f,i_f+b_f/50,-5,5,0,30,a_f,a_f+1,-0.1,0.1,r_form,r,age,part,v_form))
                 Fe_H_rad_form.append(x_f)
                 l_f = np.arange(0,b_f,b_f/50)
                 x_f = np.array(x_f)
@@ -128,8 +128,8 @@ def radial_analysis_form():
     Fe_H_rad_form_total = np.array([Fe_H_rad_form_total])
     slope_form_total = np.array([slope_form_total])
     
-    ut_io.file_hdf5('/home/rlgraf/Final_Figures/RAD_profile_form_Vr1', Fe_H_rad_form_total)
-    ut_io.file_hdf5('/home/rlgraf/Final_Figures/RAD_slope_form_Vr1', slope_form_total)
+    ut_io.file_hdf5('/home/rlgraf/Final_Figures/RAD_profile_form_Vrtenth', Fe_H_rad_form_total)
+    ut_io.file_hdf5('/home/rlgraf/Final_Figures/RAD_slope_form_Vrtenth', slope_form_total)
     
 #radial_analysis_z_0()
 radial_analysis_form()
