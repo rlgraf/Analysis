@@ -74,8 +74,9 @@ def Fe_H_agedependent_form(x1,x2,x3,x4,x5,x6,a1,a2,v1,v2,r_form,r,age,part,v_for
     Fe_H_cut = Fe_H[index6]
     if len(Fe_H_cut) < particle_thresh:
         return(np.nan)
-    weight_avg = ws.weighted_median(Fe_H_cut, part['star']['mass'][index6])
-    return(weight_avg)
+    else:
+        weight_avg = ws.weighted_median(Fe_H_cut, part['star']['mass'][index6])
+        return(weight_avg)
 
 
 def radial_analysis_form():
@@ -128,8 +129,8 @@ def radial_analysis_form():
     Fe_H_rad_form_total = np.array([Fe_H_rad_form_total])
     slope_form_total = np.array([slope_form_total])
     
-    ut_io.file_hdf5('/home/rlgraf/Final_Figures/RAD_profile_form_Vrtenth', Fe_H_rad_form_total)
-    ut_io.file_hdf5('/home/rlgraf/Final_Figures/RAD_slope_form_Vrtenth', slope_form_total)
+    ut_io.file_hdf5('/home/rlgraf/Final_Figures/RAD_profile_form_Vrtenth_v2', Fe_H_rad_form_total)
+    ut_io.file_hdf5('/home/rlgraf/Final_Figures/RAD_slope_form_Vrtenth_v2', slope_form_total)
     
 #radial_analysis_z_0()
 radial_analysis_form()
