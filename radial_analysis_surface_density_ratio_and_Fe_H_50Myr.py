@@ -354,3 +354,4 @@ def radial_analysis_form():
     ut_io.file_hdf5('/home/rlgraf/Final_Figures/Fe_H_rad_form_all_galaxies_surfdensratiotrack_50Myr', Fe_H_rad_form_all_galaxies)
     ut_io.file_hdf5('/home/rlgraf/Final_Figures/surf_dens_ratio_all_galaxies_surfdensratiotrack_50Myr', surf_dens_ratio_all_galaxies)
     
+radial_analysis_form()    
