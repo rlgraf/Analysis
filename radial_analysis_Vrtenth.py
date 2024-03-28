@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-#SBATCH --job-name=radial_analysis_Vrtenth
+#SBATCH --job-name=radial_analysis_Vr2tenth
 #SBATCH --partition=high2  # peloton node: 32 cores, 7.8 GB per core, 250 GB total
 ##SBATCH --partition=high2m  # peloton high-mem node: 32 cores, 15.6 GB per core, 500 GB total
 #SBATCH --mem=32G  # need to specify memory if you set the number of tasks (--ntasks) below
@@ -8,7 +8,7 @@
 #SBATCH --ntasks=1  # (MPI) tasks total
 #SBATCH --cpus-per-task=1  # (OpenMP) threads per (MPI) task
 #SBATCH --time=08:00:00
-#SBATCH --output=radial_analysis_Vrtenth_%j.txt
+#SBATCH --output=radial_analysis_Vr2tenth_%j.txt
 #SBATCH --mail-user=rlgraf@ucdavis.edu
 #SBATCH --mail-type=fail
 #SBATCH --mail-type=begin
@@ -61,7 +61,7 @@ def R90_func():
 
 # formation
 
-def Fe_H_agedependent_form(x1,x2,x3,x4,x5,x6,a1,a2,v1,v2,r_form,r,age,part,v_form,particle_thresh = 4):
+def Fe_H_agedependent_form(x1,x2,x3,x4,x5,x6,a1,a2,v1,v2,r_form,r,age,part,v_form,particle_thresh = 8):
     index = ut.array.get_indices(r_form[:,0], [x1,x2])
     index2 = ut.array.get_indices(abs(r_form[:,2]), [x3,x4], prior_indices = index)
     a_form = part['star'].prop('form.scalefactor')
@@ -74,9 +74,8 @@ def Fe_H_agedependent_form(x1,x2,x3,x4,x5,x6,a1,a2,v1,v2,r_form,r,age,part,v_for
     Fe_H_cut = Fe_H[index6]
     if len(Fe_H_cut) < particle_thresh:
         return(np.nan)
-    else:
-        weight_avg = ws.weighted_median(Fe_H_cut, part['star']['mass'][index6])
-        return(weight_avg)
+    weight_avg = ws.weighted_median(Fe_H_cut, part['star']['mass'][index6])
+    return(weight_avg)
 
 
 def radial_analysis_form():
@@ -115,7 +114,7 @@ def radial_analysis_form():
             for a_f, b_f in zip(np.arange(0,14), r90):
                 x_f = []
                 for i_f in np.arange(0,b_f,b_f/50):
-                    x_f.append(Fe_H_agedependent_form(i_f,i_f+b_f/50,-5,5,0,30,a_f,a_f+1,-0.1,0.1,r_form,r,age,part,v_form))
+                    x_f.append(Fe_H_agedependent_form(i_f,i_f+b_f/50,-3,3,0,30,a_f,a_f+1,-0.2,0.2,r_form,r,age,part,v_form))
                 Fe_H_rad_form.append(x_f)
                 l_f = np.arange(0,b_f,b_f/50)
                 x_f = np.array(x_f)
@@ -129,8 +128,8 @@ def radial_analysis_form():
     Fe_H_rad_form_total = np.array([Fe_H_rad_form_total])
     slope_form_total = np.array([slope_form_total])
     
-    ut_io.file_hdf5('/home/rlgraf/Final_Figures/RAD_profile_form_Vrtenth_v2', Fe_H_rad_form_total)
-    ut_io.file_hdf5('/home/rlgraf/Final_Figures/RAD_slope_form_Vrtenth_v2', slope_form_total)
+    ut_io.file_hdf5('/home/rlgraf/Final_Figures/RAD_profile_form_Vr2tenth_v2', Fe_H_rad_form_total)
+    ut_io.file_hdf5('/home/rlgraf/Final_Figures/RAD_slope_form_Vr2tenth_v2', slope_form_total)
     
 #radial_analysis_z_0()
 radial_analysis_form()
