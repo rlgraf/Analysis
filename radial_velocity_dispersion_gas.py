@@ -47,7 +47,7 @@ def radial_vel_disp_gas():
     LG_counter = 0
     for q, s in enumerate(sim):
         simulation_directory = s
-        part = gizmo.io.Read.read_snapshots(['gas'], 'redshift', 0, simulation_directory, assign_hosts_rotation=True, assign_formation_coordinates = True)
+        part = gizmo.io.Read.read_snapshots(['gas'], 'redshift', 0, simulation_directory, assign_hosts_rotation=True)
            
         if s in ['/group/awetzelgrp/m12_elvis/m12_elvis_RomeoJuliet_r3500', '/group/awetzelgrp/m12_elvis/m12_elvis_RomulusRemus_r4000', '/group/awetzelgrp/m12_elvis/m12_elvis_ThelmaLouise_r4000']:
             r_array = [part['gas'].prop('host1.distance.principal.cylindrical'), part['gas'].prop('host2.distance.principal.cylindrical')]
