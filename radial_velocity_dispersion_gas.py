@@ -62,6 +62,7 @@ def radial_vel_disp_gas():
             for i in np.arange(0,15,15/50):
                 x.append(velocity_dispersion_gas(0,i+15/50,-3,3,r,v,part))
             vel_disp_total.append(x)
+        del(part)
            
     vel_disp_total = np.array(vel_disp_total)
            
