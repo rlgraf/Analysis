@@ -56,7 +56,7 @@ def radial_vel_disp_gas():
             r_array = [part['gas'].prop('host.distance.principal.cylindrical')]
             v_array = [part['gas'].prop('host.velocity.principal.cylindrical')]
             
-        for j, (r,v) in enumerate(r_array, v_array):
+        for j, (r,v) in enumerate(zip(r_array, v_array)):
             LG_counter += j
             x = []
             for i in np.arange(0,15,15/50):
