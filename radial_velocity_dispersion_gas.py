@@ -66,7 +66,7 @@ def radial_vel_disp_gas():
            
     vel_disp_total = np.array(vel_disp_total)
            
-    ut_io.file_hdf5('/home/rlgraf/Final_Figures/velocity_dispersion_gas_z_0', vel_disp_total)
+    ut_io.file_hdf5('/home/rlgraf/Final_Figures/velocity_dispersion_gas_z_0_v2', vel_disp_total)
     
 
 radial_vel_disp_gas()
