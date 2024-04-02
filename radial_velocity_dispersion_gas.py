@@ -37,8 +37,8 @@ def velocity_dispersion_gas(x1,x2,x3,x4,r,v,part):
     
     index = ut.array.get_indices(r[:,0], [x1,x2])
     index2 = ut.array.get_indices(abs(r[:,2]), [x3,x4], prior_indices = index)
-    vel_rad = abs(v[:,0])
-    return(np.nanmean(vel_rad[index2]))
+    vel_rad = v[:,0]
+    return(np.nanstd(vel_rad[index2]))
            
 def radial_vel_disp_gas():
     
