@@ -30,7 +30,7 @@ import weightedstats as ws
 
 
 
-def surf_dens_log_frac(x1,x2,x3,x4,x5,x6,x7,x8,r,part,part_z0,particle_thresh = 16):
+def surf_dens_log_frac(x1,x2,x3,x4,x5,x6,x7,x8,r,r_z0,part,part_z0,particle_thresh = 16):
     
     index = ut.array.get_indices(r_z0[:,0], [x1,x2])
     index2 = ut.array.get_indices(abs(r_z0[:,2]), [x3,x4], prior_indices = index)
