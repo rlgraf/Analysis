@@ -64,7 +64,7 @@ def surf_dens_analysis_gas():
         
         x = []
         for i in np.arange(0.5,20):
-            x.append(surf_dens_log_frac(i,i+1,-3,3,i,i+1,-3,3,r,part,part_z0))
+            x.append(surf_dens_log_frac(i,i+1,-3,3,i,i+1,-3,3,r,r_z0,part,part_z0))
         surf_dens_at_snapshot.append(x)   
     surf_dens_ratio_gas_all_galaxies.append(surf_dens_at_snapshot)
     
@@ -82,12 +82,12 @@ def surf_dens_analysis_gas():
         
         x = []
         for i in np.arange(0.5,20):
-            x.append(surf_dens_log_frac(i,i+1,-3,3,i,i+1,-3,3,r,part,part_z0))
+            x.append(surf_dens_log_frac(i,i+1,-3,3,i,i+1,-3,3,r,r_z0,part,part_z0))
         surf_dens_at_snapshot.append(x)   
     surf_dens_ratio_gas_all_galaxies.append(surf_dens_at_snapshot)
     
     ### m12f
-
+ 
     simulation_directory = '/group/awetzelgrp/m12f/m12f_r7100'                                                              
     surf_dens_at_snapshot = []
     part_snapshots = np.array([0, 0.07350430, 0.15441179, 0.24850890, 0.35344830, 0.47764710, 0.62273902, 0.79942691, 1.02572345, 1.38636363, 1.73913038, 2.39130425, 3.60431647])
@@ -100,7 +100,7 @@ def surf_dens_analysis_gas():
         
         x = []
         for i in np.arange(0.5,20):
-            x.append(surf_dens_log_frac(i,i+1,-3,3,i,i+1,-3,3,r,part,part_z0))
+            x.append(surf_dens_log_frac(i,i+1,-3,3,i,i+1,-3,3,r,r_z0,part,part_z0))
         surf_dens_at_snapshot.append(x)   
     surf_dens_ratio_gas_all_galaxies.append(surf_dens_at_snapshot)
     
@@ -118,7 +118,7 @@ def surf_dens_analysis_gas():
         
         x = []
         for i in np.arange(0.5,20):
-            x.append(surf_dens_log_frac(i,i+1,-3,3,i,i+1,-3,3,r,part,part_z0))
+            x.append(surf_dens_log_frac(i,i+1,-3,3,i,i+1,-3,3,r,r_z0,part,part_z0))
         surf_dens_at_snapshot.append(x)   
     surf_dens_ratio_gas_all_galaxies.append(surf_dens_at_snapshot)
     
@@ -136,7 +136,7 @@ def surf_dens_analysis_gas():
         
         x = []
         for i in np.arange(0.5,20):
-            x.append(surf_dens_log_frac(i,i+1,-3,3,i,i+1,-3,3,r,part,part_z0))
+            x.append(surf_dens_log_frac(i,i+1,-3,3,i,i+1,-3,3,r,r_z0,part,part_z0))
         surf_dens_at_snapshot.append(x)   
     surf_dens_ratio_gas_all_galaxies.append(surf_dens_at_snapshot)
     
@@ -154,7 +154,7 @@ def surf_dens_analysis_gas():
         
         x = []
         for i in np.arange(0.5,20):
-            x.append(surf_dens_log_frac(i,i+1,-3,3,i,i+1,-3,3,r,part,part_z0))
+            x.append(surf_dens_log_frac(i,i+1,-3,3,i,i+1,-3,3,r,r_z0,part,part_z0))
         surf_dens_at_snapshot.append(x)   
     surf_dens_ratio_gas_all_galaxies.append(surf_dens_at_snapshot)
     
@@ -172,7 +172,7 @@ def surf_dens_analysis_gas():
         
         x = []
         for i in np.arange(0.5,20):
-            x.append(surf_dens_log_frac(i,i+1,-3,3,i,i+1,-3,3,r,part,part_z0))
+            x.append(surf_dens_log_frac(i,i+1,-3,3,i,i+1,-3,3,r,r_z0,part,part_z0))
         surf_dens_at_snapshot.append(x)   
     surf_dens_ratio_gas_all_galaxies.append(surf_dens_at_snapshot)
                 
@@ -190,7 +190,7 @@ def surf_dens_analysis_gas():
         
         x = []
         for i in np.arange(0.5,20):
-            x.append(surf_dens_log_frac(i,i+1,-3,3,i,i+1,-3,3,r,part,part_z0))
+            x.append(surf_dens_log_frac(i,i+1,-3,3,i,i+1,-3,3,r,r_z0,part,part_z0))
         surf_dens_at_snapshot.append(x)   
     surf_dens_ratio_gas_all_galaxies.append(surf_dens_at_snapshot)
     
@@ -208,7 +208,7 @@ def surf_dens_analysis_gas():
         
         x = []
         for i in np.arange(0.5,20):
-            x.append(surf_dens_log_frac(i,i+1,-3,3,i,i+1,-3,3,r,part,part_z0))
+            x.append(surf_dens_log_frac(i,i+1,-3,3,i,i+1,-3,3,r,r_z0,part,part_z0))
         surf_dens_at_snapshot.append(x)   
     surf_dens_ratio_gas_all_galaxies.append(surf_dens_at_snapshot)     
     
@@ -226,7 +226,7 @@ def surf_dens_analysis_gas():
         
         x = []
         for i in np.arange(0.5,20):
-            x.append(surf_dens_log_frac(i,i+1,-3,3,i,i+1,-3,3,r,part,part_z0))
+            x.append(surf_dens_log_frac(i,i+1,-3,3,i,i+1,-3,3,r,r_z0,part,part_z0))
         surf_dens_at_snapshot.append(x)   
     surf_dens_ratio_gas_all_galaxies.append(surf_dens_at_snapshot)
     
@@ -244,7 +244,7 @@ def surf_dens_analysis_gas():
         
         x = []
         for i in np.arange(0.5,20):
-            x.append(surf_dens_log_frac(i,i+1,-3,3,i,i+1,-3,3,r,part,part_z0))
+            x.append(surf_dens_log_frac(i,i+1,-3,3,i,i+1,-3,3,r,r_z0,part,part_z0))
         surf_dens_at_snapshot.append(x)   
     surf_dens_ratio_gas_all_galaxies.append(surf_dens_at_snapshot)            
                 
