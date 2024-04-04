@@ -250,6 +250,6 @@ def surf_dens_analysis_gas():
                 
     surf_dens_ratio_gas_all_galaxies = np.array(surf_dens_ratio_gas_all_galaxies)
            
-    ut_io.file_hdf5('/home/rlgraf/Final_Figures/surface_density_profile_gas', vel_disp_total)
+    ut_io.file_hdf5('/home/rlgraf/Final_Figures/surface_density_profile_gas', surf_dens_ratio_gas_all_galaxies)
 
 surf_dens_analysis_gas()
