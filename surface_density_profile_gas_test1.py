@@ -2,12 +2,12 @@
 #SBATCH --job-name=surface_density_profile_gas_test1
 #SBATCH --partition=high2  # peloton node: 32 cores, 7.8 GB per core, 250 GB total
 ##SBATCH --partition=high2m  # peloton high-mem node: 32 cores, 15.6 GB per core, 500 GB total
-#SBATCH --mem=80G  # need to specify memory if you set the number of tasks (--ntasks) below
+#SBATCH --mem=32G  # need to specify memory if you set the number of tasks (--ntasks) below
 ##SBATCH --nodes=1  # if you specify this, the number of nodes, do not set memory (--mem) above
 ##SBATCH --ntasks-per-node=1  # (MPI) tasks per node
 #SBATCH --ntasks=1  # (MPI) tasks total
 #SBATCH --cpus-per-task=1  # (OpenMP) threads per (MPI) task
-#SBATCH --time=16:00:00
+#SBATCH --time=1:00:00
 #SBATCH --output=surface_density_profile_gas_test1_%j.txt
 #SBATCH --mail-user=rlgraf@ucdavis.edu
 #SBATCH --mail-type=fail
@@ -57,14 +57,14 @@ def surf_dens_analysis_gas():
     part_z0 = gizmo.io.Read.read_snapshots(['gas'], 'redshift', 0, simulation_directory, properties = ['mass', 'position'], assign_hosts_rotation=True)
     part = gizmo.io.Read.read_snapshots(['gas'], 'redshift', 0.07350430, simulation_directory, properties = ['mass', 'position'], assign_hosts_rotation=True)
         
-        r_z0 = part_z0['gas'].prop('host.distance.principal.cylindrical')
-        r = part['gas'].prop('host.distance.principal.cylindrical')
+    r_z0 = part_z0['gas'].prop('host.distance.principal.cylindrical')
+    r = part['gas'].prop('host.distance.principal.cylindrical')
         
-        x = []
-        for i in np.arange(0.5,20):
-            x.append(surf_dens_log_frac(i,i+1,-3,3,i,i+1,-3,3,r,r_z0,part,part_z0))
-            print(x)
-        surf_dens_at_snapshot.append(x)   
+    x = []
+    for i in np.arange(0.5,20):
+        x.append(surf_dens_log_frac(i,i+1,-3,3,i,i+1,-3,3,r,r_z0,part,part_z0))
+        print(x)
+    surf_dens_at_snapshot.append(x)   
     surf_dens_ratio_gas_all_galaxies.append(surf_dens_at_snapshot)
                 
     surf_dens_ratio_gas_all_galaxies = np.array(surf_dens_ratio_gas_all_galaxies)
