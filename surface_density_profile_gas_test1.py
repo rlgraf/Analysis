@@ -38,7 +38,7 @@ def surf_dens_log_frac(x1,x2,x3,x4,x5,x6,x7,x8,r,r_z0,part,part_z0,particle_thre
     
     index3 = ut.array.get_indices(r[:,0], [x5,x6])
     index4 = ut.array.get_indices(abs(r[:,2]), [x7,x8], prior_indices = index3)
-    surf_dens_lookback = np.sum(part['gas']['mass'][index4])/(np.pi*(x8**2 - x7**2))
+    surf_dens_lookback = np.sum(part['gas']['mass'][index4])/(np.pi*(x6**2 - x5**2))
     print(np.pi*(x8**2 - x7**2))
     
     frac_surf_lookback_surf_z0 = surf_dens_lookback/surf_dens_z0
