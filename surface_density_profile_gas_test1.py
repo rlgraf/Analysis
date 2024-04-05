@@ -59,7 +59,8 @@ def surf_dens_analysis_gas():
         
     r_z0 = part_z0['gas'].prop('host.distance.principal.cylindrical')
     r = part['gas'].prop('host.distance.principal.cylindrical')
-        
+    print(r_z0)
+    print(r)
     x = []
     for i in np.arange(0.5,20):
         x.append(surf_dens_log_frac(i,i+1,-3,3,i,i+1,-3,3,r,r_z0,part,part_z0))
