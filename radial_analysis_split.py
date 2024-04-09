@@ -57,7 +57,7 @@ def radial_analysis_form():
     ### m12i
     
     simulation_directory = '/group/awetzelgrp/m12i/m12i_r7100_uvb-late/'
-    R90 = np.array([11.8, 11, 10.3, 7.9, 7.4, 6.7, 5.5, 5.7, 7.5, 7, 3.8, 5.9, 4.3, 3.4])
+    R90 = np.array([12.7, 11.2, 11.3, 9.9, 8.9, 5.6, 6.1, 4.5, 4.6, 4.3, 6.9, 7, 2.8, 0.4])
     Fe_H_rad_form_total = []
     slope_form_total = []
     
@@ -89,10 +89,10 @@ def radial_analysis_form():
     ### m12c
     
     simulation_directory = '/group/awetzelgrp/m12c/m12c_r7100'
-    R90 = np.array([12.7, 11.2, 11.3, 9.9, 8.9, 5.6, 6.1, 4.5, 4.6, 4.3, 6.9, 7, 2.8, 0.4])
+    R90 = np.array()
     Fe_H_rad_form_total = []
     slope_form_total = []
-    
+    R90 = np.array([11.8, 11, 10.3, 7.9, 7.4, 6.7, 5.5, 5.7, 7.5, 7, 3.8, 5.9, 4.3, 3.4])
     part = gizmo.io.Read.read_snapshots(['star'], 'redshift', 0, simulation_directory, assign_hosts_rotation=True, assign_formation_coordinates = True)
     Fe_H = part['star'].prop('metallicity.iron')
     age = part['star'].prop('age')
