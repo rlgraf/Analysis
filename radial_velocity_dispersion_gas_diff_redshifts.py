@@ -33,12 +33,18 @@ def sim_func():
     sim = ['/group/awetzelgrp/m12i/m12i_r7100_uvb-late/', '/group/awetzelgrp/m12c/m12c_r7100', '/group/awetzelgrp/m12f/m12f_r7100',  '/group/awetzelgrp/m12m/m12m_r7100','/group/awetzelgrp/m12b/m12b_r7100', '/group/awetzelgrp/m12_elvis/m12_elvis_RomeoJuliet_r3500', '/group/awetzelgrp/m12_elvis/m12_elvis_RomulusRemus_r4000', '/group/awetzelgrp/m12_elvis/m12_elvis_ThelmaLouise_r4000']
     return(sim)
 
+def weighted_std(values, weights):
+    
+    average = np.average(values, weights = weights)
+    variance = np.average((values - average)**2, weights = weights)
+    return(np.sqrt(variance))
+
 def velocity_dispersion_gas(x1,x2,x3,x4,r,v,part):
     
     index = ut.array.get_indices(r[:,0], [x1,x2])
     index2 = ut.array.get_indices(abs(r[:,2]), [x3,x4], prior_indices = index)
     vel_rad = v[:,0]
-    return(ws.std(vel_rad[index2]), part['gas']['mass'][index2])
+    return(weighted_std(vel_rad, part['gas']['mass'][index2])
            
 def radial_vel_disp_gas():
     
