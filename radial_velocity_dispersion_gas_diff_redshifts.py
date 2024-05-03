@@ -44,7 +44,7 @@ def velocity_dispersion_gas(x1,x2,x3,x4,r,v,part):
     index = ut.array.get_indices(r[:,0], [x1,x2])
     index2 = ut.array.get_indices(abs(r[:,2]), [x3,x4], prior_indices = index)
     vel_rad = v[:,0]
-    massfrac_iron = part['gas'].prop('massfraction.iron')
+    massfrac_iron = part['star']['massfraction'][:, 10]
     return(weighted_std(vel_rad[index2], massfrac_iron[index2]*part['gas']['mass'][index2]))
            
 def radial_vel_disp_gas():
