@@ -44,7 +44,7 @@ def velocity_dispersion_gas(x1,x2,x3,x4,r,v,part):
     index = ut.array.get_indices(r[:,0], [x1,x2])
     index2 = ut.array.get_indices(abs(r[:,2]), [x3,x4], prior_indices = index)
     vel_rad = v[:,0]
-    return(weighted_std(vel_rad[index2], part['gas']['mass'][index2]))
+    return(weighted_std(vel_rad[index2], part['gas'].prop('massfraction.iron')[index2]*part['gas']['mass'][index2]))
            
 def radial_vel_disp_gas():
     
@@ -250,6 +250,6 @@ def radial_vel_disp_gas():
     
     radial_vel_disp_gas_all_galaxies = np.array(radial_vel_disp_gas_all_galaxies)
            
-    ut_io.file_hdf5('/home/rlgraf/Final_Figures/velocity_dispersion_gas_z_0_diffredshifts_massweighted', radial_vel_disp_gas_all_galaxies)
+    ut_io.file_hdf5('/home/rlgraf/Final_Figures/velocity_dispersion_gas_z_0_diffredshifts_massfracweighted', radial_vel_disp_gas_all_galaxies)
 
 radial_vel_disp_gas()
