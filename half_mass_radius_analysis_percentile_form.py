@@ -82,11 +82,11 @@ def half_mass_radius_analysis_form():
         age = part['star'].prop('age')
     
         if s in ['/group/awetzelgrp/m12_elvis/m12_elvis_RomeoJuliet_r3500', '/group/awetzelgrp/m12_elvis/m12_elvis_RomulusRemus_r4000', '/group/awetzelgrp/m12_elvis/m12_elvis_ThelmaLouise_r4000']:
-            r_array = [part['star'].prop('host1.distance.principal.cylindrical'), part['star'].prop('host2.distance.principal.cylindrical')]
-            r_form_array = [part['star'].prop('form.host1.distance.principal.cylindrical'), part['star'].prop('form.host2.distance.principal.cylindrical')]
+            r_array = [part['star'].prop('host1.distance.principal.spherical'), part['star'].prop('host2.distance.principal.spherical')]
+            r_form_array = [part['star'].prop('form.host1.distance.principal.spherical'), part['star'].prop('form.host2.distance.principal.spherical')]
         else:
-            r_array = [part['star'].prop('host.distance.principal.cylindrical')]
-            r_form_array = [part['star'].prop('form.host.distance.principal.cylindrical')]
+            r_array = [part['star'].prop('host.distance.principal.spherical')]
+            r_form_array = [part['star'].prop('form.host.distance.principal.spherical')]
             
         for j, (r, r_form) in enumerate(zip(r_array,r_form_array)):
             half_mass_radius_at_age = []
@@ -95,6 +95,6 @@ def half_mass_radius_analysis_form():
                 half_mass_radius_at_age.append(half_mass_radius_form(-3,3,0,20,a,14,r,r_form,age,part))
             half_mass_radius_galaxy.append(half_mass_radius_at_age)
     half_mass_radius_galaxy = np.array([half_mass_radius_galaxy])
-    ut_io.file_hdf5('/home/rlgraf/Final_Figures/95_mass_radius_form', half_mass_radius_galaxy)
+    ut_io.file_hdf5('/home/rlgraf/Final_Figures/95_mass_radius_form_spherical', half_mass_radius_galaxy)
     
 half_mass_radius_analysis_form()
