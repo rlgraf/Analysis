@@ -82,7 +82,7 @@ def radial_analysis_z_0():
             Fe_H_rad = []
             slope = []
             LG_counter += j
-            for a, b in zip(np.arange(0,14), r90):
+            for a in np.arange(0,14):
                 x = []
                 for i in np.arange(0,r90,r90/50):
                     x.append(Fe_H_agedependent(i,i+r90/50,-3,3,0,30,a,a+1,r,r_form,age,part))
