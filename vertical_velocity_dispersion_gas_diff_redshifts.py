@@ -2,7 +2,7 @@
 #SBATCH --job-name=vertical_velocity_dispersion_gas_diff_redshifts
 #SBATCH --partition=high2  # peloton node: 32 cores, 7.8 GB per core, 250 GB total
 ##SBATCH --partition=high2m  # peloton high-mem node: 32 cores, 15.6 GB per core, 500 GB total
-#SBATCH --mem=90G  # need to specify memory if you set the number of tasks (--ntasks) below
+#SBATCH --mem=99G  # need to specify memory if you set the number of tasks (--ntasks) below
 ##SBATCH --nodes=1  # if you specify this, the number of nodes, do not set memory (--mem) above
 ##SBATCH --ntasks-per-node=1  # (MPI) tasks per node
 #SBATCH --ntasks=1  # (MPI) tasks total
