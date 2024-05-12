@@ -65,7 +65,7 @@ def radial_analysis_z_0():
     slope_total = []
     sim = sim_func()
     LG_counter = 0
-    for q, (s,r90) in enumerate(zip(sim, R90)):
+    for q, (s,r50) in enumerate(zip(sim, R50)):
         simulation_directory = s
         part = gizmo.io.Read.read_snapshots(['star'], 'redshift', 0, simulation_directory, assign_hosts_rotation=True, assign_formation_coordinates = True)
         Fe_H = part['star'].prop('metallicity.carbon')
