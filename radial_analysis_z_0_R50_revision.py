@@ -43,7 +43,7 @@ R50 = np.array([2.6, 2.9, 2.9, 4.3, 2.2, 3.6, 1.8, 3.2, 2.9, 3.4, 2.8])
 
 # z = 0.
 
-def Fe_H_agedependent(x1,x2,x3,x4,x5,x6,a1,a2,r,r_form,age,part, particle_thresh = 16):
+def Fe_H_agedependent(x1,x2,x3,x4,x5,x6,a1,a2,r,r_form,age,part, particle_thresh = 4):
     index = ut.array.get_indices(r[:,0], [x1,x2])
     index2 = ut.array.get_indices(abs(r[:,2]), [x3,x4], prior_indices = index)
     a_form = part['star'].prop('form.scalefactor')
@@ -99,6 +99,6 @@ def radial_analysis_z_0():
     Fe_H_rad_total = np.array([Fe_H_rad_total])
     slope_total = np.array([slope_total])
    
-    ut_io.file_hdf5('/home/rlgraf/Final_Figures/RAD_slope_z_0_R50_revision', slope_total)
+    ut_io.file_hdf5('/home/rlgraf/Final_Figures/RAD_slope_z_0_R50_revision_v2', slope_total)
 
 radial_analysis_z_0()

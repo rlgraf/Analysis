@@ -43,7 +43,7 @@ R90 = np.array([10.1, 9.2, 13.5, 11.9, 9.2, 14.2, 9.5, 14.8, 12.4, 11.7, 12.6])
 
 # z = 0.
 
-def Fe_H_agedependent(x1,x2,x3,x4,x5,x6,a1,a2,r,r_form,age,part, particle_thresh = 16):
+def Fe_H_agedependent(x1,x2,x3,x4,x5,x6,a1,a2,r,r_form,age,part, particle_thresh = 4):
     index = ut.array.get_indices(r[:,0], [x1,x2])
     index2 = ut.array.get_indices(abs(r[:,2]), [x3,x4], prior_indices = index)
     a_form = part['star'].prop('form.scalefactor')
