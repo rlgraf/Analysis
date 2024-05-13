@@ -92,9 +92,9 @@ def half_mass_radius_analysis_form():
             half_mass_radius_at_age = []
             LG_counter += j
             for a in np.arange(0,14):
-                half_mass_radius_at_age.append(half_mass_radius_form(0,20,a,a+1,r,r_form,age,part))
+                half_mass_radius_at_age.append(half_mass_radius_form(0,30,a,14,r,r_form,age,part))
             half_mass_radius_galaxy.append(half_mass_radius_at_age)
     half_mass_radius_galaxy = np.array([half_mass_radius_galaxy])
-    ut_io.file_hdf5('/home/rlgraf/Final_Figures/50_mass_radius_form_spherical_young_v3', half_mass_radius_galaxy)
+    ut_io.file_hdf5('/home/rlgraf/Final_Figures/50_mass_radius_form_spherical_30kpc', half_mass_radius_galaxy)
     
 half_mass_radius_analysis_form()
