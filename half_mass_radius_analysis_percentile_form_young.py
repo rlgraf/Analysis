@@ -95,6 +95,6 @@ def half_mass_radius_analysis_form():
                 half_mass_radius_at_age.append(half_mass_radius_form(0,30,a,a+1,r,r_form,age,part))
             half_mass_radius_galaxy.append(half_mass_radius_at_age)
     half_mass_radius_galaxy = np.array([half_mass_radius_galaxy])
-    ut_io.file_hdf5('/home/rlgraf/Final_Figures/90_mass_radius_form_spherical_1Gyr_30kpc_v5', half_mass_radius_galaxy)
+    ut_io.file_hdf5('/home/rlgraf/Final_Figures/90_mass_radius_form_spherical_200Myr_30kpc_v5', half_mass_radius_galaxy)
     
 half_mass_radius_analysis_form()
