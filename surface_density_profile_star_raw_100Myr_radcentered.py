@@ -30,7 +30,7 @@ import weightedstats as ws
 
 # formation
 
-def Fe_H_agedependent_form(x1,x2,x3,x4,a1,a2,r_star,age,part, particle_thresh = 16):
+def Fe_H_agedependent_form(x1,x2,x3,x4,a1,a2,r_star,age,part, particle_thresh = 4):
     #index = ut.array.get_indices(r_spherical_star[:,0],[x5,x6])
     index2 = ut.array.get_indices(r_star[:,0], [x1,x2])
     index3 = ut.array.get_indices(abs(r_star[:,2]), [x3,x4], prior_indices = index2)
@@ -352,6 +352,6 @@ def radial_analysis_form():
     surf_dens_ratio_all_galaxies = np.array(surf_dens_ratio_all_galaxies)       
     
    
-    ut_io.file_hdf5('/home/rlgraf/Final_Figures/surface_density_profile_star_raw_100Myr_radcentered', surf_dens_ratio_all_galaxies)
+    ut_io.file_hdf5('/home/rlgraf/Final_Figures/surface_density_profile_star_raw_100Myr_radcentered_pthresh4', surf_dens_ratio_all_galaxies)
     
 radial_analysis_form()
