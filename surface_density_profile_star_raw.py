@@ -30,7 +30,7 @@ import weightedstats as ws
 
 
 
-def surf_dens_log_frac(x1,x2,x3,x4,x5,x6,x7,x8,r,r_z0,part,part_z0,particle_thresh = 16):
+def surf_dens_log_frac(x1,x2,x3,x4,x5,x6,x7,x8,r,r_z0,part,part_z0,particle_thresh = 4):
     
     index = ut.array.get_indices(r_z0[:,0], [x1,x2])
     index2 = ut.array.get_indices(abs(r_z0[:,2]), [x3,x4], prior_indices = index)
@@ -250,6 +250,6 @@ def surf_dens_analysis_gas():
                 
     surf_dens_ratio_gas_all_galaxies = np.array(surf_dens_ratio_gas_all_galaxies)
            
-    ut_io.file_hdf5('/home/rlgraf/Final_Figures/surface_density_profile_star_raw_v3', surf_dens_ratio_gas_all_galaxies)
+    ut_io.file_hdf5('/home/rlgraf/Final_Figures/surface_density_profile_star_raw_pthresh4', surf_dens_ratio_gas_all_galaxies)
 
 surf_dens_analysis_gas()
