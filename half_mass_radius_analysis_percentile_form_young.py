@@ -63,7 +63,7 @@ def half_mass_radius_form(x1,x2,x3,x4,a1,a2,r,r_form,age,part):
     index1 = ut.array.get_indices(abs(r_form[:,2]), [x1,x2])
     a_form = part['star'].prop('form.scalefactor')
     scaled_radius = r_form[:,0]/a_form
-    index2 = ut.array.get_indices(age, [a1,a2])
+    index2 = ut.array.get_indices(age, [a1,a2], prior_indices = index1)
     index3 = ut.array.get_indices(scaled_radius, [x3,x4], prior_indices = index2)
     if len(r_form[:,0][index3]) == 0:
         return(np.nan)
@@ -97,6 +97,6 @@ def half_mass_radius_analysis_form():
                 half_mass_radius_at_age.append(half_mass_radius_form(-3,3,0,30,a,a+0.1,r,r_form,age,part))
             half_mass_radius_galaxy.append(half_mass_radius_at_age)
     half_mass_radius_galaxy = np.array([half_mass_radius_galaxy])
-    ut_io.file_hdf5('/home/rlgraf/Final_Figures/90_mass_radius_form_spherical_100Myr_30kpc', half_mass_radius_galaxy)
+    ut_io.file_hdf5('/home/rlgraf/Final_Figures/90_mass_radius_form_spherical_100Myr_30kpc_v7', half_mass_radius_galaxy)
     
 half_mass_radius_analysis_form()
