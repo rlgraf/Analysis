@@ -7,7 +7,7 @@
 ##SBATCH --ntasks-per-node=1  # (MPI) tasks per node
 #SBATCH --ntasks=1  # (MPI) tasks total
 #SBATCH --cpus-per-task=1  # (OpenMP) threads per (MPI) task
-#SBATCH --time=010:00:00
+#SBATCH --time=020:00:00
 #SBATCH --output=radial_analysis_z_0_R90_young_revision_pie_slices_%j.txt
 #SBATCH --mail-user=rlgraf@ucdavis.edu
 #SBATCH --mail-type=fail
