@@ -51,7 +51,7 @@ def Fe_H_agedependent(x1,x2,x3,x4,x5,x6,a1,a2,x7,x8,r,r_form,age,part, particle_
     index3 = ut.array.get_indices(scaled_radius, [x5,x6], prior_indices = index2)
     #index4 = ut.array.get_indices(abs(r_form[:,2]), [x7,x8], prior_indices = index3)
     index5 = ut.array.get_indices(age, [a1,a2], prior_indices = index3)
-    index6 = ut.array.get_indices(r[:1]*360/(2*np.pi), [x7,x8], prior_indices = index5)
+    index6 = ut.array.get_indices(r[:,1]*360/(2*np.pi), [x7,x8], prior_indices = index5)
     Fe_H = part['star'].prop('metallicity.iron')
     Fe_H_cut = Fe_H[index6]
     if len(Fe_H_cut) < particle_thresh:
