@@ -40,7 +40,7 @@ import weightedstats as ws
     #return(sim)
     
 def sim_func():
-    sim = ['/group/awetzelgrp/m12i/m12i_r7100_uvb-late/']
+    sim = ['/group/awetzelgrp/m12c/m12c_r7100']
     return(sim)
 
 R90 = np.array([12.7, 11.8, 13.5, 12.7, 11.6, 16.8, 16, 16.9, 16.2, 15.1, 17.3])
@@ -103,6 +103,6 @@ def radial_analysis_z_0():
             slope_total.append(slope)  
     slope_total = np.array([slope_total])
    
-    ut_io.file_hdf5('/home/rlgraf/Final_Figures/RAD_slope_z_0_R90_young_revision_pie_slices', slope_total)
+    ut_io.file_hdf5('/home/rlgraf/Final_Figures/RAD_slope_z_0_R90_young_revision_pie_slices_m12c', slope_total)
 
 radial_analysis_z_0()
