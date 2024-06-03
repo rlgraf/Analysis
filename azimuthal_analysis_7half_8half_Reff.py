@@ -65,8 +65,6 @@ def azimuthal_analysis_z_0():
     Fe_H_azim_total = []
     slope_azim_total = []
     sim = sim_func()
-    R90 = R90_func()
-    R90_z_0 = R90_z_0_func()
     LG_counter = 0
     for q, (s,r90) in enumerate(zip(sim,R90_all_z_0)):
         simulation_directory = s
