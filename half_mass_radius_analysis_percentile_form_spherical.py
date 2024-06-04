@@ -68,7 +68,7 @@ def half_mass_radius_form(x1,x2,x3,x4,a1,a2,r_form_cylindrical,r_form_spherical,
     if len(r_form[:,0][index3]) == 0:
         return(np.nan)
     else:
-        mass_cut = ut.math.percentile_weighted(r_form[:,0][index3], 90, weights = part['star']['mass'][index3])
+        mass_cut = ut.math.percentile_weighted(r_form_spherical[:,0][index3], 90, weights = part['star']['mass'][index3])
         return(mass_cut)
                                                                                       
 
