@@ -65,7 +65,7 @@ def half_mass_radius_form(x1,x2,x3,x4,a1,a2,r_form_cylindrical,r_form_spherical,
     scaled_radius = r_form_spherical[:,0]/a_form
     index2 = ut.array.get_indices(scaled_radius, [x3,x4], prior_indices = index1)
     index3 = ut.array.get_indices(age, [a1,a2], prior_indices = index2)
-    if len(r_form[:,0][index3]) == 0:
+    if len(r_form_spherical[:,0][index3]) == 0:
         return(np.nan)
     else:
         mass_cut = ut.math.percentile_weighted(r_form_spherical[:,0][index3], 90, weights = part['star']['mass'][index3])
