@@ -58,17 +58,17 @@ def R90_func():
 
 # z = 0.
 
-def half_mass_radius_form(x1,x2,x3,x4,a1,a2,r,r_form,age,part):
+def half_mass_radius_form(x1,x2,x3,x4,a1,a2,r_form_cylindrical,r_form_spherical,age,part):
     
-    index1 = ut.array.get_indices(abs(r_form[:,2]), [x1,x2])
+    index1 = ut.array.get_indices(abs(r_form_cylindrical[:,2]), [x1,x2])
     a_form = part['star'].prop('form.scalefactor')
-    scaled_radius = r_form[:,0]/a_form
+    scaled_radius = r_form_spherical[:,0]/a_form
     index2 = ut.array.get_indices(age, [a1,a2], prior_indices = index1)
     index3 = ut.array.get_indices(scaled_radius, [x3,x4], prior_indices = index2)
-    if len(r_form[:,0][index3]) == 0:
+    if len(r_form_spherical[:,0][index3]) == 0:
         return(np.nan)
     else:
-        mass_cut = ut.math.percentile_weighted(r_form[:,0][index3], 90, weights = part['star']['mass'][index3])
+        mass_cut = ut.math.percentile_weighted(r_form_spherical[:,0][index3], 90, weights = part['star']['mass'][index3])
         return(mass_cut)
                                                                                       
 
@@ -84,19 +84,23 @@ def half_mass_radius_analysis_form():
         age = part['star'].prop('age')
     
         if s in ['/group/awetzelgrp/m12_elvis/m12_elvis_RomeoJuliet_r3500', '/group/awetzelgrp/m12_elvis/m12_elvis_RomulusRemus_r4000', '/group/awetzelgrp/m12_elvis/m12_elvis_ThelmaLouise_r4000']:
-            r_array = [part['star'].prop('host1.distance.principal.spherical'), part['star'].prop('host2.distance.principal.spherical')]
-            r_form_array = [part['star'].prop('form.host1.distance.principal.spherical'), part['star'].prop('form.host2.distance.principal.spherical')]
+            r_array_spherical = [part['star'].prop('host1.distance.principal.spherical'), part['star'].prop('host2.distance.principal.spherical')]
+            r_form_array_spherical = [part['star'].prop('form.host1.distance.principal.spherical'), part['star'].prop('form.host2.distance.principal.spherical')]
+            r_array_cylindrical = [part['star'].prop('host1.distance.principal.cylindrical'), part['star'].prop('host2.distance.principal.cylindrical')]
+            r_form_array_cylindrical = [part['star'].prop('form.host1.distance.principal.cylindrical'), part['star'].prop('form.host2.distance.principal.cylindrical')]
         else:
-            r_array = [part['star'].prop('host.distance.principal.spherical')]
-            r_form_array = [part['star'].prop('form.host.distance.principal.spherical')]
+            r_array_spherical = [part['star'].prop('host.distance.principal.spherical')]
+            r_form_array_spherical = [part['star'].prop('form.host.distance.principal.spherical')]
+            r_array_cylindrical = [part['star'].prop('host.distance.principal.cylindrical')]
+            r_form_array_cylindrical = [part['star'].prop('form.host.distance.principal.cylindrical')]
             
-        for j, (r, r_form) in enumerate(zip(r_array,r_form_array)):
+        for j, (r_spherical, r_form_spherical,r_cylindrical, r_form_cylindrical) in enumerate(zip(r_array_spherical,r_form_array_spherical,r_array_cylindrical,r_form_array_cylindrical)):
             half_mass_radius_at_age = []
             LG_counter += j
             for a in np.arange(0,14):
-                half_mass_radius_at_age.append(half_mass_radius_form(-3,3,0,30,a,a+0.1,r,r_form,age,part))
+                half_mass_radius_at_age.append(half_mass_radius_form(-3,3,0,30,a,a+0.1,r_form_cylindrical,r_form_spherical,age,part))
             half_mass_radius_galaxy.append(half_mass_radius_at_age)
     half_mass_radius_galaxy = np.array([half_mass_radius_galaxy])
-    ut_io.file_hdf5('/home/rlgraf/Final_Figures/90_mass_radius_form_spherical_100Myr_30kpc_v7', half_mass_radius_galaxy)
+    ut_io.file_hdf5('/home/rlgraf/Final_Figures/90_mass_radius_form_spherical_100Myr_30kpc_v8', half_mass_radius_galaxy)
     
 half_mass_radius_analysis_form()
