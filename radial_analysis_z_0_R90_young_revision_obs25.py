@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-#SBATCH --job-name=radial_analysis_z_0_R90_young_revision_obs10
+#SBATCH --job-name=radial_analysis_z_0_R90_young_revision_obs25
 #SBATCH --partition=high2  # peloton node: 32 cores, 7.8 GB per core, 250 GB total
 ##SBATCH --partition=high2m  # peloton high-mem node: 32 cores, 15.6 GB per core, 500 GB total
 #SBATCH --mem=32G  # need to specify memory if you set the number of tasks (--ntasks) below
@@ -8,7 +8,7 @@
 #SBATCH --ntasks=1  # (MPI) tasks total
 #SBATCH --cpus-per-task=1  # (OpenMP) threads per (MPI) task
 #SBATCH --time=08:00:00
-#SBATCH --output=radial_analysis_z_0_R90_young_revision_obs10_%j.txt
+#SBATCH --output=radial_analysis_z_0_R90_young_revision_obs25_%j.txt
 #SBATCH --mail-user=rlgraf@ucdavis.edu
 #SBATCH --mail-type=fail
 #SBATCH --mail-type=begin
@@ -70,7 +70,7 @@ def radial_analysis_z_0():
         part = gizmo.io.Read.read_snapshots(['star'], 'redshift', 0, simulation_directory, assign_hosts_rotation=True, assign_formation_coordinates = True)
         Fe_H = part['star'].prop('metallicity.carbon')
         age = part['star'].prop('age')
-        age_obs = age*10**(np.random.normal(0, np.log10(1.10), age.size))
+        age_obs = age*10**(np.random.normal(0, np.log10(1.25), age.size))
     
         if s in ['/group/awetzelgrp/m12_elvis/m12_elvis_RomeoJuliet_r3500', '/group/awetzelgrp/m12_elvis/m12_elvis_RomulusRemus_r4000', '/group/awetzelgrp/m12_elvis/m12_elvis_ThelmaLouise_r4000']:
             r_array = [part['star'].prop('host1.distance.principal.cylindrical'), part['star'].prop('host2.distance.principal.cylindrical')]
@@ -100,6 +100,6 @@ def radial_analysis_z_0():
     Fe_H_rad_total = np.array([Fe_H_rad_total])
     slope_total = np.array([slope_total])
    
-    ut_io.file_hdf5('/home/rlgraf/Final_Figures/RAD_slope_z_0_R90_young_revision_obs10', slope_total)
+    ut_io.file_hdf5('/home/rlgraf/Final_Figures/RAD_slope_z_0_R90_young_revision_obs25', slope_total)
 
 radial_analysis_z_0()
