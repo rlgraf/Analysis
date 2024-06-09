@@ -252,6 +252,6 @@ def radial_vel_disp_gas():
     
     radial_vel_disp_gas_all_galaxies = np.array(radial_vel_disp_gas_all_galaxies)
            
-    ut_io.file_hdf5('/home/rlgraf/Final_Figures/velocity_dispersion_gas_z_0_diffredshifts_massfracweighted', radial_vel_disp_gas_all_galaxies)
+    ut_io.file_hdf5('/home/rlgraf/Final_Figures/velocity_dispersion_gas_z_0_diffredshifts_R15_30', radial_vel_disp_gas_all_galaxies)
 
 radial_vel_disp_gas()
