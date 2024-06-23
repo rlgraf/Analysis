@@ -123,7 +123,7 @@ def radial_analysis_form():
     
     ### m12f
     
-    simulation_directory = '/group/awetzelgrp/m12c/m12f_r7100'
+    simulation_directory = '/group/awetzelgrp/m12f/m12f_r7100'
  
     R90_young_m12f = np.array([18.86, 15.20, 17.24, 15.10, 14.21, 12.84, 8.17, 4.92, 5.18, 6.63, 3.65])
         
