@@ -66,6 +66,9 @@ def radial_analysis_form():
     Fe_H_rad_form_all_galaxies = []
     surf_dens_ratio_all_galaxies = []
     
+    Fe_H_rad_form_all_galaxies_slope = []
+    surf_dens_ratio_all_galaxies_slope = []
+    
     ### m12i
     
     simulation_directory = '/group/awetzelgrp/m12i/m12i_r7100_uvb-late/'
@@ -73,6 +76,10 @@ def radial_analysis_form():
         
     Fe_H_rad_form_at_snapshot = []
     surf_dens_ratio_at_snapshot = []
+
+    Fe_H_rad_form_at_snapshot_slope = []
+    surf_dens_ratio_at_snapshot_slope = []
+    
     part_snapshots = np.array([0, 0.07350430, 0.15441179, 0.24850890, 0.35344830, 0.47764710, 0.62273902, 0.79942691, 1.02572345, 1.38636363, 1.73913038])
     for (red,r90) in zip(part_snapshots,R90_young_m12i):
         part = gizmo.io.Read.read_snapshots(['star','gas'], 'redshift', red, simulation_directory, properties = ['mass', 'position', 'massfraction', 'form.scalefactor', 'id'], elements = ['Fe'], assign_hosts_rotation=True, assign_formation_coordinates = True)
@@ -87,10 +94,31 @@ def radial_analysis_form():
         for i_f in np.arange(0,r90,r90/20):
             x_f.append(Fe_H_agedependent_form(i_f,i_f+r90/20,-3,3,0,0.1,r_star,age,part))
             surf_dens_ratio.append(log_surf_dens_ratio(i_f,i_f+r90/20,-3,3,0,0.1,r_star,r_gas,age,part))
+            
         Fe_H_rad_form_at_snapshot.append(x_f)
+        l_f = np.arange(0,r90,r90/20)
+        x_f = np.array(x_f)
+        if np.isnan(x_f).all():
+            Fe_H_rad_form_at_snapshot_slope.append(np.nan)
+        else:
+            j_f, k_f = np.polyfit(l_f[np.isfinite(x_f)],x_f[np.isfinite(x_f)],1)
+            Fe_H_rad_form_at_snapshot_slope.append(j_f)
+            
         surf_dens_ratio_at_snapshot.append(surf_dens_ratio) 
+        l_f_s = np.arange(0,r90,r90/20)
+        surf_dens_ratio = np.array(surf_dens_ratio)
+        if np.isnan(surf_dens_ratio).all():
+            surf_dens_ratio_at_snapshot_slope.append(np.nan)
+        else:
+            j_f_s, k_f_s = np.polyfit(l_f_s[np.isfinite(surf_dens_ratio)],surf_dens_ratio[np.isfinite(surf_dens_ratio)],1)
+            surf_dens_ratio_at_snapshot_slope.append(j_f_s)
+        
     Fe_H_rad_form_all_galaxies.append(Fe_H_rad_form_at_snapshot)
     surf_dens_ratio_all_galaxies.append(surf_dens_ratio_at_snapshot) 
+    
+    Fe_H_rad_form_all_galaxies_slope.append(Fe_H_rad_form_at_snapshot_slope)
+    surf_dens_ratio_all_galaxies_slope.append(surf_dens_ratio_at_snapshot_slope)
+    
     del(part)
     
      ### m12c
@@ -101,6 +129,10 @@ def radial_analysis_form():
         
     Fe_H_rad_form_at_snapshot = []
     surf_dens_ratio_at_snapshot = []
+    
+    Fe_H_rad_form_at_snapshot_slope = []
+    surf_dens_ratio_at_snapshot_slope = []
+    
     part_snapshots = np.array([0, 0.07350430, 0.15441179, 0.24850890, 0.35344830, 0.47764710, 0.62273902, 0.79942691, 1.02572345, 1.38636363, 1.73913038])
     for (red,r90) in zip(part_snapshots,R90_young_m12c):
         part = gizmo.io.Read.read_snapshots(['star','gas'], 'redshift', red, simulation_directory, properties = ['mass', 'position', 'massfraction', 'form.scalefactor', 'id'], elements = ['Fe'], assign_hosts_rotation=True, assign_formation_coordinates = True)
@@ -115,10 +147,31 @@ def radial_analysis_form():
         for i_f in np.arange(0,r90,r90/20):
             x_f.append(Fe_H_agedependent_form(i_f,i_f+r90/20,-3,3,0,0.1,r_star,age,part))
             surf_dens_ratio.append(log_surf_dens_ratio(i_f,i_f+r90/20,-3,3,0,0.1,r_star,r_gas,age,part))
+            
         Fe_H_rad_form_at_snapshot.append(x_f)
+        l_f = np.arange(0,r90,r90/20)
+        x_f = np.array(x_f)
+        if np.isnan(x_f).all():
+            Fe_H_rad_form_at_snapshot_slope.append(np.nan)
+        else:
+            j_f, k_f = np.polyfit(l_f[np.isfinite(x_f)],x_f[np.isfinite(x_f)],1)
+            Fe_H_rad_form_at_snapshot_slope.append(j_f)
+            
         surf_dens_ratio_at_snapshot.append(surf_dens_ratio) 
+        l_f_s = np.arange(0,r90,r90/20)
+        surf_dens_ratio = np.array(surf_dens_ratio)
+        if np.isnan(surf_dens_ratio).all():
+            surf_dens_ratio_at_snapshot_slope.append(np.nan)
+        else:
+            j_f_s, k_f_s = np.polyfit(l_f_s[np.isfinite(surf_dens_ratio)],surf_dens_ratio[np.isfinite(surf_dens_ratio)],1)
+            surf_dens_ratio_at_snapshot_slope.append(j_f_s)
+        
     Fe_H_rad_form_all_galaxies.append(Fe_H_rad_form_at_snapshot)
     surf_dens_ratio_all_galaxies.append(surf_dens_ratio_at_snapshot) 
+    
+    Fe_H_rad_form_all_galaxies_slope.append(Fe_H_rad_form_at_snapshot_slope)
+    surf_dens_ratio_all_galaxies_slope.append(surf_dens_ratio_at_snapshot_slope)
+    
     del(part)
     
     ### m12f
@@ -129,6 +182,10 @@ def radial_analysis_form():
         
     Fe_H_rad_form_at_snapshot = []
     surf_dens_ratio_at_snapshot = []
+    
+    Fe_H_rad_form_at_snapshot_slope = []
+    surf_dens_ratio_at_snapshot_slope = []
+    
     part_snapshots = np.array([0, 0.07350430, 0.15441179, 0.24850890, 0.35344830, 0.47764710, 0.62273902, 0.79942691, 1.02572345, 1.38636363, 1.73913038])
     for (red,r90) in zip(part_snapshots,R90_young_m12f):
         part = gizmo.io.Read.read_snapshots(['star','gas'], 'redshift', red, simulation_directory, properties = ['mass', 'position', 'massfraction', 'form.scalefactor', 'id'], elements = ['Fe'], assign_hosts_rotation=True, assign_formation_coordinates = True)
@@ -143,10 +200,31 @@ def radial_analysis_form():
         for i_f in np.arange(0,r90,r90/20):
             x_f.append(Fe_H_agedependent_form(i_f,i_f+r90/20,-3,3,0,0.1,r_star,age,part))
             surf_dens_ratio.append(log_surf_dens_ratio(i_f,i_f+r90/20,-3,3,0,0.1,r_star,r_gas,age,part))
+            
         Fe_H_rad_form_at_snapshot.append(x_f)
+        l_f = np.arange(0,r90,r90/20)
+        x_f = np.array(x_f)
+        if np.isnan(x_f).all():
+            Fe_H_rad_form_at_snapshot_slope.append(np.nan)
+        else:
+            j_f, k_f = np.polyfit(l_f[np.isfinite(x_f)],x_f[np.isfinite(x_f)],1)
+            Fe_H_rad_form_at_snapshot_slope.append(j_f)
+            
         surf_dens_ratio_at_snapshot.append(surf_dens_ratio) 
+        l_f_s = np.arange(0,r90,r90/20)
+        surf_dens_ratio = np.array(surf_dens_ratio)
+        if np.isnan(surf_dens_ratio).all():
+            surf_dens_ratio_at_snapshot_slope.append(np.nan)
+        else:
+            j_f_s, k_f_s = np.polyfit(l_f_s[np.isfinite(surf_dens_ratio)],surf_dens_ratio[np.isfinite(surf_dens_ratio)],1)
+            surf_dens_ratio_at_snapshot_slope.append(j_f_s)
+        
     Fe_H_rad_form_all_galaxies.append(Fe_H_rad_form_at_snapshot)
     surf_dens_ratio_all_galaxies.append(surf_dens_ratio_at_snapshot) 
+    
+    Fe_H_rad_form_all_galaxies_slope.append(Fe_H_rad_form_at_snapshot_slope)
+    surf_dens_ratio_all_galaxies_slope.append(surf_dens_ratio_at_snapshot_slope)
+    
     del(part)
     
     ### m12m
@@ -157,6 +235,10 @@ def radial_analysis_form():
         
     Fe_H_rad_form_at_snapshot = []
     surf_dens_ratio_at_snapshot = []
+    
+    Fe_H_rad_form_at_snapshot_slope = []
+    surf_dens_ratio_at_snapshot_slope = []
+    
     part_snapshots = np.array([0, 0.07350430, 0.15441179, 0.24850890, 0.35344830, 0.47764710, 0.62273902, 0.79942691, 1.02572345, 1.38636363, 1.73913038])
     for (red,r90) in zip(part_snapshots,R90_young_m12m):
         part = gizmo.io.Read.read_snapshots(['star','gas'], 'redshift', red, simulation_directory, properties = ['mass', 'position', 'massfraction', 'form.scalefactor', 'id'], elements = ['Fe'], assign_hosts_rotation=True, assign_formation_coordinates = True)
@@ -171,10 +253,31 @@ def radial_analysis_form():
         for i_f in np.arange(0,r90,r90/20):
             x_f.append(Fe_H_agedependent_form(i_f,i_f+r90/20,-3,3,0,0.1,r_star,age,part))
             surf_dens_ratio.append(log_surf_dens_ratio(i_f,i_f+r90/20,-3,3,0,0.1,r_star,r_gas,age,part))
+            
         Fe_H_rad_form_at_snapshot.append(x_f)
+        l_f = np.arange(0,r90,r90/20)
+        x_f = np.array(x_f)
+        if np.isnan(x_f).all():
+            Fe_H_rad_form_at_snapshot_slope.append(np.nan)
+        else:
+            j_f, k_f = np.polyfit(l_f[np.isfinite(x_f)],x_f[np.isfinite(x_f)],1)
+            Fe_H_rad_form_at_snapshot_slope.append(j_f)
+            
         surf_dens_ratio_at_snapshot.append(surf_dens_ratio) 
+        l_f_s = np.arange(0,r90,r90/20)
+        surf_dens_ratio = np.array(surf_dens_ratio)
+        if np.isnan(surf_dens_ratio).all():
+            surf_dens_ratio_at_snapshot_slope.append(np.nan)
+        else:
+            j_f_s, k_f_s = np.polyfit(l_f_s[np.isfinite(surf_dens_ratio)],surf_dens_ratio[np.isfinite(surf_dens_ratio)],1)
+            surf_dens_ratio_at_snapshot_slope.append(j_f_s)
+        
     Fe_H_rad_form_all_galaxies.append(Fe_H_rad_form_at_snapshot)
     surf_dens_ratio_all_galaxies.append(surf_dens_ratio_at_snapshot) 
+    
+    Fe_H_rad_form_all_galaxies_slope.append(Fe_H_rad_form_at_snapshot_slope)
+    surf_dens_ratio_all_galaxies_slope.append(surf_dens_ratio_at_snapshot_slope)
+    
     del(part)
     
     ### m12b
@@ -185,6 +288,10 @@ def radial_analysis_form():
         
     Fe_H_rad_form_at_snapshot = []
     surf_dens_ratio_at_snapshot = []
+    
+    Fe_H_rad_form_at_snapshot_slope = []
+    surf_dens_ratio_at_snapshot_slope = []
+    
     part_snapshots = np.array([0, 0.07350430, 0.15441179, 0.24850890, 0.35344830, 0.47764710, 0.62273902, 0.79942691, 1.02572345, 1.38636363, 1.73913038])
     for (red,r90) in zip(part_snapshots,R90_young_m12b):
         part = gizmo.io.Read.read_snapshots(['star','gas'], 'redshift', red, simulation_directory, properties = ['mass', 'position', 'massfraction', 'form.scalefactor', 'id'], elements = ['Fe'], assign_hosts_rotation=True, assign_formation_coordinates = True)
@@ -199,10 +306,31 @@ def radial_analysis_form():
         for i_f in np.arange(0,r90,r90/20):
             x_f.append(Fe_H_agedependent_form(i_f,i_f+r90/20,-3,3,0,0.1,r_star,age,part))
             surf_dens_ratio.append(log_surf_dens_ratio(i_f,i_f+r90/20,-3,3,0,0.1,r_star,r_gas,age,part))
+            
         Fe_H_rad_form_at_snapshot.append(x_f)
+        l_f = np.arange(0,r90,r90/20)
+        x_f = np.array(x_f)
+        if np.isnan(x_f).all():
+            Fe_H_rad_form_at_snapshot_slope.append(np.nan)
+        else:
+            j_f, k_f = np.polyfit(l_f[np.isfinite(x_f)],x_f[np.isfinite(x_f)],1)
+            Fe_H_rad_form_at_snapshot_slope.append(j_f)
+            
         surf_dens_ratio_at_snapshot.append(surf_dens_ratio) 
+        l_f_s = np.arange(0,r90,r90/20)
+        surf_dens_ratio = np.array(surf_dens_ratio)
+        if np.isnan(surf_dens_ratio).all():
+            surf_dens_ratio_at_snapshot_slope.append(np.nan)
+        else:
+            j_f_s, k_f_s = np.polyfit(l_f_s[np.isfinite(surf_dens_ratio)],surf_dens_ratio[np.isfinite(surf_dens_ratio)],1)
+            surf_dens_ratio_at_snapshot_slope.append(j_f_s)
+        
     Fe_H_rad_form_all_galaxies.append(Fe_H_rad_form_at_snapshot)
     surf_dens_ratio_all_galaxies.append(surf_dens_ratio_at_snapshot) 
+    
+    Fe_H_rad_form_all_galaxies_slope.append(Fe_H_rad_form_at_snapshot_slope)
+    surf_dens_ratio_all_galaxies_slope.append(surf_dens_ratio_at_snapshot_slope)
+    
     del(part)
     
      ### Romeo
@@ -213,6 +341,10 @@ def radial_analysis_form():
     
     Fe_H_rad_form_at_snapshot = []
     surf_dens_ratio_at_snapshot = []
+    
+    Fe_H_rad_form_at_snapshot_slope = []
+    surf_dens_ratio_at_snapshot_slope = []
+    
     part_snapshots = np.array([0, 0.07350430, 0.15441179, 0.24850890, 0.35344830, 0.47764710, 0.62273902, 0.79942691, 1.02572345, 1.38636363, 1.73913038])
     for (red,r90) in zip(part_snapshots,R90_young_Romeo):
         part = gizmo.io.Read.read_snapshots(['star','gas'], 'redshift', red, simulation_directory, properties = ['mass', 'position', 'massfraction','form.scalefactor', 'id'], elements = ['Fe'], assign_hosts_rotation=True, assign_formation_coordinates = True)
@@ -227,10 +359,31 @@ def radial_analysis_form():
         for i_f in np.arange(0,r90,r90/20):
             x_f.append(Fe_H_agedependent_form(i_f,i_f+r90/20,-3,3,0,0.1,r_star,age,part))
             surf_dens_ratio.append(log_surf_dens_ratio(i_f,i_f+r90/20,-3,3,0,0.1,r_star,r_gas,age,part))
+            
         Fe_H_rad_form_at_snapshot.append(x_f)
-        surf_dens_ratio_at_snapshot.append(surf_dens_ratio)  
+        l_f = np.arange(0,r90,r90/20)
+        x_f = np.array(x_f)
+        if np.isnan(x_f).all():
+            Fe_H_rad_form_at_snapshot_slope.append(np.nan)
+        else:
+            j_f, k_f = np.polyfit(l_f[np.isfinite(x_f)],x_f[np.isfinite(x_f)],1)
+            Fe_H_rad_form_at_snapshot_slope.append(j_f)
+            
+        surf_dens_ratio_at_snapshot.append(surf_dens_ratio) 
+        l_f_s = np.arange(0,r90,r90/20)
+        surf_dens_ratio = np.array(surf_dens_ratio)
+        if np.isnan(surf_dens_ratio).all():
+            surf_dens_ratio_at_snapshot_slope.append(np.nan)
+        else:
+            j_f_s, k_f_s = np.polyfit(l_f_s[np.isfinite(surf_dens_ratio)],surf_dens_ratio[np.isfinite(surf_dens_ratio)],1)
+            surf_dens_ratio_at_snapshot_slope.append(j_f_s)
+        
     Fe_H_rad_form_all_galaxies.append(Fe_H_rad_form_at_snapshot)
-    surf_dens_ratio_all_galaxies.append(surf_dens_ratio_at_snapshot)
+    surf_dens_ratio_all_galaxies.append(surf_dens_ratio_at_snapshot) 
+    
+    Fe_H_rad_form_all_galaxies_slope.append(Fe_H_rad_form_at_snapshot_slope)
+    surf_dens_ratio_all_galaxies_slope.append(surf_dens_ratio_at_snapshot_slope)
+    
     del(part)
                                    
     ### Juliet
@@ -241,6 +394,10 @@ def radial_analysis_form():
     
     Fe_H_rad_form_at_snapshot = []
     surf_dens_ratio_at_snapshot = []
+    
+    Fe_H_rad_form_at_snapshot_slope = []
+    surf_dens_ratio_at_snapshot_slope = []
+    
     part_snapshots = np.array([0, 0.07350430, 0.15441179, 0.24850890, 0.35344830, 0.47764710, 0.62273902, 0.79942691, 1.02572345, 1.38636363, 1.73913038])
     for (red,r90) in zip(part_snapshots,R90_young_Juliet):
         part = gizmo.io.Read.read_snapshots(['star','gas'], 'redshift', red, simulation_directory, properties = ['mass', 'position', 'massfraction','form.scalefactor', 'id'], elements = ['Fe'], assign_hosts_rotation=True, assign_formation_coordinates = True)
@@ -255,10 +412,31 @@ def radial_analysis_form():
         for i_f in np.arange(0,r90,r90/20):
             x_f.append(Fe_H_agedependent_form(i_f,i_f+r90/20,-3,3,0,0.1,r_star,age,part))
             surf_dens_ratio.append(log_surf_dens_ratio(i_f,i_f+r90/20,-3,3,0,0.1,r_star,r_gas,age,part))
+            
         Fe_H_rad_form_at_snapshot.append(x_f)
-        surf_dens_ratio_at_snapshot.append(surf_dens_ratio)  
+        l_f = np.arange(0,r90,r90/20)
+        x_f = np.array(x_f)
+        if np.isnan(x_f).all():
+            Fe_H_rad_form_at_snapshot_slope.append(np.nan)
+        else:
+            j_f, k_f = np.polyfit(l_f[np.isfinite(x_f)],x_f[np.isfinite(x_f)],1)
+            Fe_H_rad_form_at_snapshot_slope.append(j_f)
+            
+        surf_dens_ratio_at_snapshot.append(surf_dens_ratio) 
+        l_f_s = np.arange(0,r90,r90/20)
+        surf_dens_ratio = np.array(surf_dens_ratio)
+        if np.isnan(surf_dens_ratio).all():
+            surf_dens_ratio_at_snapshot_slope.append(np.nan)
+        else:
+            j_f_s, k_f_s = np.polyfit(l_f_s[np.isfinite(surf_dens_ratio)],surf_dens_ratio[np.isfinite(surf_dens_ratio)],1)
+            surf_dens_ratio_at_snapshot_slope.append(j_f_s)
+        
     Fe_H_rad_form_all_galaxies.append(Fe_H_rad_form_at_snapshot)
-    surf_dens_ratio_all_galaxies.append(surf_dens_ratio_at_snapshot)
+    surf_dens_ratio_all_galaxies.append(surf_dens_ratio_at_snapshot) 
+    
+    Fe_H_rad_form_all_galaxies_slope.append(Fe_H_rad_form_at_snapshot_slope)
+    surf_dens_ratio_all_galaxies_slope.append(surf_dens_ratio_at_snapshot_slope)
+    
     del(part)
     
     ### Romulus
@@ -269,6 +447,10 @@ def radial_analysis_form():
     
     Fe_H_rad_form_at_snapshot = []
     surf_dens_ratio_at_snapshot = []
+    
+    Fe_H_rad_form_at_snapshot_slope = []
+    surf_dens_ratio_at_snapshot_slope = []
+    
     part_snapshots = np.array([0, 0.07350430, 0.15441179, 0.24850890, 0.35344830, 0.47764710, 0.62273902, 0.79942691, 1.02572345, 1.38636363, 1.73913038])
     for (red,r90) in zip(part_snapshots,R90_young_Romulus):
         part = gizmo.io.Read.read_snapshots(['star','gas'], 'redshift', red, simulation_directory, properties = ['mass', 'position', 'massfraction','form.scalefactor', 'id'], elements = ['Fe'], assign_hosts_rotation=True, assign_formation_coordinates = True)
@@ -283,10 +465,31 @@ def radial_analysis_form():
         for i_f in np.arange(0,r90,r90/20):
             x_f.append(Fe_H_agedependent_form(i_f,i_f+r90/20,-3,3,0,0.1,r_star,age,part))
             surf_dens_ratio.append(log_surf_dens_ratio(i_f,i_f+r90/20,-3,3,0,0.1,r_star,r_gas,age,part))
+            
         Fe_H_rad_form_at_snapshot.append(x_f)
-        surf_dens_ratio_at_snapshot.append(surf_dens_ratio)  
+        l_f = np.arange(0,r90,r90/20)
+        x_f = np.array(x_f)
+        if np.isnan(x_f).all():
+            Fe_H_rad_form_at_snapshot_slope.append(np.nan)
+        else:
+            j_f, k_f = np.polyfit(l_f[np.isfinite(x_f)],x_f[np.isfinite(x_f)],1)
+            Fe_H_rad_form_at_snapshot_slope.append(j_f)
+            
+        surf_dens_ratio_at_snapshot.append(surf_dens_ratio) 
+        l_f_s = np.arange(0,r90,r90/20)
+        surf_dens_ratio = np.array(surf_dens_ratio)
+        if np.isnan(surf_dens_ratio).all():
+            surf_dens_ratio_at_snapshot_slope.append(np.nan)
+        else:
+            j_f_s, k_f_s = np.polyfit(l_f_s[np.isfinite(surf_dens_ratio)],surf_dens_ratio[np.isfinite(surf_dens_ratio)],1)
+            surf_dens_ratio_at_snapshot_slope.append(j_f_s)
+        
     Fe_H_rad_form_all_galaxies.append(Fe_H_rad_form_at_snapshot)
-    surf_dens_ratio_all_galaxies.append(surf_dens_ratio_at_snapshot)
+    surf_dens_ratio_all_galaxies.append(surf_dens_ratio_at_snapshot) 
+    
+    Fe_H_rad_form_all_galaxies_slope.append(Fe_H_rad_form_at_snapshot_slope)
+    surf_dens_ratio_all_galaxies_slope.append(surf_dens_ratio_at_snapshot_slope)
+    
     del(part)
                                    
     ### Remus
@@ -297,6 +500,10 @@ def radial_analysis_form():
     
     Fe_H_rad_form_at_snapshot = []
     surf_dens_ratio_at_snapshot = []
+    
+    Fe_H_rad_form_at_snapshot_slope = []
+    surf_dens_ratio_at_snapshot_slope = []
+    
     part_snapshots = np.array([0, 0.07350430, 0.15441179, 0.24850890, 0.35344830, 0.47764710, 0.62273902, 0.79942691, 1.02572345, 1.38636363, 1.73913038])
     for (red,r90) in zip(part_snapshots,R90_young_Remus):
         part = gizmo.io.Read.read_snapshots(['star','gas'], 'redshift', red, simulation_directory, properties = ['mass', 'position', 'massfraction','form.scalefactor', 'id'], elements = ['Fe'], assign_hosts_rotation=True, assign_formation_coordinates = True)
@@ -311,10 +518,31 @@ def radial_analysis_form():
         for i_f in np.arange(0,r90,r90/20):
             x_f.append(Fe_H_agedependent_form(i_f,i_f+r90/20,-3,3,0,0.1,r_star,age,part))
             surf_dens_ratio.append(log_surf_dens_ratio(i_f,i_f+r90/20,-3,3,0,0.1,r_star,r_gas,age,part))
+            
         Fe_H_rad_form_at_snapshot.append(x_f)
-        surf_dens_ratio_at_snapshot.append(surf_dens_ratio)  
+        l_f = np.arange(0,r90,r90/20)
+        x_f = np.array(x_f)
+        if np.isnan(x_f).all():
+            Fe_H_rad_form_at_snapshot_slope.append(np.nan)
+        else:
+            j_f, k_f = np.polyfit(l_f[np.isfinite(x_f)],x_f[np.isfinite(x_f)],1)
+            Fe_H_rad_form_at_snapshot_slope.append(j_f)
+            
+        surf_dens_ratio_at_snapshot.append(surf_dens_ratio) 
+        l_f_s = np.arange(0,r90,r90/20)
+        surf_dens_ratio = np.array(surf_dens_ratio)
+        if np.isnan(surf_dens_ratio).all():
+            surf_dens_ratio_at_snapshot_slope.append(np.nan)
+        else:
+            j_f_s, k_f_s = np.polyfit(l_f_s[np.isfinite(surf_dens_ratio)],surf_dens_ratio[np.isfinite(surf_dens_ratio)],1)
+            surf_dens_ratio_at_snapshot_slope.append(j_f_s)
+        
     Fe_H_rad_form_all_galaxies.append(Fe_H_rad_form_at_snapshot)
-    surf_dens_ratio_all_galaxies.append(surf_dens_ratio_at_snapshot)
+    surf_dens_ratio_all_galaxies.append(surf_dens_ratio_at_snapshot) 
+    
+    Fe_H_rad_form_all_galaxies_slope.append(Fe_H_rad_form_at_snapshot_slope)
+    surf_dens_ratio_all_galaxies_slope.append(surf_dens_ratio_at_snapshot_slope)
+    
     del(part)
                                    
     ### Thelma
@@ -325,6 +553,10 @@ def radial_analysis_form():
     
     Fe_H_rad_form_at_snapshot = []
     surf_dens_ratio_at_snapshot = []
+    
+    Fe_H_rad_form_at_snapshot_slope = []
+    surf_dens_ratio_at_snapshot_slope = []
+    
     part_snapshots = np.array([0, 0.07350430, 0.15441179, 0.24850890, 0.35344830, 0.47764710, 0.62273902, 0.79942691, 1.02572345, 1.38636363, 1.73913038])
     for (red,r90) in zip(part_snapshots,R90_young_Thelma):
         part = gizmo.io.Read.read_snapshots(['star','gas'], 'redshift', red, simulation_directory, properties = ['mass', 'position', 'massfraction','form.scalefactor', 'id'], elements = ['Fe'], assign_hosts_rotation=True, assign_formation_coordinates = True)
@@ -339,10 +571,31 @@ def radial_analysis_form():
         for i_f in np.arange(0,r90,r90/20):
             x_f.append(Fe_H_agedependent_form(i_f,i_f+r90/20,-3,3,0,0.1,r_star,age,part))
             surf_dens_ratio.append(log_surf_dens_ratio(i_f,i_f+r90/20,-3,3,0,0.1,r_star,r_gas,age,part))
+            
         Fe_H_rad_form_at_snapshot.append(x_f)
-        surf_dens_ratio_at_snapshot.append(surf_dens_ratio)  
+        l_f = np.arange(0,r90,r90/20)
+        x_f = np.array(x_f)
+        if np.isnan(x_f).all():
+            Fe_H_rad_form_at_snapshot_slope.append(np.nan)
+        else:
+            j_f, k_f = np.polyfit(l_f[np.isfinite(x_f)],x_f[np.isfinite(x_f)],1)
+            Fe_H_rad_form_at_snapshot_slope.append(j_f)
+            
+        surf_dens_ratio_at_snapshot.append(surf_dens_ratio) 
+        l_f_s = np.arange(0,r90,r90/20)
+        surf_dens_ratio = np.array(surf_dens_ratio)
+        if np.isnan(surf_dens_ratio).all():
+            surf_dens_ratio_at_snapshot_slope.append(np.nan)
+        else:
+            j_f_s, k_f_s = np.polyfit(l_f_s[np.isfinite(surf_dens_ratio)],surf_dens_ratio[np.isfinite(surf_dens_ratio)],1)
+            surf_dens_ratio_at_snapshot_slope.append(j_f_s)
+        
     Fe_H_rad_form_all_galaxies.append(Fe_H_rad_form_at_snapshot)
-    surf_dens_ratio_all_galaxies.append(surf_dens_ratio_at_snapshot)
+    surf_dens_ratio_all_galaxies.append(surf_dens_ratio_at_snapshot) 
+    
+    Fe_H_rad_form_all_galaxies_slope.append(Fe_H_rad_form_at_snapshot_slope)
+    surf_dens_ratio_all_galaxies_slope.append(surf_dens_ratio_at_snapshot_slope)
+    
     del(part)
                                    
     ### Louise
@@ -353,6 +606,10 @@ def radial_analysis_form():
     
     Fe_H_rad_form_at_snapshot = []
     surf_dens_ratio_at_snapshot = []
+    
+    Fe_H_rad_form_at_snapshot_slope = []
+    surf_dens_ratio_at_snapshot_slope = []
+    
     part_snapshots = np.array([0, 0.07350430, 0.15441179, 0.24850890, 0.35344830, 0.47764710, 0.62273902, 0.79942691, 1.02572345, 1.38636363, 1.73913038])
     for (red,r90) in zip(part_snapshots,R90_young_Louise):
         part = gizmo.io.Read.read_snapshots(['star','gas'], 'redshift', red, simulation_directory, properties = ['mass', 'position', 'massfraction','form.scalefactor', 'id'], elements = ['Fe'], assign_hosts_rotation=True, assign_formation_coordinates = True)
@@ -367,13 +624,43 @@ def radial_analysis_form():
         for i_f in np.arange(0,r90,r90/20):
             x_f.append(Fe_H_agedependent_form(i_f,i_f+r90/20,-3,3,0,0.1,r_star,age,part))
             surf_dens_ratio.append(log_surf_dens_ratio(i_f,i_f+r90/20,-3,3,0,0.1,r_star,r_gas,age,part))
+            
         Fe_H_rad_form_at_snapshot.append(x_f)
-        surf_dens_ratio_at_snapshot.append(surf_dens_ratio)  
+        l_f = np.arange(0,r90,r90/20)
+        x_f = np.array(x_f)
+        if np.isnan(x_f).all():
+            Fe_H_rad_form_at_snapshot_slope.append(np.nan)
+        else:
+            j_f, k_f = np.polyfit(l_f[np.isfinite(x_f)],x_f[np.isfinite(x_f)],1)
+            Fe_H_rad_form_at_snapshot_slope.append(j_f)
+            
+        surf_dens_ratio_at_snapshot.append(surf_dens_ratio) 
+        l_f_s = np.arange(0,r90,r90/20)
+        surf_dens_ratio = np.array(surf_dens_ratio)
+        if np.isnan(surf_dens_ratio).all():
+            surf_dens_ratio_at_snapshot_slope.append(np.nan)
+        else:
+            j_f_s, k_f_s = np.polyfit(l_f_s[np.isfinite(surf_dens_ratio)],surf_dens_ratio[np.isfinite(surf_dens_ratio)],1)
+            surf_dens_ratio_at_snapshot_slope.append(j_f_s)
+        
     Fe_H_rad_form_all_galaxies.append(Fe_H_rad_form_at_snapshot)
-    surf_dens_ratio_all_galaxies.append(surf_dens_ratio_at_snapshot)
+    surf_dens_ratio_all_galaxies.append(surf_dens_ratio_at_snapshot) 
+    
+    Fe_H_rad_form_all_galaxies_slope.append(Fe_H_rad_form_at_snapshot_slope)
+    surf_dens_ratio_all_galaxies_slope.append(surf_dens_ratio_at_snapshot_slope)
+    
     del(part)
+    
+    Fe_H_rad_form_all_galaxies = np.array(Fe_H_rad_form_all_galaxies)   
+    surf_dens_ratio_all_galaxies = np.array(surf_dens_ratio_all_galaxies)  
+    
+    Fe_H_rad_form_all_galaxies_slope = np.array(Fe_H_rad_form_all_galaxies_slope)   
+    surf_dens_ratio_all_galaxies_slope = np.array(surf_dens_ratio_all_galaxies_slope) 
     
     ut_io.file_hdf5('/home/rlgraf/Final_Figures/Fe_H_rad_form_all_galaxies_surfdensratiotrack_100Myr_R90_young', Fe_H_rad_form_all_galaxies)
     ut_io.file_hdf5('/home/rlgraf/Final_Figures/surf_dens_ratio_all_galaxies_surfdensratiotrack_100Myr_R90_young', surf_dens_ratio_all_galaxies)
+    
+    ut_io.file_hdf5('/home/rlgraf/Final_Figures/Fe_H_rad_form_all_galaxies_surfdensratiotrack_100Myr_R90_young_slope', Fe_H_rad_form_all_galaxies_slope)
+    ut_io.file_hdf5('/home/rlgraf/Final_Figures/surf_dens_ratio_all_galaxies_surfdensratiotrack_100Myr_R90_young_slope', surf_dens_ratio_all_galaxies_slope)
     
 radial_analysis_form()
