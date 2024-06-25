@@ -91,12 +91,12 @@ def radial_analysis_form():
         
         x_f = []
         surf_dens_ratio = []
-        for i_f in np.arange(0,r90,r90/20):
-            x_f.append(Fe_H_agedependent_form(i_f,i_f+r90/20,-3,3,0,0.1,r_star,age,part))
-            surf_dens_ratio.append(log_surf_dens_ratio(i_f,i_f+r90/20,-3,3,0,0.1,r_star,r_gas,age,part))
+        for i_f in np.arange(r90/4,r90,(r90 - r90/4)/20):
+            x_f.append(Fe_H_agedependent_form(i_f,i_f+(r90 - r90/4)/20,-3,3,0,0.1,r_star,age,part))
+            surf_dens_ratio.append(log_surf_dens_ratio(i_f,i_f+(r90 - r90/4)/20,-3,3,0,0.1,r_star,r_gas,age,part))
             
         Fe_H_rad_form_at_snapshot.append(x_f)
-        l_f = np.arange(0,r90,r90/20)
+        l_f = np.arange(0,r90,(r90 - r90/4)/20)
         x_f = np.array(x_f)
         if np.isnan(x_f).all():
             Fe_H_rad_form_at_snapshot_slope.append(np.nan)
@@ -105,7 +105,7 @@ def radial_analysis_form():
             Fe_H_rad_form_at_snapshot_slope.append(j_f)
             
         surf_dens_ratio_at_snapshot.append(surf_dens_ratio) 
-        l_f_s = np.arange(0,r90,r90/20)
+        l_f_s = np.arange(0,r90,(r90 - r90/4)/20)
         surf_dens_ratio = np.array(surf_dens_ratio)
         if np.isnan(surf_dens_ratio).all():
             surf_dens_ratio_at_snapshot_slope.append(np.nan)
@@ -144,12 +144,12 @@ def radial_analysis_form():
         
         x_f = []
         surf_dens_ratio = []
-        for i_f in np.arange(0,r90,r90/20):
-            x_f.append(Fe_H_agedependent_form(i_f,i_f+r90/20,-3,3,0,0.1,r_star,age,part))
-            surf_dens_ratio.append(log_surf_dens_ratio(i_f,i_f+r90/20,-3,3,0,0.1,r_star,r_gas,age,part))
+        for i_f in np.arange(r90/4,r90,(r90 - r90/4)/20):
+            x_f.append(Fe_H_agedependent_form(i_f,i_f+(r90 - r90/4)/20,-3,3,0,0.1,r_star,age,part))
+            surf_dens_ratio.append(log_surf_dens_ratio(i_f,i_f+(r90 - r90/4)/20,-3,3,0,0.1,r_star,r_gas,age,part))
             
         Fe_H_rad_form_at_snapshot.append(x_f)
-        l_f = np.arange(0,r90,r90/20)
+        l_f = np.arange(0,r90,(r90 - r90/4)/20)
         x_f = np.array(x_f)
         if np.isnan(x_f).all():
             Fe_H_rad_form_at_snapshot_slope.append(np.nan)
@@ -158,7 +158,7 @@ def radial_analysis_form():
             Fe_H_rad_form_at_snapshot_slope.append(j_f)
             
         surf_dens_ratio_at_snapshot.append(surf_dens_ratio) 
-        l_f_s = np.arange(0,r90,r90/20)
+        l_f_s = np.arange(0,r90,(r90 - r90/4)/20)
         surf_dens_ratio = np.array(surf_dens_ratio)
         if np.isnan(surf_dens_ratio).all():
             surf_dens_ratio_at_snapshot_slope.append(np.nan)
@@ -197,12 +197,12 @@ def radial_analysis_form():
         
         x_f = []
         surf_dens_ratio = []
-        for i_f in np.arange(0,r90,r90/20):
-            x_f.append(Fe_H_agedependent_form(i_f,i_f+r90/20,-3,3,0,0.1,r_star,age,part))
-            surf_dens_ratio.append(log_surf_dens_ratio(i_f,i_f+r90/20,-3,3,0,0.1,r_star,r_gas,age,part))
+        for i_f in np.arange(r90/4,r90,(r90 - r90/4)/20):
+            x_f.append(Fe_H_agedependent_form(i_f,i_f+(r90 - r90/4)/20,-3,3,0,0.1,r_star,age,part))
+            surf_dens_ratio.append(log_surf_dens_ratio(i_f,i_f+(r90 - r90/4)/20,-3,3,0,0.1,r_star,r_gas,age,part))
             
         Fe_H_rad_form_at_snapshot.append(x_f)
-        l_f = np.arange(0,r90,r90/20)
+        l_f = np.arange(0,r90,(r90 - r90/4)/20)
         x_f = np.array(x_f)
         if np.isnan(x_f).all():
             Fe_H_rad_form_at_snapshot_slope.append(np.nan)
@@ -211,7 +211,7 @@ def radial_analysis_form():
             Fe_H_rad_form_at_snapshot_slope.append(j_f)
             
         surf_dens_ratio_at_snapshot.append(surf_dens_ratio) 
-        l_f_s = np.arange(0,r90,r90/20)
+        l_f_s = np.arange(0,r90,(r90 - r90/4)/20)
         surf_dens_ratio = np.array(surf_dens_ratio)
         if np.isnan(surf_dens_ratio).all():
             surf_dens_ratio_at_snapshot_slope.append(np.nan)
@@ -250,12 +250,12 @@ def radial_analysis_form():
         
         x_f = []
         surf_dens_ratio = []
-        for i_f in np.arange(0,r90,r90/20):
-            x_f.append(Fe_H_agedependent_form(i_f,i_f+r90/20,-3,3,0,0.1,r_star,age,part))
-            surf_dens_ratio.append(log_surf_dens_ratio(i_f,i_f+r90/20,-3,3,0,0.1,r_star,r_gas,age,part))
+        for i_f in np.arange(r90/4,r90,(r90 - r90/4)/20):
+            x_f.append(Fe_H_agedependent_form(i_f,i_f+(r90 - r90/4)/20,-3,3,0,0.1,r_star,age,part))
+            surf_dens_ratio.append(log_surf_dens_ratio(i_f,i_f+(r90 - r90/4)/20,-3,3,0,0.1,r_star,r_gas,age,part))
             
         Fe_H_rad_form_at_snapshot.append(x_f)
-        l_f = np.arange(0,r90,r90/20)
+        l_f = np.arange(0,r90,(r90 - r90/4)/20)
         x_f = np.array(x_f)
         if np.isnan(x_f).all():
             Fe_H_rad_form_at_snapshot_slope.append(np.nan)
@@ -264,7 +264,7 @@ def radial_analysis_form():
             Fe_H_rad_form_at_snapshot_slope.append(j_f)
             
         surf_dens_ratio_at_snapshot.append(surf_dens_ratio) 
-        l_f_s = np.arange(0,r90,r90/20)
+        l_f_s = np.arange(0,r90,(r90 - r90/4)/20)
         surf_dens_ratio = np.array(surf_dens_ratio)
         if np.isnan(surf_dens_ratio).all():
             surf_dens_ratio_at_snapshot_slope.append(np.nan)
@@ -303,12 +303,12 @@ def radial_analysis_form():
         
         x_f = []
         surf_dens_ratio = []
-        for i_f in np.arange(0,r90,r90/20):
-            x_f.append(Fe_H_agedependent_form(i_f,i_f+r90/20,-3,3,0,0.1,r_star,age,part))
-            surf_dens_ratio.append(log_surf_dens_ratio(i_f,i_f+r90/20,-3,3,0,0.1,r_star,r_gas,age,part))
+        for i_f in np.arange(r90/4,r90,(r90 - r90/4)/20):
+            x_f.append(Fe_H_agedependent_form(i_f,i_f+(r90 - r90/4)/20,-3,3,0,0.1,r_star,age,part))
+            surf_dens_ratio.append(log_surf_dens_ratio(i_f,i_f+(r90 - r90/4)/20,-3,3,0,0.1,r_star,r_gas,age,part))
             
         Fe_H_rad_form_at_snapshot.append(x_f)
-        l_f = np.arange(0,r90,r90/20)
+        l_f = np.arange(0,r90,(r90 - r90/4)/20)
         x_f = np.array(x_f)
         if np.isnan(x_f).all():
             Fe_H_rad_form_at_snapshot_slope.append(np.nan)
@@ -317,7 +317,7 @@ def radial_analysis_form():
             Fe_H_rad_form_at_snapshot_slope.append(j_f)
             
         surf_dens_ratio_at_snapshot.append(surf_dens_ratio) 
-        l_f_s = np.arange(0,r90,r90/20)
+        l_f_s = np.arange(0,r90,(r90 - r90/4)/20)
         surf_dens_ratio = np.array(surf_dens_ratio)
         if np.isnan(surf_dens_ratio).all():
             surf_dens_ratio_at_snapshot_slope.append(np.nan)
@@ -356,12 +356,12 @@ def radial_analysis_form():
         
         x_f = []
         surf_dens_ratio = []
-        for i_f in np.arange(0,r90,r90/20):
-            x_f.append(Fe_H_agedependent_form(i_f,i_f+r90/20,-3,3,0,0.1,r_star,age,part))
-            surf_dens_ratio.append(log_surf_dens_ratio(i_f,i_f+r90/20,-3,3,0,0.1,r_star,r_gas,age,part))
+        for i_f in np.arange(r90/4,r90,(r90 - r90/4)/20):
+            x_f.append(Fe_H_agedependent_form(i_f,i_f+(r90 - r90/4)/20,-3,3,0,0.1,r_star,age,part))
+            surf_dens_ratio.append(log_surf_dens_ratio(i_f,i_f+(r90 - r90/4)/20,-3,3,0,0.1,r_star,r_gas,age,part))
             
         Fe_H_rad_form_at_snapshot.append(x_f)
-        l_f = np.arange(0,r90,r90/20)
+        l_f = np.arange(0,r90,(r90 - r90/4)/20)
         x_f = np.array(x_f)
         if np.isnan(x_f).all():
             Fe_H_rad_form_at_snapshot_slope.append(np.nan)
@@ -370,7 +370,7 @@ def radial_analysis_form():
             Fe_H_rad_form_at_snapshot_slope.append(j_f)
             
         surf_dens_ratio_at_snapshot.append(surf_dens_ratio) 
-        l_f_s = np.arange(0,r90,r90/20)
+        l_f_s = np.arange(0,r90,(r90 - r90/4)/20)
         surf_dens_ratio = np.array(surf_dens_ratio)
         if np.isnan(surf_dens_ratio).all():
             surf_dens_ratio_at_snapshot_slope.append(np.nan)
@@ -409,12 +409,12 @@ def radial_analysis_form():
         
         x_f = []
         surf_dens_ratio = []
-        for i_f in np.arange(0,r90,r90/20):
-            x_f.append(Fe_H_agedependent_form(i_f,i_f+r90/20,-3,3,0,0.1,r_star,age,part))
-            surf_dens_ratio.append(log_surf_dens_ratio(i_f,i_f+r90/20,-3,3,0,0.1,r_star,r_gas,age,part))
+        for i_f in np.arange(r90/4,r90,(r90 - r90/4)/20):
+            x_f.append(Fe_H_agedependent_form(i_f,i_f+(r90 - r90/4)/20,-3,3,0,0.1,r_star,age,part))
+            surf_dens_ratio.append(log_surf_dens_ratio(i_f,i_f+(r90 - r90/4)/20,-3,3,0,0.1,r_star,r_gas,age,part))
             
         Fe_H_rad_form_at_snapshot.append(x_f)
-        l_f = np.arange(0,r90,r90/20)
+        l_f = np.arange(0,r90,(r90 - r90/4)/20)
         x_f = np.array(x_f)
         if np.isnan(x_f).all():
             Fe_H_rad_form_at_snapshot_slope.append(np.nan)
@@ -423,7 +423,7 @@ def radial_analysis_form():
             Fe_H_rad_form_at_snapshot_slope.append(j_f)
             
         surf_dens_ratio_at_snapshot.append(surf_dens_ratio) 
-        l_f_s = np.arange(0,r90,r90/20)
+        l_f_s = np.arange(0,r90,(r90 - r90/4)/20)
         surf_dens_ratio = np.array(surf_dens_ratio)
         if np.isnan(surf_dens_ratio).all():
             surf_dens_ratio_at_snapshot_slope.append(np.nan)
@@ -462,12 +462,12 @@ def radial_analysis_form():
         
         x_f = []
         surf_dens_ratio = []
-        for i_f in np.arange(0,r90,r90/20):
-            x_f.append(Fe_H_agedependent_form(i_f,i_f+r90/20,-3,3,0,0.1,r_star,age,part))
-            surf_dens_ratio.append(log_surf_dens_ratio(i_f,i_f+r90/20,-3,3,0,0.1,r_star,r_gas,age,part))
+        for i_f in np.arange(r90/4,r90,(r90 - r90/4)/20):
+            x_f.append(Fe_H_agedependent_form(i_f,i_f+(r90 - r90/4)/20,-3,3,0,0.1,r_star,age,part))
+            surf_dens_ratio.append(log_surf_dens_ratio(i_f,i_f+(r90 - r90/4)/20,-3,3,0,0.1,r_star,r_gas,age,part))
             
         Fe_H_rad_form_at_snapshot.append(x_f)
-        l_f = np.arange(0,r90,r90/20)
+        l_f = np.arange(0,r90,(r90 - r90/4)/20)
         x_f = np.array(x_f)
         if np.isnan(x_f).all():
             Fe_H_rad_form_at_snapshot_slope.append(np.nan)
@@ -476,7 +476,7 @@ def radial_analysis_form():
             Fe_H_rad_form_at_snapshot_slope.append(j_f)
             
         surf_dens_ratio_at_snapshot.append(surf_dens_ratio) 
-        l_f_s = np.arange(0,r90,r90/20)
+        l_f_s = np.arange(0,r90,(r90 - r90/4)/20)
         surf_dens_ratio = np.array(surf_dens_ratio)
         if np.isnan(surf_dens_ratio).all():
             surf_dens_ratio_at_snapshot_slope.append(np.nan)
@@ -515,12 +515,12 @@ def radial_analysis_form():
         
         x_f = []
         surf_dens_ratio = []
-        for i_f in np.arange(0,r90,r90/20):
-            x_f.append(Fe_H_agedependent_form(i_f,i_f+r90/20,-3,3,0,0.1,r_star,age,part))
-            surf_dens_ratio.append(log_surf_dens_ratio(i_f,i_f+r90/20,-3,3,0,0.1,r_star,r_gas,age,part))
+        for i_f in np.arange(r90/4,r90,(r90 - r90/4)/20):
+            x_f.append(Fe_H_agedependent_form(i_f,i_f+(r90 - r90/4)/20,-3,3,0,0.1,r_star,age,part))
+            surf_dens_ratio.append(log_surf_dens_ratio(i_f,i_f+(r90 - r90/4)/20,-3,3,0,0.1,r_star,r_gas,age,part))
             
         Fe_H_rad_form_at_snapshot.append(x_f)
-        l_f = np.arange(0,r90,r90/20)
+        l_f = np.arange(0,r90,(r90 - r90/4)/20)
         x_f = np.array(x_f)
         if np.isnan(x_f).all():
             Fe_H_rad_form_at_snapshot_slope.append(np.nan)
@@ -529,7 +529,7 @@ def radial_analysis_form():
             Fe_H_rad_form_at_snapshot_slope.append(j_f)
             
         surf_dens_ratio_at_snapshot.append(surf_dens_ratio) 
-        l_f_s = np.arange(0,r90,r90/20)
+        l_f_s = np.arange(0,r90,(r90 - r90/4)/20)
         surf_dens_ratio = np.array(surf_dens_ratio)
         if np.isnan(surf_dens_ratio).all():
             surf_dens_ratio_at_snapshot_slope.append(np.nan)
@@ -568,12 +568,12 @@ def radial_analysis_form():
         
         x_f = []
         surf_dens_ratio = []
-        for i_f in np.arange(0,r90,r90/20):
-            x_f.append(Fe_H_agedependent_form(i_f,i_f+r90/20,-3,3,0,0.1,r_star,age,part))
-            surf_dens_ratio.append(log_surf_dens_ratio(i_f,i_f+r90/20,-3,3,0,0.1,r_star,r_gas,age,part))
+        for i_f in np.arange(r90/4,r90,(r90 - r90/4)/20):
+            x_f.append(Fe_H_agedependent_form(i_f,i_f+(r90 - r90/4)/20,-3,3,0,0.1,r_star,age,part))
+            surf_dens_ratio.append(log_surf_dens_ratio(i_f,i_f+(r90 - r90/4)/20,-3,3,0,0.1,r_star,r_gas,age,part))
             
         Fe_H_rad_form_at_snapshot.append(x_f)
-        l_f = np.arange(0,r90,r90/20)
+        l_f = np.arange(0,r90,(r90 - r90/4)/20)
         x_f = np.array(x_f)
         if np.isnan(x_f).all():
             Fe_H_rad_form_at_snapshot_slope.append(np.nan)
@@ -582,7 +582,7 @@ def radial_analysis_form():
             Fe_H_rad_form_at_snapshot_slope.append(j_f)
             
         surf_dens_ratio_at_snapshot.append(surf_dens_ratio) 
-        l_f_s = np.arange(0,r90,r90/20)
+        l_f_s = np.arange(0,r90,(r90 - r90/4)/20)
         surf_dens_ratio = np.array(surf_dens_ratio)
         if np.isnan(surf_dens_ratio).all():
             surf_dens_ratio_at_snapshot_slope.append(np.nan)
@@ -621,12 +621,12 @@ def radial_analysis_form():
         
         x_f = []
         surf_dens_ratio = []
-        for i_f in np.arange(0,r90,r90/20):
-            x_f.append(Fe_H_agedependent_form(i_f,i_f+r90/20,-3,3,0,0.1,r_star,age,part))
-            surf_dens_ratio.append(log_surf_dens_ratio(i_f,i_f+r90/20,-3,3,0,0.1,r_star,r_gas,age,part))
+        for i_f in np.arange(r90/4,r90,(r90 - r90/4)/20):
+            x_f.append(Fe_H_agedependent_form(i_f,i_f+(r90 - r90/4)/20,-3,3,0,0.1,r_star,age,part))
+            surf_dens_ratio.append(log_surf_dens_ratio(i_f,i_f+(r90 - r90/4)/20,-3,3,0,0.1,r_star,r_gas,age,part))
             
         Fe_H_rad_form_at_snapshot.append(x_f)
-        l_f = np.arange(0,r90,r90/20)
+        l_f = np.arange(0,r90,(r90 - r90/4)/20)
         x_f = np.array(x_f)
         if np.isnan(x_f).all():
             Fe_H_rad_form_at_snapshot_slope.append(np.nan)
@@ -635,7 +635,7 @@ def radial_analysis_form():
             Fe_H_rad_form_at_snapshot_slope.append(j_f)
             
         surf_dens_ratio_at_snapshot.append(surf_dens_ratio) 
-        l_f_s = np.arange(0,r90,r90/20)
+        l_f_s = np.arange(0,r90,(r90 - r90/4)/20)
         surf_dens_ratio = np.array(surf_dens_ratio)
         if np.isnan(surf_dens_ratio).all():
             surf_dens_ratio_at_snapshot_slope.append(np.nan)
@@ -657,10 +657,10 @@ def radial_analysis_form():
     Fe_H_rad_form_all_galaxies_slope = np.array(Fe_H_rad_form_all_galaxies_slope)   
     surf_dens_ratio_all_galaxies_slope = np.array(surf_dens_ratio_all_galaxies_slope) 
     
-    ut_io.file_hdf5('/home/rlgraf/Final_Figures/Fe_H_rad_form_all_galaxies_surfdensratiotrack_100Myr_R90_young', Fe_H_rad_form_all_galaxies)
-    ut_io.file_hdf5('/home/rlgraf/Final_Figures/surf_dens_ratio_all_galaxies_surfdensratiotrack_100Myr_R90_young', surf_dens_ratio_all_galaxies)
+    ut_io.file_hdf5('/home/rlgraf/Final_Figures/Fe_H_rad_form_all_galaxies_surfdensratiotrack_100Myr_quartR90_R90_young', Fe_H_rad_form_all_galaxies)
+    ut_io.file_hdf5('/home/rlgraf/Final_Figures/surf_dens_ratio_all_galaxies_surfdensratiotrack_100Myr_quartR90_R90_young', surf_dens_ratio_all_galaxies)
     
-    ut_io.file_hdf5('/home/rlgraf/Final_Figures/Fe_H_rad_form_all_galaxies_surfdensratiotrack_100Myr_R90_young_slope', Fe_H_rad_form_all_galaxies_slope)
-    ut_io.file_hdf5('/home/rlgraf/Final_Figures/surf_dens_ratio_all_galaxies_surfdensratiotrack_100Myr_R90_young_slope', surf_dens_ratio_all_galaxies_slope)
+    ut_io.file_hdf5('/home/rlgraf/Final_Figures/Fe_H_rad_form_all_galaxies_surfdensratiotrack_100Myr_quartR90_R90_young_slope', Fe_H_rad_form_all_galaxies_slope)
+    ut_io.file_hdf5('/home/rlgraf/Final_Figures/surf_dens_ratio_all_galaxies_surfdensratiotrack_100Myr_quartR90_R90_young_slope', surf_dens_ratio_all_galaxies_slope)
     
 radial_analysis_form()
