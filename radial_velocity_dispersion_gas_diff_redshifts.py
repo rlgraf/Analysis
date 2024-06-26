@@ -65,7 +65,7 @@ def radial_vel_disp_gas():
         
         x = []
         for i in np.arange(0,15,15/30):
-            x.append(velocity_dispersion_gas(i,i+15/30,-3,3,r,v,part))
+            x.append(velocity_dispersion_gas(i,i+15/50,-3,3,r,v,part))
         vel_disp_at_snapshot.append(x)
     radial_vel_disp_gas_all_galaxies.append(vel_disp_at_snapshot)
     del(part)
@@ -83,7 +83,7 @@ def radial_vel_disp_gas():
         
         x = []
         for i in np.arange(0,15,15/30):
-            x.append(velocity_dispersion_gas(i,i+15/30,-3,3,r,v,part))
+            x.append(velocity_dispersion_gas(i,i+15/50,-3,3,r,v,part))
         vel_disp_at_snapshot.append(x)
     radial_vel_disp_gas_all_galaxies.append(vel_disp_at_snapshot)
     del(part)
@@ -101,7 +101,7 @@ def radial_vel_disp_gas():
         
         x = []
         for i in np.arange(0,15,15/30):
-            x.append(velocity_dispersion_gas(i,i+15/30,-3,3,r,v,part))
+            x.append(velocity_dispersion_gas(i,i+15/50,-3,3,r,v,part))
         vel_disp_at_snapshot.append(x)
     radial_vel_disp_gas_all_galaxies.append(vel_disp_at_snapshot)
     del(part)
@@ -119,7 +119,7 @@ def radial_vel_disp_gas():
         
         x = []
         for i in np.arange(0,15,15/30):
-            x.append(velocity_dispersion_gas(i,i+15/30,-3,3,r,v,part))
+            x.append(velocity_dispersion_gas(i,i+15/50,-3,3,r,v,part))
         vel_disp_at_snapshot.append(x)
     radial_vel_disp_gas_all_galaxies.append(vel_disp_at_snapshot)
     del(part)
@@ -137,7 +137,7 @@ def radial_vel_disp_gas():
         
         x = []
         for i in np.arange(0,15,15/30):
-            x.append(velocity_dispersion_gas(i,i+15/30,-3,3,r,v,part))
+            x.append(velocity_dispersion_gas(i,i+15/50,-3,3,r,v,part))
         vel_disp_at_snapshot.append(x)
     radial_vel_disp_gas_all_galaxies.append(vel_disp_at_snapshot)
     del(part)
@@ -155,7 +155,7 @@ def radial_vel_disp_gas():
         
         x = []
         for i in np.arange(0,15,15/30):
-            x.append(velocity_dispersion_gas(i,i+15/30,-3,3,r,v,part))
+            x.append(velocity_dispersion_gas(i,i+15/50,-3,3,r,v,part))
         vel_disp_at_snapshot.append(x)
     radial_vel_disp_gas_all_galaxies.append(vel_disp_at_snapshot)
     del(part)
@@ -173,7 +173,7 @@ def radial_vel_disp_gas():
         
         x = []
         for i in np.arange(0,15,15/30):
-            x.append(velocity_dispersion_gas(i,i+15/30,-3,3,r,v,part))
+            x.append(velocity_dispersion_gas(i,i+15/50,-3,3,r,v,part))
         vel_disp_at_snapshot.append(x)
     radial_vel_disp_gas_all_galaxies.append(vel_disp_at_snapshot)
     del(part)
@@ -191,7 +191,7 @@ def radial_vel_disp_gas():
         
         x = []
         for i in np.arange(0,15,15/30):
-            x.append(velocity_dispersion_gas(i,i+15/30,-3,3,r,v,part))
+            x.append(velocity_dispersion_gas(i,i+15/50,-3,3,r,v,part))
         vel_disp_at_snapshot.append(x)
     radial_vel_disp_gas_all_galaxies.append(vel_disp_at_snapshot)
     del(part)
@@ -209,7 +209,7 @@ def radial_vel_disp_gas():
         
         x = []
         for i in np.arange(0,15,15/30):
-            x.append(velocity_dispersion_gas(i,i+15/30,-3,3,r,v,part))
+            x.append(velocity_dispersion_gas(i,i+15/50,-3,3,r,v,part))
         vel_disp_at_snapshot.append(x)
     radial_vel_disp_gas_all_galaxies.append(vel_disp_at_snapshot)
     del(part)
@@ -227,7 +227,7 @@ def radial_vel_disp_gas():
         
         x = []
         for i in np.arange(0,15,15/30):
-            x.append(velocity_dispersion_gas(i,i+15/30,-3,3,r,v,part))
+            x.append(velocity_dispersion_gas(i,i+15/50,-3,3,r,v,part))
         vel_disp_at_snapshot.append(x)
     radial_vel_disp_gas_all_galaxies.append(vel_disp_at_snapshot)
     del(part)
@@ -245,13 +245,13 @@ def radial_vel_disp_gas():
         
         x = []
         for i in np.arange(0,15,15/30):
-            x.append(velocity_dispersion_gas(i,i+15/30,-3,3,r,v,part))
+            x.append(velocity_dispersion_gas(i,i+15/50,-3,3,r,v,part))
         vel_disp_at_snapshot.append(x)
     radial_vel_disp_gas_all_galaxies.append(vel_disp_at_snapshot)
     del(part)
     
     radial_vel_disp_gas_all_galaxies = np.array(radial_vel_disp_gas_all_galaxies)
            
-    ut_io.file_hdf5('/home/rlgraf/Final_Figures/velocity_dispersion_gas_z_0_diffredshifts_massweighted_R15_30_v2', radial_vel_disp_gas_all_galaxies)
+    ut_io.file_hdf5('/home/rlgraf/Final_Figures/velocity_dispersion_gas_z_0_diffredshifts_massweighted_corrected', radial_vel_disp_gas_all_galaxies)
 
 radial_vel_disp_gas()
