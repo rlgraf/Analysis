@@ -53,7 +53,7 @@ def log_surf_dens_ratio(x1,x2,x3,x4,a1,a2,r_star,r_gas,age,part, particle_thresh
     index6 = ut.array.get_indices(abs(r_gas[:,2]), [x3,x4], prior_indices = index5)
     surf_dens_gas = np.sum(part['gas']['mass'][index6])/(np.pi*(x2**2 - x1**2))
     
-    if part['star']['mass'][index4] < particle_thresh or part['gas']['mass'][index6] < particle_thresh:
+    if len(part['star']['mass'][index4]) < particle_thresh or len(part['gas']['mass'][index6]) < particle_thresh:
         return(np.nan)
     log_surf_dens_ratio = np.log10(surf_dens_star/surf_dens_gas)
     return(log_surf_dens_ratio)
