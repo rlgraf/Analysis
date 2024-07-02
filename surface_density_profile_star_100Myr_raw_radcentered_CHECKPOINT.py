@@ -43,8 +43,6 @@ def surf_dens_log_frac(x1,x2,x3,x4,a1,a2,r,age,part,particle_thresh = 4):
     return(surf_dens_lookback)
 
 
-surf_dens_ratio_gas_all_galaxies = []
-
 
 def surf_dens_analysis_gas():
     
@@ -56,16 +54,18 @@ def surf_dens_analysis_gas():
     surf_dens_at_snapshot = []
     part_snapshots = np.array([0, 0.07350430, 0.15441179, 0.24850890, 0.35344830, 0.47764710, 0.62273902, 0.79942691, 1.02572345, 1.38636363, 1.73913038, 2.39130425, 3.60431647])
     for red in part_snapshots:
-         part = gizmo.io.Read.read_snapshots(['star','gas'], 'redshift', red, simulation_directory, properties = ['mass', 'position', 'massfraction', 'form.scalefactor', 'id'], elements = ['Fe'], assign_hosts_rotation=True, assign_formation_coordinates = True)
+        part = gizmo.io.Read.read_snapshots(['star','gas'], 'redshift', red, simulation_directory, properties = ['mass', 'position', 'massfraction', 'form.scalefactor', 'id'], elements = ['Fe'], assign_hosts_rotation=True, assign_formation_coordinates = True)
         
-        r = part['star'].prop('host.distance.principal.cylindrical')
+        age = part['star'].prop('age')
+        r = part['star'].prop('host.distance.pirncipal.cylindrical')
         
         x = []
         for i in np.arange(0.5,15):
             x.append(surf_dens_log_frac(i,i+1,-3,3,0,0.1,r,age,part))
         surf_dens_at_snapshot.append(x)   
     surf_dens_ratio_gas_all_galaxies.append(surf_dens_at_snapshot)
-    
+        
+       
     ### m12c
 
     simulation_directory = '/group/awetzelgrp/m12c/m12c_r7100'       
@@ -73,15 +73,17 @@ def surf_dens_analysis_gas():
     surf_dens_at_snapshot = []
     part_snapshots = np.array([0, 0.07350430, 0.15441179, 0.24850890, 0.35344830, 0.47764710, 0.62273902, 0.79942691, 1.02572345, 1.38636363, 1.73913038, 2.39130425, 3.60431647])
     for red in part_snapshots:
-         part = gizmo.io.Read.read_snapshots(['star','gas'], 'redshift', red, simulation_directory, properties = ['mass', 'position', 'massfraction', 'form.scalefactor', 'id'], elements = ['Fe'], assign_hosts_rotation=True, assign_formation_coordinates = True)
+        part = gizmo.io.Read.read_snapshots(['star','gas'], 'redshift', red, simulation_directory, properties = ['mass', 'position', 'massfraction', 'form.scalefactor', 'id'], elements = ['Fe'], assign_hosts_rotation=True, assign_formation_coordinates = True)
         
-        r = part['star'].prop('host.distance.principal.cylindrical')
+        age = part['star'].prop('age')
+        r = part['star'].prop('host.distance.pirncipal.cylindrical')
         
         x = []
         for i in np.arange(0.5,15):
             x.append(surf_dens_log_frac(i,i+1,-3,3,0,0.1,r,age,part))
         surf_dens_at_snapshot.append(x)   
     surf_dens_ratio_gas_all_galaxies.append(surf_dens_at_snapshot)
+        
     
     ### m12f
  
@@ -90,15 +92,17 @@ def surf_dens_analysis_gas():
     surf_dens_at_snapshot = []
     part_snapshots = np.array([0, 0.07350430, 0.15441179, 0.24850890, 0.35344830, 0.47764710, 0.62273902, 0.79942691, 1.02572345, 1.38636363, 1.73913038, 2.39130425, 3.60431647])
     for red in part_snapshots:
-         part = gizmo.io.Read.read_snapshots(['star','gas'], 'redshift', red, simulation_directory, properties = ['mass', 'position', 'massfraction', 'form.scalefactor', 'id'], elements = ['Fe'], assign_hosts_rotation=True, assign_formation_coordinates = True)
+        part = gizmo.io.Read.read_snapshots(['star','gas'], 'redshift', red, simulation_directory, properties = ['mass', 'position', 'massfraction', 'form.scalefactor', 'id'], elements = ['Fe'], assign_hosts_rotation=True, assign_formation_coordinates = True)
         
-        r = part['star'].prop('host.distance.principal.cylindrical')
+        age = part['star'].prop('age')
+        r = part['star'].prop('host.distance.pirncipal.cylindrical')
         
         x = []
         for i in np.arange(0.5,15):
             x.append(surf_dens_log_frac(i,i+1,-3,3,0,0.1,r,age,part))
         surf_dens_at_snapshot.append(x)   
     surf_dens_ratio_gas_all_galaxies.append(surf_dens_at_snapshot)
+        
     
     ### m12m
 
@@ -107,15 +111,17 @@ def surf_dens_analysis_gas():
     surf_dens_at_snapshot = []
     part_snapshots = np.array([0, 0.07350430, 0.15441179, 0.24850890, 0.35344830, 0.47764710, 0.62273902, 0.79942691, 1.02572345, 1.38636363, 1.73913038, 2.39130425, 3.60431647])
     for red in part_snapshots:
-         part = gizmo.io.Read.read_snapshots(['star','gas'], 'redshift', red, simulation_directory, properties = ['mass', 'position', 'massfraction', 'form.scalefactor', 'id'], elements = ['Fe'], assign_hosts_rotation=True, assign_formation_coordinates = True)
+        part = gizmo.io.Read.read_snapshots(['star','gas'], 'redshift', red, simulation_directory, properties = ['mass', 'position', 'massfraction', 'form.scalefactor', 'id'], elements = ['Fe'], assign_hosts_rotation=True, assign_formation_coordinates = True)
         
-        r = part['star'].prop('host.distance.principal.cylindrical')
+        age = part['star'].prop('age')
+        r = part['star'].prop('host.distance.pirncipal.cylindrical')
         
         x = []
         for i in np.arange(0.5,15):
             x.append(surf_dens_log_frac(i,i+1,-3,3,0,0.1,r,age,part))
         surf_dens_at_snapshot.append(x)   
     surf_dens_ratio_gas_all_galaxies.append(surf_dens_at_snapshot)
+        
            
     ### m12b
 
@@ -124,15 +130,17 @@ def surf_dens_analysis_gas():
     surf_dens_at_snapshot = []
     part_snapshots = np.array([0, 0.07350430, 0.15441179, 0.24850890, 0.35344830, 0.47764710, 0.62273902, 0.79942691, 1.02572345, 1.38636363, 1.73913038, 2.39130425, 3.60431647])
     for red in part_snapshots:
-         part = gizmo.io.Read.read_snapshots(['star','gas'], 'redshift', red, simulation_directory, properties = ['mass', 'position', 'massfraction', 'form.scalefactor', 'id'], elements = ['Fe'], assign_hosts_rotation=True, assign_formation_coordinates = True)
+        part = gizmo.io.Read.read_snapshots(['star','gas'], 'redshift', red, simulation_directory, properties = ['mass', 'position', 'massfraction', 'form.scalefactor', 'id'], elements = ['Fe'], assign_hosts_rotation=True, assign_formation_coordinates = True)
         
-        r = part['star'].prop('host.distance.principal.cylindrical')
+        age = part['star'].prop('age')
+        r = part['star'].prop('host.distance.pirncipal.cylindrical')
         
         x = []
         for i in np.arange(0.5,15):
             x.append(surf_dens_log_frac(i,i+1,-3,3,0,0.1,r,age,part))
         surf_dens_at_snapshot.append(x)   
     surf_dens_ratio_gas_all_galaxies.append(surf_dens_at_snapshot)
+        
     
     ### Romeo
 
@@ -141,15 +149,17 @@ def surf_dens_analysis_gas():
     surf_dens_at_snapshot = []
     part_snapshots = np.array([0, 0.07350430, 0.15441179, 0.24850890, 0.35344830, 0.47764710, 0.62273902, 0.79942691, 1.02572345, 1.38636363, 1.73913038, 2.39130425, 3.60431647])
     for red in part_snapshots:
-         part = gizmo.io.Read.read_snapshots(['star','gas'], 'redshift', red, simulation_directory, properties = ['mass', 'position', 'massfraction', 'form.scalefactor', 'id'], elements = ['Fe'], assign_hosts_rotation=True, assign_formation_coordinates = True)
+        part = gizmo.io.Read.read_snapshots(['star','gas'], 'redshift', red, simulation_directory, properties = ['mass', 'position', 'massfraction', 'form.scalefactor', 'id'], elements = ['Fe'], assign_hosts_rotation=True, assign_formation_coordinates = True)
         
-        r = part['star'].prop('host1.distance.principal.cylindrical')
+        age = part['star'].prop('age')
+        r = part['star'].prop('host1.distance.pirncipal.cylindrical')
         
         x = []
         for i in np.arange(0.5,15):
             x.append(surf_dens_log_frac(i,i+1,-3,3,0,0.1,r,age,part))
         surf_dens_at_snapshot.append(x)   
     surf_dens_ratio_gas_all_galaxies.append(surf_dens_at_snapshot)
+        
     
     ### Juliet
 
@@ -158,15 +168,17 @@ def surf_dens_analysis_gas():
     surf_dens_at_snapshot = []
     part_snapshots = np.array([0, 0.07350430, 0.15441179, 0.24850890, 0.35344830, 0.47764710, 0.62273902, 0.79942691, 1.02572345, 1.38636363, 1.73913038, 2.39130425, 3.60431647])
     for red in part_snapshots:
-         part = gizmo.io.Read.read_snapshots(['star','gas'], 'redshift', red, simulation_directory, properties = ['mass', 'position', 'massfraction', 'form.scalefactor', 'id'], elements = ['Fe'], assign_hosts_rotation=True, assign_formation_coordinates = True)
+        part = gizmo.io.Read.read_snapshots(['star','gas'], 'redshift', red, simulation_directory, properties = ['mass', 'position', 'massfraction', 'form.scalefactor', 'id'], elements = ['Fe'], assign_hosts_rotation=True, assign_formation_coordinates = True)
         
-        r = part['star'].prop('host2.distance.principal.cylindrical')
+        age = part['star'].prop('age')
+        r = part['star'].prop('host2.distance.pirncipal.cylindrical')
         
         x = []
         for i in np.arange(0.5,15):
             x.append(surf_dens_log_frac(i,i+1,-3,3,0,0.1,r,age,part))
         surf_dens_at_snapshot.append(x)   
     surf_dens_ratio_gas_all_galaxies.append(surf_dens_at_snapshot)
+        
                 
     ### Romulus
 
@@ -175,15 +187,17 @@ def surf_dens_analysis_gas():
     surf_dens_at_snapshot = []
     part_snapshots = np.array([0, 0.07350430, 0.15441179, 0.24850890, 0.35344830, 0.47764710, 0.62273902, 0.79942691, 1.02572345, 1.38636363, 1.73913038, 2.39130425, 3.60431647])
     for red in part_snapshots:
-         part = gizmo.io.Read.read_snapshots(['star','gas'], 'redshift', red, simulation_directory, properties = ['mass', 'position', 'massfraction', 'form.scalefactor', 'id'], elements = ['Fe'], assign_hosts_rotation=True, assign_formation_coordinates = True)
+        part = gizmo.io.Read.read_snapshots(['star','gas'], 'redshift', red, simulation_directory, properties = ['mass', 'position', 'massfraction', 'form.scalefactor', 'id'], elements = ['Fe'], assign_hosts_rotation=True, assign_formation_coordinates = True)
         
-        r = part['star'].prop('host1.distance.principal.cylindrical')
+        age = part['star'].prop('age')
+        r = part['star'].prop('host1.distance.pirncipal.cylindrical')
         
         x = []
         for i in np.arange(0.5,15):
             x.append(surf_dens_log_frac(i,i+1,-3,3,0,0.1,r,age,part))
         surf_dens_at_snapshot.append(x)   
     surf_dens_ratio_gas_all_galaxies.append(surf_dens_at_snapshot)
+        
     
     ### Remus
 
@@ -192,15 +206,17 @@ def surf_dens_analysis_gas():
     surf_dens_at_snapshot = []
     part_snapshots = np.array([0, 0.07350430, 0.15441179, 0.24850890, 0.35344830, 0.47764710, 0.62273902, 0.79942691, 1.02572345, 1.38636363, 1.73913038, 2.39130425, 3.60431647])
     for red in part_snapshots:
-         part = gizmo.io.Read.read_snapshots(['star','gas'], 'redshift', red, simulation_directory, properties = ['mass', 'position', 'massfraction', 'form.scalefactor', 'id'], elements = ['Fe'], assign_hosts_rotation=True, assign_formation_coordinates = True)
+        part = gizmo.io.Read.read_snapshots(['star','gas'], 'redshift', red, simulation_directory, properties = ['mass', 'position', 'massfraction', 'form.scalefactor', 'id'], elements = ['Fe'], assign_hosts_rotation=True, assign_formation_coordinates = True)
         
-        r = part['star'].prop('host2.distance.principal.cylindrical')
+        age = part['star'].prop('age')
+        r = part['star'].prop('host2.distance.pirncipal.cylindrical')
         
         x = []
         for i in np.arange(0.5,15):
             x.append(surf_dens_log_frac(i,i+1,-3,3,0,0.1,r,age,part))
         surf_dens_at_snapshot.append(x)   
     surf_dens_ratio_gas_all_galaxies.append(surf_dens_at_snapshot)
+        
     
      ### Themla
 
@@ -209,31 +225,37 @@ def surf_dens_analysis_gas():
     surf_dens_at_snapshot = []
     part_snapshots = np.array([0, 0.07350430, 0.15441179, 0.24850890, 0.35344830, 0.47764710, 0.62273902, 0.79942691, 1.02572345, 1.38636363, 1.73913038, 2.39130425, 3.60431647])
     for red in part_snapshots:
-         part = gizmo.io.Read.read_snapshots(['star','gas'], 'redshift', red, simulation_directory, properties = ['mass', 'position', 'massfraction', 'form.scalefactor', 'id'], elements = ['Fe'], assign_hosts_rotation=True, assign_formation_coordinates = True)
+        part = gizmo.io.Read.read_snapshots(['star','gas'], 'redshift', red, simulation_directory, properties = ['mass', 'position', 'massfraction', 'form.scalefactor', 'id'], elements = ['Fe'], assign_hosts_rotation=True, assign_formation_coordinates = True)
         
-        r = part['star'].prop('host1.distance.principal.cylindrical')
+        age = part['star'].prop('age')
+        r = part['star'].prop('host1.distance.pirncipal.cylindrical')
         
         x = []
         for i in np.arange(0.5,15):
             x.append(surf_dens_log_frac(i,i+1,-3,3,0,0.1,r,age,part))
         surf_dens_at_snapshot.append(x)   
     surf_dens_ratio_gas_all_galaxies.append(surf_dens_at_snapshot)
+        
     
     ### Louise
+    
+    simulation_directory = '/group/awetzelgrp/m12_elvis/m12_elvis_ThelmaLouise_r4000'  
 
     surf_dens_at_snapshot = []
     part_snapshots = np.array([0, 0.07350430, 0.15441179, 0.24850890, 0.35344830, 0.47764710, 0.62273902, 0.79942691, 1.02572345, 1.38636363, 1.73913038, 2.39130425, 3.60431647])
     for red in part_snapshots:
-         part = gizmo.io.Read.read_snapshots(['star','gas'], 'redshift', red, simulation_directory, properties = ['mass', 'position', 'massfraction', 'form.scalefactor', 'id'], elements = ['Fe'], assign_hosts_rotation=True, assign_formation_coordinates = True)
+        part = gizmo.io.Read.read_snapshots(['star','gas'], 'redshift', red, simulation_directory, properties = ['mass', 'position', 'massfraction', 'form.scalefactor', 'id'], elements = ['Fe'], assign_hosts_rotation=True, assign_formation_coordinates = True)
         
-        r = part['star'].prop('host2.distance.principal.cylindrical')
+        age = part['star'].prop('age')
+        r = part['star'].prop('host2.distance.pirncipal.cylindrical')
         
         x = []
         for i in np.arange(0.5,15):
             x.append(surf_dens_log_frac(i,i+1,-3,3,0,0.1,r,age,part))
         surf_dens_at_snapshot.append(x)   
     surf_dens_ratio_gas_all_galaxies.append(surf_dens_at_snapshot)
-                
+        
+        
     surf_dens_ratio_gas_all_galaxies = np.array(surf_dens_ratio_gas_all_galaxies)
            
     ut_io.file_hdf5('/home/rlgraf/Final_Figures/surface_density_profile_star_100Myr_raw_radcentered_CHECKPOINT', surf_dens_ratio_gas_all_galaxies)
