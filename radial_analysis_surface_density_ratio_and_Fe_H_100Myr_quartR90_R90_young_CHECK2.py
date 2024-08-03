@@ -81,11 +81,11 @@ def radial_analysis_form():
     
     Fe_H_rad_form_all_galaxies = []
     surf_dens_ratio_all_galaxies = []
-    surf_dens_ratio_over_v_vel_all_galxies = []
+    surf_dens_ratio_over_v_vel_all_galaxies = []
     
     Fe_H_rad_form_all_galaxies_slope = []
     surf_dens_ratio_all_galaxies_slope = []
-    surf_dens_ratio_over_v_vel_all_galxies_slope = []
+    surf_dens_ratio_over_v_vel_all_galaxies_slope = []
     
     ### m12i
     
