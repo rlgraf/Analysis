@@ -68,10 +68,11 @@ def velocity_dispersion_gas(x1,x2,x3,x4,r_gas,v_gas,part):
     index2 = ut.array.get_indices(abs(r_gas[:,2]), [x3,x4], prior_indices = index)
     vel_ver = v_gas[:,2]
     massfrac_iron = part['gas']['massfraction'][:,]
+    print(np.shape(massfrac_iron))
     weighted_standard_dev = weighted_std(vel_ver[index2], massfrac_iron[index2]*part['gas']['mass'][index2])
     avg = np.median(weighted_standard_dev)
     #return(avg)
-    print(np.shape(massfrac_iron))
+    
 
 
 def radial_analysis_form():
