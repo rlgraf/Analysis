@@ -70,7 +70,8 @@ def velocity_dispersion_gas(x1,x2,x3,x4,r_gas,v_gas,part):
     massfrac_iron = part['gas']['massfraction'][:,]
     weighted_standard_dev = weighted_std(vel_ver[index2], massfrac_iron[index2]*part['gas']['mass'][index2])
     avg = np.median(weighted_standard_dev)
-    return(avg)
+    #return(avg)
+    print(np.shape(massfrac_iron))
 
 
 def radial_analysis_form():
