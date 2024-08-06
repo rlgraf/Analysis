@@ -873,11 +873,11 @@ def radial_analysis_form():
     
     Fe_H_rad_form_all_galaxies = np.array(Fe_H_rad_form_all_galaxies)   
     surf_dens_ratio_all_galaxies = np.array(surf_dens_ratio_all_galaxies)
-    surf_dens_ratio_over_v_vel_all_galaxies = np.array(surf_dens_ratio_all_galaxies) 
+    surf_dens_ratio_over_v_vel_all_galaxies = np.array(surf_dens_ratio_over_v_vel_all_galaxies) 
     
     Fe_H_rad_form_all_galaxies_slope = np.array(Fe_H_rad_form_all_galaxies_slope)   
     surf_dens_ratio_all_galaxies_slope = np.array(surf_dens_ratio_all_galaxies_slope) 
-    surf_dens_ratio_over_v_vel_all_galaxies_slope = np.array(surf_dens_ratio_all_galaxies_slope)                                      
+    surf_dens_ratio_over_v_vel_all_galaxies_slope = np.array(surf_dens_ratio_over_v_vel_all_galaxies_slope)                                      
     
     ut_io.file_hdf5('/home/rlgraf/Final_Figures/Fe_H_rad_form_all_galaxies_surfdensratiotrack_100Myr_quartR90_R90_young_CHECK2', Fe_H_rad_form_all_galaxies)
     ut_io.file_hdf5('/home/rlgraf/Final_Figures/surf_dens_ratio_all_galaxies_surfdensratiotrack_100Myr_quartR90_R90_young_CHECK2', surf_dens_ratio_all_galaxies)
@@ -885,6 +885,6 @@ def radial_analysis_form():
     
     ut_io.file_hdf5('/home/rlgraf/Final_Figures/Fe_H_rad_form_all_galaxies_surfdensratiotrack_100Myr_quartR90_R90_young_slope_CHECK2', Fe_H_rad_form_all_galaxies_slope)
     ut_io.file_hdf5('/home/rlgraf/Final_Figures/surf_dens_ratio_all_galaxies_surfdensratiotrack_100Myr_quartR90_R90_young_slope_CHECK2', surf_dens_ratio_all_galaxies_slope)
-    ut_io.file_hdf5('/home/rlgraf/Final_Figures/surf_dens_ratio_over_v_vel_all_galaxies_surfdensratiotrack_100Myr_quartR90_R90_young_CHECK2', surf_dens_ratio_over_v_vel_all_galaxies_slope)
+    ut_io.file_hdf5('/home/rlgraf/Final_Figures/surf_dens_ratio_over_v_vel_all_galaxies_surfdensratiotrack_100Myr_quartR90_R90_young_slope_CHECK2', surf_dens_ratio_over_v_vel_all_galaxies_slope)
     
 radial_analysis_form()
