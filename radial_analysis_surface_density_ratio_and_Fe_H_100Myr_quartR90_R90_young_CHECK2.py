@@ -169,9 +169,11 @@ def radial_analysis_form():
         
     Fe_H_rad_form_at_snapshot = []
     surf_dens_ratio_at_snapshot = []
-    
+    surf_dens_ratio_over_v_vel_at_snapshot = []
+
     Fe_H_rad_form_at_snapshot_slope = []
     surf_dens_ratio_at_snapshot_slope = []
+    surf_dens_ratio_over_v_vel_at_snapshot_slope = []
     
     part_snapshots = np.array([0, 0.07350430, 0.15441179, 0.24850890, 0.35344830, 0.47764710, 0.62273902, 0.79942691, 1.02572345, 1.38636363, 1.73913038])
     for (red,r90) in zip(part_snapshots,R90_young_m12c):
@@ -240,9 +242,11 @@ def radial_analysis_form():
         
     Fe_H_rad_form_at_snapshot = []
     surf_dens_ratio_at_snapshot = []
-    
+    surf_dens_ratio_over_v_vel_at_snapshot = []
+
     Fe_H_rad_form_at_snapshot_slope = []
     surf_dens_ratio_at_snapshot_slope = []
+    surf_dens_ratio_over_v_vel_at_snapshot_slope = []
     
     part_snapshots = np.array([0, 0.07350430, 0.15441179, 0.24850890, 0.35344830, 0.47764710, 0.62273902, 0.79942691, 1.02572345, 1.38636363, 1.73913038])
     for (red,r90) in zip(part_snapshots,R90_young_m12f):
@@ -311,9 +315,11 @@ def radial_analysis_form():
         
     Fe_H_rad_form_at_snapshot = []
     surf_dens_ratio_at_snapshot = []
-    
+    surf_dens_ratio_over_v_vel_at_snapshot = []
+
     Fe_H_rad_form_at_snapshot_slope = []
     surf_dens_ratio_at_snapshot_slope = []
+    surf_dens_ratio_over_v_vel_at_snapshot_slope = []
     
     part_snapshots = np.array([0, 0.07350430, 0.15441179, 0.24850890, 0.35344830, 0.47764710, 0.62273902, 0.79942691, 1.02572345, 1.38636363, 1.73913038])
     for (red,r90) in zip(part_snapshots,R90_young_m12m):
@@ -382,9 +388,11 @@ def radial_analysis_form():
         
     Fe_H_rad_form_at_snapshot = []
     surf_dens_ratio_at_snapshot = []
-    
+    surf_dens_ratio_over_v_vel_at_snapshot = []
+
     Fe_H_rad_form_at_snapshot_slope = []
     surf_dens_ratio_at_snapshot_slope = []
+    surf_dens_ratio_over_v_vel_at_snapshot_slope = []
     
     part_snapshots = np.array([0, 0.07350430, 0.15441179, 0.24850890, 0.35344830, 0.47764710, 0.62273902, 0.79942691, 1.02572345, 1.38636363, 1.73913038])
     for (red,r90) in zip(part_snapshots,R90_young_m12b):
@@ -453,9 +461,11 @@ def radial_analysis_form():
     
     Fe_H_rad_form_at_snapshot = []
     surf_dens_ratio_at_snapshot = []
-    
+    surf_dens_ratio_over_v_vel_at_snapshot = []
+
     Fe_H_rad_form_at_snapshot_slope = []
     surf_dens_ratio_at_snapshot_slope = []
+    surf_dens_ratio_over_v_vel_at_snapshot_slope = []
     
     part_snapshots = np.array([0, 0.07350430, 0.15441179, 0.24850890, 0.35344830, 0.47764710, 0.62273902, 0.79942691, 1.02572345, 1.38636363, 1.73913038])
     for (red,r90) in zip(part_snapshots,R90_young_Romeo):
@@ -524,9 +534,11 @@ def radial_analysis_form():
     
     Fe_H_rad_form_at_snapshot = []
     surf_dens_ratio_at_snapshot = []
-    
+    surf_dens_ratio_over_v_vel_at_snapshot = []
+
     Fe_H_rad_form_at_snapshot_slope = []
     surf_dens_ratio_at_snapshot_slope = []
+    surf_dens_ratio_over_v_vel_at_snapshot_slope = []
     
     part_snapshots = np.array([0, 0.07350430, 0.15441179, 0.24850890, 0.35344830, 0.47764710, 0.62273902, 0.79942691, 1.02572345, 1.38636363, 1.73913038])
     for (red,r90) in zip(part_snapshots,R90_young_Juliet):
@@ -595,9 +607,11 @@ def radial_analysis_form():
     
     Fe_H_rad_form_at_snapshot = []
     surf_dens_ratio_at_snapshot = []
-    
+    surf_dens_ratio_over_v_vel_at_snapshot = []
+
     Fe_H_rad_form_at_snapshot_slope = []
     surf_dens_ratio_at_snapshot_slope = []
+    surf_dens_ratio_over_v_vel_at_snapshot_slope = []
     
     part_snapshots = np.array([0, 0.07350430, 0.15441179, 0.24850890, 0.35344830, 0.47764710, 0.62273902, 0.79942691, 1.02572345, 1.38636363, 1.73913038])
     for (red,r90) in zip(part_snapshots,R90_young_Romulus):
@@ -666,9 +680,11 @@ def radial_analysis_form():
     
     Fe_H_rad_form_at_snapshot = []
     surf_dens_ratio_at_snapshot = []
-    
+    surf_dens_ratio_over_v_vel_at_snapshot = []
+
     Fe_H_rad_form_at_snapshot_slope = []
     surf_dens_ratio_at_snapshot_slope = []
+    surf_dens_ratio_over_v_vel_at_snapshot_slope = []
     
     part_snapshots = np.array([0, 0.07350430, 0.15441179, 0.24850890, 0.35344830, 0.47764710, 0.62273902, 0.79942691, 1.02572345, 1.38636363, 1.73913038])
     for (red,r90) in zip(part_snapshots,R90_young_Remus):
@@ -737,9 +753,11 @@ def radial_analysis_form():
     
     Fe_H_rad_form_at_snapshot = []
     surf_dens_ratio_at_snapshot = []
-    
+    surf_dens_ratio_over_v_vel_at_snapshot = []
+
     Fe_H_rad_form_at_snapshot_slope = []
     surf_dens_ratio_at_snapshot_slope = []
+    surf_dens_ratio_over_v_vel_at_snapshot_slope = []
     
     part_snapshots = np.array([0, 0.07350430, 0.15441179, 0.24850890, 0.35344830, 0.47764710, 0.62273902, 0.79942691, 1.02572345, 1.38636363, 1.73913038])
     for (red,r90) in zip(part_snapshots,R90_young_Thelma):
@@ -808,9 +826,11 @@ def radial_analysis_form():
     
     Fe_H_rad_form_at_snapshot = []
     surf_dens_ratio_at_snapshot = []
-    
+    surf_dens_ratio_over_v_vel_at_snapshot = []
+
     Fe_H_rad_form_at_snapshot_slope = []
     surf_dens_ratio_at_snapshot_slope = []
+    surf_dens_ratio_over_v_vel_at_snapshot_slope = []
     
     part_snapshots = np.array([0, 0.07350430, 0.15441179, 0.24850890, 0.35344830, 0.47764710, 0.62273902, 0.79942691, 1.02572345, 1.38636363, 1.73913038])
     for (red,r90) in zip(part_snapshots,R90_young_Louise):
@@ -885,6 +905,6 @@ def radial_analysis_form():
     
     ut_io.file_hdf5('/home/rlgraf/Final_Figures/Fe_H_rad_form_all_galaxies_surfdensratiotrack_100Myr_quartR90_R90_young_slope_CHECK2', Fe_H_rad_form_all_galaxies_slope)
     ut_io.file_hdf5('/home/rlgraf/Final_Figures/surf_dens_ratio_all_galaxies_surfdensratiotrack_100Myr_quartR90_R90_young_slope_CHECK2', surf_dens_ratio_all_galaxies_slope)
-    ut_io.file_hdf5('/home/rlgraf/Final_Figures/surf_dens_ratio_over_v_vel_all_galaxies_surfdensratiotrack_100Myr_quartR90_R90_young_slope_CHECK2', surf_dens_ratio_over_v_vel_all_galaxies_slope)
+    ut_io.file_hdf5('/home/rlgraf/Final_Figures/surf_dens_ratio_over_v_vel_all_galaxies_surfdensratiotrack_100Myr_quartR90_R90_young_slope_CHECK2_NEW', surf_dens_ratio_over_v_vel_all_galaxies_slope)
     
 radial_analysis_form()
