@@ -1,14 +1,14 @@
 #!/usr/bin/env python3
-#SBATCH --job-name=radial_analysis_surface_density_ratio_and_Fe_H_100Myr_quartR90_R90_young_CHECK2
+#SBATCH --job-name=radial_analysis_surface_density_ratio_and_Fe_H_1Gyr_quartR90_R90_young_CHECK2
 #SBATCH --partition=high2  # peloton node: 32 cores, 7.8 GB per core, 250 GB total
 ##SBATCH --partition=high2m  # peloton high-mem node: 32 cores, 15.6 GB per core, 500 GB total
-#SBATCH --mem=72G  # need to specify memory if you set the number of tasks (--ntasks) below
+#SBATCH --mem=99G  # need to specify memory if you set the number of tasks (--ntasks) below
 ##SBATCH --nodes=1  # if you specify this, the number of nodes, do not set memory (--mem) above
 ##SBATCH --ntasks-per-node=1  # (MPI) tasks per node
 #SBATCH --ntasks=1  # (MPI) tasks total
 #SBATCH --cpus-per-task=1  # (OpenMP) threads per (MPI) task
-#SBATCH --time=24:00:00
-#SBATCH --output=radial_analysis_surface_density_ratio_and_Fe_H_100Myr_quartR90_R90_young_CHECK2_%j.txt
+#SBATCH --time=72:00:00
+#SBATCH --output=radial_analysis_surface_density_ratio_and_Fe_H_1Gyr_quartR90_R90_young_CHECK2_%j.txt
 #SBATCH --mail-user=rlgraf@ucdavis.edu
 #SBATCH --mail-type=fail
 #SBATCH --mail-type=begin
@@ -117,8 +117,8 @@ def radial_analysis_form():
         surf_dens_ratio_over_v_vel = []
         
         for i_f in np.arange(r90/4,r90,(r90 - r90/4)/20):
-            x_f.append(Fe_H_agedependent_form(i_f,i_f+(r90 - r90/4)/20,-3,3,0,0.1,r_star,age,part))
-            log_surf_ratio = log_surf_dens_ratio(i_f,i_f+(r90 - r90/4)/20,-3,3,0,0.1,r_star,r_gas,age,part)
+            x_f.append(Fe_H_agedependent_form(i_f,i_f+(r90 - r90/4)/20,-3,3,0,1,r_star,age,part))
+            log_surf_ratio = log_surf_dens_ratio(i_f,i_f+(r90 - r90/4)/20,-3,3,0,1,r_star,r_gas,age,part)
             surf_dens_ratio.append(log_surf_ratio)
             
             v_vel_computed = velocity_dispersion_gas(i_f,i_f+(r90 - r90/4)/20,-3,3,r_gas,v_gas,part)
@@ -188,8 +188,8 @@ def radial_analysis_form():
         surf_dens_ratio_over_v_vel = []
         
         for i_f in np.arange(r90/4,r90,(r90 - r90/4)/20):
-            x_f.append(Fe_H_agedependent_form(i_f,i_f+(r90 - r90/4)/20,-3,3,0,0.1,r_star,age,part))
-            log_surf_ratio = log_surf_dens_ratio(i_f,i_f+(r90 - r90/4)/20,-3,3,0,0.1,r_star,r_gas,age,part)
+            x_f.append(Fe_H_agedependent_form(i_f,i_f+(r90 - r90/4)/20,-3,3,0,1,r_star,age,part))
+            log_surf_ratio = log_surf_dens_ratio(i_f,i_f+(r90 - r90/4)/20,-3,3,0,1,r_star,r_gas,age,part)
             surf_dens_ratio.append(log_surf_ratio)
             
             v_vel_computed = velocity_dispersion_gas(i_f,i_f+(r90 - r90/4)/20,-3,3,r_gas,v_gas,part)
@@ -259,8 +259,8 @@ def radial_analysis_form():
         surf_dens_ratio_over_v_vel = []
         
         for i_f in np.arange(r90/4,r90,(r90 - r90/4)/20):
-            x_f.append(Fe_H_agedependent_form(i_f,i_f+(r90 - r90/4)/20,-3,3,0,0.1,r_star,age,part))
-            log_surf_ratio = log_surf_dens_ratio(i_f,i_f+(r90 - r90/4)/20,-3,3,0,0.1,r_star,r_gas,age,part)
+            x_f.append(Fe_H_agedependent_form(i_f,i_f+(r90 - r90/4)/20,-3,3,0,1,r_star,age,part))
+            log_surf_ratio = log_surf_dens_ratio(i_f,i_f+(r90 - r90/4)/20,-3,3,0,1,r_star,r_gas,age,part)
             surf_dens_ratio.append(log_surf_ratio)
             
             v_vel_computed = velocity_dispersion_gas(i_f,i_f+(r90 - r90/4)/20,-3,3,r_gas,v_gas,part)
@@ -330,8 +330,8 @@ def radial_analysis_form():
         surf_dens_ratio_over_v_vel = []
         
         for i_f in np.arange(r90/4,r90,(r90 - r90/4)/20):
-            x_f.append(Fe_H_agedependent_form(i_f,i_f+(r90 - r90/4)/20,-3,3,0,0.1,r_star,age,part))
-            log_surf_ratio = log_surf_dens_ratio(i_f,i_f+(r90 - r90/4)/20,-3,3,0,0.1,r_star,r_gas,age,part)
+            x_f.append(Fe_H_agedependent_form(i_f,i_f+(r90 - r90/4)/20,-3,3,0,1,r_star,age,part))
+            log_surf_ratio = log_surf_dens_ratio(i_f,i_f+(r90 - r90/4)/20,-3,3,0,1,r_star,r_gas,age,part)
             surf_dens_ratio.append(log_surf_ratio)
             
             v_vel_computed = velocity_dispersion_gas(i_f,i_f+(r90 - r90/4)/20,-3,3,r_gas,v_gas,part)
@@ -401,8 +401,8 @@ def radial_analysis_form():
         surf_dens_ratio_over_v_vel = []
         
         for i_f in np.arange(r90/4,r90,(r90 - r90/4)/20):
-            x_f.append(Fe_H_agedependent_form(i_f,i_f+(r90 - r90/4)/20,-3,3,0,0.1,r_star,age,part))
-            log_surf_ratio = log_surf_dens_ratio(i_f,i_f+(r90 - r90/4)/20,-3,3,0,0.1,r_star,r_gas,age,part)
+            x_f.append(Fe_H_agedependent_form(i_f,i_f+(r90 - r90/4)/20,-3,3,0,1,r_star,age,part))
+            log_surf_ratio = log_surf_dens_ratio(i_f,i_f+(r90 - r90/4)/20,-3,3,0,1,r_star,r_gas,age,part)
             surf_dens_ratio.append(log_surf_ratio)
             
             v_vel_computed = velocity_dispersion_gas(i_f,i_f+(r90 - r90/4)/20,-3,3,r_gas,v_gas,part)
@@ -472,8 +472,8 @@ def radial_analysis_form():
         surf_dens_ratio_over_v_vel = []
         
         for i_f in np.arange(r90/4,r90,(r90 - r90/4)/20):
-            x_f.append(Fe_H_agedependent_form(i_f,i_f+(r90 - r90/4)/20,-3,3,0,0.1,r_star,age,part))
-            log_surf_ratio = log_surf_dens_ratio(i_f,i_f+(r90 - r90/4)/20,-3,3,0,0.1,r_star,r_gas,age,part)
+            x_f.append(Fe_H_agedependent_form(i_f,i_f+(r90 - r90/4)/20,-3,3,0,1,r_star,age,part))
+            log_surf_ratio = log_surf_dens_ratio(i_f,i_f+(r90 - r90/4)/20,-3,3,0,1,r_star,r_gas,age,part)
             surf_dens_ratio.append(log_surf_ratio)
             
             v_vel_computed = velocity_dispersion_gas(i_f,i_f+(r90 - r90/4)/20,-3,3,r_gas,v_gas,part)
@@ -543,8 +543,8 @@ def radial_analysis_form():
         surf_dens_ratio_over_v_vel = []
         
         for i_f in np.arange(r90/4,r90,(r90 - r90/4)/20):
-            x_f.append(Fe_H_agedependent_form(i_f,i_f+(r90 - r90/4)/20,-3,3,0,0.1,r_star,age,part))
-            log_surf_ratio = log_surf_dens_ratio(i_f,i_f+(r90 - r90/4)/20,-3,3,0,0.1,r_star,r_gas,age,part)
+            x_f.append(Fe_H_agedependent_form(i_f,i_f+(r90 - r90/4)/20,-3,3,0,1,r_star,age,part))
+            log_surf_ratio = log_surf_dens_ratio(i_f,i_f+(r90 - r90/4)/20,-3,3,0,1,r_star,r_gas,age,part)
             surf_dens_ratio.append(log_surf_ratio)
             
             v_vel_computed = velocity_dispersion_gas(i_f,i_f+(r90 - r90/4)/20,-3,3,r_gas,v_gas,part)
@@ -614,8 +614,8 @@ def radial_analysis_form():
         surf_dens_ratio_over_v_vel = []
         
         for i_f in np.arange(r90/4,r90,(r90 - r90/4)/20):
-            x_f.append(Fe_H_agedependent_form(i_f,i_f+(r90 - r90/4)/20,-3,3,0,0.1,r_star,age,part))
-            log_surf_ratio = log_surf_dens_ratio(i_f,i_f+(r90 - r90/4)/20,-3,3,0,0.1,r_star,r_gas,age,part)
+            x_f.append(Fe_H_agedependent_form(i_f,i_f+(r90 - r90/4)/20,-3,3,0,1,r_star,age,part))
+            log_surf_ratio = log_surf_dens_ratio(i_f,i_f+(r90 - r90/4)/20,-3,3,0,1,r_star,r_gas,age,part)
             surf_dens_ratio.append(log_surf_ratio)
             
             v_vel_computed = velocity_dispersion_gas(i_f,i_f+(r90 - r90/4)/20,-3,3,r_gas,v_gas,part)
@@ -685,8 +685,8 @@ def radial_analysis_form():
         surf_dens_ratio_over_v_vel = []
         
         for i_f in np.arange(r90/4,r90,(r90 - r90/4)/20):
-            x_f.append(Fe_H_agedependent_form(i_f,i_f+(r90 - r90/4)/20,-3,3,0,0.1,r_star,age,part))
-            log_surf_ratio = log_surf_dens_ratio(i_f,i_f+(r90 - r90/4)/20,-3,3,0,0.1,r_star,r_gas,age,part)
+            x_f.append(Fe_H_agedependent_form(i_f,i_f+(r90 - r90/4)/20,-3,3,0,1,r_star,age,part))
+            log_surf_ratio = log_surf_dens_ratio(i_f,i_f+(r90 - r90/4)/20,-3,3,0,1,r_star,r_gas,age,part)
             surf_dens_ratio.append(log_surf_ratio)
             
             v_vel_computed = velocity_dispersion_gas(i_f,i_f+(r90 - r90/4)/20,-3,3,r_gas,v_gas,part)
@@ -756,8 +756,8 @@ def radial_analysis_form():
         surf_dens_ratio_over_v_vel = []
         
         for i_f in np.arange(r90/4,r90,(r90 - r90/4)/20):
-            x_f.append(Fe_H_agedependent_form(i_f,i_f+(r90 - r90/4)/20,-3,3,0,0.1,r_star,age,part))
-            log_surf_ratio = log_surf_dens_ratio(i_f,i_f+(r90 - r90/4)/20,-3,3,0,0.1,r_star,r_gas,age,part)
+            x_f.append(Fe_H_agedependent_form(i_f,i_f+(r90 - r90/4)/20,-3,3,0,1,r_star,age,part))
+            log_surf_ratio = log_surf_dens_ratio(i_f,i_f+(r90 - r90/4)/20,-3,3,0,1,r_star,r_gas,age,part)
             surf_dens_ratio.append(log_surf_ratio)
             
             v_vel_computed = velocity_dispersion_gas(i_f,i_f+(r90 - r90/4)/20,-3,3,r_gas,v_gas,part)
@@ -827,8 +827,8 @@ def radial_analysis_form():
         surf_dens_ratio_over_v_vel = []
         
         for i_f in np.arange(r90/4,r90,(r90 - r90/4)/20):
-            x_f.append(Fe_H_agedependent_form(i_f,i_f+(r90 - r90/4)/20,-3,3,0,0.1,r_star,age,part))
-            log_surf_ratio = log_surf_dens_ratio(i_f,i_f+(r90 - r90/4)/20,-3,3,0,0.1,r_star,r_gas,age,part)
+            x_f.append(Fe_H_agedependent_form(i_f,i_f+(r90 - r90/4)/20,-3,3,0,1,r_star,age,part))
+            log_surf_ratio = log_surf_dens_ratio(i_f,i_f+(r90 - r90/4)/20,-3,3,0,1,r_star,r_gas,age,part)
             surf_dens_ratio.append(log_surf_ratio)
             
             v_vel_computed = velocity_dispersion_gas(i_f,i_f+(r90 - r90/4)/20,-3,3,r_gas,v_gas,part)
@@ -879,12 +879,12 @@ def radial_analysis_form():
     surf_dens_ratio_all_galaxies_slope = np.array(surf_dens_ratio_all_galaxies_slope) 
     surf_dens_ratio_over_v_vel_all_galaxies_slope = np.array(surf_dens_ratio_over_v_vel_all_galaxies_slope)                                      
     
-    ut_io.file_hdf5('/home/rlgraf/Final_Figures/Fe_H_rad_form_all_galaxies_surfdensratiotrack_100Myr_quartR90_R90_young_CHECK2', Fe_H_rad_form_all_galaxies)
-    ut_io.file_hdf5('/home/rlgraf/Final_Figures/surf_dens_ratio_all_galaxies_surfdensratiotrack_100Myr_quartR90_R90_young_CHECK2', surf_dens_ratio_all_galaxies)
-    ut_io.file_hdf5('/home/rlgraf/Final_Figures/surf_dens_ratio_over_v_vel_all_galaxies_surfdensratiotrack_100Myr_quartR90_R90_young_CHECK2', surf_dens_ratio_over_v_vel_all_galaxies)
+    ut_io.file_hdf5('/home/rlgraf/Final_Figures/Fe_H_rad_form_all_galaxies_surfdensratiotrack_1Gyr_quartR90_R90_young_CHECK2', Fe_H_rad_form_all_galaxies)
+    ut_io.file_hdf5('/home/rlgraf/Final_Figures/surf_dens_ratio_all_galaxies_surfdensratiotrack_1Gyr_quartR90_R90_young_CHECK2', surf_dens_ratio_all_galaxies)
+    ut_io.file_hdf5('/home/rlgraf/Final_Figures/surf_dens_ratio_over_v_vel_all_galaxies_surfdensratiotrack_1Gyr_quartR90_R90_young_CHECK2', surf_dens_ratio_over_v_vel_all_galaxies)
     
-    ut_io.file_hdf5('/home/rlgraf/Final_Figures/Fe_H_rad_form_all_galaxies_surfdensratiotrack_100Myr_quartR90_R90_young_slope_CHECK2', Fe_H_rad_form_all_galaxies_slope)
-    ut_io.file_hdf5('/home/rlgraf/Final_Figures/surf_dens_ratio_all_galaxies_surfdensratiotrack_100Myr_quartR90_R90_young_slope_CHECK2', surf_dens_ratio_all_galaxies_slope)
-    ut_io.file_hdf5('/home/rlgraf/Final_Figures/surf_dens_ratio_over_v_vel_all_galaxies_surfdensratiotrack_100Myr_quartR90_R90_young_slope_CHECK2', surf_dens_ratio_over_v_vel_all_galaxies_slope)
+    ut_io.file_hdf5('/home/rlgraf/Final_Figures/Fe_H_rad_form_all_galaxies_surfdensratiotrack_1Gyr_quartR90_R90_young_slope_CHECK2', Fe_H_rad_form_all_galaxies_slope)
+    ut_io.file_hdf5('/home/rlgraf/Final_Figures/surf_dens_ratio_all_galaxies_surfdensratiotrack_1Gyr_quartR90_R90_young_slope_CHECK2', surf_dens_ratio_all_galaxies_slope)
+    ut_io.file_hdf5('/home/rlgraf/Final_Figures/surf_dens_ratio_over_v_vel_all_galaxies_surfdensratiotrack_1Gyr_quartR90_R90_young_slope_CHECK2', surf_dens_ratio_over_v_vel_all_galaxies_slope)
     
 radial_analysis_form()
