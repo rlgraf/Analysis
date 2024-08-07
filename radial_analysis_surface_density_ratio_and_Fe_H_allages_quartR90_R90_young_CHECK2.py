@@ -459,7 +459,7 @@ def radial_analysis_form():
     
     R90_young_Romeo = np.array([23.79, 24.80, 19.42, 18.98, 17.14, 14.88, 11.70, 10.71, 9.65, 6.82, 7.68])
     
-    FFe_H_rad_form_at_snapshot = []
+    Fe_H_rad_form_at_snapshot = []
     surf_dens_ratio_at_snapshot = []
     surf_dens_ratio_over_v_vel_at_snapshot = []
 
