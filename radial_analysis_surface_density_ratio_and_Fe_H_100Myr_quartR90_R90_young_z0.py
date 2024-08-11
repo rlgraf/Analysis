@@ -31,9 +31,9 @@ import weightedstats as ws
 # formation
 
 def Fe_H_agedependent_form(x1,x2,x3,x4,a1,a2,r_star,r_star_z0,age,part,part_z0,particle_thresh = 4):
-    index = ut.array.get_indices(r_star_z0[:,0], [x1,x2])
-    index2 = ut.array.get_indices(abs(r_star_z0[:,2]), [x3,x4], prior_indices = index)
-    index3 = ut.array.get_indices(age, [a1,a2], prior_indices = index2)
+    index = ut.array.get_indices(age, [a1,a2])
+    index2 = ut.array.get_indices(r_star_z0[:,0], [x1,x2], prior_indices = index)
+    index3 = ut.array.get_indices(abs(r_star_z0[:,2]), [x3,x4], prior_indices = index2)
     Fe_H = part_z0['star'].prop('metallicity.iron')
     Fe_H_cut = Fe_H[index3]
     if len(Fe_H_cut) < particle_thresh:
@@ -42,9 +42,9 @@ def Fe_H_agedependent_form(x1,x2,x3,x4,a1,a2,r_star,r_star_z0,age,part,part_z0,p
     return(weight_avg)
 
 def log_surf_dens_ratio(x1,x2,x3,x4,a1,a2,r_star,r_star_z0,r_gas,age,part,part_z0,particle_thresh = 4):
-    index = ut.array.get_indices(r_star_z0[:,0], [x1,x2])
-    index2 = ut.array.get_indices(abs(r_star_z0[:,2]), [x3,x4], prior_indices = index)
-    index3 = ut.array.get_indices(age, [a1,a2], prior_indices = index2)
+    index = ut.array.get_indices(age, [a1,a2])
+    index2 = ut.array.get_indices(r_star_z0[:,0], [x1,x2], prior_indices = index)
+    index3 = ut.array.get_indices(abs(r_star_z0[:,2]), [x3,x4], prior_indices = index2)
     surf_dens_star = np.sum(part_z0['star']['mass'][index3])/(np.pi*(x2**2 - x1**2))
     
     index4 = ut.array.get_indices(r_gas[:,0], [x1,x2])
