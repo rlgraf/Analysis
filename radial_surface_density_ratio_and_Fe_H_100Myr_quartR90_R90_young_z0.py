@@ -30,7 +30,7 @@ import weightedstats as ws
 
 # formation
 
-def Fe_H_agedependent_form(x1,x2,x3,x4,a1,a2,r_star,age,part,part_z0,particle_thresh = 4):
+def Fe_H_agedependent_form(x1,x2,x3,x4,a1,a2,r_star,r_star_z0,age,part,part_z0,particle_thresh = 4):
     index = ut.array.get_indices(r_star_z0[:,0], [x1,x2])
     index2 = ut.array.get_indices(abs(r_star_z0[:,2]), [x3,x4], prior_indices = index)
     index3 = ut.array.get_indices(age, [a1,a2], prior_indices = index2)
@@ -41,7 +41,7 @@ def Fe_H_agedependent_form(x1,x2,x3,x4,a1,a2,r_star,age,part,part_z0,particle_th
     weight_avg = ws.weighted_median(Fe_H_cut, part_z0['star']['mass'][index3])
     return(weight_avg)
 
-def log_surf_dens_ratio(x1,x2,x3,x4,a1,a2,r_star,r_gas,age,part,part_z0,particle_thresh = 4):
+def log_surf_dens_ratio(x1,x2,x3,x4,a1,a2,r_star,r_star_z0,r_gas,age,part,part_z0,particle_thresh = 4):
     index = ut.array.get_indices(r_star_z0[:,0], [x1,x2])
     index2 = ut.array.get_indices(abs(r_star_z0[:,2]), [x3,x4], prior_indices = index)
     index3 = ut.array.get_indices(age, [a1,a2], prior_indices = index2)
@@ -120,8 +120,8 @@ def radial_analysis_form():
         surf_dens_ratio_over_v_vel = []
         
         for i_f in np.arange(r90/4,r90,(r90 - r90/4)/20):
-            x_f.append(Fe_H_agedependent_form(i_f,i_f+(r90 - r90/4)/20,-3,3,0,0.1,r_star,age,part,part_z0))
-            log_surf_ratio = log_surf_dens_ratio(i_f,i_f+(r90 - r90/4)/20,-3,3,0,0.1,r_star,r_gas,age,part,part_z0)
+            x_f.append(Fe_H_agedependent_form(i_f,i_f+(r90 - r90/4)/20,-3,3,0,0.1,r_star,r_star_z0,age,part,part_z0))
+            log_surf_ratio = log_surf_dens_ratio(i_f,i_f+(r90 - r90/4)/20,-3,3,0,0.1,r_star,r_star_z0,r_gas,age,part,part_z0)
             surf_dens_ratio.append(log_surf_ratio)
             
             v_vel_computed = velocity_dispersion_gas(i_f,i_f+(r90 - r90/4)/20,-3,3,r_gas,v_gas,part)
@@ -196,8 +196,8 @@ def radial_analysis_form():
         surf_dens_ratio_over_v_vel = []
         
         for i_f in np.arange(r90/4,r90,(r90 - r90/4)/20):
-            x_f.append(Fe_H_agedependent_form(i_f,i_f+(r90 - r90/4)/20,-3,3,0,0.1,r_star,age,part,part_z0))
-            log_surf_ratio = log_surf_dens_ratio(i_f,i_f+(r90 - r90/4)/20,-3,3,0,0.1,r_star,r_gas,age,part,part_z0)
+            x_f.append(Fe_H_agedependent_form(i_f,i_f+(r90 - r90/4)/20,-3,3,0,0.1,r_star,r_star_z0,age,part,part_z0))
+            log_surf_ratio = log_surf_dens_ratio(i_f,i_f+(r90 - r90/4)/20,-3,3,0,0.1,r_star,r_star_z0,r_gas,age,part,part_z0)
             surf_dens_ratio.append(log_surf_ratio)
             
             v_vel_computed = velocity_dispersion_gas(i_f,i_f+(r90 - r90/4)/20,-3,3,r_gas,v_gas,part)
@@ -273,8 +273,8 @@ def radial_analysis_form():
         surf_dens_ratio_over_v_vel = []
         
         for i_f in np.arange(r90/4,r90,(r90 - r90/4)/20):
-            x_f.append(Fe_H_agedependent_form(i_f,i_f+(r90 - r90/4)/20,-3,3,0,0.1,r_star,age,part,part_z0))
-            log_surf_ratio = log_surf_dens_ratio(i_f,i_f+(r90 - r90/4)/20,-3,3,0,0.1,r_star,r_gas,age,part,part_z0)
+            x_f.append(Fe_H_agedependent_form(i_f,i_f+(r90 - r90/4)/20,-3,3,0,0.1,r_star,r_star_z0,age,part,part_z0))
+            log_surf_ratio = log_surf_dens_ratio(i_f,i_f+(r90 - r90/4)/20,-3,3,0,0.1,r_star,r_star_z0,r_gas,age,part,part_z0)
             surf_dens_ratio.append(log_surf_ratio)
             
             v_vel_computed = velocity_dispersion_gas(i_f,i_f+(r90 - r90/4)/20,-3,3,r_gas,v_gas,part)
@@ -350,8 +350,8 @@ def radial_analysis_form():
         surf_dens_ratio_over_v_vel = []
         
         for i_f in np.arange(r90/4,r90,(r90 - r90/4)/20):
-            x_f.append(Fe_H_agedependent_form(i_f,i_f+(r90 - r90/4)/20,-3,3,0,0.1,r_star,age,part,part_z0))
-            log_surf_ratio = log_surf_dens_ratio(i_f,i_f+(r90 - r90/4)/20,-3,3,0,0.1,r_star,r_gas,age,part,part_z0)
+            x_f.append(Fe_H_agedependent_form(i_f,i_f+(r90 - r90/4)/20,-3,3,0,0.1,r_star,r_star_z0,age,part,part_z0))
+            log_surf_ratio = log_surf_dens_ratio(i_f,i_f+(r90 - r90/4)/20,-3,3,0,0.1,r_star,r_star_z0,r_gas,age,part,part_z0)
             surf_dens_ratio.append(log_surf_ratio)
             
             v_vel_computed = velocity_dispersion_gas(i_f,i_f+(r90 - r90/4)/20,-3,3,r_gas,v_gas,part)
@@ -427,8 +427,8 @@ def radial_analysis_form():
         surf_dens_ratio_over_v_vel = []
         
         for i_f in np.arange(r90/4,r90,(r90 - r90/4)/20):
-            x_f.append(Fe_H_agedependent_form(i_f,i_f+(r90 - r90/4)/20,-3,3,0,0.1,r_star,age,part,part_z0))
-            log_surf_ratio = log_surf_dens_ratio(i_f,i_f+(r90 - r90/4)/20,-3,3,0,0.1,r_star,r_gas,age,part,part_z0)
+            x_f.append(Fe_H_agedependent_form(i_f,i_f+(r90 - r90/4)/20,-3,3,0,0.1,r_star,r_star_z0,age,part,part_z0))
+            log_surf_ratio = log_surf_dens_ratio(i_f,i_f+(r90 - r90/4)/20,-3,3,0,0.1,r_star,r_star_z0,r_gas,age,part,part_z0)
             surf_dens_ratio.append(log_surf_ratio)
             
             v_vel_computed = velocity_dispersion_gas(i_f,i_f+(r90 - r90/4)/20,-3,3,r_gas,v_gas,part)
@@ -504,8 +504,8 @@ def radial_analysis_form():
         surf_dens_ratio_over_v_vel = []
         
         for i_f in np.arange(r90/4,r90,(r90 - r90/4)/20):
-            x_f.append(Fe_H_agedependent_form(i_f,i_f+(r90 - r90/4)/20,-3,3,0,0.1,r_star,age,part,part_z0))
-            log_surf_ratio = log_surf_dens_ratio(i_f,i_f+(r90 - r90/4)/20,-3,3,0,0.1,r_star,r_gas,age,part,part_z0)
+            x_f.append(Fe_H_agedependent_form(i_f,i_f+(r90 - r90/4)/20,-3,3,0,0.1,r_star,r_star_z0,age,part,part_z0))
+            log_surf_ratio = log_surf_dens_ratio(i_f,i_f+(r90 - r90/4)/20,-3,3,0,0.1,r_star,r_star_z0,r_gas,age,part,part_z0)
             surf_dens_ratio.append(log_surf_ratio)
             
             v_vel_computed = velocity_dispersion_gas(i_f,i_f+(r90 - r90/4)/20,-3,3,r_gas,v_gas,part)
@@ -581,8 +581,8 @@ def radial_analysis_form():
         surf_dens_ratio_over_v_vel = []
         
         for i_f in np.arange(r90/4,r90,(r90 - r90/4)/20):
-            x_f.append(Fe_H_agedependent_form(i_f,i_f+(r90 - r90/4)/20,-3,3,0,0.1,r_star,age,part,part_z0))
-            log_surf_ratio = log_surf_dens_ratio(i_f,i_f+(r90 - r90/4)/20,-3,3,0,0.1,r_star,r_gas,age,part,part_z0)
+            x_f.append(Fe_H_agedependent_form(i_f,i_f+(r90 - r90/4)/20,-3,3,0,0.1,r_star,r_star_z0,age,part,part_z0))
+            log_surf_ratio = log_surf_dens_ratio(i_f,i_f+(r90 - r90/4)/20,-3,3,0,0.1,r_star,r_star_z0,r_gas,age,part,part_z0)
             surf_dens_ratio.append(log_surf_ratio)
             
             v_vel_computed = velocity_dispersion_gas(i_f,i_f+(r90 - r90/4)/20,-3,3,r_gas,v_gas,part)
@@ -658,8 +658,8 @@ def radial_analysis_form():
         surf_dens_ratio_over_v_vel = []
         
         for i_f in np.arange(r90/4,r90,(r90 - r90/4)/20):
-            x_f.append(Fe_H_agedependent_form(i_f,i_f+(r90 - r90/4)/20,-3,3,0,0.1,r_star,age,part,part_z0))
-            log_surf_ratio = log_surf_dens_ratio(i_f,i_f+(r90 - r90/4)/20,-3,3,0,0.1,r_star,r_gas,age,part,part_z0)
+            x_f.append(Fe_H_agedependent_form(i_f,i_f+(r90 - r90/4)/20,-3,3,0,0.1,r_star,r_star_z0,age,part,part_z0))
+            log_surf_ratio = log_surf_dens_ratio(i_f,i_f+(r90 - r90/4)/20,-3,3,0,0.1,r_star,r_star_z0,r_gas,age,part,part_z0)
             surf_dens_ratio.append(log_surf_ratio)
             
             v_vel_computed = velocity_dispersion_gas(i_f,i_f+(r90 - r90/4)/20,-3,3,r_gas,v_gas,part)
@@ -735,8 +735,8 @@ def radial_analysis_form():
         surf_dens_ratio_over_v_vel = []
         
         for i_f in np.arange(r90/4,r90,(r90 - r90/4)/20):
-            x_f.append(Fe_H_agedependent_form(i_f,i_f+(r90 - r90/4)/20,-3,3,0,0.1,r_star,age,part,part_z0))
-            log_surf_ratio = log_surf_dens_ratio(i_f,i_f+(r90 - r90/4)/20,-3,3,0,0.1,r_star,r_gas,age,part,part_z0)
+            x_f.append(Fe_H_agedependent_form(i_f,i_f+(r90 - r90/4)/20,-3,3,0,0.1,r_star,r_star_z0,age,part,part_z0))
+            log_surf_ratio = log_surf_dens_ratio(i_f,i_f+(r90 - r90/4)/20,-3,3,0,0.1,r_star,r_star_z0,r_gas,age,part,part_z0)
             surf_dens_ratio.append(log_surf_ratio)
             
             v_vel_computed = velocity_dispersion_gas(i_f,i_f+(r90 - r90/4)/20,-3,3,r_gas,v_gas,part)
@@ -812,8 +812,8 @@ def radial_analysis_form():
         surf_dens_ratio_over_v_vel = []
         
         for i_f in np.arange(r90/4,r90,(r90 - r90/4)/20):
-            x_f.append(Fe_H_agedependent_form(i_f,i_f+(r90 - r90/4)/20,-3,3,0,0.1,r_star,age,part,part_z0))
-            log_surf_ratio = log_surf_dens_ratio(i_f,i_f+(r90 - r90/4)/20,-3,3,0,0.1,r_star,r_gas,age,part,part_z0)
+            x_f.append(Fe_H_agedependent_form(i_f,i_f+(r90 - r90/4)/20,-3,3,0,0.1,r_star,r_star_z0,age,part,part_z0))
+            log_surf_ratio = log_surf_dens_ratio(i_f,i_f+(r90 - r90/4)/20,-3,3,0,0.1,r_star,r_star_z0,r_gas,age,part,part_z0)
             surf_dens_ratio.append(log_surf_ratio)
             
             v_vel_computed = velocity_dispersion_gas(i_f,i_f+(r90 - r90/4)/20,-3,3,r_gas,v_gas,part)
@@ -889,8 +889,8 @@ def radial_analysis_form():
         surf_dens_ratio_over_v_vel = []
         
         for i_f in np.arange(r90/4,r90,(r90 - r90/4)/20):
-            x_f.append(Fe_H_agedependent_form(i_f,i_f+(r90 - r90/4)/20,-3,3,0,0.1,r_star,age,part,part_z0))
-            log_surf_ratio = log_surf_dens_ratio(i_f,i_f+(r90 - r90/4)/20,-3,3,0,0.1,r_star,r_gas,age,part,part_z0)
+            x_f.append(Fe_H_agedependent_form(i_f,i_f+(r90 - r90/4)/20,-3,3,0,0.1,r_star,r_star_z0,age,part,part_z0))
+            log_surf_ratio = log_surf_dens_ratio(i_f,i_f+(r90 - r90/4)/20,-3,3,0,0.1,r_star,r_star_z0,r_gas,age,part,part_z0)
             surf_dens_ratio.append(log_surf_ratio)
             
             v_vel_computed = velocity_dispersion_gas(i_f,i_f+(r90 - r90/4)/20,-3,3,r_gas,v_gas,part)
