@@ -49,7 +49,7 @@ def radial_vel_disp_gas():
     snapshot_array = np.array([600, 590, 589, 588, 587, 586, 585, 584, 583, 582])
     vel_disp_array = []
     for red in snapshot_array:
-        part = gizmo.io.Read.read_snapshots(['gas'], 'redshift', red, simulation_directory, properties = ['mass', 'position', 'velocity', 'massfraction'], assign_hosts_rotation=True)
+        part = gizmo.io.Read.read_snapshots(['gas'], 'snapshot', red, simulation_directory, properties = ['mass', 'position', 'velocity', 'massfraction'], assign_hosts_rotation=True)
         
         r = part['gas'].prop('host2.distance.principal.cylindrical')
         v = part['gas'].prop('host2.velocity.principal.cylindrical')  
@@ -66,7 +66,7 @@ def radial_vel_disp_gas():
     snapshot_array = np.array([470, 469, 468, 467, 466, 465, 464, 463, 462, 461])
     vel_disp_array = []
     for red in snapshot_array:
-        part = gizmo.io.Read.read_snapshots(['gas'], 'redshift', red, simulation_directory, properties = ['mass', 'position', 'velocity', 'massfraction'], assign_hosts_rotation=True)
+        part = gizmo.io.Read.read_snapshots(['gas'], 'snapshot', red, simulation_directory, properties = ['mass', 'position', 'velocity', 'massfraction'], assign_hosts_rotation=True)
         
         r = part['gas'].prop('host2.distance.principal.cylindrical')
         v = part['gas'].prop('host2.velocity.principal.cylindrical')  
@@ -83,7 +83,7 @@ def radial_vel_disp_gas():
     snapshot_array = np.array([354, 353, 352, 351, 350, 349, 348, 347, 346, 345])
     vel_disp_array = []
     for red in snapshot_array:
-        part = gizmo.io.Read.read_snapshots(['gas'], 'redshift', red, simulation_directory, properties = ['mass', 'position', 'velocity', 'massfraction'], assign_hosts_rotation=True)
+        part = gizmo.io.Read.read_snapshots(['gas'], 'snapshot', red, simulation_directory, properties = ['mass', 'position', 'velocity', 'massfraction'], assign_hosts_rotation=True)
         
         r = part['gas'].prop('host2.distance.principal.cylindrical')
         v = part['gas'].prop('host2.velocity.principal.cylindrical')  
@@ -100,7 +100,7 @@ def radial_vel_disp_gas():
     snapshot_array = np.array([230, 229, 228, 227, 226, 225, 224, 223, 222, 221])
     vel_disp_array = []
     for red in snapshot_array:
-        part = gizmo.io.Read.read_snapshots(['gas'], 'redshift', red, simulation_directory, properties = ['mass', 'position', 'velocity', 'massfraction'], assign_hosts_rotation=True)
+        part = gizmo.io.Read.read_snapshots(['gas'], 'snapshot', red, simulation_directory, properties = ['mass', 'position', 'velocity', 'massfraction'], assign_hosts_rotation=True)
         
         r = part['gas'].prop('host2.distance.principal.cylindrical')
         v = part['gas'].prop('host2.velocity.principal.cylindrical')  
@@ -124,7 +124,7 @@ def radial_vel_disp_gas():
     snapshot_array = np.array([600, 590, 589, 588, 587, 586, 585, 584, 583, 582])
     vel_disp_array = []
     for red in snapshot_array:
-        part = gizmo.io.Read.read_snapshots(['gas'], 'redshift', red, simulation_directory, properties = ['mass', 'position', 'velocity', 'massfraction'], assign_hosts_rotation=True)
+        part = gizmo.io.Read.read_snapshots(['gas'], 'snapshot', red, simulation_directory, properties = ['mass', 'position', 'velocity', 'massfraction'], assign_hosts_rotation=True)
         
         r = part['gas'].prop('host1.distance.principal.cylindrical')
         v = part['gas'].prop('host1.velocity.principal.cylindrical')  
@@ -141,7 +141,7 @@ def radial_vel_disp_gas():
     snapshot_array = np.array([470, 469, 468, 467, 466, 465, 464, 463, 462, 461])
     vel_disp_array = []
     for red in snapshot_array:
-        part = gizmo.io.Read.read_snapshots(['gas'], 'redshift', red, simulation_directory, properties = ['mass', 'position', 'velocity', 'massfraction'], assign_hosts_rotation=True)
+        part = gizmo.io.Read.read_snapshots(['gas'], 'snapshot', red, simulation_directory, properties = ['mass', 'position', 'velocity', 'massfraction'], assign_hosts_rotation=True)
         
         r = part['gas'].prop('host1.distance.principal.cylindrical')
         v = part['gas'].prop('host1.velocity.principal.cylindrical')  
@@ -158,7 +158,7 @@ def radial_vel_disp_gas():
     snapshot_array = np.array([354, 353, 352, 351, 350, 349, 348, 347, 346, 345])
     vel_disp_array = []
     for red in snapshot_array:
-        part = gizmo.io.Read.read_snapshots(['gas'], 'redshift', red, simulation_directory, properties = ['mass', 'position', 'velocity', 'massfraction'], assign_hosts_rotation=True)
+        part = gizmo.io.Read.read_snapshots(['gas'], 'snapshot', red, simulation_directory, properties = ['mass', 'position', 'velocity', 'massfraction'], assign_hosts_rotation=True)
         
         r = part['gas'].prop('host1.distance.principal.cylindrical')
         v = part['gas'].prop('host1.velocity.principal.cylindrical')  
@@ -175,7 +175,7 @@ def radial_vel_disp_gas():
     snapshot_array = np.array([230, 229, 228, 227, 226, 225, 224, 223, 222, 221])
     vel_disp_array = []
     for red in snapshot_array:
-        part = gizmo.io.Read.read_snapshots(['gas'], 'redshift', red, simulation_directory, properties = ['mass', 'position', 'velocity', 'massfraction'], assign_hosts_rotation=True)
+        part = gizmo.io.Read.read_snapshots(['gas'], 'snapshot', red, simulation_directory, properties = ['mass', 'position', 'velocity', 'massfraction'], assign_hosts_rotation=True)
         
         r = part['gas'].prop('host1.distance.principal.cylindrical')
         v = part['gas'].prop('host1.velocity.principal.cylindrical')  
@@ -199,7 +199,7 @@ def radial_vel_disp_gas():
     snapshot_array = np.array([600, 590, 589, 588, 587, 586, 585, 584, 583, 582])
     vel_disp_array = []
     for red in snapshot_array:
-        part = gizmo.io.Read.read_snapshots(['gas'], 'redshift', red, simulation_directory, properties = ['mass', 'position', 'velocity', 'massfraction'], assign_hosts_rotation=True)
+        part = gizmo.io.Read.read_snapshots(['gas'], 'snapshot', red, simulation_directory, properties = ['mass', 'position', 'velocity', 'massfraction'], assign_hosts_rotation=True)
         
         r = part['gas'].prop('host2.distance.principal.cylindrical')
         v = part['gas'].prop('host2.velocity.principal.cylindrical')  
@@ -216,7 +216,7 @@ def radial_vel_disp_gas():
     snapshot_array = np.array([470, 469, 468, 467, 466, 465, 464, 463, 462, 461])
     vel_disp_array = []
     for red in snapshot_array:
-        part = gizmo.io.Read.read_snapshots(['gas'], 'redshift', red, simulation_directory, properties = ['mass', 'position', 'velocity', 'massfraction'], assign_hosts_rotation=True)
+        part = gizmo.io.Read.read_snapshots(['gas'], 'snapshot', red, simulation_directory, properties = ['mass', 'position', 'velocity', 'massfraction'], assign_hosts_rotation=True)
         
         r = part['gas'].prop('host2.distance.principal.cylindrical')
         v = part['gas'].prop('host2.velocity.principal.cylindrical')  
@@ -233,7 +233,7 @@ def radial_vel_disp_gas():
     snapshot_array = np.array([354, 353, 352, 351, 350, 349, 348, 347, 346, 345])
     vel_disp_array = []
     for red in snapshot_array:
-        part = gizmo.io.Read.read_snapshots(['gas'], 'redshift', red, simulation_directory, properties = ['mass', 'position', 'velocity', 'massfraction'], assign_hosts_rotation=True)
+        part = gizmo.io.Read.read_snapshots(['gas'], 'snapshot', red, simulation_directory, properties = ['mass', 'position', 'velocity', 'massfraction'], assign_hosts_rotation=True)
         
         r = part['gas'].prop('host2.distance.principal.cylindrical')
         v = part['gas'].prop('host2.velocity.principal.cylindrical')  
@@ -250,7 +250,7 @@ def radial_vel_disp_gas():
     snapshot_array = np.array([230, 229, 228, 227, 226, 225, 224, 223, 222, 221])
     vel_disp_array = []
     for red in snapshot_array:
-        part = gizmo.io.Read.read_snapshots(['gas'], 'redshift', red, simulation_directory, properties = ['mass', 'position', 'velocity', 'massfraction'], assign_hosts_rotation=True)
+        part = gizmo.io.Read.read_snapshots(['gas'], 'snapshot', red, simulation_directory, properties = ['mass', 'position', 'velocity', 'massfraction'], assign_hosts_rotation=True)
         
         r = part['gas'].prop('host2.distance.principal.cylindrical')
         v = part['gas'].prop('host2.velocity.principal.cylindrical')  
