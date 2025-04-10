@@ -92,6 +92,7 @@ def azimuthal_analysis_z_0():
         Fe_H = part['star'].prop('metallicity.iron')
         age = part['star'].prop('age')
         age_obs = age*10**(np.random.normal(0, np.log10(1.50), age.size))
+        # for observational uncertainties of 0%, 10%, and 25%, use values in np.log10() of 0.00, 0.10, and 1.25 respectively
         
         if s in ['/group/awetzelgrp/m12_elvis/m12_elvis_RomeoJuliet_r3500', '/group/awetzelgrp/m12_elvis/m12_elvis_RomulusRemus_r4000', '/group/awetzelgrp/m12_elvis/m12_elvis_ThelmaLouise_r4000']:
             r_array = [part['star'].prop('host1.distance.principal.cylindrical'), part['star'].prop('host2.distance.principal.cylindrical')]

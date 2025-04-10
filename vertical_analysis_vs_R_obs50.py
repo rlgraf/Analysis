@@ -87,6 +87,7 @@ def radial_analysis_z_0():
         Fe_H = part['star'].prop('metallicity.iron')
         age = part['star'].prop('age')
         age_obs = age*10**(np.random.normal(0, np.log10(1.5), age.size))
+        # for observational uncertainties of 0, 10%, and 25%, change the value inside np.log10 to 1.0, 1.1, and 1.25 respectively
     
         if s in ['/group/awetzelgrp/m12_elvis/m12_elvis_RomeoJuliet_r3500', '/group/awetzelgrp/m12_elvis/m12_elvis_RomulusRemus_r4000', '/group/awetzelgrp/m12_elvis/m12_elvis_ThelmaLouise_r4000']:
             r_array = [part['star'].prop('host1.distance.principal.cylindrical'), part['star'].prop('host2.distance.principal.cylindrical')]
@@ -102,7 +103,9 @@ def radial_analysis_z_0():
             for R in np.arange(0.5,15.5,1):
                 x = []
                 for i in np.arange(0,1,0.1):
+                # for a vertical range of |Z| < 2, change the 2nd arg in the for loop to 2
                     x.append(Fe_H_agedependent(R,R+1,i,i+0.1,0,15,0,1,0,14,r,r_form,age_obs,part))
+                    # for a vertical range of |Z| < 2, change the 8th arg to 2
                 Fe_H_rad.append(x)
                 l = np.arange(0,1,0.1)
                 x = np.array(x)
@@ -150,6 +153,7 @@ def radial_analysis_form():
         Fe_H = part['star'].prop('metallicity.iron')
         age = part['star'].prop('age')
         age_obs = age*10**(np.random.normal(0, np.log10(1.5), age.size))
+        # for observational uncertainties of 0, 10%, and 25%, change the value inside np.log10 to 1.0, 1.1, and 1.25 respectively
         
         if s in ['/group/awetzelgrp/m12_elvis/m12_elvis_RomeoJuliet_r3500', '/group/awetzelgrp/m12_elvis/m12_elvis_RomulusRemus_r4000', '/group/awetzelgrp/m12_elvis/m12_elvis_ThelmaLouise_r4000']:
             r_array = [part['star'].prop('host1.distance.principal.cylindrical'), part['star'].prop('host2.distance.principal.cylindrical')]
@@ -165,7 +169,9 @@ def radial_analysis_form():
             for R_f in np.arange(0.5,15.5,1):
                 x_f = []
                 for i_f in np.arange(0,1,0.1):
+                # for a vertical range of |Z| < 2, change the 2nd arg in the for loop to 2
                     x_f.append(Fe_H_agedependent_form(R_f,R_f+1,i_f,i_f+0.1,0,15,0,1,0,14,r_form,r,age_obs,part))
+                    # for a vertical range of |Z| < 2, change the 8th arg to 2
                 Fe_H_rad_form.append(x_f)    
                 l_f = np.arange(0,1,0.1)
                 x_f = np.array(x_f)
